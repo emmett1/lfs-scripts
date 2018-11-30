@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=zlib
+version=1.2.11
+url=https://zlib.net/zlib-$version.tar.xz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$name-$version.tar.xz -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	./configure --prefix=/usr
+	make
+	make install
+	mv -v /usr/lib/libz.so.* /lib
+	ln -sfv ../../lib/$(readlink /usr/lib/libz.so) /usr/lib/libz.so
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

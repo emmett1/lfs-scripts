@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=72992208c32e3aac22a086659b00c034960992cd
+url=https://github.com/emmett1/mkinitramfs/archive/$version.tar.gz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	./INSTALL.sh
+
+	#if [ $(type -p mkinitramfs) ]; then
+	#	kernver=$(file /boot/vmlinuz-4.19.2-lfs  | cut -d ' ' -f9)
+	#	mkinitramfs -k $kernver -o /boot/initrd-4.19.2-lfs.img
+	#fi
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

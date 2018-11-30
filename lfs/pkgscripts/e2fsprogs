@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=1.44.3
+url=https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v$version/e2fsprogs-$version.tar.gz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	mkdir -v build
+	cd build
+
+	../configure --prefix=/usr           \
+		     --bindir=/bin           \
+		     --with-root-prefix=""   \
+		     --enable-elf-shlibs     \
+		     --disable-libblkid      \
+		     --disable-libuuid       \
+		     --disable-uuidd         \
+		     --disable-fsck
+	make
+	make install
+	make install-libs
+	chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+	gunzip -v /usr/share/info/libext2fs.info.gz
+	install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=elfutils
+version=0.173
+url=https://sourceware.org/ftp/elfutils/$version/elfutils-$version.tar.bz2
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	./configure --prefix=/usr
+	make
+	make -C libelf install
+	install -vm644 config/libelf.pc /usr/lib/pkgconfig
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

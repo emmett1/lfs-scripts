@@ -1,0 +1,38 @@
+#!/bin/bash -e
+
+source $(dirname $0)/functions
+source $(dirname $0)/pkgversion
+
+filename=$(echo $0 | rev | cut -d / -f1 | rev)
+
+TMP=${TMP:-/tmp/build}
+LOG=${LOG:-$(dirname $0)/log}
+SRC=${SRC:-$(dirname $0)/src}
+
+NAME=bzip2
+VERSION=${BZIP_VER}
+
+fetch "http://anduin.linuxfromscratch.org/LFS/bzip2-$BZIP_VER.tar.gz" $SRC
+#fetch "http://www.bzip.org/$BZIP_VER/bzip2-$BZIP_VER.tar.gz" $SRC
+
+[ "$1" = "fetch" ] && exit 0
+
+rm -fr $TMP
+mkdir -p $TMP $LOG $SRC
+
+tar xf $SRC/$tarballname -C $TMP
+
+{ time \
+   {
+
+	cd $TMP/$NAME-$VERSION
+	
+	make
+	make PREFIX=/tools install
+	
+	}
+} 2>&1 | tee $LOG/$filename.log
+    
+[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
+
+rm -fr $TMP

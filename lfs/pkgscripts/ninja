@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=1.8.2
+url=https://github.com/ninja-build/ninja/archive/v$version/ninja-$version.tar.gz
+
+fetch $url
+fetch http://www.linuxfromscratch.org/patches/lfs/8.3/ninja-$version-add_NINJAJOBS_var-1.patch
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	export NINJAJOBS=4
+
+	patch -Np1 -i $SOURCE_DIR/ninja-$version-add_NINJAJOBS_var-1.patch
+
+	python3 configure.py --bootstrap
+	python3 configure.py
+	./ninja ninja_test
+	./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
+	install -vm755 ninja /usr/bin/
+	install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
+	install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

@@ -1,0 +1,44 @@
+#!/bin/bash -e
+
+source $(dirname $0)/functions
+source $(dirname $0)/pkgversion
+
+filename=$(echo $0 | rev | cut -d / -f1 | rev)
+
+TMP=${TMP:-/tmp/build}
+LOG=${LOG:-$(dirname $0)/log}
+SRC=${SRC:-$(dirname $0)/src}
+
+NAME=wget
+VERSION=${WGET_VER}
+
+fetch "https://ftp.gnu.org/gnu/wget/wget-$WGET_VER.tar.gz" $SRC
+
+[ "$1" = "fetch" ] && exit 0
+
+rm -fr $TMP
+mkdir -p $TMP $LOG $SRC
+
+tar xf $SRC/$tarballname -C $TMP
+
+{ time \
+   {
+
+	cd $TMP/$NAME-$VERSION
+
+	./configure --prefix=/tools    \
+                --with-ssl=openssl \
+                --without-libidn   \
+                --without-libpsl   \
+                --without-metalink
+	make
+	make install
+	
+	echo "ca_certificate = /tools/etc/ssl/certs/ca-certificates.crt" > /tools/etc/wgetrc
+	
+	}
+} 2>&1 | tee $LOG/$filename.log
+    
+[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
+
+rm -fr $TMP

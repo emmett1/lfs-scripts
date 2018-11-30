@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=6.1
+url=http://ftp.gnu.org/gnu/ncurses/ncurses-$version.tar.gz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
+	
+	./configure --prefix=/usr           \
+				--mandir=/usr/share/man \
+				--with-shared           \
+				--without-debug         \
+				--without-normal        \
+				--enable-pc-files       \
+				--enable-widec
+	make
+	make install
+	mv -v /usr/lib/libncursesw.so.6* /lib
+	ln -sfv ../../lib/$(readlink /usr/lib/libncursesw.so) /usr/lib/libncursesw.so
+	for lib in ncurses form panel menu ; do
+		rm -vf                    /usr/lib/lib${lib}.so
+		echo "INPUT(-l${lib}w)" > /usr/lib/lib${lib}.so
+		ln -sfv ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
+	done
+	rm -vf                     /usr/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
+	ln -sfv libncurses.so      /usr/lib/libcurses.so
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

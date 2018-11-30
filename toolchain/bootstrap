@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+source $(dirname $0)/functions
+
+for script in $(ls | grep ^[0-9]); do
+	if [ "$1" = "fetch" ]; then
+		$(dirname $0)/$script "$1"
+	elif [ -f /tools/"$script" ]; then
+		echo "--- $script skipped ---"
+	else
+		echo "*** $script ***"
+		$(dirname $0)/$script
+		echo; echo "*** $script done ***"; echo
+		[ "$1" = $(echo $script | cut -d - -f1) ] && exit
+	fi
+done
+
+[ "$1" = "fetch" ] && exit 0
+
+sudo chown -Rv 0:0 $LFS
+
+echo
+echo "**************************************************"
+echo "*********    Toolchain build complete    *********"
+echo "**************************************************"

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=0.9
+url=https://github.com/djlucas/make-ca/archive/v$version/make-ca-$version.tar.gz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	install -vdm755 /etc/ssl/local
+	wget http://www.cacert.org/certs/root.crt
+	wget http://www.cacert.org/certs/class3.crt
+	openssl x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root" \
+		-addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+		> /etc/ssl/local/CAcert_Class_1_root.pem
+	openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root" \
+		-addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+		> /etc/ssl/local/CAcert_Class_3_root.pem
+	make install
+	mkdir -pv /etc/pki/tls/certs
+	ln -svf /etc/ssl/ca-bundle.crt \
+		/etc/pki/tls/certs/ca-bundle.crt
+	/usr/sbin/make-ca -g
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

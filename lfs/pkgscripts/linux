@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=4.19.2
+url=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz
+
+fetch $url
+fetch https://raw.githubusercontent.com/emmett1/ports/1.0/extra/linux/config-$version
+
+rm -fr /usr/src/$name-$version-old
+[ -d /usr/src/$name-$version ] && mv /usr/src/$name-$version /usr/src/$name-$version-old
+tar -xvf $SOURCE_DIR/$(basename $url) -C /usr/src
+#ln -svf /usr/src/$name-$version /usr/src/linux
+
+cd /usr/src/$name-$version
+{ time \
+   {
+	make mrproper
+	cp $SOURCE_DIR/config-$version .config
+
+	sed '/^CONFIG_LOCALVERSION=/d' -i .config
+	echo 'CONFIG_LOCALVERSION="-lfs"' >> .config
+
+	make
+	make modules_install
+	cp  arch/x86/boot/bzImage /boot/vmlinuz-$version-lfs
+
+	if [ $(type -p mkinitramfs) ]; then
+		kernver=$(file /boot/vmlinuz-$version-lfs  | cut -d ' ' -f9)
+		mkinitramfs -k $kernver -o /boot/initrd-$version-lfs.img
+	fi
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+#rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

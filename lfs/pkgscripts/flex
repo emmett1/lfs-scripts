@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=2.6.4
+url=https://github.com/westes/flex/releases/download/v$version/flex-$version.tar.gz
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	sed -i "/math.h/a #include <malloc.h>" src/flexdef.h
+	
+	HELP2MAN=/tools/bin/true \
+	./configure --prefix=/usr --docdir=/usr/share/doc/flex-$version
+	make
+	make install
+	ln -sv flex /usr/bin/lex
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

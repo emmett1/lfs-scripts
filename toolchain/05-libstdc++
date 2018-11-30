@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+source $(dirname $0)/functions
+source $(dirname $0)/pkgversion
+
+filename=$(echo $0 | rev | cut -d / -f1 | rev)
+
+TMP=${TMP:-/tmp/build}
+LOG=${LOG:-$(dirname $0)/log}
+SRC=${SRC:-$(dirname $0)/src}
+
+NAME=gcc
+VERSION=${GCC_VER}
+
+fetch "http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VER/gcc-$GCC_VER.tar.xz" $SRC
+
+[ "$1" = "fetch" ] && exit 0
+
+rm -fr $TMP
+mkdir -p $TMP $LOG $SRC
+
+tar xf $SRC/$tarballname -C $TMP
+
+{ time \
+   {
+
+	cd $TMP/$NAME-$VERSION
+
+	mkdir -v build
+	cd       build
+	
+	../libstdc++-v3/configure           \
+		--host=$LFS_TGT                 \
+		--prefix=/tools                 \
+		--disable-multilib              \
+		--disable-nls                   \
+		--disable-libstdcxx-threads     \
+		--disable-libstdcxx-pch         \
+		--with-gxx-include-dir=/tools/$LFS_TGT/include/c++/$GCC_VER
+	make
+	make install
+	
+	}
+} 2>&1 | tee $LOG/$filename.log
+    
+[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
+
+rm -fr $TMP

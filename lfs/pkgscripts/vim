@@ -1,0 +1,57 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=8.1
+url=ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/vim81
+{ time \
+   {
+	echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+
+	./configure --prefix=/usr
+	make
+	make install
+	ln -svf vim /usr/bin/vi
+	for L in  /usr/share/man/{,*/}man1/vim.1; do
+	    ln -svf vim.1 $(dirname $L)/vi.1
+	done
+	ln -sfv ../vim/vim81/doc /usr/share/doc/vim-$version
+	cat > /etc/vimrc << "EOF"
+" Begin /etc/vimrc
+
+" Ensure defaults are set before customizing settings, not after
+source $VIMRUNTIME/defaults.vim
+let skip_defaults_vim=1 
+
+set nocompatible
+set backspace=2
+set mouse=
+syntax on
+if (&term == "xterm") || (&term == "putty")
+  set background=dark
+endif
+
+" End /etc/vimrc
+EOF
+
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/vim81
+
+registerpkg $(basename $0) $version
+
+exit 0
