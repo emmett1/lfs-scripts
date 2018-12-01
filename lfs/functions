@@ -26,5 +26,6 @@ fetch() {
 registerpkg() {
 	sed "/^$1 /d" -i /var/lib/pkg/db
 	echo "$1 $2" >> /var/lib/pkg/db
+	ldconfig
 	echo "::: $1 $2 installed :::"
 }
