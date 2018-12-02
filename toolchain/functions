@@ -34,16 +34,3 @@ fetch() {
 	fi
 	
 }
-
-if [ ! -d $LFS/tools ]; then
-	sudo mkdir -pv $LFS/tools
-fi
-
-if [ ! -w $LFS ]; then
-	sudo chown -Rv $USER:$USER $LFS
-fi
-
-if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
-	sudo ln -svf $LFS/tools /
-fi
-

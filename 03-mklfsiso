@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $(id -u) != 0 ]; then
+	echo "$0 script need to run as root!"
+	exit 1
+fi
+
 trap "exit 1" SIGHUP SIGINT SIGQUIT SIGTERM
 
 LFSVERSIOM=8.3

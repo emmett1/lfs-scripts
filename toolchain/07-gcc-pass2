@@ -12,7 +12,8 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=gcc
 VERSION=${GCC_VER}
 
-fetch "http://www.mpfr.org/mpfr-$MPFR_VER/mpfr-$MPFR_VER.tar.xz" $SRC
+fetch "http://ftp.osuosl.org/pub/lfs/lfs-packages/8.3/mpfr-$MPFR_VER.tar.xz" $SRC
+#fetch "http://www.mpfr.org/mpfr-$MPFR_VER/mpfr-$MPFR_VER.tar.xz" $SRC
 fetch "https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VER.tar.gz" $SRC
 fetch "http://ftp.gnu.org/gnu/gmp/gmp-$GMP_VER.tar.xz" $SRC
 fetch "http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VER/gcc-$GCC_VER.tar.xz" $SRC
