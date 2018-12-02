@@ -7,7 +7,8 @@ set -e
 
 name=$(basename $0)
 version=4.0.1
-url=http://www.mpfr.org/mpfr-$version/mpfr-$version.tar.xz
+#url=http://www.mpfr.org/mpfr-$version/mpfr-$version.tar.xz
+url=http://ftp.osuosl.org/pub/lfs/lfs-packages/8.3/mpfr-$version.tar.xz
 
 fetch $url
 
