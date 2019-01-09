@@ -6,7 +6,7 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=1.1.0i
+version=1.1.0j
 url=https://openssl.org/source/openssl-$version.tar.gz
 
 fetch $url

@@ -6,8 +6,8 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=e6ffa3b73cbe126b2e2599805b1ee251b9b249a4
-url=https://github.com/emmett1/mkinitramfs/archive/$version.tar.gz
+version=4.8.21
+url=http://ftp.midnight-commander.org/mc-$version.tar.xz
 
 fetch $url
 
@@ -17,12 +17,12 @@ tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
 cd $WORK_DIR/$name-$version
 { time \
    {
-	./INSTALL.sh
-
-	#if [ $(type -p mkinitramfs) ]; then
-	#	kernver=$(file /boot/vmlinuz-4.19.2-lfs  | cut -d ' ' -f9)
-	#	mkinitramfs -k $kernver -o /boot/initrd-4.19.2-lfs.img
-	#fi
+	./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --enable-charset
+	make
+	make install
+	#cp -v doc/keybind-migration.txt /usr/share/mc
    }
 } 2>&1 | tee -a $LOG_DIR/$(basename $0).log
 

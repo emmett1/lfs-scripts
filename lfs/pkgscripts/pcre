@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -e
+
+. /etc/pkg/pkg.conf
+. /var/lib/pkg/functions
+
+name=$(basename $0)
+version=8.42
+url=https://ftp.pcre.org/pub/pcre/pcre-$version.tar.bz2
+
+fetch $url
+
+rm -fr $WORK_DIR/$name-$version
+tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
+
+cd $WORK_DIR/$name-$version
+{ time \
+   {
+	./configure --prefix=/usr                     \
+            --docdir=/usr/share/doc/pcre-$version \
+            --enable-unicode-properties       \
+            --enable-pcre16                   \
+            --enable-pcre32                   \
+            --enable-pcregrep-libz            \
+            --enable-pcregrep-libbz2          \
+            --enable-pcretest-libreadline     \
+            --disable-static
+	make
+	make install
+	mv -v /usr/lib/libpcre.so.* /lib
+	ln -sfv ../../lib/$(readlink /usr/lib/libpcre.so) /usr/lib/libpcre.so
+   }
+} 2>&1 | tee -a $LOG_DIR/$(basename $0).log
+
+if [ $PIPESTATUS -ne 0 ]; then exit 1; fi;
+
+rm -fr $WORK_DIR/$name-$version
+
+registerpkg $(basename $0) $version
+
+exit 0

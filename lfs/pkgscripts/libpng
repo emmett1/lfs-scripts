@@ -6,10 +6,12 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=e6ffa3b73cbe126b2e2599805b1ee251b9b249a4
-url=https://github.com/emmett1/mkinitramfs/archive/$version.tar.gz
+version=1.6.35
+url=https://downloads.sourceforge.net/libpng/libpng-$version.tar.xz
+patch=https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-$version-apng.patch.gz
 
 fetch $url
+fetch $patch
 
 rm -fr $WORK_DIR/$name-$version
 tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
@@ -17,12 +19,11 @@ tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
 cd $WORK_DIR/$name-$version
 { time \
    {
-	./INSTALL.sh
-
-	#if [ $(type -p mkinitramfs) ]; then
-	#	kernver=$(file /boot/vmlinuz-4.19.2-lfs  | cut -d ' ' -f9)
-	#	mkinitramfs -k $kernver -o /boot/initrd-4.19.2-lfs.img
-	#fi
+	gzip -cd $SOURCE_DIR/libpng-$version-apng.patch.gz | patch -p1
+	
+	LIBS=-lpthread ./configure --prefix=/usr --disable-static
+	make
+	make install
    }
 } 2>&1 | tee -a $LOG_DIR/$(basename $0).log
 

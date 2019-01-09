@@ -7,6 +7,12 @@ fi
 
 LFS=/mnt/lfs
 
+if [ -x $LFS/usr/bin/env ]; then
+	ENVLFS=/usr/bin/env
+else
+	ENVLFS=/tools/bin/env
+fi
+
 lfs_dirs() {
 	mkdir -pv $LFS/{dev,proc,sys,run}
 	mknod -m 600 $LFS/dev/console c 5 1
@@ -134,12 +140,11 @@ runinchroot() {
 	pushd $LFS &>/dev/null
 	mount_pseudo
 	cp -L /etc/resolv.conf $LFS/etc/
-	chroot "$LFS" /tools/bin/env -i \
+	chroot "$LFS" $ENVLFS -i \
 	    HOME=/root                  \
 	    TERM="$TERM"                \
 	    PS1='(lfs chroot) \u:\w\$ ' \
-	    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-	    bash $@
+	    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin $@
 	retval=$?
 	umount_pseudo
 	popd &>/dev/null
@@ -168,7 +173,7 @@ intltool autoconf automake xz kmod gettext libelf libffi openssl python3 ninja m
 gawk findutils groff grub less gzip iproute2 kbd libpipeline make patch sysklogd sysvinit eudev util-linux man-db tar texinfo vim
 cpio mkinitramfs linux lfs-bootscripts lfs-files libtasn1 p11-kit make-ca wget"
 
-EXTRA_PKGS="dhcpcd libnl wpa_supplicant"
+EXTRA_PKGS="dhcpcd libnl wpa_supplicant links libpng pcre slang glib mc"
 
 if [ ! -f $LFS/var/lib/pkg/db ]; then
 	lfs_dirs
@@ -179,22 +184,22 @@ cp lfs/pkgscripts/* $LFS/usr/pkgscripts/
 cp lfs/functions $LFS/var/lib/pkg/
 cp lfs/pkg.conf $LFS/etc/pkg/
 
-for i in $PKGS; do
+for i in $PKGS $EXTRA_PKGS; do
 	if [[ $(grep "^$i " $LFS/var/lib/pkg/db) ]]; then
 		echo "--- $i skipped ---"
 	else
 		echo "*** $i ***"
-		runinchroot /usr/pkgscripts/$i || die "$i build error!"
+		runinchroot bash /usr/pkgscripts/$i || die "$i build error!"
 	fi
 done
 
-for i in $EXTRA_PKGS; do
-	if [[ $(grep "^$i " $LFS/var/lib/pkg/db) ]]; then
-		echo "--- $i skipped ---"
-	else
-		echo "*** $i ***"
-		runchroot /usr/pkgscripts/$i || die "$i build error!"
-	fi
-done
+#for i in ; do
+	#if [[ $(grep "^$i " $LFS/var/lib/pkg/db) ]]; then
+		#echo "--- $i skipped ---"
+	#else
+		#echo "*** $i ***"
+		#runchroot /usr/pkgscripts/$i || die "$i build error!"
+	#fi
+#done
 
 exit 0

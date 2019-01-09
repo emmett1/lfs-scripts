@@ -6,10 +6,12 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=e6ffa3b73cbe126b2e2599805b1ee251b9b249a4
-url=https://github.com/emmett1/mkinitramfs/archive/$version.tar.gz
+version=2.56.1
+url=http://ftp.gnome.org/pub/gnome/sources/glib/${version::4}/glib-$version.tar.xz
+patch=http://www.linuxfromscratch.org/patches/blfs/8.3/glib-$version-skip_warnings-1.patch
 
 fetch $url
+fetch $patch
 
 rm -fr $WORK_DIR/$name-$version
 tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
@@ -17,12 +19,13 @@ tar -xvf $SOURCE_DIR/$(basename $url) -C $WORK_DIR
 cd $WORK_DIR/$name-$version
 { time \
    {
-	./INSTALL.sh
-
-	#if [ $(type -p mkinitramfs) ]; then
-	#	kernver=$(file /boot/vmlinuz-4.19.2-lfs  | cut -d ' ' -f9)
-	#	mkinitramfs -k $kernver -o /boot/initrd-4.19.2-lfs.img
-	#fi
+	patch -Np1 -i $SOURCE_DIR/glib-$version-skip_warnings-1.patch
+	
+	./configure --prefix=/usr      \
+            --with-pcre=system \
+            --with-python=/usr/bin/python3
+	make
+	make install
    }
 } 2>&1 | tee -a $LOG_DIR/$(basename $0).log
 
