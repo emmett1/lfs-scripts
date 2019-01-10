@@ -7,7 +7,7 @@ set -e
 
 name=readline
 version=7.0
-url=http://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz
+url=http://ftp.gnu.org/gnu/readline/readline-$version.tar.gz
 
 fetch $url
 
