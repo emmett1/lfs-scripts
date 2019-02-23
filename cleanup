@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+source $(dirname $0)/toolchain/functions
+
+if [ $(id -u) = 0 ]; then
+	echo "$0 script need to run as regular user!"
+	exit 1
+fi
+
+sudo rm -rvf toolchain/log
+sudo rm -rvf toolchain/src
+sudo rm -rvf $LFS/*
+sudo rm -rvf /var/lib/pkg/*
+#fix build error
+sudo chown -Rv $USER:$USER $LFS
+
+echo
+echo "**************************************************"
+echo "*********    Cleanup complete    *********"
+echo "**************************************************"

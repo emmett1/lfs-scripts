@@ -9,10 +9,10 @@ TMP=${TMP:-/tmp/build}
 LOG=${LOG:-$(dirname $0)/log}
 SRC=${SRC:-$(dirname $0)/src}
 
-NAME=patch
-VERSION=${PATCH_VER}
+NAME=python
+VERSION=${PYTHON_VER}
 
-fetch "https://ftp.gnu.org/gnu/patch/patch-$PATCH_VER.tar.xz" $SRC
+fetch "https://www.python.org/ftp/python/$PYTHON_VER/Python-$PYTHON_VER.tar.xz"
 
 [ "$1" = "fetch" ] && exit 0
 
@@ -26,7 +26,8 @@ tar xf $SRC/$tarballname -C $TMP
 
 	cd $TMP/$NAME-$VERSION
 
-	./configure --prefix=/tools
+	sed -i '/def add_multiarch_paths/a \        return' setup.py
+	./configure --prefix=/tools --without-ensurepip
 	make
 	make install
 	

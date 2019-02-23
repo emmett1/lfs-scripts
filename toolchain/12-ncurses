@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=ncurses
 VERSION=${NCURSES_VER}
 
-fetch "http://ftp.gnu.org/gnu/ncurses/ncurses-$NCURSES_VER.tar.gz" $SRC
+fetch "https://ftp.gnu.org/gnu/ncurses/ncurses-$NCURSES_VER.tar.gz" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 
@@ -29,13 +29,14 @@ tar xf $SRC/$tarballname -C $TMP
 	sed -i s/mawk// configure
 	
 	./configure --prefix=/tools \
-				--with-shared   \
-				--without-debug \
-				--without-ada   \
-				--enable-widec  \
-				--enable-overwrite
+            --with-shared   \
+            --without-debug \
+            --without-ada   \
+            --enable-widec  \
+            --enable-overwrite
 	make
 	make install
+	ln -s libncursesw.so /tools/lib/libncurses.so
 	
 	}
 } 2>&1 | tee $LOG/$filename.log

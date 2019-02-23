@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=make
 VERSION=${MAKE_VER}
 
-fetch "http://ftp.gnu.org/gnu/make/make-$MAKE_VER.tar.bz2" $SRC
+fetch "https://ftp.gnu.org/gnu/make/make-$MAKE_VER.tar.bz2" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 

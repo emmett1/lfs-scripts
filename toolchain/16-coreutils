@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=coreutils
 VERSION=${COREUTILS_VER}
 
-fetch "http://ftp.gnu.org/gnu/coreutils/coreutils-$COREUTILS_VER.tar.xz" $SRC
+fetch "https://ftp.gnu.org/gnu/coreutils/coreutils-$COREUTILS_VER.tar.xz" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 

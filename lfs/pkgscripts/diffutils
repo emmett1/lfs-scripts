@@ -6,7 +6,7 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=3.6
+version=3.7
 url=http://ftp.gnu.org/gnu/diffutils/diffutils-$version.tar.xz
 
 fetch $url

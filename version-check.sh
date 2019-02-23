@@ -1,5 +1,11 @@
 #!/bin/bash
 # Simple script to list version numbers of critical development tools
+clear
+Green='\033[0;32m'
+NC='\033[0m' # No Color
+
+#printf "I ${Green}love${NC} Stack Overflow\n"
+
 export LC_ALL=C
 bash --version | head -n1 | cut -d" " -f2-4
 MYSH=$(readlink -f /bin/sh)
@@ -15,11 +21,11 @@ if [ -h /usr/bin/yacc ]; then
 elif [ -x /usr/bin/yacc ]; then
   echo yacc is `/usr/bin/yacc --version | head -n1`
 else
-  echo "yacc not found" 
+  echo "yacc not found"
 fi
 
 bzip2 --version 2>&1 < /dev/null | head -n1 | cut -d" " -f1,6-
-echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
+echo -n "Coreutils: ${Green}"; chown --version | head -n1 | cut -d")${NC}" -f2
 diff --version | head -n1
 find --version | head -n1
 gawk --version | head -n1
@@ -28,8 +34,8 @@ if [ -h /usr/bin/awk ]; then
   echo "/usr/bin/awk -> `readlink -f /usr/bin/awk`";
 elif [ -x /usr/bin/awk ]; then
   echo awk is `/usr/bin/awk --version | head -n1`
-else 
-  echo "awk not found" 
+else
+  echo "awk not found"
 fi
 
 gcc --version | head -n1
@@ -42,9 +48,10 @@ m4 --version | head -n1
 make --version | head -n1
 patch --version | head -n1
 echo Perl `perl -V:version`
+python3 --version
 sed --version | head -n1
 tar --version | head -n1
-makeinfo --version | head -n1
+makeinfo --version | head -n1  # texinfo version
 xz --version | head -n1
 
 echo 'int main(){}' > dummy.c && g++ -o dummy dummy.c

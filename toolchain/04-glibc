@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=glibc
 VERSION=${GLIBC_VER}
 
-fetch "http://ftp.gnu.org/gnu/glibc/glibc-$GLIBC_VER.tar.xz" $SRC
+fetch "https://ftp.gnu.org/gnu/glibc/glibc-$GLIBC_VER.tar.xz" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 
@@ -30,13 +30,12 @@ tar xf $SRC/$tarballname -C $TMP
 	cd       build
 	
 	../configure                             \
-		  --prefix=/tools                    \
-		  --host=$LFS_TGT                    \
-		  --build=$(../scripts/config.guess) \
-		  --enable-kernel=3.2             \
-		  --with-headers=/tools/include      \
-		  libc_cv_forced_unwind=yes          \
-		  libc_cv_c_cleanup=yes
+		--prefix=/tools                    \
+		--host=$LFS_TGT                    \
+		--build=$(../scripts/config.guess) \
+		--enable-kernel=3.2             \
+		--with-headers=/tools/include
+
 	make
 	make install
 	

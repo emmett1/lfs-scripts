@@ -6,7 +6,7 @@ set -e
 . /var/lib/pkg/functions
 
 name=$(basename $0)
-version=1.44.3
+version=1.44.5
 url=https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v$version/e2fsprogs-$version.tar.gz
 
 fetch $url

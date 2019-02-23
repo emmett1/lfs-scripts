@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=dejagnu
 VERSION=${DEJAGNU_VER}
 
-fetch "http://ftp.gnu.org/gnu/dejagnu/dejagnu-$DEJAGNU_VER.tar.gz" $SRC
+fetch "https://ftp.gnu.org/gnu/dejagnu/dejagnu-$DEJAGNU_VER.tar.gz" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 

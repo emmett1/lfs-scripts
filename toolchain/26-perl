@@ -26,7 +26,7 @@ tar xf $SRC/$tarballname -C $TMP
 
 	cd $TMP/$NAME-$VERSION
 
-	sh Configure -des -Dprefix=/tools -Dlibs=-lm
+	sh Configure -des -Dprefix=/tools -Dlibs=-lm -Uloclibpth -Ulocincpth
 	make
 	cp -v perl cpan/podlators/scripts/pod2man /tools/bin
 	mkdir -pv /tools/lib/perl5/$VERSION

@@ -12,7 +12,7 @@ SRC=${SRC:-$(dirname $0)/src}
 NAME=gawk
 VERSION=${GAWK_VER}
 
-fetch "http://ftp.gnu.org/gnu/gawk/gawk-$GAWK_VER.tar.xz" $SRC
+fetch "https://ftp.gnu.org/gnu/gawk/gawk-$GAWK_VER.tar.xz" $SRC
 
 [ "$1" = "fetch" ] && exit 0
 

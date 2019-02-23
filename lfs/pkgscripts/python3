@@ -6,7 +6,7 @@ set -e
 . /var/lib/pkg/functions
 
 name=Python
-version=3.7.0
+version=3.7.2
 url=https://www.python.org/ftp/python/$version/Python-$version.tar.xz
 
 fetch $url

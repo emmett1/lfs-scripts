@@ -6,7 +6,7 @@ set -e
 . /var/lib/pkg/functions
 
 name=elfutils
-version=0.173
+version=0.175
 url=https://sourceware.org/ftp/elfutils/$version/elfutils-$version.tar.bz2
 
 fetch $url
