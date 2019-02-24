@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# echo $(dirname $0)
+# source $(dirname $0)/functions
+source $(dirname $0)/pkgversion
+
+echo $GLIBC_VER
+
+filename="./pkgversion"
+

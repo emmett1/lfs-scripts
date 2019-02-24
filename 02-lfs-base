@@ -37,8 +37,8 @@ lfs_dirs() {
 	ln -sv /run/lock $LFS/var/lock
 	mkdir -pv $LFS/var/{opt,cache,lib/{color,misc,locate},local}
 
-	ln -sv /tools/bin/{bash,cat,dd,echo,ln,pwd,rm,stty} $LFS/bin
-	ln -sv /tools/bin/{env,install,perl} $LFS/usr/bin
+	ln -sv /tools/bin/{bash,cat,chmod,dd,echo,ln,mkdir,pwd,rm,stty,touch} $LFS/bin
+	ln -sv /tools/bin/{env,install,perl,printf} $LFS/usr/bin
 	ln -sv /tools/lib/libgcc_s.so{,.1} $LFS/usr/lib
 	ln -sv /tools/lib/libstdc++.{a,so{,.6}} $LFS/usr/lib
 	for lib in blkid lzma mount uuid
@@ -85,9 +85,10 @@ usb:x:14:
 cdrom:x:15:
 adm:x:16:
 messagebus:x:18:
-systemd-journal:x:23:
 input:x:24:
 mail:x:34:
+kvm:x:61:
+wheel:x:97:
 nogroup:x:99:
 users:x:999:
 EOF
