@@ -1,0 +1,20 @@
+# Description: Programs for compressing and decompressing files
+# URL:         https://www.gnu.org/software/gzip/
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  bash
+
+name=gzip
+version=1.10
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+
+        mkdir -p $PKG/bin
+        mv -v $PKG/usr/bin/gzip $PKG/bin
+}

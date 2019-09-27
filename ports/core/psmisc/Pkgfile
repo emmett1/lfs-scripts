@@ -1,0 +1,21 @@
+# Description: Programs for displaying information about running processes
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=psmisc
+version=23.2
+release=1
+source=(https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+
+        mkdir -p $PKG/bin
+        mv -v $PKG/usr/bin/fuser   $PKG/bin
+        mv -v $PKG/usr/bin/killall $PKG/bin
+}

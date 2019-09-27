@@ -1,0 +1,17 @@
+# Description: Programs for searching through files
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=grep
+version=3.3
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr --bindir=/bin
+        make
+        make DESTDIR=$PKG install
+}

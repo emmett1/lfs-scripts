@@ -1,0 +1,17 @@
+# Description: A text file viewer
+# URL:         http://www.greenwoodsoftware.com/less
+# Maintainer:  
+# Depends on:  ncurses
+
+name=less
+version=551
+release=1
+source=(http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr --sysconfdir=/etc
+        make
+        make DESTDIR=$PKG install
+}

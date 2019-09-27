@@ -1,0 +1,20 @@
+# Description: Libraries and utilities used for parsing XML files
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=libxml2
+version=2.9.9
+release=1
+source=(http://xmlsoft.org/sources/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr    \
+	            --disable-static \
+	            --with-history   \
+	            --with-python=/usr/bin/python3
+	make
+	make DESTDIR=$PKG install
+}

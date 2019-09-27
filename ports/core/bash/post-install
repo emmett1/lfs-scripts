@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "/bin/sh" >> /etc/shells
+echo "/bin/bash" >> /etc/shells

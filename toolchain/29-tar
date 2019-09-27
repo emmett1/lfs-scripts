@@ -1,0 +1,10 @@
+name=tar
+version=1.32
+source=(http://ftp.gnu.org/gnu/tar/tar-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/tools
+	make
+	make install
+}

@@ -1,0 +1,23 @@
+# Description: The Bourne-Again SHell
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=bash
+version=5.0
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr                    \
+	            --without-bash-malloc            \
+	            --with-installed-readline
+        make
+        make DESTDIR=$PKG install
+
+        mkdir -p $PKG/bin
+        mv $PKG/usr/bin/bash $PKG/bin
+        ln -s bash $PKG/bin/sh
+}

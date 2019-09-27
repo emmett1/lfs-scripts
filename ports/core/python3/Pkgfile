@@ -1,0 +1,24 @@
+# Description: Next generation of the python high-level scripting language
+# URL:         
+# Maintainer:  
+# Depends on:  libffi
+
+name=python3
+version=3.7.4
+release=1
+source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
+
+build() {
+        cd Python-$version
+
+        ./configure --prefix=/usr       \
+                    --enable-shared     \
+                    --with-system-expat \
+                    --with-system-ffi   \
+                    --without-ensurepip
+        make
+        make DESTDIR=$PKG install
+
+        chmod -v 755 $PKG/usr/lib/libpython${version::3}m.so
+        chmod -v 755 $PKG/usr/lib/libpython3.so
+}

@@ -1,0 +1,22 @@
+# Description: A set of scripts to start/stop the LFS system at bootup/shutdown
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=lfs-bootscripts
+version=20190908
+release=1
+source=(http://www.linuxfromscratch.org/lfs/downloads/development/$name-$version.tar.xz
+	clock
+	console
+	inittab)
+
+build() {
+	install -d $PKG/etc/sysconfig
+	install -m0644 clock $PKG/etc/sysconfig
+	install -m0644 console $PKG/etc/sysconfig
+	install -m0644 inittab $PKG/etc
+
+	cd $name-$version
+	make DESTDIR=$PKG install
+}

@@ -1,8 +1,13 @@
-#!/bin/bash
+name=cleaning
 
-[ "$1" = "fetch" ] && exit 0
+build() {
+	strip --strip-debug /tools/lib/* || true
+	/usr/bin/strip --strip-unneeded /tools/{,s}bin/* || true
+	rm -rf /tools{,/share}/{info,man,doc}
+	find /tools/{lib,libexec} -name \*.la -delete
 
-strip --strip-debug /tools/lib/*
-/usr/bin/strip --strip-unneeded /tools/{,s}bin/*
-rm -rf /tools/{,share}/{info,man,doc}
-find /tools/{lib,libexec} -name \*.la -delete
+	if [ "$MULTILIB" = "yes" ]; then
+		strip --strip-debug /tools/lib32/* || true
+		find /tools/lib32 -name \*.la -delete
+	fi
+}

@@ -1,0 +1,25 @@
+# Description: Management tools and libraries relating to cryptography
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=openssl
+version=1.1.1d
+release=1
+source=(https://openssl.org/source/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        ./config --prefix=/usr         \
+                 --openssldir=/etc/ssl \
+                 --libdir=lib          \
+                 shared                \
+                 zlib-dynamic
+        make
+
+        # disable static lib
+        sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
+
+        make DESTDIR=$PKG MANDIR=/usr/share/man MANSUFFIX=ssl install
+}

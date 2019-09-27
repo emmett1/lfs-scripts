@@ -1,0 +1,33 @@
+# Description: Set of libraries that offers command-line editing and history capabilities
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=readline
+version=8.0
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+md5sum=(7e6c1f16aee3244a69aba6e438295ca3)
+
+build() {
+        cd $name-$version
+
+        sed -i '/MV.*old/d' Makefile.in
+        sed -i '/{OLDSUFF}/c:' support/shlib-install
+
+        ./configure --prefix=/usr    \
+                    --disable-static
+        if [ -d /tools ]; then
+                make SHLIB_LIBS="-L/tools/lib -lncursesw"
+                make SHLIB_LIBS="-L/tools/lib -lncurses" DESTDIR=$PKG install
+        else
+                make SHLIB_LIBS="-lncursesw"
+                make SHLIB_LIBS="-lncurses" DESTDIR=$PKG install
+        fi
+
+        mkdir -p $PKG/lib
+        mv -v $PKG/usr/lib/lib{readline,history}.so.* $PKG/lib
+	chmod -v u+w $PKG/lib/lib{readline,history}.so.*
+        ln -sfv ../../lib/$(readlink $PKG/usr/lib/libreadline.so) $PKG/usr/lib/libreadline.so
+        ln -sfv ../../lib/$(readlink $PKG/usr/lib/libhistory.so ) $PKG/usr/lib/libhistory.so
+}

@@ -1,0 +1,11 @@
+name=libarchive
+version=3.4.0
+source=(https://github.com/libarchive/libarchive/releases/download/v$version/libarchive-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/tools --without-xml2 --disable-shared
+	make
+	make install
+}

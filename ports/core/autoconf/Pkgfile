@@ -1,0 +1,17 @@
+# Description: Programs for producing shell scripts that can automatically configure source code
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=autoconf
+version=2.69
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

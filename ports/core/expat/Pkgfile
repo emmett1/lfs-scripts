@@ -1,0 +1,21 @@
+# Description: A stream oriented C library for parsing XML
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=expat
+version=2.2.8
+release=1
+source=(https://sourceforge.net/projects/expat/files/expat/$version/expat-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+
+        # fix a problem with the regression tests
+        sed -i 's|usr/bin/env |bin/|' run.sh.in
+
+	./configure --prefix=/usr    \
+	            --disable-static
+        make
+        make DESTDIR=$PKG install
+}

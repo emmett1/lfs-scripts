@@ -1,39 +1,12 @@
-#!/bin/bash -e
+name=make
+version=4.2.1
+source=(http://ftp.gnu.org/gnu/make/make-$version.tar.gz)
 
-source $(dirname $0)/functions
-source $(dirname $0)/pkgversion
-
-filename=$(echo $0 | rev | cut -d / -f1 | rev)
-
-TMP=${TMP:-/tmp/build}
-LOG=${LOG:-$(dirname $0)/log}
-SRC=${SRC:-$(dirname $0)/src}
-
-NAME=make
-VERSION=${MAKE_VER}
-
-fetch "http://ftp.gnu.org/gnu/make/make-$MAKE_VER.tar.bz2" $SRC
-
-[ "$1" = "fetch" ] && exit 0
-
-rm -fr $TMP
-mkdir -p $TMP $LOG $SRC
-
-tar xf $SRC/$tarballname -C $TMP
-
-{ time \
-   {
-
-	cd $TMP/$NAME-$VERSION
+build() {
+	cd $name-$version
 
 	sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c
 	./configure --prefix=/tools --without-guile
 	make
 	make install
-	
-	}
-} 2>&1 | tee $LOG/$filename.log
-    
-[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
-
-rm -fr $TMP
+}

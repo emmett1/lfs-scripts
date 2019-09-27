@@ -1,0 +1,45 @@
+name=pkgutils
+version=5.40.7
+source=(http://crux.nu/files/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	patch -Np1 -i $PATCHDIR/pkgutils_ignore-conflict.patch
+	patch -Np1 -i $PATCHDIR/pkgutils_remove-libtool.patch
+	patch -Np1 -i $PATCHDIR/pkgutils_add-compress-infopages.patch
+
+	make BINDIR=/tools/bin MANDIR=/tools/man ETCDIR=/tools/etc install
+	sed -i 's,/etc/pkgmk.conf,/tools/etc/pkgmk.conf,' /tools/bin/pkgmk
+
+	#mkdir -p $LFS/var/lib/pkg/{src,pkg,work}
+
+	cp $FILEDIR/pkgin /tools/bin/pkgin
+	
+	cat > /tools/etc/pkgmk.conf << "EOF"
+#
+# /etc/pkgmk.conf: pkgmk(8) configuration
+#
+
+export CFLAGS="-O2 -march=x86-64 -pipe"
+export CXXFLAGS="${CFLAGS}"
+
+export JOBS=$(nproc)
+export MAKEFLAGS="-j $JOBS"
+#export MULTILIB="yes"
+
+PKGMK_SOURCE_DIR="/var/lib/pkg/src"
+PKGMK_PACKAGE_DIR="/var/lib/pkg/pkg"
+PKGMK_WORK_DIR="/var/lib/pkg/work/$name"
+PKGMK_DOWNLOAD="yes"
+PKGMK_IGNORE_SIGNATURE="yes"
+PKGMK_COMPRESSION_MODE="xz"
+
+# End of file
+EOF
+
+if [ "$MULTILIB" = "yes" ]; then
+	sed -i 's/#export MULTILIB=/export MULTILIB=/' \
+	    /tools/etc/pkgmk.conf
+fi
+}

@@ -1,0 +1,24 @@
+# Description: Portable foreign function interface library
+# URL:         https://sourceware.org/libffi/
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  
+
+name=libffi
+version=3.2.1
+release=1
+source=(ftp://sourceware.org/pub/$name/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
+            -i include/Makefile.in
+
+        sed -e '/^includedir/ s/=.*$/=@includedir@/' \
+            -e 's/^Cflags: -I${includedir}/Cflags:/' \
+            -i libffi.pc.in
+
+        ./configure --prefix=/usr --disable-static --with-gcc-arch=x86-64
+        make
+        make DESTDIR=$PKG install
+}

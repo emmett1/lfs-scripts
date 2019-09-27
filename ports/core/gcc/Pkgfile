@@ -1,0 +1,51 @@
+# Description: The GNU compiler collection, which includes the C and C++ compilers
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=gcc
+version=9.2.0
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version/$name-$version.tar.xz)
+
+build() {
+	if [ "$MULTILIB" = "yes" ]; then
+		multilibopt="--enable-multilib"
+	else
+		multilibopt="--disable-multilib"
+	fi
+
+	cd $name-$version
+
+	sed -e '/m64=/s/lib64/lib/' \
+	        -i.orig gcc/config/i386/t-linux64
+
+	mkdir -v build
+	cd       build
+
+	SED=sed                               \
+	../configure $multilibopt             \
+	             --prefix=/usr            \
+	             --enable-languages=c,c++ \
+	             --disable-bootstrap      \
+	             --with-system-zlib
+	make
+	make -j1 DESTDIR=$PKG install
+
+	rm -rf $PKG/usr/lib/gcc/$(gcc -dumpmachine)/$version/include-fixed/bits/
+
+	chown -v -R root:root \
+	    $PKG/usr/lib/gcc/*linux-gnu/$version/include{,-fixed}
+
+	mkdir -p $PKG/lib
+	ln -sv ../usr/bin/cpp $PKG/lib
+
+	ln -sv gcc $PKG/usr/bin/cc
+
+	install -v -dm755 $PKG/usr/lib/bfd-plugins
+	ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/$version/liblto_plugin.so \
+	        $PKG/usr/lib/bfd-plugins/
+
+	mkdir -pv $PKG/usr/share/gdb/auto-load/usr/lib
+	mv -v $PKG/usr/lib/*gdb.py $PKG/usr/share/gdb/auto-load/usr/lib
+}

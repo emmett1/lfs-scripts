@@ -1,0 +1,31 @@
+# Description: A set of utilities to manage software packages 
+# URL:         http://crux.nu/gitweb/?p=tools/pkgutils.git
+# Maintainer:  
+# Depends on:  libarchive
+
+name=pkgutils
+version=5.40.7
+release=1
+source=(http://crux.nu/files/$name-$version.tar.xz
+	pkgmk.conf
+	pkgutils_ignore-conflict.patch
+	pkgutils_remove-libtool.patch
+	pkgutils_add-compress-infopages.patch)
+
+build () {
+	cd $name-$version
+
+	for p in $SRC/*.patch; do
+		patch -Np1 -i $p
+	done
+
+	sed -i -e 's/ --static//' \
+	       -e 's/ -static//' Makefile
+	make DESTDIR=$PKG install
+	install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
+
+	if [ "$MULTILIB" = "yes" ]; then
+		sed -i 's/#export MULTILIB=/export MULTILIB=/' \
+		    $PKG/etc/pkgmk.conf
+	fi
+}

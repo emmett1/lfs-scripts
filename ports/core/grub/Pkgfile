@@ -1,0 +1,23 @@
+# Description: The GRand Unified Bootloader
+# URL:         https://www.gnu.org/software/grub/
+# Maintainer:  emmett1, emmett1.2miligrams
+# Depends on:  gettext bash xz fuse2 python3
+
+name=grub
+version=2.04
+release=1
+backup=(etc/default/grub)
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr \
+                    --sbindir=/sbin \
+                    --sysconfdir=/etc \
+                    --disable-efiemu \
+                    --disable-werror \
+                    --enable-grub-mount
+        make
+        make DESTDIR=$PKG install
+}

@@ -1,44 +1,126 @@
-#!/bin/bash -e
+#!/bin/bash
+
+fetch() {
+	
+	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
+	WGETCMD="wget --passive-ftp --tries=3 --waitretry=3 --output-document=$2/$tarballname.partial"
+	WGETRESUME="-c"
+	
+	if [ -f $2/$tarballname ]; then
+		echo "Source file $tarballname found."
+		return 0
+	else
+		if [ -f $2/$tarballname.partial ]; then
+			echo "Resuming $1"
+			$WGETCMD $WGETRESUME $1
+		else
+			mkdir -p "$2"
+			echo "Downloading $1"
+			$WGETCMD $1
+		fi
+	fi
+	
+	if [ $? = 0 ]; then
+		mv $2/$tarballname.partial $2/$tarballname
+	fi
+	
+}
+
+fetch_src() {
+	if [ "${#source[@]}" -gt 0 ]; then
+		for s in ${source[@]}; do
+			fetch $s $SRCDIR
+		done
+	fi
+}	
+
+extract_src() {
+	[ "$name" ] && rm -fr $WORKDIR/$name
+	mkdir -p $WORKDIR/$name
+	if [ "${#source[@]}" -gt 0 ]; then
+		for s in ${source[@]}; do
+			filename=$(basename $s)
+			case $filename in
+				*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
+					tar xvf $SRCDIR/$filename -C $WORKDIR/$name || exit 1;;
+				*)
+					cp -v $SRCDIR/$filename $WORKDIR/$name || exit 1;;
+			esac
+		done
+	fi
+}
+
+build_src() {
+	cd $WORKDIR/$name
+	if [ "$(type -t build)" = function ]; then
+		(set -e -x; build)
+	fi
+	if [ $? -ne 0 ]; then
+		echo "!!! build $name-$version failed !!!"
+		exit 1
+	else
+		echo "--- build $name-$version success ---"
+	fi
+	[ "$name" ] && rm -fr $WORKDIR/$name
+	register
+}
+
+register() {
+	echo $name-$version > $LFS/tools/$(basename $script)
+}
+
+checkdone() {
+	if [ -e $LFS/tools/$(basename $script) ]; then
+		echo "*** skip $(basename $script) ***"
+		return 1
+	fi
+	return 0
+}
+
+build_stage1() {
+	cd $CWD
+	source $1 || exit 1
+	fetch_src
+	extract_src
+	build_src
+	unset source name version build
+}	
+
+main() {
+	for script in $TCDIR/[0-9][0-9]-*; do
+		checkdone || continue
+		build_stage1 $script
+	done
+	sudo chown -Rv 0:0 $LFS
+}
 
 if [ $(id -u) = 0 ]; then
 	echo "$0 script need to run as regular user!"
 	exit 1
 fi
 
-source $(dirname $0)/toolchain/functions
+CWD=$PWD
 
-if [ "$1" != "fetch" ]; then
-	if [ ! -d $LFS/tools ]; then
-		sudo mkdir -pv $LFS/tools
-	fi
+source $CWD/config
 
-	if [ ! -w $LFS ]; then
-		sudo chown -Rv $USER:$USER $LFS
-	fi
+PATH=/tools/bin:/bin:/usr/bin
 
-	if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
-		sudo ln -svf $LFS/tools /
-	fi
+export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT
+
+mkdir -p $TCDIR $SRCDIR $WORKDIR
+
+if [ ! -d $LFS/tools ]; then
+	sudo mkdir -pv $LFS/tools
 fi
 
-for script in $(ls toolchain | grep ^[0-9]); do
-	if [ "$1" = "fetch" ]; then
-		$(dirname $0)/toolchain/$script "$1"
-	elif [ -f /tools/"$script" ]; then
-		echo "--- $script skipped ---"
-	else
-		echo "*** $script ***"
-		$(dirname $0)/toolchain/$script
-		echo; echo "*** $script done ***"; echo
-		[ "$1" = $(echo $script | cut -d - -f1) ] && exit
-	fi
-done
+if [ ! -w $LFS ]; then
+	sudo chown -Rv $USER:$USER $LFS
+fi
 
-[ "$1" = "fetch" ] && exit 0
+if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
+	sudo ln -svf $LFS/tools /
+fi
 
-sudo chown -Rv 0:0 $LFS
+main $@
 
-echo
-echo "**************************************************"
-echo "*********    Toolchain build complete    *********"
-echo "**************************************************"
+exit 0

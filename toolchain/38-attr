@@ -1,0 +1,10 @@
+name=attr
+version=2.4.48
+source=(http://download.savannah.gnu.org/releases/attr/attr-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/tools
+	make
+	make install
+}

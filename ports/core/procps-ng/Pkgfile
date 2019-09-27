@@ -1,0 +1,25 @@
+# Description: Programs for monitoring processes
+# URL:         https://gitlab.com/procps-ng/procps
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  ncurses
+
+name=procps-ng
+version=3.3.15
+release=1
+source=(https://sourceforge.net/projects/procps-ng/files/Production/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr \
+                    --exec-prefix= \
+                    --libdir=/usr/lib \
+                    --disable-static \
+                    --disable-kill
+        make
+        make DESTDIR=$PKG install
+
+        mkdir -pv $PKG/lib
+        mv -v $PKG/usr/lib/libprocps.so.* $PKG/lib
+        ln -sfv ../../lib/$(readlink $PKG/usr/lib/libprocps.so) $PKG/usr/lib/libprocps.so
+}

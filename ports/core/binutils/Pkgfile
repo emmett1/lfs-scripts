@@ -1,0 +1,32 @@
+# Description: A linker, an assembler, and other tools for handling object files
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=binutils
+version=2.32
+release=1
+source=(https://ftp.gnu.org/gnu/binutils/$name-$version.tar.xz)
+
+build() {
+	if [ "$MULTILIB" = "yes" ]; then
+		multilibopt="--enable-multilib --with-lib-path=/usr/lib:/lib:/usr/lib32"
+	fi
+
+        cd $name-$version
+
+        mkdir -v build
+        cd       build
+
+        ../configure $multilibopt        \
+	             --prefix=/usr       \
+	             --enable-gold       \
+	             --enable-ld=default \
+	             --enable-plugins    \
+	             --enable-shared     \
+	             --disable-werror    \
+	             --enable-64-bit-bfd \
+	             --with-system-zlib
+        make tooldir=/usr
+        make tooldir=/usr DESTDIR=$PKG install
+}

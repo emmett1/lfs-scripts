@@ -1,40 +1,13 @@
-#!/bin/bash -e
+name=perl
+version=5.30.0
+source=(https://www.cpan.org/src/5.0/perl-$version.tar.xz)
 
-source $(dirname $0)/functions
-source $(dirname $0)/pkgversion
-
-filename=$(echo $0 | rev | cut -d / -f1 | rev)
-
-TMP=${TMP:-/tmp/build}
-LOG=${LOG:-$(dirname $0)/log}
-SRC=${SRC:-$(dirname $0)/src}
-
-NAME=perl
-VERSION=${PERL_VER}
-
-fetch "https://www.cpan.org/src/5.0/perl-$PERL_VER.tar.xz" $SRC
-
-[ "$1" = "fetch" ] && exit 0
-
-rm -fr $TMP
-mkdir -p $TMP $LOG $SRC
-
-tar xf $SRC/$tarballname -C $TMP
-
-{ time \
-   {
-
-	cd $TMP/$NAME-$VERSION
+build() {
+	cd $name-$version
 
 	sh Configure -des -Dprefix=/tools -Dlibs=-lm
 	make
 	cp -v perl cpan/podlators/scripts/pod2man /tools/bin
-	mkdir -pv /tools/lib/perl5/$VERSION
-	cp -Rv lib/* /tools/lib/perl5/$VERSION
-	
-	}
-} 2>&1 | tee $LOG/$filename.log
-    
-[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
-
-rm -fr $TMP
+	mkdir -pv /tools/lib/perl5/$version
+	cp -Rv lib/* /tools/lib/perl5/$version
+}

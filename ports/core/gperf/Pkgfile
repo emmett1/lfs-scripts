@@ -1,0 +1,17 @@
+# Description: Generates a perfect hash function from a key set
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=gperf
+version=3.1
+release=1
+source=(https://ftp.gnu.org/gnu/gperf/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

@@ -1,0 +1,10 @@
+name=acl
+version=2.2.53
+source=(http://download.savannah.gnu.org/releases/acl/acl-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/tools --disable-shared
+	make
+	make install
+}

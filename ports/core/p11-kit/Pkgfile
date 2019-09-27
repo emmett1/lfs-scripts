@@ -1,0 +1,19 @@
+# Description: Provides a way to load and enumerate PKCS #11 (a Cryptographic Token Interface Standard) modules
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=p11-kit
+version=0.23.16.1
+release=1
+source=(https://github.com/p11-glue/p11-kit/releases/download/$version/p11-kit-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr     \
+	            --sysconfdir=/etc \
+	            --with-trust-paths=/etc/pki/anchors
+	make
+	make DESTDIR=$PKG install
+}

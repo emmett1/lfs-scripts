@@ -1,0 +1,78 @@
+# Description: base filesystem directories
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=filesystem
+version=9.0
+release=1
+source=(bash_logout.skel
+	bash_profile.skel
+	bashrc
+	bashrc.skel
+	dircolors.sh
+	extrapaths.sh
+	fstab
+	hostname
+	hosts
+	i18n.sh
+	inputrc
+	Pkgfile
+	profile
+	profile.skel
+	readline.sh
+	resolv.conf
+	shells
+	umask.sh
+	usb.conf
+	passwd
+	group)
+
+build() {
+	mkdir -pv $PKG/{bin,boot,etc/{opt,sysconfig},home,lib/firmware,mnt,opt}
+	mkdir -pv $PKG/{media/{floppy,cdrom},sbin,srv,var}
+	install -dv -m 0750 $PKG/root
+	install -dv -m 1777 $PKG/tmp /var/tmp
+	mkdir -pv $PKG/usr/{,local/}{bin,include,lib,sbin,src}
+	mkdir -pv $PKG/usr/{,local/}share/{color,dict,doc,info,locale,man}
+	mkdir -v  $PKG/usr/{,local/}share/{misc,terminfo,zoneinfo}
+	mkdir -v  $PKG/usr/libexec
+	mkdir -pv $PKG/usr/{,local/}share/man/man{1..8}
+	mkdir -v  $PKG/usr/lib/pkgconfig
+	
+	case $(uname -m) in
+	 x86_64) mkdir -v $PKG/lib64 ;;
+	esac
+	
+	mkdir -v $PKG/var/{log,mail,spool}
+	ln -sv /run $PKG/var/run
+	ln -sv /run/lock $PKG/var/lock
+	mkdir -pv $PKG/var/{opt,cache,lib/{color,misc,locate},local}
+
+	install --directory --mode=0755 --owner=root --group=root $PKG/etc/profile.d
+	install --directory --mode=0755 --owner=root --group=root $PKG/etc/bash_completion.d
+	dircolors -p > $PKG/etc/dircolors
+
+	install -dm0755 -d $PKG/etc/modprobe.d
+	install -m0644 usb.conf $PKG/etc/modprobe.d
+
+	# profile.d
+	install -d $PKG/etc/profile.d
+	for i in *.sh; do
+		install -m0755 $i $PKG/etc/profile.d
+	done
+
+	# skel
+	install -d $PKG/etc/skel
+	for s in *.skel; do
+		install -m0644 $s $PKG/etc/skel/.${s/.skel/}
+	done
+
+	# /etc
+	install -d $PKG/etc
+	for p in profile bashrc resolv.conf inputrc fstab hostname hosts shells passwd group; do
+		install -m0644 $p $PKG/etc
+	done
+
+	ln -s /proc/self/mounts $PKG/etc/mtab
+}

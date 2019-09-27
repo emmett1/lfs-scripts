@@ -1,0 +1,23 @@
+# Description: Implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=libcap
+version=2.27
+release=1
+source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        sed -i '/install.*STALIBNAME/d' libcap/Makefile
+
+        make
+        make RAISE_SETFCAP=no lib=lib prefix=/usr DESTDIR=$PKG install
+        chmod -v 755 $PKG/usr/lib/libcap.so
+
+        mkdir -p $PKG/lib
+        mv -v $PKG/usr/lib/libcap.so.* $PKG/lib
+        ln -sfv ../../lib/$(readlink $PKG/usr/lib/libcap.so) $PKG/usr/lib/libcap.so
+}

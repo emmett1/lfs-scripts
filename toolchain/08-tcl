@@ -1,30 +1,9 @@
-#!/bin/bash -e
+name=tcl
+version=8.6.9
+source=(https://downloads.sourceforge.net/tcl/tcl$version-src.tar.gz)
 
-source $(dirname $0)/functions
-source $(dirname $0)/pkgversion
-
-filename=$(echo $0 | rev | cut -d / -f1 | rev)
-
-TMP=${TMP:-/tmp/build}
-LOG=${LOG:-$(dirname $0)/log}
-SRC=${SRC:-$(dirname $0)/src}
-
-NAME=tcl
-VERSION=${TCL_VER}
-
-fetch "https://downloads.sourceforge.net/tcl/tcl$TCL_VER-src.tar.gz" $SRC
-
-[ "$1" = "fetch" ] && exit 0
-
-rm -fr $TMP
-mkdir -p $TMP $LOG $SRC
-
-tar xf $SRC/$tarballname -C $TMP
-
-{ time \
-   {
-
-	cd $TMP/${NAME}${VERSION}
+build() {
+	cd ${name}${version}
 
 	cd unix
 	./configure --prefix=/tools
@@ -33,10 +12,4 @@ tar xf $SRC/$tarballname -C $TMP
 	chmod -v u+w /tools/lib/libtcl8.6.so
 	make install-private-headers
 	ln -sv tclsh8.6 /tools/bin/tclsh
-	
-	}
-} 2>&1 | tee $LOG/$filename.log
-    
-[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
-
-rm -fr $TMP
+}

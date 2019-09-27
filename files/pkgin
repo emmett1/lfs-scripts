@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# - a simple wrapper script for pkgmk
+# - will build, install, upgrade and other operation without 'cd' into each port directory
+# - port will be search automatically follow REPO order, port found first will be selected
+# - does not solve dependency
+#
+# usage:
+#    pkgin [port names] [pkgmk options]
+#
+
+trap "exit 1" SIGHUP SIGINT SIGQUIT SIGTERM
+
+REPO="/usr/ports/core"
+
+while [ $1 ]; do
+	case $1 in
+		-*) PKGMK_CMD+=($1);;
+		*) PKG+=($1);;
+	esac
+	shift
+done
+
+if [[ "${PKG[@]}" = "" ]]; then
+	echo "Please provide port name to install."
+	exit 1
+fi
+
+for p in ${PKG[@]}; do
+	if pkginfo -i | awk '{print $1}' | grep -xq $p; then
+		echo "Package '$p' is installed."
+		continue
+	fi
+	PKGFOUND=no
+	for r in $REPO; do
+		if [ -f $r/$p/Pkgfile ]; then
+			PKGFOUND=yes
+			cd $r/$p &>/dev/null
+			pkgmk ${PKGMK_CMD[@]} || exit $?
+			[ -x bootstrap-post-install ] && ./bootstrap-post-install
+			[ -x post-install ] && ./post-install
+			cd - &>/dev/null
+		fi
+	done
+	if [ "$PKGFOUND" = "no" ]; then
+		echo "Port '$p' not found."
+		exit 1
+	fi
+done
+
+exit 0

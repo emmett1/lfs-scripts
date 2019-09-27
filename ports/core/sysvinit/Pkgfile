@@ -1,0 +1,22 @@
+# Description: programs for controlling the startup, running, and shutdown of the system
+# URL:         https://savannah.nongnu.org/projects/sysvinit
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  
+
+name=sysvinit
+version=2.96
+release=1
+source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+
+        make -C src
+        make -C src ROOT=$PKG install
+
+        rm $PKG/usr/bin/{last,lastb,readbootlog,mesg,utmpdump,wall}
+        rm $PKG/bin/pidof
+        rm $PKG/sbin/{sulogin,logsave}
+        rm $PKG/usr/share/man/man1/{last,lastb,readbootlog,mesg,utmpdump,wall}.1
+        rm $PKG/usr/share/man/man8/{pidof,logsave,sulogin}.8
+}

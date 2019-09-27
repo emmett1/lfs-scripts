@@ -1,0 +1,20 @@
+# Description: Program for compiling packages
+# URL:         https://www.gnu.org/software/make
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  
+
+name=make
+version=4.2.1
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+
+        # work around an error caused by glibc-2.27
+        sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c
+
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

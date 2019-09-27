@@ -1,0 +1,103 @@
+#!/bin/bash -e
+
+chroot_run() {
+	mount_pseudofs
+	cp -L /etc/resolv.conf $LFS/etc/
+	chroot $LFS $@
+	retval=$?
+	umount_pseudofs
+	return $retval
+}
+
+mount_pseudofs() {
+	mount --bind /dev $LFS/dev
+	mount -t devpts devpts $LFS/dev/pts -o gid=5,mode=620
+	mount -t proc proc $LFS/proc
+	mount -t sysfs sysfs $LFS/sys
+	mount -t tmpfs tmpfs $LFS/run
+}
+
+umount_pseudofs() {
+	umount $LFS/dev/pts &>/dev/null
+	umount $LFS/dev &>/dev/null
+	umount $LFS/run &>/dev/null
+	umount $LFS/proc &>/dev/null
+	umount $LFS/sys &>/dev/null
+}
+
+interrupted() {
+	die "Abort by user."
+}
+
+cleanup() {
+	#rm -fr $LFS
+	rm -fr $WDIR
+}
+
+die() {
+	[ "$@" ] && printerror $@
+	umount_pseudofs
+	cleanup
+	exit 1
+}
+
+printstep() {
+	echo -e "\e[0;36m::\e[0m $*"
+}
+
+printerror() {
+	echo -e "\e[0;31mERROR:\e[0m $*"
+}
+
+CWD=$PWD
+
+source $CWD/config
+
+isolinux_files="chain.c32 isolinux.bin ldlinux.c32 libutil.c32 reboot.c32 menu.c32 libcom32.c32 poweroff.c32"
+
+rm -fr $WDIR
+mkdir -p $WDIR
+
+printstep "Preparing isolinux files..."
+mkdir -p $WDIR/{lfs,isolinux,boot}
+for file in $isolinux_files; do
+	cp /usr/share/syslinux/$file $WDIR/isolinux
+done
+#cp isolinux/splash.png $WDIR/isolinux
+cp $FILEDIR/isolinux.cfg $WDIR/isolinux
+[ -d rootfs ] && cp -Ra rootfs $WDIR
+
+printstep "Make squash filesystem..."
+mksquashfs $LFS $WDIR/lfs/root.sfs \
+		-b 1048576 -comp xz -Xdict-size 100% \
+		-e $LFS/var/lib/pkg/src/* \
+		-e $LFS/var/lib/pkg/pkg/* \
+		-e $LFS/var/lib/pkg/work/* \
+		-e $LFS/tools/ \
+		-e $LFS/tmp/* 2>/dev/null || die "failed create squashed filesystem"
+
+printstep "Preparing kernel and initramfs..."	
+cp $LFS/boot/vmlinuz-lfs $WDIR/boot/vmlinuz || die "failed copying kernel"
+cp files/livecd.hook $LFS/etc/mkinitramfs.d
+kernver=$(file $LFS/boot/vmlinuz-lfs | cut -d ' ' -f9)
+chroot_run mkinitramfs -k $kernver -a livecd -o /boot/initrd-lfs.img || die "failed create initramfs"
+cp $LFS/boot/initrd-lfs.img $WDIR/boot/initrd || die "failed copying initrd"
+
+printstep "Making the iso..."
+rm -f $OUTPUT
+xorriso -as mkisofs \
+    -isohybrid-mbr /usr/share/syslinux/isohdpfx.bin \
+    -c isolinux/boot.cat \
+    -b isolinux/isolinux.bin \
+      -no-emul-boot \
+      -boot-load-size 4 \
+      -boot-info-table \
+      -no-emul-boot \
+      -isohybrid-gpt-basdat \
+      -volid $LABEL \
+    -o $OUTPUT $WDIR || die "failed create iso"
+
+printstep "Cleaning up..."
+cleanup
+
+exit 0

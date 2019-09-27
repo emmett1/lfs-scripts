@@ -1,0 +1,43 @@
+diff -Naur pkgutils-5.40.7-ori/pkgmk.conf pkgutils-5.40.7/pkgmk.conf
+--- pkgutils-5.40.7-ori/pkgmk.conf	2019-09-26 15:05:08.389415500 +0800
++++ pkgutils-5.40.7/pkgmk.conf	2019-09-26 15:04:46.064922300 +0800
+@@ -37,5 +37,6 @@
+ # PKGMK_WGET_OPTS=""
+ # PKGMK_CURL_OPTS=""
+ # PKGMK_COMPRESSION_MODE="gz"
++# PKGMK_KEEP_LIBTOOL="no"
+ 
+ # End of file
+diff -Naur pkgutils-5.40.7-ori/pkgmk.in pkgutils-5.40.7/pkgmk.in
+--- pkgutils-5.40.7-ori/pkgmk.in	2019-09-26 15:05:08.390204500 +0800
++++ pkgutils-5.40.7/pkgmk.in	2019-09-26 15:03:04.042305200 +0800
+@@ -433,6 +433,10 @@
+ 	done
+ }
+ 
++removelibtool() {	
++	find $PKG ! -type d -name "*.la" -delete
++}
++
+ compress_manpages() {
+ 	local FILE DIR TARGET
+ 
+@@ -543,6 +547,10 @@
+ 		fi
+ 
+ 		compress_manpages
++		
++		if [ "$PKGMK_KEEP_LIBTOOL" = "no" ]; then
++			removelibtool
++		fi
+ 
+ 		cd $PKG
+ 		info "Build result:"
+@@ -941,6 +949,7 @@
+ PKGMK_PRIVATEKEY=""
+ PKGMK_NO_STRIP="no"
+ PKGMK_CLEAN="no"
++PKGMK_KEEP_LIBTOOL="no"
+ 
+ main "$@"
+ 

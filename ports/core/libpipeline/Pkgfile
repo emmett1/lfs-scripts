@@ -1,0 +1,18 @@
+# Description: A library for manipulating pipelines of subprocesses in a flexible and convenient way
+# URL:         http://libpipeline.nongnu.org/
+# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Depends on:  
+
+name=libpipeline
+version=1.5.1
+release=1
+source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+        cd $name-$version
+
+        [ -d /tools ] && export PKG_CONFIG_PATH=/tools/lib/pkgconfig
+        ./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

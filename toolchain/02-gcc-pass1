@@ -1,41 +1,25 @@
-#!/bin/bash -e
+name=gcc
+version=9.2.0
+gmp_version=6.1.2
+mpc_version=1.1.0
+mpfr_version=4.0.2
+source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
+	http://ftp.gnu.org/gnu/gmp/gmp-$gmp_version.tar.xz
+	https://ftp.gnu.org/gnu/mpc/mpc-$mpc_version.tar.gz
+	http://www.mpfr.org/mpfr-$mpfr_version/mpfr-$mpfr_version.tar.xz)
 
-source $(dirname $0)/functions
-source $(dirname $0)/pkgversion
+build() {
+	if [ "$MULTILIB" = "yes" ]; then
+		multilibopt="--with-multilib-list=m32,m64"
+	else
+		multilibopt="--disable-multilib"
+	fi
 
-filename=$(echo $0 | rev | cut -d / -f1 | rev)
+	cd $name-$version
 
-TMP=${TMP:-/tmp/build}
-LOG=${LOG:-$(dirname $0)/log}
-SRC=${SRC:-$(dirname $0)/src}
-
-NAME=gcc
-VERSION=${GCC_VER}
-
-fetch "http://ftp.osuosl.org/pub/lfs/lfs-packages/8.3/mpfr-$MPFR_VER.tar.xz" $SRC
-#fetch "http://www.mpfr.org/mpfr-$MPFR_VER/mpfr-$MPFR_VER.tar.xz" $SRC
-fetch "https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VER.tar.gz" $SRC
-fetch "http://ftp.gnu.org/gnu/gmp/gmp-$GMP_VER.tar.xz" $SRC
-fetch "http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VER/gcc-$GCC_VER.tar.xz" $SRC
-
-[ "$1" = "fetch" ] && exit 0
-
-rm -fr $TMP
-mkdir -p $TMP $LOG $SRC
-
-tar xf $SRC/$tarballname -C $TMP
-tar -xf $SRC/mpfr-$MPFR_VER.tar.xz -C $TMP/$NAME-$VERSION
-tar -xf $SRC/gmp-$GMP_VER.tar.xz -C $TMP/$NAME-$VERSION
-tar -xf $SRC/mpc-$MPC_VER.tar.gz -C $TMP/$NAME-$VERSION
-
-{ time \
-   {
-
-	cd $TMP/$NAME-$VERSION
-
-	mv -v mpfr-$MPFR_VER mpfr
-	mv -v gmp-$GMP_VER gmp
-	mv -v mpc-$MPC_VER mpc
+	mv -v ../mpfr-$mpfr_version mpfr
+	mv -v ../gmp-$gmp_version gmp
+	mv -v ../mpc-$mpc_version mpc
 	
 	for file in gcc/config/{linux,i386/linux{,64}}.h
 	do
@@ -50,17 +34,19 @@ tar -xf $SRC/mpc-$MPC_VER.tar.gz -C $TMP/$NAME-$VERSION
 	  touch $file.orig
 	done
 	
-	case $(uname -m) in
-	  x86_64)
+	if [ "$MULTILIB" = "yes" ]; then
+		sed -i -e 's@/lib/ld-linux.so.2@/lib32/ld-linux.so.2@g' gcc/config/i386/linux64.h
+		sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
+		echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
+	else
 		sed -e '/m64=/s/lib64/lib/' \
-			-i.orig gcc/config/i386/t-linux64
-	 ;;
-	esac
+		    -i.orig gcc/config/i386/t-linux64
+	fi
 	
 	mkdir -v build
 	cd       build
 
-	../configure                                       \
+	../configure $multilibopt                              \
 		--target=$LFS_TGT                              \
 		--prefix=/tools                                \
 		--with-glibc-version=2.11                      \
@@ -71,7 +57,6 @@ tar -xf $SRC/mpc-$MPC_VER.tar.gz -C $TMP/$NAME-$VERSION
 		--with-native-system-header-dir=/tools/include \
 		--disable-nls                                  \
 		--disable-shared                               \
-		--disable-multilib                             \
 		--disable-decimal-float                        \
 		--disable-threads                              \
 		--disable-libatomic                            \
@@ -84,10 +69,4 @@ tar -xf $SRC/mpc-$MPC_VER.tar.gz -C $TMP/$NAME-$VERSION
 		--enable-languages=c,c++
 	make
 	make install
-	
-	}
-} 2>&1 | tee $LOG/$filename.log
-    
-[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
-
-rm -fr $TMP
+}

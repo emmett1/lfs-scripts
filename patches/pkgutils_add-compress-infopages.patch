@@ -1,0 +1,36 @@
+diff -Naur pkgutils-5.40.7-ori/pkgmk.in pkgutils-5.40.7/pkgmk.in
+--- pkgutils-5.40.7-ori/pkgmk.in	2019-09-26 15:05:08.390204500 +0800
++++ pkgutils-5.40.7/pkgmk.in	2019-09-26 15:12:28.462195200 +0800
+@@ -433,6 +433,23 @@
+ 	done
+ }
+ 
++compress_infopages() {
++	cd $PKG
++	
++	if [ -d usr/share/info ]; then
++		[ -f usr/share/info/dir ] && rm usr/share/info/dir
++		(cd usr/share/info
++			for file in $(find . -type f); do
++				if [ "$file" = "${file%%.gz}" ]; then
++					gzip -9 "$file"
++				fi
++			done
++		)
++	fi
++	
++	cd - &>/dev/null
++}
++
+ compress_manpages() {
+ 	local FILE DIR TARGET
+ 
+@@ -541,6 +558,8 @@
+ 		if [ "$PKGMK_NO_STRIP" = "no" ]; then
+ 			strip_files
+ 		fi
++		
++		compress_infopages
+ 
+ 		compress_manpages
+ 

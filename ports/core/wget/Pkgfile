@@ -1,0 +1,19 @@
+# Description: Utility useful for non-interactive downloading of files from the Web
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=wget
+version=1.20.3
+release=1
+source=(https://ftp.gnu.org/gnu/wget/wget-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr      \
+	            --sysconfdir=/etc  \
+	            --with-ssl=openssl
+	make
+	make DESTDIR=$PKG install
+}

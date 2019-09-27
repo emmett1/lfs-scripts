@@ -1,0 +1,156 @@
+#!/bin/bash
+
+lfs_dirs() {
+	mkdir -pv $LFS/dev
+	mknod -m 600 $LFS/dev/console c 5 1 || true
+	mknod -m 666 $LFS/dev/null c 1 3 || true
+
+	mkdir -pv $LFS/bin $LFS/usr/{lib,bin} $LFS/etc || true
+	ln -svf /tools/bin/{bash,cat,chmod,dd,echo,ln,mkdir,pwd,rm,stty,touch} $LFS/bin
+	ln -svf /tools/bin/{env,install,perl,printf}         $LFS/usr/bin
+	ln -svf /tools/lib/libgcc_s.so{,.1}                  $LFS/usr/lib
+	ln -svf /tools/lib/libstdc++.{a,so{,.6}}             $LFS/usr/lib
+
+	ln -svf bash $LFS/bin/sh
+
+	ln -svf /proc/self/mounts $LFS/etc/mtab
+
+cat > $LFS/etc/passwd << "EOF"
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
+nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+EOF
+
+cat > $LFS/etc/group << "EOF"
+root:x:0:
+bin:x:1:daemon
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+video:x:12:
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:
+adm:x:16:
+messagebus:x:18:
+input:x:24:
+mail:x:34:
+kvm:x:61:
+wheel:x:97:
+nogroup:x:99:
+users:x:999:
+EOF
+
+	# pkgutils
+	mkdir -p $LFS/var/lib/pkg/{pkg,src,work}
+	touch $LFS/var/lib/pkg/db
+}
+
+mount_pseudo() {
+	mkdir -p $LFS/{dev,run,proc,sys}
+	mount --bind /dev $LFS/dev
+	mount -t devpts devpts $LFS/dev/pts -o gid=5,mode=620
+	mount -t proc proc $LFS/proc
+	mount -t sysfs sysfs $LFS/sys
+	mount -t tmpfs tmpfs $LFS/run
+	if [ -h $LFS/dev/shm ]; then
+	  mkdir -p $LFS/$(readlink $LFS/dev/shm)
+	fi
+}
+
+umount_pseudo() {
+	mountpoint -q $LFS/dev/pts && umount $LFS/dev/pts
+	mountpoint -q $LFS/dev && umount $LFS/dev
+	mountpoint -q $LFS/run && umount $LFS/run
+	mountpoint -q $LFS/proc && umount $LFS/proc
+	mountpoint -q $LFS/sys && umount $LFS/sys
+}
+
+runinchroot() {
+	pushd $LFS &>/dev/null
+	mount_pseudo
+	cp -L /etc/resolv.conf $LFS/etc/
+	chroot "$LFS" $ENVLFS -i \
+	    HOME=/root                  \
+	    TERM="$TERM"                \
+	    PS1='(lfs chroot) \u:\w\$ ' \
+	    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin $@
+	retval=$?
+	umount_pseudo
+	popd &>/dev/null
+	return $retval
+}
+
+interrupted() {
+	die "script $(basename $0) aborted!"
+}
+
+die() {
+	[ "$@" ] && printerror $@
+	umount_pseudo
+	exit 1
+}
+
+printerror() {
+	echo -e "ERROR: $@"
+}
+
+trap "interrupted" SIGHUP SIGINT SIGQUIT SIGTERM
+
+CWD=$PWD
+
+source $CWD/config
+
+if [ $(id -u) != 0 ]; then
+	echo "$0 script need to run as root!"
+	exit 1
+fi
+
+if [ -x $LFS/usr/bin/env ]; then
+	ENVLFS=/usr/bin/env
+else
+	ENVLFS=/tools/bin/env
+fi
+
+PKGS="filesystem linux-api-headers man-pages glibc tzdata zlib file readline m4 bc binutils gmp mpfr mpc shadow gcc bzip2
+	pkg-config ncurses attr acl libcap sed psmisc iana-etc bison flex grep bash libtool gdbm gperf expat inetutils
+	perl perl-xml-parser intltool autoconf automake xz kmod gettext elfutils libffi openssl python3 coreutils
+	diffutils gawk findutils groff fuse2 grub less gzip iproute2 kbd libpipeline make patch man-db tar texinfo vim procps-ng
+	util-linux e2fsprogs sysklogd sysvinit eudev lfs-bootscripts linux-firmware libarchive mkinitramfs linux libtasn1 p11-kit ca-certificates 
+	wget pkgutils libnl dbus libxml2 dhcpcd wpa_supplicant"
+
+if [ ! -f $LFS/var/lib/pkg/db ]; then
+	lfs_dirs
+fi
+	
+mkdir -p $LFS/usr/ports/
+echo "==> Copying ports"
+cp -Ra ports/* $LFS/usr/ports/
+
+if [ -d sources/ ]; then
+	echo "==> Copying sources"
+	cp -Ra sources/* $LFS/var/lib/pkg/src/
+fi
+
+if [ -d packages/ ]; then
+	echo "==> Copying packages"
+	cp -Ra packages/* $LFS/var/lib/pkg/pkg/
+fi
+
+for pkg in $PKGS; do
+	case $pkg in
+		filesystem|gcc|bash|perl|coreutils) runinchroot pkgin -i -ic $pkg || die;;
+		*) runinchroot pkgin -i $pkg || die;;
+	esac
+done
+
+exit 0

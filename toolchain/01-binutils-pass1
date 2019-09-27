@@ -1,49 +1,27 @@
-#!/bin/bash -e
+name=binutils
+version=2.32
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz)
 
-source $(dirname $0)/functions
-source $(dirname $0)/pkgversion
+build() {
+	if [ "$MULTILIB" = "yes" ]; then
+		multilibopt="--with-lib-path=/tools/lib:/tools/lib32"
+	else
+		multilibopt="--with-lib-path=/tools/lib"
+	fi
 
-filename=$(echo $0 | rev | cut -d / -f1 | rev)
-
-TMP=${TMP:-/tmp/build}
-LOG=${LOG:-$(dirname $0)/log}
-SRC=${SRC:-$(dirname $0)/src}
-
-NAME=binutils
-VERSION=${BINUTILS_VER}
-
-fetch "http://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VER.tar.xz" $SRC
-
-[ "$1" = "fetch" ] && exit 0
-
-rm -fr $TMP
-mkdir -p $TMP $LOG $SRC
-
-tar xf $SRC/$tarballname -C $TMP
-
-{ time \
-   {
-
-	cd $TMP/$NAME-$VERSION
+	cd $name-$version
 
 	mkdir -v build
 	cd       build
 	
-	../configure --prefix=/tools            \
-				 --with-sysroot=$LFS        \
-				 --with-lib-path=/tools/lib \
-				 --target=$LFS_TGT          \
-				 --disable-nls              \
-				 --disable-werror
+	../configure $multilibopt \
+		--prefix=/tools \
+		--with-sysroot=$LFS \
+		--target=$LFS_TGT \
+		--disable-nls \
+		--disable-werror
 	make
-	case $(uname -m) in
-		x86_64) mkdir -v /tools/lib && ln -sv lib /tools/lib64 ;;
-	esac
+	mkdir -v /tools/lib && ln -sv lib /tools/lib64
+	[ "$MULTILIB" = "yes" ] && mkdir -p /tools/lib32
 	make install
-	
-	}
-} 2>&1 | tee $LOG/$filename.log
-    
-[ $PIPESTATUS = 0 ] && echo "$NAME-$VERSION" > /tools/$filename || exit $PIPESTATUS
-
-rm -fr $TMP
+}

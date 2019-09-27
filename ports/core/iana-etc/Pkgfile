@@ -1,0 +1,15 @@
+# Description: Provides data for network services and protocols
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=iana-etc
+version=2.30
+release=1
+source=(http://anduin.linuxfromscratch.org/LFS/$name-$version.tar.bz2)
+
+build() {
+        cd $name-$version
+        make
+        make DESTDIR=$PKG install
+}
