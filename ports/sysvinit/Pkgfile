@@ -6,7 +6,7 @@
 name=sysvinit
 version=2.96
 release=1
-source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+source=(http://download.savannah.gnu.org/releases/sysvinit/sysvinit-$version.tar.xz)
 
 build() {
         cd $name-$version

@@ -75,6 +75,20 @@ umount_pseudo() {
 	mountpoint -q $LFS/sys && umount $LFS/sys
 }
 
+mountbind_cache() {
+	# mount bind cachedir
+	mkdir -p $LFS/var/lib/pkg/{pkg,src} $CWD/{sources,packages}
+	mount --bind $CWD/sources $LFS/var/lib/pkg/src
+	mount --bind $CWD/packages $LFS/var/lib/pkg/pkg
+}
+
+umountbind_cache() {
+	# umount binded cachedir
+	umount $LFS/var/lib/pkg/src &>/dev/null
+	umount $LFS/var/lib/pkg/pkg &>/dev/null
+}
+
+
 runinchroot() {
 	pushd $LFS &>/dev/null
 	mount_pseudo
@@ -96,6 +110,7 @@ interrupted() {
 
 die() {
 	[ "$@" ] && printerror $@
+	umountbind_cache
 	umount_pseudo
 	exit 1
 }
@@ -136,15 +151,7 @@ mkdir -p $LFS/usr/ports/
 echo "==> Copying ports"
 cp -Ra ports/* $LFS/usr/ports/
 
-if [ -d sources/ ]; then
-	echo "==> Copying sources"
-	cp -Ra sources/* $LFS/var/lib/pkg/src/
-fi
-
-if [ -d packages/ ]; then
-	echo "==> Copying packages"
-	cp -Ra packages/* $LFS/var/lib/pkg/pkg/
-fi
+mountbind_cache
 
 for pkg in $PKGS; do
 	case $pkg in
@@ -152,5 +159,7 @@ for pkg in $PKGS; do
 		*) runinchroot pkgin -i $pkg || die;;
 	esac
 done
+
+umountbind_cache
 
 exit 0

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-fetch() {
-	
+fetch() {	
 	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
 	WGETCMD="wget --passive-ftp --tries=3 --waitretry=3 --output-document=$2/$tarballname.partial"
 	WGETRESUME="-c"
@@ -22,8 +21,10 @@ fetch() {
 	
 	if [ $? = 0 ]; then
 		mv $2/$tarballname.partial $2/$tarballname
-	fi
-	
+	else
+		echo "Failed fetching source: $tarballname"
+		exit 1
+	fi	
 }
 
 fetch_src() {
@@ -73,8 +74,10 @@ checkdone() {
 	if [ -e $LFS/tools/$(basename $script) ]; then
 		echo "*** skip $(basename $script) ***"
 		return 1
+	else
+		echo ">>> building $(basename $script) <<<"
+		return 0
 	fi
-	return 0
 }
 
 build_stage1() {
