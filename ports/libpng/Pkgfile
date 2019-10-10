@@ -1,0 +1,20 @@
+# Description: A collection of routines used to create PNG format graphics files
+# URL:         http://www.libpng.org/pub/png/libpng.html
+# Maintainer:  
+# Depends on:  
+
+name=libpng
+version=1.6.37
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.xz
+        https://downloads.sourceforge.net/project/apng/libpng/libpng16/$name-$version-apng.patch.gz)
+
+build() {
+	cd $name-$version
+
+	gzip -cd $SRC/$name-$version-apng.patch.gz | patch -p0
+
+        LIBS=-lpthread ./configure --prefix=/usr --disable-static
+        make
+        make DESTDIR=$PKG install
+}

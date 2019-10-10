@@ -1,0 +1,20 @@
+# Description: Various utilities for use with the FAT family of file systems
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=dosfstools
+version=4.1
+release=1
+source=(https://github.com/dosfstools/dosfstools/releases/download/v$version/dosfstools-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/               \
+                    --enable-compat-symlinks \
+                    --mandir=/usr/share/man  \
+                    --docdir=/usr/share/doc/$name
+        make
+        make DESTDIR=$PKG install
+}

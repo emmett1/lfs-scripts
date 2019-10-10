@@ -1,0 +1,17 @@
+# Description: A utility to show the full path of commands
+# URL:         https://savannah.gnu.org/projects/which
+# Maintainer:  
+# Depends on:  
+
+name=which
+version=2.21
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr
+        make
+        make DESTDIR=$PKG install
+}

@@ -83,6 +83,29 @@ kernver=$(file $LFS/boot/vmlinuz-lfs | cut -d ' ' -f9)
 chroot_run mkinitramfs -k $kernver -a livecd -o /boot/initrd-lfs.img || die "failed create initramfs"
 cp $LFS/boot/initrd-lfs.img $WDIR/boot/initrd || die "failed copying initrd"
 
+printstep "Setup UEFI mode..."
+mkdir -p $WDIR/boot/{grub/{fonts,x86_64-efi},EFI}
+if [ -f /usr/share/grub/unicode.pf2 ];then
+	cp /usr/share/grub/unicode.pf2 $WDIR/boot/grub/fonts
+fi
+if [ -f $WDIR/isolinux/splash.png ]; then
+	cp $WDIR/isolinux/splash.png $WDIR/boot/grub/
+fi
+echo "set prefix=/boot/grub" > $WDIR/boot/grub-early.cfg
+cp -a /usr/lib/grub/x86_64-efi/*.{mod,lst} $WDIR/boot/grub/x86_64-efi || die "Failed copying efi files"
+cp $FILEDIR/grub.cfg $WDIR/boot/grub/
+
+grub-mkimage -c $WDIR/boot/grub-early.cfg -o $WDIR/boot/EFI/bootx64.efi -O x86_64-efi -p "" iso9660 normal search search_fs_file
+modprobe loop
+dd if=/dev/zero of=$WDIR/boot/efiboot.img count=4096
+mkdosfs -n LFSLIVECD-UEFI $WDIR/boot/efiboot.img || die "Failed mkdosfs"
+mkdir -p $WDIR/boot/efiboot
+mount -o loop $WDIR/boot/efiboot.img $WDIR/boot/efiboot || die "Failed mount efiboot.img"
+mkdir -p $WDIR/boot/efiboot/EFI/boot
+cp $WDIR/boot/EFI/bootx64.efi $WDIR/boot/efiboot/EFI/boot
+umount $WDIR/boot/efiboot
+rm -fr $WDIR/boot/efiboot
+
 printstep "Making the iso..."
 rm -f $OUTPUT
 xorriso -as mkisofs \
@@ -92,6 +115,8 @@ xorriso -as mkisofs \
       -no-emul-boot \
       -boot-load-size 4 \
       -boot-info-table \
+      -eltorito-alt-boot \
+	  -e boot/efiboot.img \
       -no-emul-boot \
       -isohybrid-gpt-basdat \
       -volid $LABEL \

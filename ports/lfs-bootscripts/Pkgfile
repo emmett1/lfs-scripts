@@ -7,6 +7,7 @@ name=lfs-bootscripts
 version=20190908
 release=1
 source=(http://www.linuxfromscratch.org/lfs/downloads/development/$name-$version.tar.xz
+	lfs-bootscripts_add-support-uefi.patch
 	clock
 	console
 	inittab)
@@ -18,5 +19,8 @@ build() {
 	install -m0644 inittab $PKG/etc
 
 	cd $name-$version
+
+	patch -Np1 -i $SRC/lfs-bootscripts_add-support-uefi.patch
+
 	make DESTDIR=$PKG install
 }
