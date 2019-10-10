@@ -10,7 +10,8 @@ source=(http://crux.nu/files/$name-$version.tar.xz
 	pkgmk.conf
 	pkgutils_ignore-conflict.patch
 	pkgutils_remove-libtool.patch
-	pkgutils_add-compress-infopages.patch)
+	pkgutils_add-compress-infopages.patch
+	pkgutils_fix-build-needed-trigger.patch)
 
 build () {
 	cd $name-$version

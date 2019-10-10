@@ -8,6 +8,7 @@ build() {
 	patch -Np1 -i $PATCHDIR/pkgutils_ignore-conflict.patch
 	patch -Np1 -i $PATCHDIR/pkgutils_remove-libtool.patch
 	patch -Np1 -i $PATCHDIR/pkgutils_add-compress-infopages.patch
+	patch -Np1 -i $PATCHDIR/pkgutils_fix-build-needed-trigger.patch
 
 	make BINDIR=/tools/bin MANDIR=/tools/man ETCDIR=/tools/etc install
 	sed -i 's,/etc/pkgmk.conf,/tools/etc/pkgmk.conf,' /tools/bin/pkgmk

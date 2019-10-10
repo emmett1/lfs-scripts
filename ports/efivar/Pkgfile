@@ -1,0 +1,23 @@
+# Description: Tools and library to manipulate EFI variables
+# URL:         
+# Maintainer:  
+# Depends on:  popt
+
+name=efivar
+version=37
+release=1
+source=(https://github.com/rhboot/efivar/releases/download/$version/$name-$version.tar.bz2
+        0dad6d78a7fb5f6c5fb4a1d646040539db6cf865.patch
+        b98ba8921010d03f46704a476c69861515deb1ca.patch
+        c3c553db85ff10890209d0fe48fb4856ad68e4e0.patch)
+
+build() {
+	cd $name-$version
+
+	# thanks to ataraxia for the patch
+        patch -Np1 -i ../0dad6d78a7fb5f6c5fb4a1d646040539db6cf865.patch
+        patch -Np1 -i ../b98ba8921010d03f46704a476c69861515deb1ca.patch
+        patch -Np1 -i ../c3c553db85ff10890209d0fe48fb4856ad68e4e0.patch
+        make -j1
+        make libdir=/usr/lib DESTDIR=$PKG install
+}

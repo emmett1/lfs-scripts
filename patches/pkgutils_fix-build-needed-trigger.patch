@@ -1,0 +1,17 @@
+diff -Naur pkgutils-5.40.7-ori/pkgmk.in pkgutils-5.40.7/pkgmk.in
+--- pkgutils-5.40.7-ori/pkgmk.in	2018-02-15 00:17:57.000000000 +0800
++++ pkgutils-5.40.7/pkgmk.in	2019-10-10 16:10:02.519999503 +0800
+@@ -654,13 +654,6 @@
+ 	RESULT="yes"
+ 	if [ -f $TARGET ]; then
+ 		RESULT="no"
+-		for FILE in $PKGMK_PKGFILE ${source[@]}; do
+-			FILE=`get_filename $FILE`
+-			if [ -e $FILE ] && [ ! $TARGET -nt $FILE ]; then
+-				RESULT="yes"
+-				break
+-			fi
+-		done
+ 	fi
+ 
+ 	echo $RESULT

@@ -1,0 +1,15 @@
+# Description: Extremely fast compression algorithm
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=lz4
+version=1.9.2
+release=1
+source=(https://github.com/lz4/lz4/archive/v$version/lz4-v$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make PREFIX=/usr
+        make DESTDIR=$PKG PREFIX=/usr install
+}

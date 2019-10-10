@@ -1,0 +1,17 @@
+# Description: Popt libraries which are used by some programs to parse command-line options
+# URL:         
+# Maintainer:  
+# Depends on:  
+
+name=popt
+version=1.16
+release=1
+source=(http://ftp.rpm.org/mirror/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr --disable-static
+        make
+        make DESTDIR=$PKG install
+}
