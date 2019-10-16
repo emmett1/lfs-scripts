@@ -70,7 +70,7 @@ build() {
 
 	# /etc
 	install -d $PKG/etc
-	for p in profile bashrc resolv.conf inputrc fstab hostname hosts shells passwd group; do
+	for p in profile bashrc resolv.conf inputrc fstab hostname hosts passwd group; do
 		install -m0644 $p $PKG/etc
 	done
 

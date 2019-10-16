@@ -4,13 +4,11 @@
 # Depends on:  
 
 name=linux-firmware
-version=20190717
+version=20190923
 release=1
 source=(https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-$version.tar.gz)
 
 build() {
         cd $name-$version
-
         make DESTDIR=$PKG install
-        rm $PKG/lib/firmware/{Makefile,README,configure,GPL-3,*.txt,check_whence.py}
 }

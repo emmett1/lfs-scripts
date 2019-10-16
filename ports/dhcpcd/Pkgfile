@@ -23,9 +23,9 @@ build() {
 
 	mkdir -p $PKG/etc/sysconfig/
 	cat > $PKG/etc/sysconfig/ifconfig.eth0 << "EOF"
-#ONBOOT="yes"
-#IFACE="eth0"
-#SERVICE="dhcpcd"
+ONBOOT="no"
+IFACE="eth0"
+SERVICE="dhcpcd"
 #DHCP_START="-b -q <insert appropriate start options here>"
 #DHCP_STOP="-k <insert additional stop options here>"
 EOF

@@ -10,7 +10,7 @@ FILEDIR=$CWD/files
 WORKDIR=/tmp
 
 LABEL=LFSLIVECD
-OUTPUT=lfslivecd.iso
+OUTPUT=lfs-livecd-$(date +"%Y%m%d")
 WDIR=/tmp/lfsiso
 
 #MULTILIB=yes

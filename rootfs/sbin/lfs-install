@@ -1,0 +1,33 @@
+#!/bin/bash
+
+LFSMOUNT=$1
+
+if [ ! "$LFSMOUNT" ]; then
+	echo "mounted location for install not define!"
+	exit 1
+fi
+
+if ! mountpoint -q $LFSMOUNT; then
+	echo "'$LFSMOUNT' is not a mountpoint!"
+	exit 1
+fi
+
+if [ -f "/run/initramfs/ram/root.sfs" ]; then
+	ROOTSFS="/run/initramfs/ram/root.sfs"
+elif [ -f "/run/initramfs/medium/lfs/root.sfs" ]; then
+	ROOTSFS="/run/initramfs/medium/lfs/root.sfs"
+else
+	echo "squashed image not found!"
+	exit 1
+fi
+
+unsquashfs -f -i -d $LFSMOUNT $ROOTSFS
+
+if [ "$?" = "0" ]; then
+	echo "Successfully installed to '$LFSMOUNT'"
+else
+	echo "failed to install lfs system"
+	exit 1
+fi
+
+exit 0

@@ -67,14 +67,14 @@ EOF
 
 	mkdir -p $PKG/etc/sysconfig
 	cat > $PKG/etc/sysconfig/ifconfig.wifi0 << "EOF"
-#ONBOOT="yes"
-#IFACE="wlan0"
-#SERVICE="wpa"
+ONBOOT="no"
+IFACE="wlan0"
+SERVICE="wpa"
 
 # Additional arguments to wpa_supplicant
-#WPA_ARGS=""
+WPA_ARGS=""
 
-#WPA_SERVICE="dhcpcd"
+WPA_SERVICE="dhcpcd"
 #DHCP_START="-b -q <insert appropriate start options here>"
 #DHCP_STOP="-k <insert additional stop options here>"
 EOF
