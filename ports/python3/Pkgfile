@@ -4,7 +4,7 @@
 # Depends on:  libffi
 
 name=python3
-version=3.7.4
+version=3.8.0
 release=1
 source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
 
@@ -18,7 +18,4 @@ build() {
                     --without-ensurepip
         make
         make DESTDIR=$PKG install
-
-        chmod -v 755 $PKG/usr/lib/libpython${version::3}m.so
-        chmod -v 755 $PKG/usr/lib/libpython3.so
 }
