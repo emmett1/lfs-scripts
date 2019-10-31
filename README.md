@@ -1,6 +1,6 @@
 # lfs-scripts
 
-This repo contain scripts to automate LFS build + livecd.
+This repo contain scripts to automate LFS build + livecd. This LFS build is using [CRUX](crux.nu)'s pkgutils for managing packages and initramfs generator from [Venom Linux](venomlinux.org) for livecd initramfs.
 
 #### Requirements
 
