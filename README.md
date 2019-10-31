@@ -1,6 +1,6 @@
 # lfs-scripts
 
-This repo contain scripts to automate LFS build + livecd. This LFS build is using [CRUX](crux.nu)'s pkgutils for managing packages and initramfs generator from [Venom Linux](venomlinux.org) for livecd initramfs.
+This repo contain scripts to automate LFS build + livecd. This LFS build is using [CRUX](https://crux.nu)'s pkgutils for managing packages and initramfs generator from [Venom Linux](https://venomlinux.org) for livecd initramfs.
 
 #### Requirements
 
@@ -15,11 +15,11 @@ This repo contain scripts to automate LFS build + livecd. This LFS build is usin
   - this script need run as regular user
   - this script resume-able, just re-run the script to continue where you left
   
-* 02-lfs-base
+* 02-base
   - script to build base lfs system
   - this script need run as root
-  - each package has its own build script
-  - you can create your own package build scripts using template (in lfs/pkgscripts dir)
+  - all package is build using port system (pkgutils)
+  - you can create your own ports by follow guide [here](https://crux.nu/Main/Handbook3-5#ntoc23)
   - extra packages is added into this base lfs, eg:
     - linux kernel
     - wget
@@ -27,8 +27,9 @@ This repo contain scripts to automate LFS build + livecd. This LFS build is usin
     - wpa_supplicant
     - mkinitramfs (taken from Venom Linux, livecd support)
   - this script resume-able, just re-run the script to continue where you left
+  - created packages can be reused
     
-* 03-mklfsiso
+* 03-mkiso
   - script to build lfs livecd iso
   - this script need run as root
   
