@@ -1,0 +1,12 @@
+name=ports
+version=1.6
+source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	make
+	make DESTDIR=$PKG BINDIR=/tools/bin ETCDIR=/tools/etc/ports PORTSDIR=/tools/etc/ports MANDIR=/tools/share/man install
+	install -D -m 755 $FILEDIR/httpup /tools/etc/ports/drivers/httpup
+	install -m 644    $FILEDIR/core.httpup /tools/etc/ports/core.httpup
+	sed 's,etc/ports,tools/etc/ports,g' -i /tools/bin/ports
+}

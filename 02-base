@@ -148,8 +148,9 @@ if [ ! -f $LFS/var/lib/pkg/db ]; then
 fi
 	
 mkdir -p $LFS/usr/ports/
-echo "==> Copying ports"
-cp -Ra ports/* $LFS/usr/ports/
+runinchroot ports -u || die
+#echo "==> Copying ports"
+#cp -Ra ports/* $LFS/usr/ports/
 
 mountbind_cache
 

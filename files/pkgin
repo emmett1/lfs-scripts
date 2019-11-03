@@ -11,7 +11,7 @@
 
 trap "exit 1" SIGHUP SIGINT SIGQUIT SIGTERM
 
-PORT="/usr/ports"
+REPO="/usr/ports/core /usr/ports/extra /usr/ports/xorg /usr/ports/multilib"
 
 while [ $1 ]; do
 	case $1 in
@@ -31,13 +31,18 @@ for p in ${PKG[@]}; do
 		echo "Package '$p' is installed."
 		continue
 	fi
-	if [ -f $PORT/$p/Pkgfile ]; then
-		cd $PORT/$p &>/dev/null
-		pkgmk ${PKGMK_CMD[@]} || exit $?
-		[ -x bootstrap-post-install ] && ./bootstrap-post-install
-		[ -x post-install ] && ./post-install
-		cd - &>/dev/null
-	else
+	PKGFOUND=no
+	for r in $REPO; do
+		if [ -f $r/$p/Pkgfile ]; then
+			PKGFOUND=yes
+			cd $r/$p &>/dev/null
+			pkgmk ${PKGMK_CMD[@]} || exit $?
+			[ -e bootstrap-post-install ] && sh bootstrap-post-install
+			[ -e post-install ] && sh post-install
+			cd - &>/dev/null
+		fi
+	done
+	if [ "$PKGFOUND" = "no" ]; then
 		echo "Port '$p' not found."
 		exit 1
 	fi
