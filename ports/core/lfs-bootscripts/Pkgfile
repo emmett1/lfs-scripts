@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=lfs-bootscripts
-version=20190908
+version=20191031
 release=1
 source=(http://www.linuxfromscratch.org/lfs/downloads/development/$name-$version.tar.xz
 	lfs-bootscripts_add-support-uefi.patch
