@@ -1,0 +1,20 @@
+# Description: Utility and a library used for transferring files
+# URL:         https://curl.haxx.se/
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
+# Depends on:  ca-certificates openssl
+
+name=curl
+version=7.66.0
+release=1
+source=(https://curl.haxx.se/download/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr              \
+                    --disable-static           \
+                    --enable-threaded-resolver \
+                    --with-ca-path=/etc/ssl/certs
+	make
+	make DESTDIR=$PKG install
+}
