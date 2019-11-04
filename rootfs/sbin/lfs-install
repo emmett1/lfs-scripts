@@ -3,7 +3,17 @@
 LFSMOUNT=$1
 
 if [ ! "$LFSMOUNT" ]; then
-	echo "mounted location for install not define!"
+	cat << EOF
+Usage:
+  $(basename $0) <path to install>
+  
+Example:
+  $(basename $0) /mnt/lfs
+  
+Note:
+  You should first configure partition then mount it somewhere
+  
+EOF
 	exit 1
 fi
 
@@ -24,7 +34,11 @@ fi
 unsquashfs -f -i -d $LFSMOUNT $ROOTSFS
 
 if [ "$?" = "0" ]; then
+	echo
 	echo "Successfully installed to '$LFSMOUNT'"
+	echo
+	echo "Run 'lfs-chroot $LFSMOUNT' to chroot into $LFSMOUNT."
+	echo "Then start configure your new installation."
 else
 	echo "failed to install lfs system"
 	exit 1
