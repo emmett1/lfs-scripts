@@ -5,8 +5,8 @@
 
 name=wpa_supplicant
 version=2.9
-bootscriptsversion=20190908
-release=1
+bootscriptsversion=20191025
+release=2
 source=(https://w1.fi/releases/wpa_supplicant-$version.tar.gz
 	http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-$bootscriptsversion.tar.xz
 	wpa_supplicant.conf)
