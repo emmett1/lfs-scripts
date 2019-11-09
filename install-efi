@@ -1,0 +1,39 @@
+1. make partition
+	cfdisk
+	100MB EFI System
+	mkfs.vfat -F32 /dev/sda1
+	mkswap /dev/sda2
+	mkfs.ext4 -L LFS /dev/sda3
+
+2. mount partition
+	mkdir -p /mnt/lfs
+	mount /dev/sda3 /mnt/lfs
+	mkdir -p /mnt/lfs/boot/efi
+	mount /dev/sda1 /mnt/lfs/boot/efi
+
+3. install lfs
+	lfs-install /mnt/lfs
+
+4. enter chroot
+	lfs-chroot /mnt/lfs
+
+5. configure fstab
+	/dev/sda1 /boot/efi vfat defaults 0 2
+	
+6. hostname
+	vim /etc/hostname
+
+7. root passwd
+	passwd
+
+8. add user
+	useradd -m -G users,wheel,audio,video -s /bin/bash emmett
+
+9. initramfs
+	mkinitramfs -o /boot/initrd-lfs.img
+
+10. grub
+	grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=lfs_grub --recheck /dev/sda1
+	mkdir -p /boot/efi/EFI/BOOT
+	cp /boot/efi/EFI/lfs_grub/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+	grub-mkconfig -o /boot/grub/grub.cfg
