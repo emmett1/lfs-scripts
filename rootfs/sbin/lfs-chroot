@@ -63,6 +63,8 @@ fi
 
 cp -L /etc/resolv.conf $LFS/etc
 
+echo ":: entering chroot to $LFS."
+
 chroot "$LFS" /usr/bin/env -i \
 HOME=/root \
 TERM="$TERM" \
@@ -81,5 +83,7 @@ if [ -n "$EFI_SYSTEM" ]; then
 	umount $LFS/sys/firmware/efi/efivars
 fi
 umount $LFS/sys
+
+echo ":: chroot exited."
 
 exit $retval
