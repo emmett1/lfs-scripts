@@ -5,6 +5,7 @@ d:intltool
 d:shadow
 d:mpc
 d:kmod
+d:httpup
 d:gcc
 d:xz
 d:man-db
@@ -108,6 +109,8 @@ f:5f582ebf3914ae0277c5738cd2917f75:shadow/Pkgfile
 f:babefc326b69e5c23dec019e1f664c3b:shadow/post-install
 f:38fd4e9168d49ab7e0bbd1144f4f231a:mpc/Pkgfile
 f:da2528d85a28de6a07281d635b142c58:kmod/Pkgfile
+f:faa600a1b0349fe78b0eb463cab444df:httpup/httpup
+f:9b636f89d1520d4036b832a430bc6d33:httpup/Pkgfile
 f:5f96bb0e73567985ffc919f7c2e7213f:gcc/Pkgfile
 f:638d339a29abe3cce8c9c920a36d5125:xz/Pkgfile
 f:f5625811c2c785ba538a7ed60122039e:man-db/Pkgfile
