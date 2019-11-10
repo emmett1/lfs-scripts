@@ -142,7 +142,7 @@ PKGS="filesystem linux-api-headers man-pages glibc tzdata zlib file readline m4 
 	diffutils gawk findutils groff fuse2 grub less gzip iproute2 kbd libpipeline make patch man-db tar texinfo vim procps-ng
 	util-linux e2fsprogs sysklogd sysvinit eudev lfs-bootscripts linux-firmware libarchive mkinitramfs linux libtasn1 p11-kit ca-certificates 
 	wget pkgutils libnl dbus libxml2 dhcpcd wpa_supplicant lzo lz4 squashfs-tools popt efivar pciutils efibootmgr libpng which freetype2 dosfstools grub-efi
-	curl ports"
+	curl ports httpup gpm libevent links"
 
 if [ ! -f $LFS/var/lib/pkg/db ]; then
 	lfs_dirs

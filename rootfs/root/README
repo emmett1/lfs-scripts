@@ -67,7 +67,7 @@ Install instruction
   - for BIOS
      # grub-install /dev/sda
   - for UEFI
-     # grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=lfs_grub --recheck /dev/sda1
+     # grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=lfs_grub --recheck /dev/sda
   - for UEFI in Virtualbox you need to configure this, else you gonna stuck at
     Virtualbox UEFI
      # mkdir -p /boot/efi/EFI/BOOT
