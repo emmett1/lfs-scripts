@@ -1,6 +1,6 @@
 # Description: Expose the kernel's API for use by Glibc
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=linux-api-headers

@@ -1,6 +1,6 @@
 # Description: Vi Improved, a highly configurable, improved version of the vi text editor
 # URL:         https://www.vim.org/
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  acl gawk
 
 name=vim

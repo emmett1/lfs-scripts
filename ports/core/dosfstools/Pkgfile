@@ -1,6 +1,6 @@
 # Description: Various utilities for use with the FAT family of file systems
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=dosfstools

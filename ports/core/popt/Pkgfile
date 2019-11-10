@@ -1,6 +1,6 @@
 # Description: Popt libraries which are used by some programs to parse command-line options
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=popt

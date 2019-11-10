@@ -1,6 +1,6 @@
 # Description: Message bus system, a simple way for applications to talk to one another
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=dbus

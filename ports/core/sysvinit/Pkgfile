@@ -1,6 +1,6 @@
 # Description: programs for controlling the startup, running, and shutdown of the system
 # URL:         https://savannah.nongnu.org/projects/sysvinit
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=sysvinit

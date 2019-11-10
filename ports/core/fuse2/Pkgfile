@@ -1,6 +1,6 @@
 # Description: Simple interface for userspace programs to export a virtual filesystem to the Linux kernel
 # URL:         https://github.com/libfuse/libfuse
-# Maintainer:  Emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=fuse2

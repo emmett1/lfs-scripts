@@ -1,6 +1,6 @@
 # Description: Logging system messages, such as those given by the kernel
 # URL:         http://www.infodrom.org/projects/sysklogd/
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=sysklogd

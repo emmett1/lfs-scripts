@@ -1,6 +1,6 @@
 # Description: Utilities to administer the extended attributes on filesystem objects
-# URL:         
-# Maintainer:  
+# URL:         http://savannah.nongnu.org/projects/attr
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=attr

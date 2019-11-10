@@ -1,6 +1,6 @@
 # Description: Next generation of the python high-level scripting language
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  libffi
 
 name=python3

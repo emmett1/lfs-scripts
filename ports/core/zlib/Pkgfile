@@ -1,6 +1,6 @@
 # Description: Compression and decompression routines used by some programs
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=zlib

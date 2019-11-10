@@ -1,6 +1,6 @@
 # Description: Libraries and utilities used for parsing XML files
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=libxml2

@@ -1,6 +1,6 @@
 # Description: Collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 
 name=libnl
 version=3.5.0

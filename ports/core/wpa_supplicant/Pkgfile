@@ -1,6 +1,6 @@
 # Description: Implements WPA key negotiation with a WPA Authenticator and Extensible Authentication Protocol (EAP) authentication with an Authentication Server
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  libnl openssl dbus libxml2
 
 name=wpa_supplicant

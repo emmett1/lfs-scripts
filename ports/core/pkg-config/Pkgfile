@@ -1,6 +1,6 @@
 # Description: A tool for passing the include path and/or library paths to build tools during the configure and make file execution
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=pkg-config

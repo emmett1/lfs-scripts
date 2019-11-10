@@ -1,6 +1,6 @@
 # Description: Tools for squashfs, a highly compressed read-only filesystem for Linux
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  zlib lzo xz lz4
 
 name=squashfs-tools

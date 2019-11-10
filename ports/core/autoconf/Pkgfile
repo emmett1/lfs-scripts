@@ -1,6 +1,6 @@
 # Description: Programs for producing shell scripts that can automatically configure source code
-# URL:         
-# Maintainer:  
+# URL:         http://www.gnu.org/software/autoconf
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=autoconf

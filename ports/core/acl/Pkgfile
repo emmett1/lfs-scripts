@@ -1,13 +1,12 @@
 # Description: Utilities to administer Access Control Lists, which are used to define more fine-grained discretionary access rights for files and directories
-# URL:         
-# Maintainer:  
+# URL:         http://savannah.nongnu.org/projects/acl
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=acl
 version=2.2.53
 release=1
 source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
-md5sum=(007aabf1dbb550bcddde52a244cd1070)
 
 build() {
         cd $name-$version

@@ -1,6 +1,6 @@
 # Description: Libraries and utilities for loading kernel modules
 # URL:         https://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=kmod

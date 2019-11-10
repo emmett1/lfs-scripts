@@ -1,6 +1,6 @@
 # Description: Extremely fast compression algorithm
 # URL:         https://github.com/lz4/lz4
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=lz4

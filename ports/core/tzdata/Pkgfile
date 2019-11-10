@@ -1,6 +1,6 @@
 # Description: Sources for time zone and daylight saving time data
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=tzdata

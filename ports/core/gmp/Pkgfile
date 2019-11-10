@@ -1,6 +1,6 @@
 # Description: Contains math libraries that useful functions for arbitrary precision arithmetic
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=gmp

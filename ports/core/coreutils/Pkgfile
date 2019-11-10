@@ -1,6 +1,6 @@
 # Description: Utilities for showing and setting the basic system characteristics
 # URL:         https://www.gnu.org/software/coreutils/
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=coreutils

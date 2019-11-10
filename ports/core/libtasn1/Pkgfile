@@ -1,6 +1,6 @@
 # Description: Highly portable C library that encodes and decodes DER/BER data following an ASN.1 schema
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=libtasn1

@@ -1,6 +1,6 @@
 # Description: Tools and library to manipulate EFI variables
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  popt
 
 name=efivar

@@ -1,6 +1,6 @@
 # Description: Programs for finding and viewing man pages
 # URL:         https://www.nongnu.org/man-db/
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  bash gdbm groff less libpipeline zlib
 
 name=man-db

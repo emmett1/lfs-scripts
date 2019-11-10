@@ -1,6 +1,6 @@
 # Description: A set of scripts to start/stop the LFS system at bootup/shutdown
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=lfs-bootscripts

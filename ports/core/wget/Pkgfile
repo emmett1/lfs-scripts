@@ -1,6 +1,6 @@
 # Description: Utility useful for non-interactive downloading of files from the Web
 # URL:         
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=wget

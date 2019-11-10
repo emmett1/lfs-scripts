@@ -1,6 +1,6 @@
 # Description: A collection of routines used to create PNG format graphics files
 # URL:         http://www.libpng.org/pub/png/libpng.html
-# Maintainer:  
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=libpng

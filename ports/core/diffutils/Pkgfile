@@ -1,6 +1,6 @@
 # Description: Programs that show the differences between files or directories
 # URL:         https://www.gnu.org/software/diffutils
-# Maintainer:  emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  bash
 
 name=diffutils

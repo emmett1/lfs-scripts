@@ -1,6 +1,6 @@
 # Description: Firmware files for Linux
 # URL:         http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
-# Maintainer:  Emmett1, emmett1.2miligrams at gmail.com
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 # Depends on:  
 
 name=linux-firmware
