@@ -80,6 +80,7 @@ d:libnl
 d:less
 d:expat
 d:bzip2
+d:gpm
 d:grub
 d:openssl
 d:libxml2
@@ -222,6 +223,7 @@ f:13a2ca78fcc57464cf27fe0b9325a060:libnl/Pkgfile
 f:5f327fb56bd527836a6cc0029714131c:less/Pkgfile
 f:15802c92f5dd9a1a32d14d9dfb455e72:expat/Pkgfile
 f:e69456ecdad98b7fea26c764ec4ad29d:bzip2/Pkgfile
+f:738650f16572f3507048b29b83a2e32f:gpm/Pkgfile
 f:c327a88c7755c1d73534c590cad08971:grub/Pkgfile
 f:9ec23142407e5e1a978605f4636aacec:grub/grub.default
 f:e78a420a6a5c2b2296895cb6b209fe96:openssl/Pkgfile
