@@ -1,3 +1,4 @@
+d:links
 d:vim
 d:fuse2
 d:intltool
@@ -37,6 +38,7 @@ d:filesystem
 d:readline
 d:autoconf
 d:gperf
+d:libevent
 d:gawk
 d:sysklogd
 d:file
@@ -98,6 +100,7 @@ d:mpfr
 d:diffutils
 d:efibootmgr
 d:ca-certificates
+f:418b0634dd451096ad0423a6f23dc949:links/Pkgfile
 f:cb65d12b050da96af13339a490e6e3e4:vim/Pkgfile
 f:837cb01c2f4f5f0797c7ea6a3d153e32:fuse2/Pkgfile
 f:2b1c6870cba791e231a1f6b5bacf7b03:intltool/Pkgfile
@@ -176,6 +179,7 @@ f:f70bbec388eac3b99a99718b96b6d4c6:filesystem/bash_logout.skel
 f:ede6062da77da58e84b6dadc83eed232:readline/Pkgfile
 f:ad7d392682d35ee42f391783dd603625:autoconf/Pkgfile
 f:13494494632b60ac7797b9b2266a9550:gperf/Pkgfile
+f:cea3946873357c73ead07907b2f1e41d:libevent/Pkgfile
 f:8286f7a545f44f80174393dedeecd644:gawk/Pkgfile
 f:54ba2ac5d2ad839b7529c5fdcf98c301:sysklogd/Pkgfile
 f:ef8e8c1af7388e4af46326153868be77:file/Pkgfile
