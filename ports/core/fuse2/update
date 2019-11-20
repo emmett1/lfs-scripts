@@ -1,0 +1,3 @@
+getver_fuse2() {
+	getver_github | grep ^2
+}

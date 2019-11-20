@@ -1,0 +1,230 @@
+#!/bin/bash
+
+RED='\e[0;31m'      #Red
+GREEN='\e[0;32m'    #Green
+YELLOW='\e[0;33m'   #Yellow
+CRESET='\e[0m'	    #Reset color
+
+print_progress() {
+	echo -ne " $@\033[0K\r"
+}
+
+# default getver
+getver() {
+	fetch \
+	| grep -Eio $filename[_-][0-9a-z.]+.tar.[bgx]z2? \
+	| sed "s/$filename[-_]//;s/\.tar.*//" \
+	| grep -Evi '(alpha|beta|rc|pre)' \
+	| grep [[:digit:]] \
+	| sort -V \
+	| uniq
+}
+
+# per-type getver
+getver_github() {
+	fetch \
+	| grep archive \
+	| grep -Eo '(v?|"$filename"-)'[0-9a-z.]+\.tar\.gz \
+	| sed "s/\.tar\.gz//;s/^v//;s/^$filename-//" \
+	| grep -Evi '(alpha|beta|rc|example|pre|doc*|dev|start|cpp)' \
+	| sort -V \
+	| uniq
+}
+
+getver_ruby() {
+	fetch \
+	| grep -Eo $filename[_-][0-9a-z.]+.gem \
+	| sed "s/$filename[-_]//;s/\.gem//" \
+	| grep -Evi '(alpha|beta|rc|pre)' \
+	| grep [[:digit:]] \
+	| sort -V \
+	| uniq
+}
+
+getver_gnome() {
+	fetch \
+	| tr ' ' '\n' \
+	| grep -Eo $filename-[0-9.]+.tar.[bgx]z2? \
+	| sed "s/$filename-//;s/\.tar.*//" \
+	| grep -Ew "^[0-9]+\.[0-9]*[02468]\.*" \
+	| grep -Ev "*.[89][0-9].*" \
+	| sort -V \
+	| uniq
+}
+
+getver_xfce4() {	
+	url=$url/$(fetch \
+	| sed 's,.*href=",,;s,\/.*,,' \
+	| grep ^[0-9a-z] \
+	| sort -V \
+	| uniq \
+	| tail -n1)	
+	getver
+}
+
+getver_aur() {
+	url=https://aur.archlinux.org/packages/$name
+	fetch \
+	| grep "Package Details:" \
+	| cut -d ' ' -f4 \
+	| sed 's/-.*//'
+}
+
+# main
+fetch() {
+	wget -qO - -t 3 -T 10 $url
+}
+
+run_check() {
+	checkver_cmd=${1}
+	
+	if [ "$VERBOSE" = 1 ]; then
+		echo "file     : $file"
+		echo "filename : $filename"
+		echo "version  : $version"
+		echo "url      : $url"
+		echo "cmd      : $checkver_cmd"
+		$checkver_cmd | tail -n10
+		return
+	else
+		print_progress "Checking '$ppath'"
+		upver=$($checkver_cmd | tail -n1)
+	fi
+	
+	upver=${upver:-404}
+	
+	if [ "$upver" = "404" ]; then
+		echo -e " $ppath: $version => ${RED}404${CRESET}"
+		[ "$OUT" = 1 ] && echo "$ppath $version => 404" >> error
+	elif [ "$version" != "$upver" ]; then
+		echo -e " $ppath: $version => ${YELLOW}$upver${CRESET}"
+		[ "$OUT" = 1 ] && echo "$ppath $version => $upver" >> outdate
+		if [ "$UPDATE" = 1 ]; then
+			sed "s/^version=.*/version=$upver/" -i $ppath/Pkgfile
+			pushd $ppath
+				fakeroot pkgbuild -m && sudo pkgbuild -u
+			popd
+		fi
+	fi
+}
+
+alter_per_url() {
+	case $url in
+		*github.com*)
+			url=https://github.com/$(echo $url | cut -d / -f4,5)/tags;;
+		*downloads.sourceforge.net*)
+			url="https://sourceforge.net/projects/$(echo $url | cut -d / -f4)/rss?limit=200";;
+		*sourceforge.net*)
+			url="https://sourceforge.net/projects/$(echo $url | cut -d / -f5)/rss?limit=200";;
+		*gitlab.com*)
+			url=$(echo $url | cut -d/ -f1-5)/tags;;
+		*python.org*|*pypi.org*|*pythonhosted.org*|*pypi.io*)
+			url=https://pypi.org/simple/${name/python?-/};;
+		*rubygems.org*)
+			url=https://rubygems.org/gems/${name/ruby-/};;
+		*launchpad.net*)
+			url=https://launchpad.net/$(echo $url | cut -d / -f4)/+download;;
+		*ftp.gnome.org*)
+			url=https://ftp.gnome.org/pub/gnome/sources/$filename/cache.json;;
+		*archive.xfce.org*)
+			url=http://archive.xfce.org/src/$(echo $url | cut -d / -f5)/$name/;;
+	esac
+}
+
+check() {
+	ppath=$1
+	
+	if [ -f $ppath/Pkgfile ]; then
+		source $ppath/Pkgfile
+	else
+		return
+	fi
+
+	if [ ${#source[@]} = 0 ]; then
+		return
+	fi
+	
+	file=$(basename ${source[0]})
+	ext=$(echo $FILE | sed 's/.*\(\.t.*\).*/\1/')
+	filename=$(basename $file)
+	filename=${filename%-*}
+
+	if [ $(echo ${source[0]} | grep "::") ]; then
+		url=$(echo ${source[0]} | awk -F '::' '{print $2}')
+		url=$(dirname $url)/
+	else
+		url=$(dirname ${source[0]})/
+	fi
+
+	alter_per_url
+
+	[ -f $ppath/update ] && . $ppath/update
+
+	if [ "$(type -t getver_${name})" = "function" ]; then
+		run_check getver_${name}
+	else
+		case $url in
+			*github.com*|*gitlab.com*)
+				run_check getver_github;;
+			*ftp.gnome.org*)
+				run_check getver_gnome;;
+			*archive.xfce.org*)
+				run_check getver_xfce4;;
+			*rubygems.org*)
+				run_check getver_ruby;;
+			*kde.org/stable/plasma*|*kde.org/stable/frameworks*|*kde.org/stable/applications*)
+				;;
+			*)
+				run_check getver;;
+		esac
+	fi
+	
+	unset name version source
+}
+
+parseopt() {
+	while [ $1 ]; do
+		case $1 in
+			-r) while [ $2 ]; do
+					case $2 in
+						-*) break;;
+						*) REPO+=($2)
+					esac
+					shift
+				done;;
+			-o) OUT=1;;
+			-v) VERBOSE=1;;
+			-u) UPDATE=1;;
+			 *) PKG+=($1);;
+		esac
+		shift
+	done
+}
+
+main() {
+	parseopt $@
+	
+	[ "$OUT" = 1 ] && rm -f outdate error
+	
+	if [ "$REPO" ]; then
+		for r in ${REPO[@]}; do
+			if [ -d "$r" ]; then
+				for d in $r/*/Pkgfile; do
+					check $(dirname $d)
+				done
+			fi
+		done
+	elif [ ${#PKG[@]} -gt 0 ]; then
+		for p in ${PKG[@]}; do
+			check $(find . -maxdepth 2 -mindepth 2 -name $p -printf "%P\n" | head -n1)
+		done
+	else
+		for d in */*/Pkgfile; do
+			check $(dirname $d)
+		done
+	fi
+}
+
+main $@
+
+exit 0

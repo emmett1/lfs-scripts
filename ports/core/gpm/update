@@ -1,0 +1,5 @@
+url=https://github.com/telmich/gpm/tags
+
+getver_gpm() {
+	getver_github | grep -Ev "1.99*"
+}

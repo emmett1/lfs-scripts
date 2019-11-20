@@ -1,0 +1,9 @@
+url=https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+
+getver_linux-firmware() {
+	fetch \
+	| grep -Eo h=[0-9.]+ \
+	| sed 's/h=//' \
+	| sort -V \
+	| uniq
+}

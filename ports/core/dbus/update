@@ -1,0 +1,3 @@
+getver_dbus() {
+	getver | grep -Ev *.[0-9][13579].*
+}

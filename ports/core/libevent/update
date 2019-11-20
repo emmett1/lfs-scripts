@@ -1,0 +1,9 @@
+getver_libevent() {
+	fetch \
+	| grep archive \
+	| grep -Eo release-[0-9.]+-stable.tar.gz \
+	| sed 's/release-//;s/-stable.*//' \
+	| sort -V \
+	| uniq
+}
+

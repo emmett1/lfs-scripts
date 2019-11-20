@@ -1,0 +1,3 @@
+getver_efibootmgr() {
+	getver_github | grep -v branchpoint
+}
