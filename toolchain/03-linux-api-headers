@@ -1,6 +1,6 @@
 name=linux
-version=4.19.66
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz)
+version=5.4.44
+source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz)
 
 build() {
 	cd linux-$version

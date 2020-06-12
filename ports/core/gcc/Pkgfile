@@ -20,6 +20,10 @@ build() {
 	sed -e '/m64=/s/lib64/lib/' \
 	        -i.orig gcc/config/i386/t-linux64
 
+	# fix a problem introduced by Glibc-2.31
+	sed -e '1161 s|^|//|' \
+	    -i libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+
 	mkdir -v build
 	cd       build
 

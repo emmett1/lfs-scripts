@@ -4,7 +4,7 @@
 # Depends on:  acl gawk
 
 name=vim
-version=8.1.1967
+version=8.2.0190
 release=1
 source=(https://github.com/vim/vim/archive/v$version.tar.gz)
 

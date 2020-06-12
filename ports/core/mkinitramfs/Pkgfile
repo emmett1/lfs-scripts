@@ -4,12 +4,13 @@
 # Depends on:  libarchive bash
 
 name=mkinitramfs
-version=20190819
+version=20200118
 release=1
-_commit=39f3bb586bb2f77729c0efe5f1642a166f30f7e9
-source=(https://github.com/emmett1/mkinitramfs/archive/$_commit.tar.gz)
+source=(https://github.com/venomlinux/mkinitramfs/archive/$version/$name-$version.tar.gz
+        https://github.com/venomlinux/mkinitramfs/commit/2b323335ff368f0bbd40ed7cd907648b2e35bcc1.patch)
 
 build() {
-        cd $name-$_commit
+        cd $name-$version
+        patch -Np1 -i $SRC/2b323335ff368f0bbd40ed7cd907648b2e35bcc1.patch
         DESTDIR=$PKG ./INSTALL.sh
 }

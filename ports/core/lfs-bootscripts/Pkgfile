@@ -6,7 +6,7 @@
 name=lfs-bootscripts
 version=20191031
 release=1
-source=(http://www.linuxfromscratch.org/lfs/downloads/development/$name-$version.tar.xz
+source=(http://www.linuxfromscratch.org/lfs/downloads/9.1/lfs-bootscripts-$version.tar.xz
 	lfs-bootscripts_add-support-uefi.patch
 	clock
 	console

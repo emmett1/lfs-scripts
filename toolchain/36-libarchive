@@ -1,5 +1,5 @@
 name=libarchive
-version=3.4.0
+version=3.4.2
 source=(https://github.com/libarchive/libarchive/releases/download/v$version/libarchive-$version.tar.gz)
 
 build() {

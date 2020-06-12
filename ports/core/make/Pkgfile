@@ -4,15 +4,12 @@
 # Depends on:  
 
 name=make
-version=4.2.1
+version=4.3
 release=1
-source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
         cd $name-$version
-
-        # work around an error caused by glibc-2.27
-        sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c
 
         ./configure --prefix=/usr
         make

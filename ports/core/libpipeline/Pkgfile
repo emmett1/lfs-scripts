@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=libpipeline
-version=1.5.1
+version=1.5.2
 release=1
 source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
 

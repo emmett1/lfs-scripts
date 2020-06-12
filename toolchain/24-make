@@ -1,11 +1,10 @@
 name=make
-version=4.2.1
+version=4.3
 source=(http://ftp.gnu.org/gnu/make/make-$version.tar.gz)
 
 build() {
 	cd $name-$version
 
-	sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c
 	./configure --prefix=/tools --without-guile
 	make
 	make install

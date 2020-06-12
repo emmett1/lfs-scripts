@@ -1,6 +1,6 @@
 name=gcc
 version=9.2.0
-gmp_version=6.1.2
+gmp_version=6.2.0
 mpc_version=1.1.0
 mpfr_version=4.0.2
 source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz

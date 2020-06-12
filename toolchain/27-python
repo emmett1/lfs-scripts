@@ -1,5 +1,5 @@
 name=python
-version=3.8.0
+version=3.8.1
 source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
 
 build() {

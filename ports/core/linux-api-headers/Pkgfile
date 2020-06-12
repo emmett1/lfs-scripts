@@ -4,16 +4,17 @@
 # Depends on:  
 
 name=linux-api-headers
-version=4.19.66
+version=5.4.44
 release=1
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz)
+source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz)
 
 build() {
         cd linux-$version
 
         make mrproper
-        make INSTALL_HDR_PATH=dest headers_install
-        find dest/include \( -name .install -o -name ..install.cmd \) -delete
+	make headers
+        find usr/include -name '.*' -delete
+	rm usr/include/Makefile
         mkdir -p $PKG/usr/include
-        cp -rv dest/include/* $PKG/usr/include
+        cp -rv usr/include/* $PKG/usr/include
 }

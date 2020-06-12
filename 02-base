@@ -68,11 +68,11 @@ mount_pseudo() {
 }
 
 umount_pseudo() {
-	mountpoint -q $LFS/dev/pts && umount $LFS/dev/pts
-	mountpoint -q $LFS/dev && umount $LFS/dev
-	mountpoint -q $LFS/run && umount $LFS/run
-	mountpoint -q $LFS/proc && umount $LFS/proc
-	mountpoint -q $LFS/sys && umount $LFS/sys
+	unmount $LFS/dev/pts
+	unmount $LFS/dev
+	unmount $LFS/run
+	unmount $LFS/proc
+	unmount $LFS/sys
 }
 
 mountbind_cache() {
@@ -84,8 +84,15 @@ mountbind_cache() {
 
 umountbind_cache() {
 	# umount binded cachedir
-	umount $LFS/var/lib/pkg/src &>/dev/null
-	umount $LFS/var/lib/pkg/pkg &>/dev/null
+	unmount $LFS/var/lib/pkg/src
+	unmount $LFS/var/lib/pkg/pkg
+}
+
+unmount() {
+	while true; do
+		mountpoint -q $1 || break
+		umount $1 2>/dev/null
+	done
 }
 
 
@@ -136,7 +143,7 @@ else
 	ENVLFS=/tools/bin/env
 fi
 
-PKGS="filesystem linux-api-headers man-pages glibc tzdata zlib file readline m4 bc binutils gmp mpfr mpc attr acl shadow gcc bzip2
+PKGS="filesystem linux-api-headers man-pages glibc tzdata zlib bzip2 file readline m4 bc binutils gmp mpfr mpc attr acl shadow gcc
 	pkg-config ncurses libcap sed psmisc iana-etc bison flex grep bash libtool gdbm gperf expat inetutils
 	perl perl-xml-parser intltool autoconf automake xz kmod gettext elfutils libffi openssl python3 coreutils
 	diffutils gawk findutils groff fuse2 grub less gzip iproute2 kbd libpipeline make patch man-db tar texinfo vim procps-ng
@@ -149,9 +156,9 @@ if [ ! -f $LFS/var/lib/pkg/db ]; then
 fi
 	
 mkdir -p $LFS/usr/ports/
-runinchroot ports -u || die
-#echo "==> Copying ports"
-#cp -Ra ports/* $LFS/usr/ports/
+#runinchroot ports -u || die
+echo "==> Copying ports"
+cp -Ra ports/* $LFS/usr/ports/
 
 mountbind_cache
 

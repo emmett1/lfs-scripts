@@ -4,7 +4,7 @@
 # Depends on:  bash bc
 
 name=e2fsprogs
-version=1.45.4
+version=1.45.6
 release=1
 source=(https://www.kernel.org/pub/linux/kernel/people/tytso/$name/v$version/$name-$version.tar.xz)
 

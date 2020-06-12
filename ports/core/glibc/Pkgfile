@@ -4,10 +4,10 @@
 # Depends on:  
 
 name=glibc
-version=2.30
+version=2.31
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/lfs/9.0/$name-$version-fhs-1.patch)
+	http://www.linuxfromscratch.org/patches/lfs/9.1/$name-$version-fhs-1.patch)
 
 build() {
 	if [ "$MULTILIB" = "yes" ]; then
