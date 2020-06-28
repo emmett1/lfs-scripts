@@ -20,10 +20,6 @@ build() {
 	make
 	make install
 	make -C ld clean
-	if [ "$MULTILIB" = "yes" ]; then
-		make -C ld LIB_PATH=/usr/lib:/lib:/usr/lib32:/lib32
-	else
-		make -C ld LIB_PATH=/usr/lib:/lib
-	fi
+	make -C ld LIB_PATH=/usr/lib:/lib:/usr/lib32
 	cp -v ld/ld-new /tools/bin
 }

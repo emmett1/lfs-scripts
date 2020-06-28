@@ -9,12 +9,6 @@ source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
 	http://www.mpfr.org/mpfr-$mpfr_version/mpfr-$mpfr_version.tar.xz)
 
 build() {
-	if [ "$MULTILIB" = "yes" ]; then
-		multilibopt="--with-multilib-list=m32,m64"
-	else
-		multilibopt="--disable-multilib"
-	fi
-
 	cd $name-$version
 
 	mv -v ../mpfr-$mpfr_version mpfr
@@ -37,15 +31,10 @@ build() {
 	  touch $file.orig
 	done
 	
-	if [ "$MULTILIB" = "yes" ]; then
-		sed -i -e 's@/lib/ld-linux.so.2@/lib32/ld-linux.so.2@g' gcc/config/i386/linux64.h
-		sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
-		echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
-	else
-		sed -e '/m64=/s/lib64/lib/' \
-		    -i.orig gcc/config/i386/t-linux64
-	fi
-
+	sed -i -e 's@/lib/ld-linux.so.2@/lib32/ld-linux.so.2@g' gcc/config/i386/linux64.h
+	sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
+	echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
+	
 	# fix a problem introduced by Glibc-2.31
 	sed -e '1161 s|^|//|' \
 	    -i libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
@@ -57,14 +46,15 @@ build() {
 	CXX=$LFS_TGT-g++                                   \
 	AR=$LFS_TGT-ar                                     \
 	RANLIB=$LFS_TGT-ranlib                             \
-	../configure $multilibopt                              \
+	../configure                                           \
 		--prefix=/tools                                \
 		--with-local-prefix=/tools                     \
 		--with-native-system-header-dir=/tools/include \
 		--enable-languages=c,c++                       \
 		--disable-libstdcxx-pch                        \
 		--disable-bootstrap                            \
-		--disable-libgomp
+		--disable-libgomp                              \
+		--with-multilib-list=m32,m64
 	make
 	make install
 	ln -sv gcc /tools/bin/cc

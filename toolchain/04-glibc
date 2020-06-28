@@ -5,14 +5,13 @@ source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz)
 build() {
 	cd $name-$version
 
-	if [ "$MULTILIB" = "yes" ]; then
 	mkdir -v build32
 	cd       build32
 		
 	echo slibdir=/tools/lib32 > configparms
 	../configure                             \
 		  --prefix=/tools                    \
-		  --host=i686-lfs-linux-gnu          \
+		  --host=$LFS_TGT32                  \
 		  --build=$(../scripts/config.guess) \
 		  --libdir=/tools/lib32              \
 		  --enable-kernel=3.2                \
@@ -22,7 +21,6 @@ build() {
 	make
 	make install
 	cd -
-	fi
 
 	mkdir -v build
 	cd       build

@@ -75,26 +75,12 @@ umount_pseudo() {
 	unmount $LFS/sys
 }
 
-mountbind_cache() {
-	# mount bind cachedir
-	mkdir -p $LFS/var/lib/pkg/{pkg,src} $CWD/{sources,packages}
-	mount --bind $CWD/sources $LFS/var/lib/pkg/src
-	mount --bind $CWD/packages $LFS/var/lib/pkg/pkg
-}
-
-umountbind_cache() {
-	# umount binded cachedir
-	unmount $LFS/var/lib/pkg/src
-	unmount $LFS/var/lib/pkg/pkg
-}
-
 unmount() {
 	while true; do
 		mountpoint -q $1 || break
 		umount $1 2>/dev/null
 	done
 }
-
 
 runinchroot() {
 	pushd $LFS &>/dev/null
@@ -117,7 +103,6 @@ interrupted() {
 
 die() {
 	[ "$@" ] && printerror $@
-	umountbind_cache
 	umount_pseudo
 	exit 1
 }
@@ -154,13 +139,11 @@ PKGS="filesystem linux-api-headers man-pages glibc tzdata zlib bzip2 file readli
 if [ ! -f $LFS/var/lib/pkg/db ]; then
 	lfs_dirs
 fi
-	
+
+rm -fr $LFS/usr/ports
 mkdir -p $LFS/usr/ports/
-#runinchroot ports -u || die
 echo "==> Copying ports"
 cp -Ra ports/* $LFS/usr/ports/
-
-mountbind_cache
 
 for pkg in $PKGS; do
 	case $pkg in
@@ -168,7 +151,5 @@ for pkg in $PKGS; do
 		*) runinchroot pkgin -i $pkg || die;;
 	esac
 done
-
-umountbind_cache
 
 exit 0

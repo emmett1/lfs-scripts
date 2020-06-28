@@ -9,12 +9,6 @@ release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version/$name-$version.tar.xz)
 
 build() {
-	if [ "$MULTILIB" = "yes" ]; then
-		multilibopt="--enable-multilib"
-	else
-		multilibopt="--disable-multilib"
-	fi
-
 	cd $name-$version
 
 	sed -e '/m64=/s/lib64/lib/' \
@@ -28,11 +22,12 @@ build() {
 	cd       build
 
 	SED=sed                               \
-	../configure $multilibopt             \
+	../configure                          \
 	             --prefix=/usr            \
 	             --enable-languages=c,c++ \
 	             --disable-bootstrap      \
-	             --with-system-zlib
+	             --with-system-zlib       \
+	             --enable-multilib
 	make
 	make -j1 DESTDIR=$PKG install
 

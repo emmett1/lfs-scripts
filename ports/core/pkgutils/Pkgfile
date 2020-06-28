@@ -24,9 +24,4 @@ build () {
 	       -e 's/ -static//' Makefile
 	make DESTDIR=$PKG install
 	install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
-
-	if [ "$MULTILIB" = "yes" ]; then
-		sed -i 's/#export MULTILIB=/export MULTILIB=/' \
-		    $PKG/etc/pkgmk.conf
-	fi
 }

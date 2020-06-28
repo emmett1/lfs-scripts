@@ -5,7 +5,6 @@ source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz)
 build() {
 	cd $name-$version
 
-	if [ "$MULTILIB" = "yes" ]; then
 	mkdir -v build32
 	cd       build32
 		
@@ -23,7 +22,6 @@ build() {
 	make
 	make install
 	cd -
-	fi
 
 	mkdir -v build
 	cd       build

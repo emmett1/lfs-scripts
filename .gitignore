@@ -1,3 +1,4 @@
 *.iso
-sources
-packages
+*.tar.xz
+*.img
+

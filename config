@@ -1,16 +1,9 @@
+# config file for toolchain scripts
+# modify according your needs
 
 MAKEFLAGS="-j$(nproc)"
 LFS="/mnt/lfs"
 LFS_TGT=$(uname -m)-lfs-linux-gnu
-
-TCDIR=$CWD/toolchain
-SRCDIR=$CWD/sources
-PATCHDIR=$CWD/patches
-FILEDIR=$CWD/files
-WORKDIR=/tmp
-
-LABEL=LFSLIVECD
-OUTPUT=lfs-livecd-$(date +"%Y%m%d")
-WDIR=/tmp/lfsiso
-
-#MULTILIB=yes
+LFS_TGT32=i686-lfs-linux-gnu
+SRCDIR=$LFS/var/lib/pkg/src
+WORKDIR=$LFS/tmp

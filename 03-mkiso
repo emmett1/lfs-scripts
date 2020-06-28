@@ -18,11 +18,18 @@ mount_pseudofs() {
 }
 
 umount_pseudofs() {
-	umount $LFS/dev/pts &>/dev/null
-	umount $LFS/dev &>/dev/null
-	umount $LFS/run &>/dev/null
-	umount $LFS/proc &>/dev/null
-	umount $LFS/sys &>/dev/null
+	unmount $LFS/dev/pts
+	unmount $LFS/dev
+	unmount $LFS/run
+	unmount $LFS/proc
+	unmount $LFS/sys
+}
+
+unmount() {
+	while true; do
+		mountpoint -q $1 || break
+		umount $1 2>/dev/null
+	done
 }
 
 interrupted() {
@@ -30,7 +37,6 @@ interrupted() {
 }
 
 cleanup() {
-	#rm -fr $LFS
 	rm -fr $WDIR
 }
 
@@ -50,12 +56,16 @@ printerror() {
 }
 
 CWD=$PWD
+LFS="/mnt/lfs"
+WORKDIR="$LFS/tmp"
+WDIR="$WORKDIR/iso"
+LABEL="LFSLIVECD"
+OUTPUT="lfs-livecd-$(date +"%Y%m%d").iso"
+FILEDIR="$CWD/files"
 
-source $CWD/config
+. $CWD/config
 
 isolinux_files="chain.c32 isolinux.bin ldlinux.c32 libutil.c32 reboot.c32 menu.c32 libcom32.c32 poweroff.c32"
-
-OUTPUT=$OUTPUT.iso
 
 rm -fr $WDIR
 mkdir -p $WDIR
@@ -78,7 +88,7 @@ mksquashfs $LFS $WDIR/lfs/root.sfs \
 		-e $LFS/tools/ \
 		-e $LFS/tmp/* 2>/dev/null || die "failed create squashed filesystem"
 
-printstep "Preparing kernel and initramfs..."	
+printstep "Preparing kernel and initramfs..."
 cp $LFS/boot/vmlinuz-lfs $WDIR/boot/vmlinuz || die "failed copying kernel"
 cp files/livecd.hook $LFS/etc/mkinitramfs.d
 kernver=$(file $LFS/boot/vmlinuz-lfs | cut -d ' ' -f9)
@@ -114,14 +124,14 @@ xorriso -as mkisofs \
     -isohybrid-mbr /usr/share/syslinux/isohdpfx.bin \
     -c isolinux/boot.cat \
     -b isolinux/isolinux.bin \
-      -no-emul-boot \
-      -boot-load-size 4 \
-      -boot-info-table \
-      -eltorito-alt-boot \
-	  -e boot/efiboot.img \
-      -no-emul-boot \
-      -isohybrid-gpt-basdat \
-      -volid $LABEL \
+    -no-emul-boot \
+    -boot-load-size 4 \
+    -boot-info-table \
+    -eltorito-alt-boot \
+    -e boot/efiboot.img \
+    -no-emul-boot \
+    -isohybrid-gpt-basdat \
+    -volid $LABEL \
     -o $OUTPUT $WDIR || die "failed create iso"
 
 printstep "Cleaning up..."

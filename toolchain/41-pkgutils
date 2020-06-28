@@ -27,7 +27,6 @@ export CXXFLAGS="${CFLAGS}"
 
 export JOBS=$(nproc)
 export MAKEFLAGS="-j $JOBS"
-#export MULTILIB="yes"
 
 PKGMK_SOURCE_DIR="/var/lib/pkg/src"
 PKGMK_PACKAGE_DIR="/var/lib/pkg/pkg"
@@ -38,9 +37,4 @@ PKGMK_COMPRESSION_MODE="xz"
 
 # End of file
 EOF
-
-if [ "$MULTILIB" = "yes" ]; then
-	sed -i 's/#export MULTILIB=/export MULTILIB=/' \
-	    /tools/etc/pkgmk.conf
-fi
 }

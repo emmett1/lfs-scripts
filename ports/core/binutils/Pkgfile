@@ -9,16 +9,12 @@ release=1
 source=(https://ftp.gnu.org/gnu/binutils/$name-$version.tar.xz)
 
 build() {
-	if [ "$MULTILIB" = "yes" ]; then
-		multilibopt="--enable-multilib --with-lib-path=/usr/lib:/lib:/usr/lib32"
-	fi
-
         cd $name-$version
 
         mkdir -v build
         cd       build
 
-        ../configure $multilibopt        \
+        ../configure \
 	             --prefix=/usr       \
 	             --enable-gold       \
 	             --enable-ld=default \
@@ -26,7 +22,9 @@ build() {
 	             --enable-shared     \
 	             --disable-werror    \
 	             --enable-64-bit-bfd \
-	             --with-system-zlib
+	             --with-system-zlib  \
+	             --enable-multilib   \
+	             --with-lib-path=/usr/lib:/lib:/usr/lib32
         make tooldir=/usr
         make tooldir=/usr DESTDIR=$PKG install
 }

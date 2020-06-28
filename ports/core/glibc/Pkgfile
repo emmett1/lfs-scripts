@@ -10,10 +10,6 @@ source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
 	http://www.linuxfromscratch.org/patches/lfs/9.1/$name-$version-fhs-1.patch)
 
 build() {
-	if [ "$MULTILIB" = "yes" ]; then
-		multilibopt="--enable-multi-arch"
-	fi
-
 	cd $name-$version
 
 	patch -Np1 -i ../$name-$version-fhs-1.patch
@@ -26,12 +22,13 @@ build() {
 	cd       build
 
 	CC="gcc -ffile-prefix-map=/tools=/usr" \
-	../configure $multilibopt                           \
+	../configure                                        \
 	             --prefix=/usr                          \
 	             --disable-werror                       \
 	             --enable-kernel=3.2                    \
 	             --enable-stack-protector=strong        \
 	             --with-headers=/usr/include            \
+	             --enable-multi-arch                    \
 	             libc_cv_slibdir=/lib
 	make
 	mkdir -p $PKG/etc
@@ -45,7 +42,6 @@ build() {
 	make install_root=$PKG localedata/install-locales
 
 	# 32bit
-	if [ "$MULTILIB" = "yes" ]; then
 	mkdir -v ../build32
 	cd ../build32
 	CC="gcc -m32" \
@@ -72,7 +68,6 @@ build() {
 	ln -sv ../lib/locale $PKG/usr/lib32/locale
 	echo "/usr/lib32" > $PKG/etc/ld.so.conf.d/lib32.conf
 	cd -
-	fi
 
 	cat > $PKG/etc/nsswitch.conf << "EOF"
 # Begin /etc/nsswitch.conf

@@ -4,7 +4,7 @@
 
 name=libevent
 version=2.1.11
-release=2
+release=1
 source=(https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz)
 
 build() {

@@ -108,6 +108,10 @@ source $CWD/config
 
 PATH=/tools/bin:/bin:/usr/bin
 
+TCDIR=$CWD/toolchain
+PATCHDIR=$CWD/patches
+FILEDIR=$CWD/files
+
 export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT
 
 mkdir -p $TCDIR $SRCDIR $WORKDIR
