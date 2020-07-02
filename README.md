@@ -52,7 +52,7 @@ $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 - Run script `01-toolchain` to build temporary toolchain.
 - Run script `02-base` to build base LFS system.
 - Optionally run script `03-mkiso` to build live iso, then you can test the iso using qemu by running `./run_qemu <iso file>`.
-- Run `./enter-chroot` to enter chroot environment to configure your system. [check here](./rootfs/root/README)
+- Run `./enter-chroot` to enter chroot environment to configure your system. [configure instruction here](./rootfs/root/README)
 - Exit chroot environment.
 - Then you should have working LFS system now.
 - Reboot to test it out.
