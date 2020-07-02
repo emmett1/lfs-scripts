@@ -44,7 +44,7 @@ Basically you just need to run all those 3 scripts without other command to get 
 ```
 $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 ```
-*Note: script 01-toolchain gonna ask for sudo password
+> Note: script 01-toolchain gonna ask for sudo password
 
 - First grab any distro's livecd to use as host, or you can just your current running linux distro as host. (read below for tested livecd)
 - Prepare your partition for LFS and mount it on `/mnt/lfs` or you can change where LFS build directory in `config` file.
