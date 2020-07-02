@@ -5,7 +5,7 @@ source=(https://github.com/libarchive/libarchive/releases/download/v$version/lib
 build() {
 	cd $name-$version
 
-	./configure --prefix=/tools --without-xml2 --disable-shared
+	./configure --prefix=/tools --without-xml2
 	make
 	make install
 }

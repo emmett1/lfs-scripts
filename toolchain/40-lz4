@@ -1,9 +1,0 @@
-name=lz4
-version=1.9.2
-source=(https://github.com/lz4/lz4/archive/v$version.tar.gz)
-
-build() {
-	cd $name-$version
-	make PREFIX=/tools
-	make PREFIX=/tools install
-}

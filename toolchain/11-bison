@@ -4,7 +4,6 @@ source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
 
 build() {
 	cd $name-$version
-
 	./configure --prefix=/tools
 	make
 	make install

@@ -7,7 +7,8 @@ build() {
 
 	sed -i s/mawk// configure
 	
-	./configure --prefix=/tools \
+	./configure \
+		--prefix=/tools \
 		--with-shared   \
 		--without-debug \
 		--without-ada   \

@@ -73,7 +73,7 @@ mkdir -p $WDIR
 printstep "Preparing isolinux files..."
 mkdir -p $WDIR/{lfs,isolinux,boot}
 for file in $isolinux_files; do
-	cp /usr/share/syslinux/$file $WDIR/isolinux
+	cp $LFS/usr/share/syslinux/$file $WDIR/isolinux || die "failed copying '$file'"
 done
 #cp isolinux/splash.png $WDIR/isolinux
 cp $FILEDIR/isolinux.cfg $WDIR/isolinux
@@ -92,19 +92,19 @@ printstep "Preparing kernel and initramfs..."
 cp $LFS/boot/vmlinuz-lfs $WDIR/boot/vmlinuz || die "failed copying kernel"
 cp files/livecd.hook $LFS/etc/mkinitramfs.d
 kernver=$(file $LFS/boot/vmlinuz-lfs | cut -d ' ' -f9)
-chroot_run mkinitramfs -k $kernver -a livecd -o /boot/initrd-lfs.img || die "failed create initramfs"
-mv $LFS/boot/initrd-lfs.img $WDIR/boot/initrd || die "failed copying initrd"
+chroot_run mkinitramfs -k $kernver -a livecd -o /boot/initrd-live.img || die "failed create initramfs"
+mv $LFS/boot/initrd-live.img $WDIR/boot/initrd || die "failed copying initrd"
 
 printstep "Setup UEFI mode..."
 mkdir -p $WDIR/boot/{grub/{fonts,x86_64-efi},EFI}
-if [ -f /usr/share/grub/unicode.pf2 ];then
-	cp /usr/share/grub/unicode.pf2 $WDIR/boot/grub/fonts
+if [ -f $LFS/usr/share/grub/unicode.pf2 ];then
+	cp $LFS/usr/share/grub/unicode.pf2 $WDIR/boot/grub/fonts
 fi
 if [ -f $WDIR/isolinux/splash.png ]; then
 	cp $WDIR/isolinux/splash.png $WDIR/boot/grub/
 fi
 echo "set prefix=/boot/grub" > $WDIR/boot/grub-early.cfg
-cp -a /usr/lib/grub/x86_64-efi/*.{mod,lst} $WDIR/boot/grub/x86_64-efi || die "Failed copying efi files"
+cp -a $LFS/usr/lib/grub/x86_64-efi/*.{mod,lst} $WDIR/boot/grub/x86_64-efi || die "Failed copying efi files"
 cp $FILEDIR/grub.cfg $WDIR/boot/grub/
 
 grub-mkimage -c $WDIR/boot/grub-early.cfg -o $WDIR/boot/EFI/bootx64.efi -O x86_64-efi -p "" iso9660 normal search search_fs_file

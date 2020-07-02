@@ -1,0 +1,97 @@
+#!/bin/sh
+#
+# script to enter chroot
+#
+
+printhelp() {
+	cat << EOF
+
+Usage:
+  $(basename $0) [command]
+  
+If 'command' is unspecified, ${0##*/} will launch /bin/sh.
+  
+EOF
+}
+
+msgerr() {
+	echo "ERROR: $*"
+}
+
+unmount() {
+	while true; do
+		mountpoint -q $1 || break
+		umount $1 2>/dev/null
+	done
+}
+	
+[ "$(id -u)" = "0" ] || {
+	msgerr "$(basename $0) need root access!"
+	printhelp
+	exit 1
+}
+
+LFS="/mnt/lfs"
+
+if [ -f ./config ]; then
+	. ./config
+fi
+
+[ -d "$LFS" ] || {
+	msgerr "Directory '$LFS' not exist!"
+	printhelp
+	exit 1
+}
+
+if [ ! "$1" ]; then
+	CMD="/bin/sh"
+else
+	CMD=$*
+fi
+
+if [ -e /sys/firmware/efi/systab ]; then
+	EFI_SYSTEM=1
+fi
+
+mount --bind /dev $LFS/dev
+mount -t devpts devpts $LFS/dev/pts -o gid=5,mode=620
+mount -t proc proc $LFS/proc
+mount -t sysfs sysfs $LFS/sys
+if [ -n "$EFI_SYSTEM" ]; then
+	mount --bind /sys/firmware/efi/efivars $LFS/sys/firmware/efi/efivars
+fi
+mount -t tmpfs tmpfs $LFS/run
+
+if [ -h $LFS/dev/shm ]; then
+  mkdir -p $LFS/$(readlink $LFS/dev/shm)
+fi
+
+[ -f $LFS/etc/resolv.conf ] && {
+	backupresolvconf=1
+	mv $LFS/etc/resolv.conf $LFS/etc/resolv.conf.tmp
+}
+cp -L /etc/resolv.conf $LFS/etc
+
+chroot "$LFS" /usr/bin/env -i \
+HOME=/root \
+TERM="$TERM" \
+PS1='\u:\w\$ ' \
+PATH=/bin:/usr/bin:/sbin:/usr/sbin $CMD
+
+retval=$?
+
+[ "$backupresolvconf" = 1 ] && {
+	mv $LFS/etc/resolv.conf.tmp $LFS/etc/resolv.conf
+}
+
+unmount $LFS/dev/pts
+unmount $LFS/dev
+unmount $LFS/run
+unmount $LFS/proc
+if [ -n "$EFI_SYSTEM" ]; then
+	unmount $LFS/sys/firmware/efi/efivars
+fi
+unmount $LFS/sys
+
+exit $retval
+

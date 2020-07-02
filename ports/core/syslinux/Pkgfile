@@ -1,0 +1,19 @@
+# Description: Collection of boot loaders for the Linux operating system
+# URL:         
+# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
+# Depends on:  mtools
+
+name=syslinux
+version=6.03
+release=1
+source=(http://www.kernel.org/pub/linux/utils/boot/$name/$name-$version.tar.xz
+        $name-$version-sysmacros.patch)
+
+build() {
+	cd $name-$version
+
+	patch -p1 -i $SRC/$name-$version-sysmacros.patch
+
+	make OPTFLAGS="$CFLAGS" installer
+	make OPTFLAGS="$CFLAGS" INSTALLROOT=$PKG MANDIR=/usr/share/man install
+}

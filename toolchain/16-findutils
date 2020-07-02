@@ -1,0 +1,10 @@
+name=findutils
+version=4.7.0
+source=(http://ftp.gnu.org/gnu/findutils/findutils-$version.tar.xz)
+
+build() {
+	cd $name-$version	
+	./configure --prefix=/tools
+	make
+	make install
+}
