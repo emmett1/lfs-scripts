@@ -2,14 +2,14 @@
 
 This repo contain scripts to automate multilib LFS build + livecd. This LFS build is using [CRUX](https://crux.nu)'s pkgutils for managing packages and initramfs generator from [Venom Linux](https://venomlinux.org) for livecd initramfs.
 
-#### Requirements
+### Requirements
 
 * sudo
 * wget
 * passes lfs version-check.sh test
 * squashfs-tools & libisoburn (optional to create the livecd iso)
 
-#### scripts
+### Scripts
 
 * 01-toolchain
   - toolchain script to build base lfs (required)
@@ -38,7 +38,7 @@ This repo contain scripts to automate multilib LFS build + livecd. This LFS buil
 * version-check.sh
   - script to check utilities requirements to build lfs
   
-#### Step
+### Step
 
 Basically you just need to run all those 3 scripts without other command to get LFS system built including live ISO. You can run:
 ```
@@ -57,7 +57,7 @@ $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 - Then you should have working LFS system now.
 - Reboot to test it out.
 
-#### Host livecd distro
+### Tested host
 
 - [Artix Linux](https://artixlinux.org/) - require base-devel and wget
 - [Arya Linux](https://aryalinux.info/) (live environment)
