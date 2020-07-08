@@ -121,7 +121,7 @@ rm -fr $WDIR/boot/efiboot
 printstep "Making the iso..."
 rm -f $OUTPUT
 xorriso -as mkisofs \
-    -isohybrid-mbr /usr/share/syslinux/isohdpfx.bin \
+    -isohybrid-mbr $LFS/usr/share/syslinux/isohdpfx.bin \
     -c isolinux/boot.cat \
     -b isolinux/isolinux.bin \
     -no-emul-boot \
