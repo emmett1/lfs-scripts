@@ -59,6 +59,8 @@ $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 
 ### Tested host
 
+- [Venom Linux](https://venomlinux.org)
 - [Artix Linux](https://artixlinux.org/) - require base-devel and wget
 - [Arya Linux](https://aryalinux.info/) (live environment)
+- [Slackware](http://www.slackware.com/) - Thanks to [joe71](https://github.com/joe71) for testing
 - (more will come)
