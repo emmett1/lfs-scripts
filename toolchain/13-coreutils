@@ -1,5 +1,5 @@
 name=coreutils
-version=8.31
+version=8.32
 source=(http://ftp.gnu.org/gnu/coreutils/coreutils-$version.tar.xz)
 
 build() {

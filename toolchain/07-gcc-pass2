@@ -1,8 +1,8 @@
 name=gcc
-version=9.2.0
+version=10.2.0
 gmp_version=6.2.0
-mpc_version=1.1.0
-mpfr_version=4.0.2
+mpc_version=1.2.1
+mpfr_version=4.1.0
 source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
 	http://ftp.gnu.org/gnu/gmp/gmp-$gmp_version.tar.xz
 	https://ftp.gnu.org/gnu/mpc/mpc-$mpc_version.tar.gz
@@ -35,10 +35,6 @@ build() {
 	sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
 	echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
 	
-	# fix a problem introduced by Glibc-2.31
-	sed -e '1161 s|^|//|' \
-	    -i libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
-
 	mkdir -v build
 	cd       build
 	

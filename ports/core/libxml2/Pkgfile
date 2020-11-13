@@ -11,6 +11,12 @@ source=(http://xmlsoft.org/sources/$name-$version.tar.gz)
 build() {
 	cd $name-$version
 
+	# fix a problem generating the Python3 module with Python-3.9.0 and later
+	sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c}
+
+	# ensure that the Python module can be built by Python-3.9.0
+	sed -i '/_PyVerify_fd/,+1d' python/types.c
+
 	./configure --prefix=/usr    \
 	            --disable-static \
 	            --with-history   \

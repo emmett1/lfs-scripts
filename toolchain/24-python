@@ -1,11 +1,11 @@
 name=python
-version=3.8.1
+version=3.9.0
 source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
 
 build() {
 	cd Python-$version
 
-	sed -i '/def add_multiarch_paths/a \        return' setup.py
+	#sed -i '/def add_multiarch_paths/a \        return' setup.py
 	./configure --prefix=/tools --without-ensurepip
 	make
 	make install

@@ -1,0 +1,9 @@
+# config file for toolchain scripts
+# modify according your needs
+
+#MAKEFLAGS="-j$(nproc)"
+#LFS="/mnt/lfs"
+#PKGDIR="$CWD/pkg"
+#SRCDIR="$CWD/src"
+#WORKDIR="/tmp"
+#CFLAGS="-O2 -march=x86-64 -pipe"

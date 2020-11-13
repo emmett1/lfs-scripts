@@ -4,15 +4,15 @@
 # Depends on:  
 
 name=glibc
-version=2.31
+version=2.32
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/lfs/9.1/$name-$version-fhs-1.patch)
+	$name-fhs-1.patch)
 
 build() {
 	cd $name-$version
 
-	patch -Np1 -i ../$name-$version-fhs-1.patch
+	patch -Np1 -i ../$name-fhs-1.patch
 
 	mkdir -p $PKG/lib64
 	ln -sfv ../lib/ld-linux-x86-64.so.2 $PKG/lib64

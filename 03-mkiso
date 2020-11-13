@@ -56,14 +56,21 @@ printerror() {
 }
 
 CWD=$PWD
-LFS="/mnt/lfs"
-WORKDIR="$LFS/tmp"
+
+if [ -f $CWD/config ]; then
+	source $CWD/config
+fi
+
 WDIR="$WORKDIR/iso"
 LABEL="LFSLIVECD"
 OUTPUT="lfs-livecd-$(date +"%Y%m%d").iso"
 FILEDIR="$CWD/files"
 
-. $CWD/config
+MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
+LFS="${LFS:-/mnt/lfs}"
+PKGDIR="${PKGDIR:-$CWD/pkg}"
+SRCDIR="${SRCDIR:-$CWD/src}"
+WORKDIR="${WORKDIR:-/tmp}"
 
 isolinux_files="chain.c32 isolinux.bin ldlinux.c32 libutil.c32 reboot.c32 menu.c32 libcom32.c32 poweroff.c32"
 

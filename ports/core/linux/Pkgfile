@@ -4,7 +4,7 @@
 # Depends on:  elfutils mkinitramfs openssl linux-firmware
 
 name=linux
-version=5.4.44
+version=5.4.74
 release=1
 source=(https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz
         config)

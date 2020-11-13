@@ -20,20 +20,19 @@ build() {
 
 	cp $FILEDIR/pkgin /tools/bin/pkgin
 	
-	cat > /tools/etc/pkgmk.conf << "EOF"
+	cat > /tools/etc/pkgmk.conf << EOF
 #
 # /etc/pkgmk.conf: pkgmk(8) configuration
 #
 
-export CFLAGS="-O2 -march=x86-64 -pipe"
-export CXXFLAGS="${CFLAGS}"
+export CFLAGS="$CFLAGS"
+export CXXFLAGS="\${CFLAGS}"
 
-export JOBS=$(nproc)
-export MAKEFLAGS="-j $JOBS"
+export MAKEFLAGS="$MAKEFLAGS"
 
 PKGMK_SOURCE_DIR="/var/lib/pkg/src"
 PKGMK_PACKAGE_DIR="/var/lib/pkg/pkg"
-PKGMK_WORK_DIR="/var/lib/pkg/work/$name"
+PKGMK_WORK_DIR="/var/lib/pkg/work/\$name"
 PKGMK_DOWNLOAD="yes"
 PKGMK_DOWNLOAD_PROG="curl"
 PKGMK_IGNORE_SIGNATURE="yes"

@@ -4,17 +4,17 @@
 # Depends on:  
 
 name=coreutils
-version=8.31
+version=8.32
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-        http://www.linuxfromscratch.org/patches/lfs/9.1/coreutils-$version-i18n-1.patch)
+       coreutils-i18n-1.patch)
 
 build() {
         cd $name-$version
 
         # fixes POSIX requires that programs from Coreutils recognize
         # character boundaries correctly even in multibyte locales
-        patch -Np1 -i ../coreutils-$version-i18n-1.patch
+        #patch -Np1 -i ../coreutils-i18n-1.patch
         sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk
 
         autoreconf -fiv

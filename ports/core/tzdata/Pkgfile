@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=tzdata
-version=2019c
+version=2020d
 release=1
 source=(https://www.iana.org/time-zones/repository/releases/${name}${version}.tar.gz)
 
@@ -13,7 +13,7 @@ build() {
         mkdir -pv $ZONEINFO/{posix,right}
 
         for tz in etcetera southamerica northamerica europe africa antarctica  \
-                  asia australasia backward pacificnew systemv; do
+                  asia australasia backward; do
             zic -L /dev/null   -d $ZONEINFO       -y "sh yearistype.sh" ${tz}
             zic -L /dev/null   -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
             zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}

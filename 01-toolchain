@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 fetch() {	
 	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
@@ -104,7 +104,9 @@ fi
 
 CWD=$PWD
 
-source $CWD/config
+if [ -f $CWD/config ]; then
+	source $CWD/config
+fi
 
 PATH=/tools/bin:/bin:/usr/bin
 
@@ -112,9 +114,19 @@ TCDIR=$CWD/toolchain
 PATCHDIR=$CWD/patches
 FILEDIR=$CWD/files
 
-export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT
+LFS_TGT=x86_64-lfs-linux-gnu
+LFS_TGT32=i686-lfs-linux-gnu
 
-mkdir -p $TCDIR $SRCDIR $WORKDIR
+MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
+LFS="${LFS:-/mnt/lfs}"
+PKGDIR="${PKGDIR:-$CWD/pkg}"
+SRCDIR="${SRCDIR:-$CWD/src}"
+WORKDIR="${WORKDIR:-/tmp}"
+CFLAGS="${CFLAGS:--O2 -march=x86-64 -pipe}"
+
+export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT LFS_TGT32
+
+mkdir -p $SRCDIR $PKGDIR $WORKDIR
 
 if [ ! -d $LFS/tools ]; then
 	sudo mkdir -pv $LFS/tools

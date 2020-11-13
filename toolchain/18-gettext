@@ -1,5 +1,5 @@
 name=gettext
-version=0.20.1
+version=0.21
 source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
 
 build() {

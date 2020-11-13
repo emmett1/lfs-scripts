@@ -23,5 +23,48 @@ build () {
 	sed -i -e 's/ --static//' \
 	       -e 's/ -static//' Makefile
 	make DESTDIR=$PKG install
-	install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
+	#install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
+
+	cat > $PKG/etc/pkgmk.conf << EOF
+#
+# /etc/pkgmk.conf: pkgmk(8) configuration
+#
+
+export CFLAGS="$CFLAGS"
+export CXXFLAGS="\${CFLAGS}"
+
+export MAKEFLAGS="$MAKEFLAGS"
+
+case ${PKGMK_ARCH} in
+	"64"|"")
+		;;
+	"32")
+		export CFLAGS="\${CFLAGS} -m32"
+		export CXXFLAGS="\${CXXFLAGS} -m32"
+		export LDFLAGS="\${LDFLAGS} -m32"
+		export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
+		;;
+	*)
+		echo "Unknown architecture selected! Exiting."
+		exit 1
+		;;
+esac
+
+# PKGMK_SOURCE_MIRRORS=()
+PKGMK_SOURCE_DIR="/var/lib/pkg/src"
+PKGMK_PACKAGE_DIR="/var/lib/pkg/pkg"
+PKGMK_WORK_DIR="/var/lib/pkg/work/\$name"
+PKGMK_DOWNLOAD="yes"
+# PKGMK_IGNORE_SIGNATURE="no"
+# PKGMK_IGNORE_MD5SUM="no"
+# PKGMK_IGNORE_FOOTPRINT="no"
+# PKGMK_IGNORE_NEW="no"
+# PKGMK_NO_STRIP="no"
+PKGMK_DOWNLOAD_PROG="curl"
+# PKGMK_WGET_OPTS=""
+# PKGMK_CURL_OPTS=""
+PKGMK_COMPRESSION_MODE="xz"
+
+# End of file
+EOF
 }

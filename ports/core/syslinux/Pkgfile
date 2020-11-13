@@ -12,6 +12,8 @@ source=(http://www.kernel.org/pub/linux/utils/boot/$name/$name-$version.tar.xz
 build() {
 	cd $name-$version
 
+	export CFLAGS="$CFLAGS -fcommon"
+
 	patch -p1 -i $SRC/$name-$version-sysmacros.patch
 
 	make OPTFLAGS="$CFLAGS" installer

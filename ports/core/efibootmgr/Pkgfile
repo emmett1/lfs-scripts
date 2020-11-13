@@ -4,12 +4,16 @@
 # Depends on:  efivar pciutils
 
 name=efibootmgr
-version=16
+version=17
 release=1
-source=(https://github.com/rhboot/efibootmgr/releases/download/$version/efibootmgr-$version.tar.bz2)
+source=(https://github.com/rhboot/efibootmgr/archive/$version/$name-$version.tar.gz
+	efivar.patch)
 
 build() {
 	cd $name-$version
+
+	patch -Np1 -i $SRC/efivar.patch
+
 	EFIDIR=/boot/efi make
         install -D src/efibootmgr $PKG/usr/sbin/efibootmgr
         install -D src/efibootmgr.8 $PKG/usr/share/man/man8/efibootmgr.8

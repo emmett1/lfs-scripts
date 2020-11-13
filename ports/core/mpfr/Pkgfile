@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=mpfr
-version=4.0.2
+version=4.1.0
 release=1
 source=(https://www.mpfr.org/$name-$version/$name-$version.tar.xz)
 

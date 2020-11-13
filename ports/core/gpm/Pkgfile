@@ -5,17 +5,16 @@
 
 name=gpm
 version=1.20.7
-bootscriptsversion=20191204
+bootscriptsversion=20201002
 release=1
 source=(https://www.nico.schottelius.org/software/gpm/archives/$name-$version.tar.bz2
-	http://www.linuxfromscratch.org/patches/blfs/9.1/gpm-$version-glibc_2.26-1.patch
+	gpm-1.20.7-consolidated-1.patch
 	http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-$bootscriptsversion.tar.xz)
 
 build() {
 	cd $name-$version
 
-	sed -i -e 's:<gpm.h>:"headers/gpm.h":' src/prog/{display-buttons,display-coords,get-versions}.c
-	patch -Np1 -i ../gpm-1.20.7-glibc_2.26-1.patch
+	patch -Np1 -i ../gpm-1.20.7-consolidated-1.patch
 	
 	./autogen.sh
 	./configure --prefix=/usr --sysconfdir=/etc

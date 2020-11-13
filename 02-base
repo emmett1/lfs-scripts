@@ -75,6 +75,16 @@ umount_pseudo() {
 	unmount $LFS/sys
 }
 
+mountbind_srcpkg() {
+	mount --bind $SRCDIR $LFS/var/lib/pkg/src
+	mount --bind $PKGDIR $LFS/var/lib/pkg/pkg
+}
+
+unmountbind_srcpkg() {
+	unmount $LFS/var/lib/pkg/src
+	unmount $LFS/var/lib/pkg/pkg
+}
+
 unmount() {
 	while true; do
 		mountpoint -q $1 || break
@@ -85,6 +95,7 @@ unmount() {
 runinchroot() {
 	pushd $LFS &>/dev/null
 	mount_pseudo
+	mountbind_srcpkg
 	cp -L /etc/resolv.conf $LFS/etc/
 	chroot "$LFS" $ENVLFS -i \
 	    HOME=/root                  \
@@ -92,6 +103,7 @@ runinchroot() {
 	    PS1='(lfs chroot) \u:\w\$ ' \
 	    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin $@
 	retval=$?
+	unmountbind_srcpkg
 	umount_pseudo
 	popd &>/dev/null
 	return $retval
@@ -103,6 +115,7 @@ interrupted() {
 
 die() {
 	[ "$@" ] && printerror $@
+	unmountbind_srcpkg
 	umount_pseudo
 	exit 1
 }
@@ -113,14 +126,22 @@ printerror() {
 
 trap "interrupted" SIGHUP SIGINT SIGQUIT SIGTERM
 
-CWD=$PWD
-
-source $CWD/config
-
 if [ $(id -u) != 0 ]; then
 	echo "$0 script need to run as root!"
 	exit 1
 fi
+
+CWD=$PWD
+
+if [ -f $CWD/config ]; then
+	source $CWD/config
+fi
+
+MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
+LFS="${LFS:-/mnt/lfs}"
+PKGDIR="${PKGDIR:-$CWD/pkg}"
+SRCDIR="${SRCDIR:-$CWD/src}"
+WORKDIR="${WORKDIR:-/tmp}"
 
 if [ -x $LFS/usr/bin/env ]; then
 	ENVLFS=/usr/bin/env

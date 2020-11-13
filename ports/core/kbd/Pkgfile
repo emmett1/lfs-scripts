@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=kbd
-version=2.2.0
+version=2.3.0
 release=1
 source=(https://www.kernel.org/pub/linux/utils/$name/$name-$version.tar.xz
 	http://www.linuxfromscratch.org/patches/lfs/development/kbd-$version-backspace-1.patch)

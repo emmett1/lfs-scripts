@@ -1,5 +1,5 @@
 name=binutils
-version=2.34
+version=2.35.1
 source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz)
 
 build() {

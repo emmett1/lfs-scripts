@@ -3,7 +3,7 @@
 # Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 
 name=libevent
-version=2.1.11
+version=2.1.12
 release=1
 source=(https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz)
 

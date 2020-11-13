@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=dbus
-version=1.12.16
+version=1.12.20
 release=1
 source=(https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.gz)
 

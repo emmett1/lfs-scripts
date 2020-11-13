@@ -4,7 +4,7 @@
 # Depends on:  ca-certificates openssl
 
 name=curl
-version=7.68.0
+version=7.73.0
 release=1
 source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
