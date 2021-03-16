@@ -1,5 +1,14 @@
 #!/bin/bash -e
 
+if type -p "sudo" &>/dev/null; then
+    PRIV="sudo"
+elif type -p "doas" &>/dev/null; then
+    PRIV="doas"
+else
+    echo "\e[1;31merror:\e[0m sudo/doas not found!"
+    exit 1
+fi
+
 fetch() {	
 	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
 	WGETCMD="wget --passive-ftp --tries=3 --waitretry=3 --output-document=$2/$tarballname.partial"
@@ -94,7 +103,7 @@ main() {
 		checkdone || continue
 		build_stage1 $script
 	done
-	sudo chown -Rv 0:0 $LFS
+	$PRIV chown -Rv 0:0 $LFS
 }
 
 if [ $(id -u) = 0 ]; then
@@ -129,15 +138,15 @@ export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT LFS_TGT32
 mkdir -p $SRCDIR $PKGDIR $WORKDIR
 
 if [ ! -d $LFS/tools ]; then
-	sudo mkdir -pv $LFS/tools
+	$PRIV mkdir -pv $LFS/tools
 fi
 
 if [ ! -w $LFS ]; then
-	sudo chown -Rv $USER:$USER $LFS
+	$PRIV chown -Rv $USER:$USER $LFS
 fi
 
 if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
-	sudo ln -svf $LFS/tools /
+	$PRIV ln -svf $LFS/tools /
 fi
 
 main $@
