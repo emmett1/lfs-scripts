@@ -4,10 +4,10 @@ This repo contain scripts to automate multilib LFS build + livecd. This LFS buil
 
 ### Requirements
 
-* sudo/doas
-* wget
-* passes lfs version-check.sh test
-* squashfs-tools & libisoburn (optional to create the livecd iso)
+* `sudo` / `doas`
+* `wget`
+* passes lfs `version-check.sh` test
+* `squashfs-tools` & `libisoburn` (optional to create the livecd iso)
 
 ### Scripts
 
@@ -44,7 +44,7 @@ Basically you just need to run all those 3 scripts without other command to get 
 ```
 $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 ```
-> Note: script 01-toolchain gonna ask for sudo/doas password
+> Note: script 01-toolchain gonna ask for sudo or doas password
 
 - First grab any distro's livecd to use as host, or you can just your current running linux distro as host. (read below for tested host)
 - Prepare your partition for LFS and mount it on `/mnt/lfs` or you can change where LFS build directory in `config` file.
