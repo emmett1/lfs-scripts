@@ -5,7 +5,7 @@ if type -p "sudo" &>/dev/null; then
 elif type -p "doas" &>/dev/null; then
     PRIV="doas"
 else
-    echo "\e[1;31merror:\e[0m sudo/doas not found!"
+    echo -e "\e[1;31merror:\e[0m sudo/doas not found!"
     exit 1
 fi
 
