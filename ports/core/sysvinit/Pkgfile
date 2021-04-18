@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=sysvinit
-version=2.97
+version=2.99
 release=1
 source=(http://download.savannah.gnu.org/releases/sysvinit/sysvinit-$version.tar.xz)
 

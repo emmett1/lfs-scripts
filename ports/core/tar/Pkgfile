@@ -4,7 +4,7 @@
 # Depends on:  acl attr
 
 name=tar
-version=1.32
+version=1.34
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 

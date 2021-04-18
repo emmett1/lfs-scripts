@@ -1,6 +1,6 @@
 name=python
-version=3.9.0
-source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
+version=3.9.4
+source="https://www.python.org/ftp/python/$version/Python-$version.tar.xz"
 
 build() {
 	cd Python-$version

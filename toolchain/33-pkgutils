@@ -1,6 +1,6 @@
 name=pkgutils
 version=5.40.7
-source=(http://crux.nu/files/$name-$version.tar.xz)
+source="http://crux.nu/files/$name-$version.tar.xz"
 
 build() {
 	cd $name-$version

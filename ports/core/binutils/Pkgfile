@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=binutils
-version=2.35.1
+version=2.36.1
 release=1
 source=(https://ftp.gnu.org/gnu/binutils/$name-$version.tar.xz)
 
@@ -26,5 +26,5 @@ build() {
 	             --enable-multilib   \
 	             --with-lib-path=/usr/lib:/lib:/usr/lib32
         make tooldir=/usr
-        make tooldir=/usr DESTDIR=$PKG install
+        make tooldir=/usr DESTDIR=$PKG install -j1
 }

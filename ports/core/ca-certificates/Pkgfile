@@ -4,27 +4,11 @@
 # Depends on:  p11-kit openssl
 
 name=ca-certificates
-version=20170514
+version=20210119
+_version=${version:0:4}-${version:4:2}-${version:6:2}
 release=1
-source=(http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-$version
-	https://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
-	http://www.cacert.org/certs/root.crt
-	http://www.cacert.org/certs/class3.crt)
+source=(https://curl.se/ca/cacert-$_version.pem)
 
 build() {	
-	install -d $PKG/{usr/sbin,etc/ssl/local}
-	cp certdata.txt $PKG/etc/ssl/
-	openssl x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root" \
-	        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
-	        > $PKG/etc/ssl/local/CAcert_Class_1_root.pem
-	openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root" \
-	        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
-	        > $PKG/etc/ssl/local/CAcert_Class_3_root.pem
-
-	cp certdata.txt $PKG/etc/ssl
-	install -vm755 make-ca.sh-$version $PKG/usr/sbin/make-ca
-
-	$PKG/usr/sbin/make-ca -D $PKG
-
-	ln -sv /etc/ssl/ca-bundle.crt $PKG/etc/ssl/certs/ca-certificates.crt
+	install -Dm644 $SRC/cacert-$_version.pem $PKG/etc/ssl/cert.pem
 }

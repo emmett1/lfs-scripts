@@ -1,4 +1,36 @@
-#!/bin/bash -e
+#!/bin/sh -e
+
+fetch() {
+	for s in $source; do
+		filename=${s##*/}
+		if [ "$s" != "$filename" ]; then
+			if [ ! -f $SRCDIR/$filename ]; then
+				echo "fetching $s"
+				curl -C - -L --fail --ftp-pasv --retry 999 --retry-delay 3 -o $SRCDIR/$filename.part $s && \
+					mv $SRCDIR/$filename.part $SRCDIR/$filename || {
+						echo "failed fetch $s"
+						exit 1
+					}
+			fi
+		fi
+	done
+}
+
+unpack() {
+	rm -fr "$WORKDIR/$pkg"
+	mkdir -p "$WORKDIR/$pkg"
+	for src in $source; do
+		filename=${src##*/}
+		case $src in
+			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip)
+				echo "extracting $filename..."
+				tar -xf "$SRCDIR/$filename" -C "$WORKDIR/$pkg" || {
+					echo "failed extracting $filename"
+					exit 1
+				};;
+		esac
+	done
+}
 
 if type -p "sudo" &>/dev/null; then
     PRIV="sudo"
@@ -9,7 +41,7 @@ else
     exit 1
 fi
 
-fetch() {	
+fetch2() {	
 	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
 	WGETCMD="wget --passive-ftp --tries=3 --waitretry=3 --output-document=$2/$tarballname.partial"
 	WGETRESUME="-c"
@@ -36,7 +68,7 @@ fetch() {
 	fi	
 }
 
-fetch_src() {
+fetch_src2() {
 	if [ "${#source[@]}" -gt 0 ]; then
 		for s in ${source[@]}; do
 			fetch $s $SRCDIR
@@ -44,7 +76,7 @@ fetch_src() {
 	fi
 }	
 
-extract_src() {
+extract_src2() {
 	[ "$name" ] && rm -fr $WORKDIR/$name
 	mkdir -p $WORKDIR/$name
 	if [ "${#source[@]}" -gt 0 ]; then
@@ -60,7 +92,7 @@ extract_src() {
 	fi
 }
 
-build_src() {
+buildtc() {
 	cd $WORKDIR/$name
 	if [ "$(type -t build)" = function ]; then
 		(set -e -x; build)
@@ -72,10 +104,6 @@ build_src() {
 		echo "--- build $name-$version success ---"
 	fi
 	[ "$name" ] && rm -fr $WORKDIR/$name
-	register
-}
-
-register() {
 	echo $name-$version > $LFS/tools/$(basename $script)
 }
 
@@ -89,21 +117,18 @@ checkdone() {
 	fi
 }
 
-build_stage1() {
-	cd $CWD
-	source $1 || exit 1
-	fetch_src
-	extract_src
-	build_src
-	unset source name version build
-}	
-
 main() {
 	for script in $TCDIR/[0-9][0-9]-*; do
 		checkdone || continue
-		build_stage1 $script
+		cd $CWD
+		. $script
+		pkg=$name
+		fetch
+		unpack
+		buildtc
+		unset source name version build
+		#build_stage1 $script
 	done
-	$PRIV chown -Rv 0:0 $LFS
 }
 
 if [ $(id -u) = 0 ]; then
@@ -127,10 +152,10 @@ LFS_TGT=x86_64-lfs-linux-gnu
 LFS_TGT32=i686-lfs-linux-gnu
 
 MAKEFLAGS="${MAKEFLAGS:--j$(nproc)}"
-LFS="${LFS:-/mnt/lfs}"
+LFS="${LFS:-$CWD/lfs-rootfs}"
 PKGDIR="${PKGDIR:-$CWD/pkg}"
 SRCDIR="${SRCDIR:-$CWD/src}"
-WORKDIR="${WORKDIR:-/tmp}"
+WORKDIR="${WORKDIR:-$CWD/work}"
 CFLAGS="${CFLAGS:--O2 -march=x86-64 -pipe}"
 
 export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT LFS_TGT32
@@ -138,15 +163,18 @@ export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT LFS_TGT32
 mkdir -p $SRCDIR $PKGDIR $WORKDIR
 
 if [ ! -d $LFS/tools ]; then
-	$PRIV mkdir -pv $LFS/tools
+	mkdir -pv $LFS/tools
 fi
 
 if [ ! -w $LFS ]; then
-	$PRIV chown -Rv $USER:$USER $LFS
+	echo "'$LFS' directory has no right access"
+	echo "please run 'chown -Rv $USER:$USER $LFS' as root"
+	exit 1
 fi
 
 if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
-	$PRIV ln -svf $LFS/tools /
+	echo "please create required '/tools' symlink by running 'ln -svf \$PWD/$LFS/tools' as root"
+	exit 1
 fi
 
 main $@

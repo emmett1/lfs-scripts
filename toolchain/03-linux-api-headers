@@ -1,6 +1,6 @@
 name=linux
-version=5.4.74
-source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz)
+version=5.11.15
+source="https://www.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz"
 
 build() {
 	cd linux-$version

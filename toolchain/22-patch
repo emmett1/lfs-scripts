@@ -1,6 +1,6 @@
 name=patch
 version=2.7.6
-source=(http://ftp.gnu.org/gnu/patch/patch-$version.tar.xz)
+source="http://ftp.gnu.org/gnu/patch/patch-$version.tar.xz"
 
 build() {
 	cd $name-$version

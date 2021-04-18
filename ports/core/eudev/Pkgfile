@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=eudev
-version=3.2.9
+version=3.2.10
 release=1
 source=(https://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz)
 

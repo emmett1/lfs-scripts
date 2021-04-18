@@ -3,10 +3,10 @@ version=10.2.0
 gmp_version=6.2.0
 mpc_version=1.2.1
 mpfr_version=4.1.0
-source=(http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
+source="http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
 	http://ftp.gnu.org/gnu/gmp/gmp-$gmp_version.tar.xz
 	https://ftp.gnu.org/gnu/mpc/mpc-$mpc_version.tar.gz
-	http://www.mpfr.org/mpfr-$mpfr_version/mpfr-$mpfr_version.tar.xz)
+	http://www.mpfr.org/mpfr-$mpfr_version/mpfr-$mpfr_version.tar.xz"
 
 build() {
 	cd $name-$version

@@ -93,18 +93,21 @@ run_check() {
 	
 	upver=${upver:-404}
 	
+	[ "$OUT" = 1 ] && {
+		sed "\,^$ppath ,d" -i error
+		sed "\,^$ppath ,d" -i outdate
+	}
+	
 	if [ "$upver" = "404" ]; then
 		echo -e " $ppath: $version => ${RED}404${CRESET}"
-		[ "$OUT" = 1 ] && echo "$ppath $version => 404" >> error
+		[ "$OUT" = 1 ] && {
+			echo "$ppath $version => 404" >> error
+		}
 	elif [ "$version" != "$upver" ]; then
 		echo -e " $ppath: $version => ${YELLOW}$upver${CRESET}"
-		[ "$OUT" = 1 ] && echo "$ppath $version => $upver" >> outdate
-		if [ "$UPDATE" = 1 ]; then
-			sed "s/^version=.*/version=$upver/" -i $ppath/Pkgfile
-			pushd $ppath
-				fakeroot pkgbuild -m && sudo pkgbuild -u
-			popd
-		fi
+		[ "$OUT" = 1 ] && {
+			echo "$ppath $version => $upver" >> outdate
+		}
 	fi
 }
 
@@ -185,16 +188,8 @@ check() {
 parseopt() {
 	while [ $1 ]; do
 		case $1 in
-			-r) while [ $2 ]; do
-					case $2 in
-						-*) break;;
-						*) REPO+=($2)
-					esac
-					shift
-				done;;
 			-o) OUT=1;;
 			-v) VERBOSE=1;;
-			-u) UPDATE=1;;
 			 *) PKG+=($1);;
 		esac
 		shift
@@ -204,19 +199,9 @@ parseopt() {
 main() {
 	parseopt $@
 	
-	[ "$OUT" = 1 ] && rm -f outdate error
-	
-	if [ "$REPO" ]; then
-		for r in ${REPO[@]}; do
-			if [ -d "$r" ]; then
-				for d in $r/*/Pkgfile; do
-					check $(dirname $d)
-				done
-			fi
-		done
-	elif [ ${#PKG[@]} -gt 0 ]; then
+	if [ ${#PKG[@]} -gt 0 ]; then
 		for p in ${PKG[@]}; do
-			check $(find . -maxdepth 2 -mindepth 2 -name $p -printf "%P\n" | head -n1)
+			check $p
 		done
 	else
 		for d in */*/Pkgfile; do

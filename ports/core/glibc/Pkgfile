@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=glibc
-version=2.32
+version=2.33
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
 	$name-fhs-1.patch)

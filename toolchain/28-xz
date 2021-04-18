@@ -1,6 +1,6 @@
 name=xz
 version=5.2.5
-source=(https://tukaani.org/xz/xz-$version.tar.xz)
+source="https://tukaani.org/xz/xz-$version.tar.xz"
 
 build() {
 	cd $name-$version

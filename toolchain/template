@@ -1,6 +1,6 @@
 name=
 version=
-source=()
+source=""
 
 build() {
 	cd $name-$version

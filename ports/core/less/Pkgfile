@@ -4,7 +4,7 @@
 # Depends on:  ncurses
 
 name=less
-version=563
+version=581
 release=1
 source=(http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz)
 

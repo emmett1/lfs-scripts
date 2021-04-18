@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=bc
-version=3.1.6
+version=4.0.0
 release=1
 source=(https://github.com/gavinhoward/bc/archive/$version/bc-$version.tar.gz)
 

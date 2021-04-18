@@ -1,6 +1,6 @@
 name=bash
-version=5.0
-source=(http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz)
+version=5.1
+source="http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz"
 
 build() {
 	cd $name-$version

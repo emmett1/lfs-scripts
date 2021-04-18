@@ -1,13 +1,13 @@
 name=curl
-version=7.73.0
-source=(https://curl.haxx.se/download/$name-$version.tar.xz)
+version=7.76.1
+source="https://curl.haxx.se/download/$name-$version.tar.xz"
 
 build() {
 	cd $name-$version
 	./configure --prefix=/tools            \
                     --disable-static           \
                     --enable-threaded-resolver \
-                    --with-ca-bundle=/tools/etc/ssl/certs/ca-certificates.crt
+                    --with-ca-bundle=/tools/etc/ssl/cert.pem
         make
-        make DESTDIR=$PKG install
+        make install
 }

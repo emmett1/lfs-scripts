@@ -1,6 +1,6 @@
 name=file
-version=5.39
-source=(ftp://ftp.astron.com/pub/file/file-$version.tar.gz)
+version=5.40
+source="ftp://ftp.astron.com/pub/file/file-$version.tar.gz"
 
 build() {
 	cd $name-$version

@@ -2,9 +2,9 @@
 # modify according your needs
 # save to 'config'
 
-#MAKEFLAGS="-j$(nproc)"
-#LFS="/mnt/lfs"
+#LFS="$CWD/lfs-rootfs"
 #PKGDIR="$CWD/pkg"
 #SRCDIR="$CWD/src"
-#WORKDIR="/tmp"
+#WORKDIR="$CWD/work"
+#MAKEFLAGS="-j$(nproc)"
 #CFLAGS="-O2 -march=x86-64 -pipe"

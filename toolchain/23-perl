@@ -1,6 +1,6 @@
 name=perl
-version=5.32.0
-source=(https://www.cpan.org/src/5.0/perl-$version.tar.xz)
+version=5.32.1
+source="https://www.cpan.org/src/5.0/perl-$version.tar.xz"
 
 build() {
 	cd $name-$version

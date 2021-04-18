@@ -4,7 +4,7 @@
 # Depends on:  bash gdbm groff less libpipeline zlib
 
 name=man-db
-version=2.9.3
+version=2.9.4
 release=1
 source=(https://savannah.nongnu.org/download/man-db/$name-$version.tar.xz)
 

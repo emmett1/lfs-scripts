@@ -1,6 +1,6 @@
 name=gettext
 version=0.21
-source=(http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz)
+source="http://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz"
 
 build() {
 	cd $name-$version

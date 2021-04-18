@@ -4,7 +4,7 @@
 # Depends on:  ca-certificates openssl
 
 name=curl
-version=7.73.0
+version=7.76.1
 release=1
 source=(https://curl.haxx.se/download/$name-$version.tar.xz)
 
@@ -14,7 +14,7 @@ build() {
 	./configure --prefix=/usr              \
                     --disable-static           \
                     --enable-threaded-resolver \
-                    --with-ca-path=/etc/ssl/certs
+                    --with-ca-bundle=/etc/ssl/cert.pem
 	make
 	make DESTDIR=$PKG install
 }

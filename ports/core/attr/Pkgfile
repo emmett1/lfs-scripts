@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=attr
-version=2.4.48
+version=2.5.1
 release=1
 source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
 

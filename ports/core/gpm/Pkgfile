@@ -5,7 +5,7 @@
 
 name=gpm
 version=1.20.7
-bootscriptsversion=20201002
+bootscriptsversion=20210110
 release=1
 source=(https://www.nico.schottelius.org/software/gpm/archives/$name-$version.tar.bz2
 	gpm-1.20.7-consolidated-1.patch

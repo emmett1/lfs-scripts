@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=tzdata
-version=2020d
+version=2021a
 release=1
 source=(https://www.iana.org/time-zones/repository/releases/${name}${version}.tar.gz)
 
