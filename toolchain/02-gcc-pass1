@@ -15,9 +15,9 @@ build() {
 	mv -v ../gmp-$gmp_version gmp
 	mv -v ../mpc-$mpc_version mpc
 	
-	for file in gcc/config/{linux,i386/linux{,64}}.h
+	for file in gcc/config/linux.h gcc/config/i386/linux.h gcc/config/i386/linux64.h
 	do
-	  cp -uv $file{,.orig}
+	  cp -uv $file $file.orig
 	  sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
 		  -e 's@/usr@/tools@g' $file.orig > $file
 	  echo '

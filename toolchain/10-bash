@@ -5,7 +5,7 @@ source="http://ftp.gnu.org/gnu/bash/bash-$version.tar.gz"
 build() {
 	cd $name-$version
 	./configure --prefix=/tools --without-bash-malloc
-	make
+	make -j1
 	make install
 	ln -sv bash /tools/bin/sh
 }

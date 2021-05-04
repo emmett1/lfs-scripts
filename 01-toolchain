@@ -32,71 +32,9 @@ unpack() {
 	done
 }
 
-if type -p "sudo" &>/dev/null; then
-    PRIV="sudo"
-elif type -p "doas" &>/dev/null; then
-    PRIV="doas"
-else
-    echo -e "\e[1;31merror:\e[0m sudo/doas not found!"
-    exit 1
-fi
-
-fetch2() {	
-	tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
-	WGETCMD="wget --passive-ftp --tries=3 --waitretry=3 --output-document=$2/$tarballname.partial"
-	WGETRESUME="-c"
-	
-	if [ -f $2/$tarballname ]; then
-		echo "Source file $tarballname found."
-		return 0
-	else
-		if [ -f $2/$tarballname.partial ]; then
-			echo "Resuming $1"
-			$WGETCMD $WGETRESUME $1
-		else
-			mkdir -p "$2"
-			echo "Downloading $1"
-			$WGETCMD $1
-		fi
-	fi
-	
-	if [ $? = 0 ]; then
-		mv $2/$tarballname.partial $2/$tarballname
-	else
-		echo "Failed fetching source: $tarballname"
-		exit 1
-	fi	
-}
-
-fetch_src2() {
-	if [ "${#source[@]}" -gt 0 ]; then
-		for s in ${source[@]}; do
-			fetch $s $SRCDIR
-		done
-	fi
-}	
-
-extract_src2() {
-	[ "$name" ] && rm -fr $WORKDIR/$name
-	mkdir -p $WORKDIR/$name
-	if [ "${#source[@]}" -gt 0 ]; then
-		for s in ${source[@]}; do
-			filename=$(basename $s)
-			case $filename in
-				*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.zip|*.rpm)
-					tar xvf $SRCDIR/$filename -C $WORKDIR/$name || exit 1;;
-				*)
-					cp -v $SRCDIR/$filename $WORKDIR/$name || exit 1;;
-			esac
-		done
-	fi
-}
-
 buildtc() {
 	cd $WORKDIR/$name
-	if [ "$(type -t build)" = function ]; then
-		(set -e -x; build)
-	fi
+	(set -e -x; build)
 	if [ $? -ne 0 ]; then
 		echo "!!! build $name-$version failed !!!"
 		exit 1
@@ -115,6 +53,10 @@ checkdone() {
 		echo ">>> building $(basename $script) <<<"
 		return 0
 	fi
+}
+
+build() {
+	:
 }
 
 main() {
@@ -168,12 +110,12 @@ fi
 
 if [ ! -w $LFS ]; then
 	echo "'$LFS' directory has no right access"
-	echo "please run 'chown -Rv $USER:$USER $LFS' as root"
+	echo "Please run 'chown -Rv $USER:$USER $LFS' as root"
 	exit 1
 fi
 
 if [ ! -L /tools ] || [ $(realpath /tools) != $LFS/tools ]; then
-	echo "please create required '/tools' symlink by running 'ln -svf \$PWD/$LFS/tools' as root"
+	echo "Please create required '/tools' symlink by running 'ln -svf $LFS/tools /tools' as root"
 	exit 1
 fi
 

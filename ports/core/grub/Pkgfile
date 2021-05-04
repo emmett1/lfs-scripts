@@ -6,11 +6,15 @@
 name=grub
 version=2.04
 release=1
-source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz grub.default)
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz grub.default
+	Fix-GRUB-i386-pc-build-with-Ubuntu-gcc.patch)
 
 build() {
         cd $name-$version
 
+	patch -Np1 -i ../Fix-GRUB-i386-pc-build-with-Ubuntu-gcc.patch
+
+	autoreconf -fiv
         ./configure --prefix=/usr \
                     --sbindir=/sbin \
                     --sysconfdir=/etc \

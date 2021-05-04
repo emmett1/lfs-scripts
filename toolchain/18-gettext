@@ -6,5 +6,8 @@ build() {
 	cd $name-$version
 	./configure --disable-shared
 	make -j1
-	cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /tools/bin
+	cp -v gettext-tools/src/msgfmt \
+	      gettext-tools/src/msgmerge \
+	      gettext-tools/src/xgettext \
+	      /tools/bin
 }
