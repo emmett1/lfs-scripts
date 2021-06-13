@@ -107,7 +107,8 @@ chroot_run mkinitramfs -k $kernver -a livecd -o /boot/initrd-live.img || die "fa
 mv $LFS/boot/initrd-live.img $ISODIR/boot/initrd || die "failed copying initrd"
 
 printstep "Setup UEFI mode..."
-mkdir -p $ISODIR/boot/{grub/{fonts,x86_64-efi},EFI}
+mkdir -p $ISODIR/boot/grub/{fonts,x86_64-efi}
+mkdir -p $ISODIR/efi/boot
 if [ -f $LFS/usr/share/grub/unicode.pf2 ];then
 	cp $LFS/usr/share/grub/unicode.pf2 $ISODIR/boot/grub/fonts
 fi
@@ -118,14 +119,14 @@ echo "set prefix=/boot/grub" > $ISODIR/boot/grub-early.cfg
 cp -a $LFS/usr/lib/grub/x86_64-efi/*.{mod,lst} $ISODIR/boot/grub/x86_64-efi || die "Failed copying efi files"
 cp $FILEDIR/grub.cfg $ISODIR/boot/grub/
 
-grub-mkimage -c $ISODIR/boot/grub-early.cfg -o $ISODIR/boot/EFI/bootx64.efi -O x86_64-efi -p "" iso9660 normal search search_fs_file
+grub-mkimage -c $ISODIR/boot/grub-early.cfg -o $ISODIR/efi/boot/bootx64.efi -O x86_64-efi -p "" iso9660 normal search search_fs_file
 modprobe loop
 dd if=/dev/zero of=$ISODIR/boot/efiboot.img count=4096
 mkdosfs -n LFS-UEFI $ISODIR/boot/efiboot.img || die "Failed mkdosfs"
 mkdir -p $ISODIR/boot/efiboot
 mount -o loop $ISODIR/boot/efiboot.img $ISODIR/boot/efiboot || die "Failed mount efiboot.img"
 mkdir -p $ISODIR/boot/efiboot/EFI/boot
-cp $ISODIR/boot/EFI/bootx64.efi $ISODIR/boot/efiboot/EFI/boot
+cp $ISODIR/efi/boot/bootx64.efi $ISODIR/boot/efiboot/EFI/boot
 umount $ISODIR/boot/efiboot
 rm -fr $ISODIR/boot/efiboot
 
