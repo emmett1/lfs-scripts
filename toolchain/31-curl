@@ -1,12 +1,13 @@
 name=curl
-version=7.76.1
+version=7.77.0
 source="https://curl.haxx.se/download/$name-$version.tar.xz"
 
 build() {
 	cd $name-$version
-	./configure --prefix=/tools            \
-                    --disable-static           \
+	./configure --prefix=/tools \
+                    --disable-static \
                     --enable-threaded-resolver \
+		    --with-openssl \
                     --with-ca-bundle=/tools/etc/ssl/cert.pem
         make
         make install

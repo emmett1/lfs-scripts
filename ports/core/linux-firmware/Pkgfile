@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=linux-firmware
-version=20210315
+version=20210511
 release=1
 source=(https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-$version.tar.gz)
 

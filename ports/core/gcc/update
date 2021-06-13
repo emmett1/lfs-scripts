@@ -1,0 +1,7 @@
+url=$(dirname $url)
+
+getver_gcc() {
+	fetch \
+	| grep -Eo gcc-[0-9.]+ \
+	| sed "s/$name-//"
+}

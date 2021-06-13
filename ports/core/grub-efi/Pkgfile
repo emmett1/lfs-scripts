@@ -4,7 +4,7 @@
 # Depends on:  grub efivar efibootmgr freetype2 dosfstools
 
 name=grub-efi
-version=2.04
+version=2.06
 release=1
 source=(https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
         https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.bdf.gz)

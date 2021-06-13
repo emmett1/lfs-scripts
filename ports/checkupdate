@@ -94,6 +94,7 @@ run_check() {
 	upver=${upver:-404}
 	
 	[ "$OUT" = 1 ] && {
+		touch error outdate
 		sed "\,^$ppath ,d" -i error
 		sed "\,^$ppath ,d" -i outdate
 	}

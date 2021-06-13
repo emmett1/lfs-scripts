@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=libxml2
-version=2.9.10
+version=2.9.12
 release=1
 source=(http://xmlsoft.org/sources/$name-$version.tar.gz)
 

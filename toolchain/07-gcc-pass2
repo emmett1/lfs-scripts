@@ -1,5 +1,5 @@
 name=gcc
-version=10.2.0
+version=11.1.0
 gmp_version=6.2.0
 mpc_version=1.2.1
 mpfr_version=4.1.0

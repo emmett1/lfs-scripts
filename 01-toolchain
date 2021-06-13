@@ -81,7 +81,7 @@ fi
 CWD=$PWD
 
 if [ -f $CWD/config ]; then
-	source $CWD/config
+	. $CWD/config
 fi
 
 PATH=/tools/bin:/bin:/usr/bin

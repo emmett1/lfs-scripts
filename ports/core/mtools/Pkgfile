@@ -3,7 +3,7 @@
 # Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
 
 name=mtools
-version=4.0.26
+version=4.0.29
 release=1
 source=(ftp://ftp.gnu.org/gnu/mtools/$name-$version.tar.bz2)
 

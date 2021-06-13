@@ -4,14 +4,18 @@
 # Depends on:  
 
 name=elfutils
-version=0.178
+version=0.185
 release=1
 source=(https://sourceware.org/ftp/elfutils/$version/elfutils-$version.tar.bz2)
 
 build() {
         cd $name-$version
 
-        ./configure --prefix=/usr --program-prefix="eu-" --disable-debuginfod
+        ./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--program-prefix="eu-" \
+		--disable-debuginfod
         make
         make DESTDIR=$PKG install
 }
