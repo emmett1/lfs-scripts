@@ -4,7 +4,7 @@
 # Depends on:  libnl openssl dbus libxml2
 
 name=wpa_supplicant
-version=2.9
+version=2.10
 bootscriptsversion=20210110
 release=1
 source=(https://w1.fi/releases/wpa_supplicant-$version.tar.gz

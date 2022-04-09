@@ -4,13 +4,18 @@
 # Depends on:  popt
 
 name=efivar
-version=37
+version=38
 release=1
 source=(https://github.com/rhboot/efivar/releases/download/$version/$name-$version.tar.bz2)
 
 build() {
 	cd $name-$version
-	sed -e 's/-Werror//g' -i gcc.specs
+
+	# faking mandoc
+	mkdir bin
+	ln -s /bin/true bin/mandoc
+	export PATH=$PWD/bin:$PATH
+
         make -j1
         make libdir=/usr/lib DESTDIR=$PKG install
 }

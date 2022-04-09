@@ -4,7 +4,7 @@
 # Depends on:  openssl libevent
 
 name=links
-version=2.23
+version=2.25
 release=1
 source=(http://links.twibright.com/download/$name-$version.tar.bz2)
 

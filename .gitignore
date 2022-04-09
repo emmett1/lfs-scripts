@@ -3,8 +3,8 @@
 *.img
 config
 *.qcow2
-ports/error
-ports/outdate
+ports/.error
+ports/.outdate
 src/
 pkg/
 lfs-rootfs/

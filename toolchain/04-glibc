@@ -1,5 +1,5 @@
 name=glibc
-version=2.33
+version=2.35
 source="http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz"
 
 build() {

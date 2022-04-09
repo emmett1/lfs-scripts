@@ -6,11 +6,15 @@
 name=fuse2
 version=2.9.9
 release=1
-source=(https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.gz)
+source=(https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.gz
+	https://github.com/libfuse/libfuse/commit/5a43d0f724c56f8836f3f92411e0de1b5f82db32.patch)
 
 build() {
         cd fuse-$version
 
+	patch -Np1 -i ../5a43d0f724c56f8836f3f92411e0de1b5f82db32.patch
+
+	autoreconf -fiv
         ./configure --prefix=/usr    \
                     --disable-static \
                     INIT_D_PATH=/tmp/init.d

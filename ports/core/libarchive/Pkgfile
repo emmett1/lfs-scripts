@@ -4,9 +4,9 @@
 # Depends on:  
 
 name=libarchive
-version=3.5.1
+version=3.6.0
 release=1
-source=(https://github.com/libarchive/libarchive/releases/download/$version/libarchive-$version.tar.xz)
+source=(https://libarchive.org/downloads/libarchive-$version.tar.xz)
 
 build() {
         cd $name-$version

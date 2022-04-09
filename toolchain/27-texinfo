@@ -1,5 +1,5 @@
 name=texinfo
-version=6.7
+version=6.8
 source="http://ftp.gnu.org/gnu/texinfo/texinfo-$version.tar.xz"
 
 build() {

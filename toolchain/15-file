@@ -1,5 +1,5 @@
 name=file
-version=5.40
+version=5.41
 source="ftp://ftp.astron.com/pub/file/file-$version.tar.gz"
 
 build() {

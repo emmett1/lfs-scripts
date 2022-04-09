@@ -4,7 +4,7 @@
 # Depends on:  p11-kit openssl
 
 name=ca-certificates
-version=20210119
+version=20201208
 _version=${version:0:4}-${version:4:2}-${version:6:2}
 release=1
 source=(https://curl.se/ca/cacert-$_version.pem)

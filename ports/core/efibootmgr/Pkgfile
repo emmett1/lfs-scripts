@@ -14,6 +14,12 @@ build() {
 
 	patch -Np1 -i $SRC/efivar.patch
 
+	export CFLAGS="${CFLAGS} -Wno-error=pointer-sign"
+
+	# removing hotfix function declaration:
+	# https://github.com/rhboot/efibootmgr/issues/128
+	sed -e '/extern int efi_set_verbose/d' -i "src/$name.c"
+
 	EFIDIR=/boot/efi make
         install -D src/efibootmgr $PKG/usr/sbin/efibootmgr
         install -D src/efibootmgr.8 $PKG/usr/share/man/man8/efibootmgr.8

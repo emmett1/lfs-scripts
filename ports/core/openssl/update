@@ -1,0 +1,3 @@
+getver_openssl() {
+	getver | grep ^1
+}

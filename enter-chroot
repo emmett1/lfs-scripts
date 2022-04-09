@@ -31,7 +31,8 @@ unmount() {
 	exit 1
 }
 
-LFS="/mnt/lfs"
+CWD="$PWD"
+LFS="$CWD/lfs-rootfs"
 
 if [ -f ./config ]; then
 	. ./config

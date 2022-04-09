@@ -1,5 +1,5 @@
 name=ca-certificates
-version=20210119
+version=20201208
 _noyear=${version#????}
 _version=${version%????}-${_noyear%??}-${version#??????}
 release=1

@@ -72,7 +72,8 @@ getver_aur() {
 
 # main
 fetch() {
-	wget -qO - -t 3 -T 10 $url
+	#wget -qO - -t 3 -T 10 $url
+	curl -Lsk $url
 }
 
 run_check() {
@@ -84,31 +85,25 @@ run_check() {
 		echo "version  : $version"
 		echo "url      : $url"
 		echo "cmd      : $checkver_cmd"
-		$checkver_cmd | tail -n10
+		$checkver_cmd | sort -V | uniq | tail -n10
 		return
 	else
 		print_progress "Checking '$ppath'"
-		upver=$($checkver_cmd | tail -n1)
+		upver=$($checkver_cmd | sort -V | uniq | tail -n1)
 	fi
 	
 	upver=${upver:-404}
 	
-	[ "$OUT" = 1 ] && {
-		touch error outdate
-		sed "\,^$ppath ,d" -i error
-		sed "\,^$ppath ,d" -i outdate
-	}
+	touch error outdate
+	sed "\,^$ppath ,d" -i .error
+	sed "\,^$ppath ,d" -i .outdate
 	
 	if [ "$upver" = "404" ]; then
 		echo -e " $ppath: $version => ${RED}404${CRESET}"
-		[ "$OUT" = 1 ] && {
-			echo "$ppath $version => 404" >> error
-		}
+		echo "$ppath $version => 404" >> .error
 	elif [ "$version" != "$upver" ]; then
 		echo -e " $ppath: $version => ${YELLOW}$upver${CRESET}"
-		[ "$OUT" = 1 ] && {
-			echo "$ppath $version => $upver" >> outdate
-		}
+		echo "$ppath $version => $upver" >> .outdate
 	fi
 }
 
@@ -189,7 +184,6 @@ check() {
 parseopt() {
 	while [ $1 ]; do
 		case $1 in
-			-o) OUT=1;;
 			-v) VERBOSE=1;;
 			 *) PKG+=($1);;
 		esac

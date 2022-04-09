@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=elfutils
-version=0.185
+version=0.186
 release=1
 source=(https://sourceware.org/ftp/elfutils/$version/elfutils-$version.tar.bz2)
 

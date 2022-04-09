@@ -4,11 +4,13 @@
 # Depends on:  
 
 name=man-pages
-version=5.11
+version=5.13
 release=1
 source=(https://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz)
 
 build() {
         cd $name-$version
+
+	sed -i "s|prefix := /usr/local|prefix := /usr|g" Makefile
         make DESTDIR=$PKG install
 }

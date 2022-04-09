@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=gawk
-version=5.1.0
+version=5.1.1
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 

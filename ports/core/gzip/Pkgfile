@@ -4,7 +4,7 @@
 # Depends on:  bash
 
 name=gzip
-version=1.10
+version=1.12
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 

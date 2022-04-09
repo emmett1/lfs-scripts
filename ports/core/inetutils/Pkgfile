@@ -4,7 +4,7 @@
 # Depends on:  
 
 name=inetutils
-version=2.0
+version=2.2
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 

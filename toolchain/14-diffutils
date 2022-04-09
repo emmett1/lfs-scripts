@@ -1,5 +1,5 @@
 name=diffutils
-version=3.7
+version=3.8
 source="http://ftp.gnu.org/gnu/diffutils/diffutils-$version.tar.xz"
 
 build() {
