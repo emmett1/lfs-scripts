@@ -64,4 +64,5 @@ $ ./01-toolchain && sudo ./02-base && sudo ./03-mkiso
 - [Arya Linux](https://aryalinux.info/) (live environment)
 - [Slackware](http://www.slackware.com/) - Thanks to [joe71](https://github.com/joe71) for testing
 - [Gentoo Linux](https://www.gentoo.org/) - Tested by [owl4ce](https://github.com/owl4ce)
+- [Manjaro Linux](https://manjaro.org/) - Tested by [9luis](https://github.com/luis-07)
 - (more will come)
