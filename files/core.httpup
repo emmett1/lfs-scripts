@@ -1,8 +1,0 @@
-#
-# /etc/ports/core.httpup: core's port collection
-#
-
-ROOT_DIR=/usr/ports/core
-URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/master/ports/core/
-
-# End of file

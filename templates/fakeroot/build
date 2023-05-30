@@ -1,0 +1,2 @@
+sed -i '/^SUBDIRS/d' doc/Makefile.am
+_auto_build

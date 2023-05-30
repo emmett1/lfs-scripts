@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# add your shutdown command here
+# will executed in stage 3
+#
+
+# End of file

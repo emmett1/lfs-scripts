@@ -1,5 +1,0 @@
-url=https://www.python.org/downloads
-
-getver_python3() {	
-	getver | grep ^3
-}

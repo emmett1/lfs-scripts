@@ -1,0 +1,1 @@
+make DESTDIR=$PKG install

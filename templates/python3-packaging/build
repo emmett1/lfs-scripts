@@ -1,0 +1,3 @@
+pip3 install --isolate --root=$PKG --ignore-installed --no-deps packaging
+rm -rf $PKG/usr/lib/python*/site-packages/packaging-$version.dist.info/INSTALLER
+rm -rf $PKG/usr/lib/python*/site-packages/packaging-$version.dist.info/REQUESTED

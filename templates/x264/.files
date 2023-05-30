@@ -1,0 +1,9 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libx264.so
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rwxr-xr-x root/root usr/lib/libx264.so.164
+-rw-r--r-- root/root usr/lib/pkgconfig/x264.pc
+-rw-r--r-- root/root usr/include/x264.h
+-rw-r--r-- root/root usr/include/x264_config.h

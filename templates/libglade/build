@@ -1,0 +1,2 @@
+sed -i '/DG_DISABLE_DEPRECATED/d' glade/Makefile.in
+_auto_build

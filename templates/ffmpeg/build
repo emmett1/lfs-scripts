@@ -1,0 +1,25 @@
+_auto_patch
+./configure \
+	--prefix=/usr \
+	--enable-gpl \
+	--enable-version3 \
+	--enable-nonfree \
+	--disable-static \
+	--enable-shared \
+	--disable-debug \
+	--enable-libaom \
+	--enable-libass \
+	--enable-libfdk-aac \
+	--enable-libfreetype \
+	--enable-libmp3lame \
+	--enable-libopus \
+	--enable-libtheora \
+	--enable-libvorbis \
+	--enable-libvpx \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-openssl
+make
+make install
+gcc $CFLAGS tools/qt-faststart.c -o tools/qt-faststart
+install -m755 tools/qt-faststart $PKG/usr/bin

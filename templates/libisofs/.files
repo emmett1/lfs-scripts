@@ -1,0 +1,10 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/include/libisofs/
+-rw-r--r-- root/root usr/include/libisofs/libisofs.h
+lrwxrwxrwx root/root usr/lib/libisofs.so.6
+lrwxrwxrwx root/root usr/lib/libisofs.so
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rwxr-xr-x root/root usr/lib/libisofs.so.6.91.0
+-rw-r--r-- root/root usr/lib/pkgconfig/libisofs-1.pc

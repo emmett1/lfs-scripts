@@ -1,0 +1,22 @@
+grep -rl '^#!.*python$' | xargs sed -i '1s/python/&3/'
+
+_auto_build
+
+cat >> $PKG/etc/NetworkManager/NetworkManager.conf << "EOF"
+[main]
+plugins=keyfile
+EOF
+
+cat > $PKG/etc/NetworkManager/conf.d/polkit.conf << "EOF"
+[main]
+auth-polkit=true
+EOF
+
+mkdir -p $PKG/etc/polkit-1/rules.d
+cat > $PKG/etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules << "EOF"
+polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});
+EOF

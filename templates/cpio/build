@@ -1,0 +1,3 @@
+_auto_build
+rm $PKG/usr/lib/rmt
+rm $PKG/usr/share/man/man8/rmt.8

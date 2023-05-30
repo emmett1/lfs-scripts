@@ -1,0 +1,13 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+-rwxr-xr-x root/root usr/lib/libmenu-cache.so.3.2.0
+lrwxrwxrwx root/root usr/lib/libmenu-cache.so
+lrwxrwxrwx root/root usr/lib/libmenu-cache.so.3
+drwxr-xr-x root/root usr/lib/menu-cache/
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/libmenu-cache.pc
+-rwxr-xr-x root/root usr/lib/menu-cache/menu-cached
+-rwxr-xr-x root/root usr/lib/menu-cache/menu-cache-gen
+drwxr-xr-x root/root usr/include/menu-cache/
+-rw-r--r-- root/root usr/include/menu-cache/menu-cache.h

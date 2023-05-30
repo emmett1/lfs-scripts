@@ -1,0 +1,15 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/include/
+-rw-r--r-- root/root usr/include/zlib.h
+-rw-r--r-- root/root usr/include/zconf.h
+lrwxrwxrwx root/root usr/lib/libz.so
+lrwxrwxrwx root/root usr/lib/libz.so.1
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/libz.a
+-rwxr-xr-x root/root usr/lib/libz.so.1.2.13
+-rw-r--r-- root/root usr/lib/pkgconfig/zlib.pc
+drwxr-xr-x root/root usr/share/man/
+drwxr-xr-x root/root usr/share/man/man3/
+-rw-r--r-- root/root usr/share/man/man3/zlib.3.gz

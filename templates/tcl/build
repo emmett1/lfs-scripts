@@ -1,0 +1,12 @@
+cd unix
+./configure \
+	--prefix=/usr \
+	--mandir=/usr/share/man \
+	--without-tzdata
+make
+make install install-private-headers
+
+ln -sv tclsh8.6 $PKG/usr/bin/tclsh
+
+# conflict with perl
+rm $PKG/usr/share/man/man3/Thread.3

@@ -1,0 +1,8 @@
+NOCONFIGURE=1 ./autogen.sh
+_configure_build
+
+mv -v $PKG/etc/X11/app-defaults/xinitrc.d/90-consolekit \
+	$PKG/etc/X11/app-defaults/xinitrc.d/90-consolekit.sh
+
+install -Dm 755 $FILES/pam-foreground-compat.ck \
+	$PKG/usr/lib/ConsoleKit/run-session.d/pam-foreground-compat.ck

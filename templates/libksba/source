@@ -1,0 +1,1 @@
+https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2

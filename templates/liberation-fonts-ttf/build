@@ -1,0 +1,6 @@
+install -d $PKG/usr/share/fonts/TTF
+cp *.ttf $PKG/usr/share/fonts/TTF/
+
+install -Dm0644 $FILES/30-0-liberation-mono.conf $PKG/etc/fonts/conf.avail/30-$name-mono.conf
+install -Dm0644 $FILES/30-0-liberation-sans.conf $PKG/etc/fonts/conf.avail/30-$name-sans.conf
+install -Dm0644 $FILES/30-0-liberation-serif.conf $PKG/etc/fonts/conf.avail/30-$name-serif.conf

@@ -1,0 +1,23 @@
+# /etc/profile
+
+# Set the initial path
+export PATH=/bin:/usr/bin
+
+if [ "$(id -u)" -eq 0 ] ; then
+    export PATH=$PATH:/sbin:/usr/sbin
+    unset HISTFILE
+fi
+
+# Set umask
+umask 022
+
+# Setup some environment variables.
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+
+for script in /etc/profile.d/*.sh ; do
+    if [ -r $script ] ; then
+        . $script
+    fi
+    unset script
+done

@@ -1,0 +1,8 @@
+mkdir -v build
+cd       build
+
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_STATIC_LIBS=OFF ..
+make
+make install

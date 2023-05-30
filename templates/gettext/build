@@ -1,0 +1,8 @@
+autoreconf -fiv
+#_auto_build
+./configure --prefix=/usr --disable-rpath
+make
+make install
+
+# idk what the fuck is wrong with this??
+rm -fr $PKG/$(echo $WORKDIR | cut -d / -f2)

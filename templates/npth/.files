@@ -1,0 +1,12 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/bin/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libnpth.so
+lrwxrwxrwx root/root usr/lib/libnpth.so.0
+-rwxr-xr-x root/root usr/lib/libnpth.so.0.1.2
+-rwxr-xr-x root/root usr/bin/npth-config
+-rw-r--r-- root/root usr/include/npth.h
+drwxr-xr-x root/root usr/share/aclocal/
+-rw-r--r-- root/root usr/share/aclocal/npth.m4

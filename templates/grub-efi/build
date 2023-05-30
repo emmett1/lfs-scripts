@@ -1,0 +1,9 @@
+mkdir -pv $PKG/usr/share/fonts/unifont
+gunzip -c ../unifont-15.0.01.pcf.gz > $PKG/usr/share/fonts/unifont/unifont.pcf
+_auto_build
+rm -rf \
+	$PKG/etc \
+	$PKG/usr/sbin \
+	$PKG/usr/bin \
+	$PKG/usr/share/info \
+	$PKG/usr/share/grub/grub-mkconfig_lib

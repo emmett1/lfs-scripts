@@ -1,0 +1,13 @@
+./configure \
+	--prefix=/usr \
+	--confdir=/etc/mplayer \
+	--enable-dynamic-plugins \
+	--disable-libmpeg2-internal \
+	--enable-menu \
+	--enable-runtime-cpudetection \
+	--enable-gui
+make
+make install
+install -v -m644 etc/*.conf $PKG/etc/mplayer
+cp -rav ../Clearlooks $PKG/usr/share/mplayer/skins
+ln  -sfvn Clearlooks $PKG/usr/share/mplayer/skins/default

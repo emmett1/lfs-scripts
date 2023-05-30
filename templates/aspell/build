@@ -1,0 +1,9 @@
+_auto_build
+ln -svfn aspell-0.60 $PKG/usr/lib/aspell
+install -m 755 scripts/ispell $PKG/usr/bin/ispell
+install -m 755 scripts/spell $PKG/usr/bin/spell
+
+cd ../aspell6-en-2020.12.07-0
+./configure
+make
+make install

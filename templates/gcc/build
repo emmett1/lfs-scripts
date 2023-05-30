@@ -1,0 +1,45 @@
+# /lib is 64bit libraries directory
+sed -e '/m64=/s/lib64/lib/' \
+    -i.orig gcc/config/i386/t-linux64
+
+# Do not run fixincludes
+#sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+
+mkdir -v build
+cd       build
+
+SED=sed \
+../configure \
+	--prefix=/usr \
+	--libexecdir=/usr/lib \
+	--enable-languages=c,c++,objc,obj-c++,lto \
+	--enable-lto \
+	--disable-bootstrap \
+	--disable-libmpx \
+	--with-system-zlib \
+	--without-zstd \
+	--with-pkgversion="Emmett1 LFS" \
+	--disable-fixincludes \
+	--enable-threads=posix \
+	--enable-__cxa_atexit \
+	--enable-default-pie \
+	--enable-default-ssp \
+	--enable-multilib
+make
+make -j1 install
+
+mkdir $PKG/lib
+ln -sv ../usr/bin/cpp $PKG/lib/cpp
+ln -sv gcc $PKG/usr/bin/cc
+
+install -v -dm755 $PKG/usr/lib/bfd-plugins
+ln -sfv ../../lib/gcc/$(gcc -dumpmachine)/$version/liblto_plugin.so \
+        $PKG/usr/lib/bfd-plugins/
+
+mkdir -pv $PKG/usr/share/gdb/auto-load/usr/lib
+mv -v $PKG/usr/lib/*gdb.py $PKG/usr/share/gdb/auto-load/usr/lib
+
+install -Dm755 $CWD/files/c89 $PKG/usr/bin/c89
+install -Dm755 $CWD/files/c99 $PKG/usr/bin/c99
+
+rm -r $PKG/usr/share/$name-$version

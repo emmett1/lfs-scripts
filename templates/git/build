@@ -1,0 +1,8 @@
+make CFLAGS="$CFLAGS" \
+	prefix=/usr \
+	gitexecdir=/usr/lib/git-core \
+	perllibdir="$(perl -MConfig -wle 'print $Config{installvendorlib}')" \
+	install
+
+mkdir -p $PKG/usr/share/git/
+install -m644 ./contrib/completion/git-prompt.sh $PKG/usr/share/git/git-prompt.sh

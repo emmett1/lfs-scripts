@@ -1,0 +1,5 @@
+make PREFIX=/usr src/usr.sbin/rdate/rdate
+
+install -d $PKG/usr/bin $PKG/usr/share/man/man8
+install -m 0755 src/usr.sbin/rdate/rdate $PKG/usr/bin
+install -m 0644 src/usr.sbin/rdate/rdate.8 $PKG/usr/share/man/man8

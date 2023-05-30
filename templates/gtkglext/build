@@ -1,0 +1,8 @@
+autoreconf -fi
+rm -rf gdk/x11/gdkxglfont-x11.c
+./configure \
+--prefix=/usr \
+--disable-static \
+--disable-gtk-doc
+make
+make install

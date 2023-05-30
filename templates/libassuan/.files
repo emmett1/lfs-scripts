@@ -1,0 +1,16 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/bin/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libassuan.so
+-rwxr-xr-x root/root usr/lib/libassuan.so.0.8.5
+lrwxrwxrwx root/root usr/lib/libassuan.so.0
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/libassuan.pc
+-rwxr-xr-x root/root usr/bin/libassuan-config
+-rw-r--r-- root/root usr/include/assuan.h
+drwxr-xr-x root/root usr/share/aclocal/
+drwxr-xr-x root/root usr/share/info/
+-rw-r--r-- root/root usr/share/info/assuan.info.gz
+-rw-r--r-- root/root usr/share/aclocal/libassuan.m4

@@ -1,0 +1,9 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/include/
+-rw-r--r-- root/root usr/include/mad.h
+lrwxrwxrwx root/root usr/lib/libmad.so
+-rwxr-xr-x root/root usr/lib/libmad.so.0.2.1
+lrwxrwxrwx root/root usr/lib/libmad.so.0
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/mad.pc

@@ -1,0 +1,3 @@
+sed -i '/install_man/,$d' meson.build
+_meson_build
+rm -f $PKG/usr/lib/xorg/protocol.txt

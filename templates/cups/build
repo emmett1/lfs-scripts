@@ -1,0 +1,13 @@
+_auto_build 
+rm -rf $PKG/tmp
+chmod -R +w $PKG
+mkdir -p $PKG/etc/pam.d
+cat > $PKG/etc/pam.d/cups << "EOF"
+# Begin /etc/pam.d/cups
+
+auth    include system-auth
+account include system-account
+session include system-session
+
+# End /etc/pam.d/cups
+EOF

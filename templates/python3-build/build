@@ -1,0 +1,9 @@
+for i in build flit-core installer; do
+	pip3 install --root=$SRC/tmp $i
+done
+
+PYTHON_VERSION=$(python3 -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+export PYTHONPATH=$SRC/tmp/usr/lib/python${PYTHON_VERSION}/site-packages
+
+python3 -m build --wheel --skip-dependency-check --no-isolation
+python3 -m installer --compile-bytecode 2 --destdir=$PKG dist/*.whl

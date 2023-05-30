@@ -1,0 +1,2 @@
+_auto_build
+sed -i "s/iconv //" $PKG/usr/lib/pkgconfig/libarchive.pc

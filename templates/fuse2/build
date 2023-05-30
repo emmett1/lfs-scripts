@@ -1,0 +1,7 @@
+autoreconf -vfi
+_configure_build
+rm -rf $PKG/dev $PKG/etc/init.d/
+
+install -d $PKG/lib
+mv -v   $PKG/usr/lib/libfuse.so.* $PKG/lib
+ln -sfv ../../lib/libfuse.so.2.9.9 $PKG/usr/lib/libfuse.so

@@ -1,0 +1,240 @@
+Submitted By:            Douglas R. Reno <renodr at linuxfromscratch dot org>
+Date:                    2021-07-12
+Initial Package Version: 0.105
+Origin:                  Arch Linux
+Upstream Status:         Abandoned
+Description:             This patch updates polkit-gnome to use AccountsService
+                         for retrieving the user icon, as well as updating
+                         timestamps and fixing a very minor security issue with
+                         the order in which users are selected in the
+                         authentication dialog. Debian and Arch have taken over
+                         maintenance of this package.
+
+diff -Naurp polkit-gnome-0.105.orig/src/polkitgnomeauthenticationdialog.c polkit-gnome-0.105/src/polkitgnomeauthenticationdialog.c
+--- polkit-gnome-0.105.orig/src/polkitgnomeauthenticationdialog.c	2011-10-25 10:30:59.000000000 -0500
++++ polkit-gnome-0.105/src/polkitgnomeauthenticationdialog.c	2021-07-12 18:55:32.732859059 -0500
+@@ -135,10 +135,106 @@ user_combobox_changed (GtkComboBox *widg
+     }
+ }
+ 
++static GdkPixbuf *
++get_user_icon (char *username)
++{
++   GError *error;
++   GDBusConnection *connection;
++   GVariant *find_user_result;
++   GVariant *get_icon_result;
++   GVariant *icon_result_variant;
++   const gchar *user_path;
++   const gchar *icon_filename;
++   GdkPixbuf *pixbuf;
++
++   error = NULL;
++   connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
++
++   if (connection == NULL)
++   {
++      g_warning ("Unable to connect to system bus: %s", error->message);
++      g_error_free (error);
++      return NULL;
++   }
++
++   find_user_result = g_dbus_connection_call_sync (connection,
++                                            "org.freedesktop.Accounts",
++                                            "/org/freedesktop/Accounts",
++                                            "org.freedesktop.Accounts",
++                                            "FindUserByName",
++                                            g_variant_new ("(s)",
++                                            username),
++                                            G_VARIANT_TYPE ("(o)"),
++                                            G_DBUS_CALL_FLAGS_NONE,
++                                            -1,
++                                            NULL,
++                                            &error);
++
++   if (find_user_result == NULL)
++   {
++      g_warning ("Accounts couldn't find user: %s", error->message);
++      g_error_free (error);
++      return NULL;
++   }
++
++   user_path = g_variant_get_string (g_variant_get_child_value (find_user_result, 0),
++                                     NULL);
++
++   get_icon_result = g_dbus_connection_call_sync (connection,
++                                                  "org.freedesktop.Accounts",
++                                                  user_path,
++                                                  "org.freedesktop.DBus.Properties",
++                                                  "Get",
++                                                  g_variant_new("(ss)",
++                                                                "org.freedesktop.Accounts.User",
++                                                                "IconFile"),
++                                                  G_VARIANT_TYPE ("(v)"),
++                                                  G_DBUS_CALL_FLAGS_NONE,
++                                                  -1,
++                                                  NULL,
++                                                  &error);
++
++   g_variant_unref (find_user_result);
++
++   if (get_icon_result == NULL)
++   {
++      g_warning ("Accounts couldn't find user icon: %s", error->message);
++      g_error_free (error);
++      return NULL;
++   }
++
++   g_variant_get_child (get_icon_result, 0, "v", &icon_result_variant);
++   icon_filename = g_variant_get_string (icon_result_variant, NULL);
++
++   if (icon_filename == NULL)
++   {
++      g_warning ("Accounts didn't return a valid filename for the user icon");
++      pixbuf = NULL;
++   }
++   else
++   {
++      // TODO, we probably shouldn't be hardcoding the size at 16x16
++      pixbuf = gdk_pixbuf_new_from_file_at_size (icon_filename,
++                                                 16,
++                                                 16,
++                                                 &error);
++      if (pixbuf == NULL)
++      {
++         g_warning ("Couldn't open user icon: %s", error->message);
++         g_error_free (error);
++      }
++   }
++
++   g_variant_unref (icon_result_variant);
++   g_variant_unref (get_icon_result);
++
++   return pixbuf;
++}
++
+ static void
+ create_user_combobox (PolkitGnomeAuthenticationDialog *dialog)
+ {
+-  int n;
++  int n, i, selected_index = 0;
+   GtkComboBox *combo;
+   GtkTreeIter iter;
+   GtkCellRenderer *renderer;
+@@ -162,7 +258,7 @@ create_user_combobox (PolkitGnomeAuthent
+ 
+ 
+   /* For each user */
+-  for (n = 0; dialog->priv->users[n] != NULL; n++)
++  for (i = 0, n = 0; dialog->priv->users[n] != NULL; n++)
+     {
+       gchar *gecos;
+       gchar *real_name;
+@@ -197,15 +293,7 @@ create_user_combobox (PolkitGnomeAuthent
+       g_free (gecos);
+ 
+       /* Load users face */
+-      pixbuf = NULL;
+-      if (passwd->pw_dir != NULL)
+-        {
+-          gchar *path;
+-          path = g_strdup_printf ("%s/.face", passwd->pw_dir);
+-          /* TODO: we probably shouldn't hard-code the size to 16x16 */
+-          pixbuf = gdk_pixbuf_new_from_file_at_scale (path, 16, 16, TRUE, NULL);
+-          g_free (path);
+-        }
++      pixbuf = get_user_icon (dialog->priv->users[n]);
+ 
+       /* fall back to avatar-default icon */
+       if (pixbuf == NULL)
+@@ -224,6 +312,14 @@ create_user_combobox (PolkitGnomeAuthent
+                           USERNAME_COL, dialog->priv->users[n],
+                           -1);
+ 
++      i++;
++      if (passwd->pw_uid == getuid ())
++      {
++         selected_index = i;
++         g_free (dialog->priv->selected_user);
++         dialog->priv->selected_user = g_strdup(dialog->priv->users[n]);
++      }
++
+       g_free (real_name);
+       g_object_unref (pixbuf);
+     }
+@@ -252,8 +348,8 @@ create_user_combobox (PolkitGnomeAuthent
+                                       user_combobox_set_sensitive,
+                                       NULL, NULL);
+ 
+-  /* Initially select the "Select user..." ... */
+-  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
++  /* Select the default user*/
++  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), selected_index);
+ 
+   /* Listen when a new user is selected */
+   g_signal_connect (GTK_WIDGET (combo),
+@@ -566,6 +662,7 @@ polkit_gnome_authentication_dialog_const
+   g_free (s);
+   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
++  gtk_label_set_max_width_chars (GTK_LABEL (label), 70);
+   gtk_box_pack_start (GTK_BOX (main_vbox), label, FALSE, FALSE, 0);
+ 
+   /* secondary message */
+@@ -593,6 +690,7 @@ polkit_gnome_authentication_dialog_const
+     }
+   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
++  gtk_label_set_max_width_chars (GTK_LABEL (label), 70);
+   gtk_box_pack_start (GTK_BOX (main_vbox), label, FALSE, FALSE, 0);
+ 
+   /* user combobox */
+@@ -719,16 +817,13 @@ polkit_gnome_authentication_dialog_const
+   gtk_widget_set_tooltip_markup (label, s);
+   g_free (s);
+ 
+-  if (have_user_combobox)
++  /* Disable password entry and authenticate until we have a user selected. */
++  if (have_user_combobox && gtk_combo_box_get_active (GTK_COMBO_BOX (dialog->priv->user_combobox)) == 0)
+     {
+-      /* ... and make the password entry and "Authenticate" button insensitive */
+       gtk_widget_set_sensitive (dialog->priv->prompt_label, FALSE);
+       gtk_widget_set_sensitive (dialog->priv->password_entry, FALSE);
+       gtk_widget_set_sensitive (dialog->priv->auth_button, FALSE);
+     }
+-  else
+-    {
+-    }
+ 
+   gtk_widget_realize (GTK_WIDGET (dialog));
+ 
+diff -Naurp polkit-gnome-0.105.orig/src/polkitgnomeauthenticator.c polkit-gnome-0.105/src/polkitgnomeauthenticator.c
+--- polkit-gnome-0.105.orig/src/polkitgnomeauthenticator.c	2011-10-27 08:23:08.000000000 -0500
++++ polkit-gnome-0.105/src/polkitgnomeauthenticator.c	2021-07-12 18:53:54.555703566 -0500
+@@ -26,6 +26,7 @@
+ #include <sys/types.h>
+ #include <pwd.h>
+ #include <glib/gi18n.h>
++#include <gdk/gdkx.h>
+ 
+ #include <polkit/polkit.h>
+ #include <polkitagent/polkitagent.h>
+@@ -306,7 +307,17 @@ session_request (PolkitAgentSession *ses
+     }
+ 
+   gtk_widget_show_all (GTK_WIDGET (authenticator->dialog));
+-  gtk_window_present (GTK_WINDOW (authenticator->dialog));
++  GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (authenticator->dialog));
++
++  if (GDK_IS_X11_WINDOW (window))
++  {
++     gtk_window_present_with_time (GTK_WINDOW (authenticator->dialog), gdk_x11_get_server_time (window));
++  }
++  else
++  {
++     gtk_window_present (GTK_WINDOW (authenticator->dialog));
++  }
++
+   password = polkit_gnome_authentication_dialog_run_until_response_for_prompt (POLKIT_GNOME_AUTHENTICATION_DIALOG (authenticator->dialog),
+                                                                                modified_request,
+                                                                                echo_on,

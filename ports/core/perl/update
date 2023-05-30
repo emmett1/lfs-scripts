@@ -1,5 +1,0 @@
-url=https://www.perl.org/get.html
-
-getver_perl() {	
-	getver
-}

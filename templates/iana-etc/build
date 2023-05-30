@@ -1,0 +1,3 @@
+install -d -m 755 $PKG/etc
+install -m 644 $FILES/services $PKG/etc
+install -m 644 $FILES/protocols $PKG/etc

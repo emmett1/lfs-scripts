@@ -1,0 +1,10 @@
+mkdir BUILD
+cd    BUILD
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_SKIP_INSTALL_RPATH=YES \
+      -DJAS_ENABLE_DOC=NO \
+      ..
+make
+make install

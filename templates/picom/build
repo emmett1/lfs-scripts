@@ -1,0 +1,4 @@
+_meson_build
+sed 's/vsync = true/vsync = false/' -i picom.sample.conf
+install -Dm644 picom.sample.conf $PKG/etc/xdg/picom.conf
+install -Dm644 picom.sample.conf $PKG/etc/xdg/picom.conf.example

@@ -1,0 +1,4 @@
+_pyver=$(python3 -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+pip3 install --isolate --root=$PKG --ignore-installed --no-deps installer  
+rm -rf $PKG/usr/lib/python$_pyver/site-packages/installer-$version.dist-info/REQUESTED
+rm -rf $PKG/usr/lib/python$_pyver/site-packages/installer-$version.dist-info/INSTALLER

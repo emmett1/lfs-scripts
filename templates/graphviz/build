@@ -1,0 +1,3 @@
+sed -i '/LIBPOSTFIX="64"/s/64//' configure.ac
+./autogen.sh
+_auto_build

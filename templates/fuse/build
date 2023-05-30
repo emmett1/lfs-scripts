@@ -1,0 +1,16 @@
+sed -i '/^udev/,$ s/^/#/' util/meson.build
+_auto_build
+chmod u+s $PKG/usr/bin/fusermount3
+
+mkdir -p $PKG/etc
+cat > $PKG/etc/fuse.conf << "EOF"
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#
+#mount_max = 1000
+
+# Allow non-root users to specify the 'allow_other' or 'allow_root'
+# mount options.
+#
+#user_allow_other
+EOF

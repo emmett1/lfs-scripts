@@ -1,0 +1,2 @@
+sed -i -e "/D_XOPEN/s/5/6/" configure
+_configure_build

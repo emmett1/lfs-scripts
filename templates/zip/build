@@ -1,0 +1,2 @@
+make -f unix/Makefile generic_gcc
+make prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 -f unix/Makefile install

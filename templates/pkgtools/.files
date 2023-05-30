@@ -1,0 +1,7 @@
+drwxr-xr-x root/root sbin/
+-rwxr-xr-x root/root sbin/removepkg
+-rwxr-xr-x root/root sbin/makepkg
+-rwxr-xr-x root/root sbin/upgradepkg
+-rwxr-xr-x root/root sbin/explodepkg
+-rwxr-xr-x root/root sbin/installpkg
+-rwxr-xr-x root/root sbin/pkgtools

@@ -1,0 +1,2 @@
+install -Dm755 $name $PKG/usr/bin/$name
+install -Dm644 schema.pl $PKG/etc/xdg/$name/schema.pl

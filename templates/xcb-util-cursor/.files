@@ -1,0 +1,10 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libxcb-cursor.so
+lrwxrwxrwx root/root usr/lib/libxcb-cursor.so.0
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rwxr-xr-x root/root usr/lib/libxcb-cursor.so.0.0.0
+-rw-r--r-- root/root usr/lib/pkgconfig/xcb-cursor.pc
+drwxr-xr-x root/root usr/include/xcb/
+-rw-r--r-- root/root usr/include/xcb/xcb_cursor.h

@@ -1,0 +1,2 @@
+_auto_build
+ln -svf dash $PKG/bin/sh

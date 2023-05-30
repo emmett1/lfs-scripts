@@ -1,0 +1,5 @@
+sed -e '/AM_PATH_GPGME/iAM_PATH_GPG_ERROR' \
+    -e 's/gpg2/gpg/' -i configure.ac
+
+autoreconf -fiv
+_configure_build

@@ -1,0 +1,10 @@
+mkdir tmp
+for i in chain.c32 isolinux.bin ldlinux.c32 libutil.c32 reboot.c32 vesamenu.c32 libcom32.c32 poweroff.c32; do
+	cp $(find bios -name $i) tmp
+done
+
+export CFLAGS="$CFLAGS -fcommon"
+make OPTFLAGS="$CFLAGS" installer
+make OPTFLAGS="$CFLAGS" MANDIR=/usr/share/man install
+
+cp tmp/* $PKG/usr/share/syslinux

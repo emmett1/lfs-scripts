@@ -1,0 +1,4 @@
+build_opt="--libdir=/usr/lib \
+        --enable-lib \
+        --enable-util \
+        --disable-example"

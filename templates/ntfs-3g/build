@@ -1,0 +1,5 @@
+mkdir -p $PKG/lib
+_auto_build	
+ln -sv ../bin/ntfs-3g $PKG/sbin/mount.ntfs
+ln -sv ntfs-3g.8 $PKG/usr/share/man/man8/mount.ntfs.8
+chmod -v 4755 $PKG/sbin/mount.ntfs

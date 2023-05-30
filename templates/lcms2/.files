@@ -1,0 +1,10 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/liblcms2.so.2
+-rwxr-xr-x root/root usr/lib/liblcms2.so.2.0.13
+drwxr-xr-x root/root usr/lib/pkgconfig/
+lrwxrwxrwx root/root usr/lib/liblcms2.so
+-rw-r--r-- root/root usr/lib/pkgconfig/lcms2.pc
+-rw-r--r-- root/root usr/include/lcms2_plugin.h
+-rw-r--r-- root/root usr/include/lcms2.h

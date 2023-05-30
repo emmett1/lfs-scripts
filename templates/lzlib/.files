@@ -1,0 +1,8 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/include/
+-rw-r--r-- root/root usr/include/lzlib.h
+-rw-r--r-- root/root usr/lib/liblz.a
+drwxr-xr-x root/root usr/share/info/
+-rw-r--r-- root/root usr/share/info/lzlib.info.gz

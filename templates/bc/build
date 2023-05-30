@@ -1,0 +1,3 @@
+./configure --prefix=/usr -r
+make
+make install

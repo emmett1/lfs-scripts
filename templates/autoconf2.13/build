@@ -1,0 +1,4 @@
+mv autoconf.texi autoconf213.texi
+rm autoconf.info
+_auto_build
+install -m644 autoconf213.info $PKG/usr/share/info

@@ -1,0 +1,4 @@
+2to3-3.11 -w data/autostart/openbox-xdg-autostart
+sed 's/python/python3/' -i data/autostart/openbox-xdg-autostart
+
+_configure_build

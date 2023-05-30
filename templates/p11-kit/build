@@ -1,0 +1,2 @@
+_meson_build
+#ln -sfv ./pkcs11/p11-kit-trust.so $PKG/usr/lib/libnssckbi.so

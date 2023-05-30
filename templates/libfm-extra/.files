@@ -1,0 +1,13 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libfm-extra.so
+-rwxr-xr-x root/root usr/lib/libfm-extra.so.4.1.3
+drwxr-xr-x root/root usr/lib/pkgconfig/
+lrwxrwxrwx root/root usr/lib/libfm-extra.so.4
+-rw-r--r-- root/root usr/lib/pkgconfig/libfm-extra.pc
+drwxr-xr-x root/root usr/include/libfm-1.0/
+lrwxrwxrwx root/root usr/include/libfm
+-rw-r--r-- root/root usr/include/libfm-1.0/fm-extra.h
+-rw-r--r-- root/root usr/include/libfm-1.0/fm-version.h
+-rw-r--r-- root/root usr/include/libfm-1.0/fm-xml-file.h

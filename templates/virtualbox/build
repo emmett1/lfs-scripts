@@ -1,0 +1,89 @@
+cp $FILES/LocalConfig.kmk .
+
+ln -s /bin/echo makeself
+
+echo "VBOX_USE_SYSTEM_GL_HEADERS=true" >> LocalConfig.kmk
+echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
+
+#sed -i 's/^check_gcc$/#check_gcc/' configure
+
+./configure \
+	--disable-docs \
+	--disable-java \
+	--enable-vde \
+	--disable-python \
+	--disable-kmods \
+	--nofatal \
+	--enable-webservice
+. ./env.sh
+kmk all
+
+cd "out/linux.$BUILD_PLATFORM_ARCH/release/bin"
+
+# binaries
+install -dm0755 "$PKG/usr/bin"
+install -m0755 VBox.sh "$PKG/usr/bin/VBox"
+for i in VBoxHeadless VBoxManage VBoxSDL VirtualBox vboxwebsrv VBoxBalloonCtrl \
+	vboxheadless vboxmanage vboxsdl virtualbox vboxballoonctrl ; do
+    ln -s VBox "$PKG/usr/bin/$i"
+done
+
+# libraries
+install -dm0755 "$PKG/usr/lib/virtualbox"
+install -m0755 *.so "$PKG/usr/lib/virtualbox"
+install -m0644 *.r0 VBoxEFI*.fd "$PKG/usr/lib/virtualbox"
+
+## setuid root binaries
+install -m4755 VirtualBoxVM VBoxHeadless VBoxNetDHCP VBoxNetAdpCtl VBoxNetNAT -t "$PKG/usr/lib/virtualbox"
+
+## other binaries
+install -m0755 VirtualBox VBoxManage VBoxSVC VBoxExtPackHelperApp VBoxXPCOMIPCD VBoxTestOGL VBoxBalloonCtrl -t "$PKG/usr/lib/virtualbox"
+
+# components
+install -dm0755 "$PKG/usr/lib/virtualbox/components"
+install -m0755 components/* -t "$PKG/usr/lib/virtualbox/components"
+
+# extensions packs
+install -dm0755 "$PKG/usr/lib/virtualbox/ExtensionPacks"
+
+# useless scripts
+install -dm0755 "$PKG/usr/share/virtualbox"
+install -m0755 VBoxCreateUSBNode.sh VBoxSysInfo.sh -t "$PKG/usr/share/virtualbox"
+
+# icons
+install -Dm0644 VBox.png "$PKG/usr/share/pixmaps/VBox.png"
+
+cd icons >/dev/null
+for i in *; do
+	install -d "$PKG/usr/share/icons/hicolor/$i/mimetypes"
+	cp $i/* "$PKG/usr/share/icons/hicolor/$i/mimetypes"
+done
+cd - >/dev/null
+
+#desktop
+install -Dm0644 virtualbox.desktop "$PKG/usr/share/applications/virtualbox.desktop"
+install -Dm0644 virtualbox.xml "$PKG/usr/share/mime/packages/virtualbox.xml"
+
+#install configuration
+install -dm0755 "$PKG/etc/vbox"
+echo 'INSTALL_DIR=/usr/lib/virtualbox' > "$PKG/etc/vbox/vbox.cfg"
+
+# udev rules
+install -Dm0644 "$FILES/virtualbox.60-vboxdrv.rules" "$PKG/lib/udev/rules.d/60-vboxdrv.rules"
+
+# module's sources
+install -dm0755 "$PKG/usr/src"
+cp -r src "$PKG/usr/src/vboxhost-${version}_OSE"
+
+# make the modules
+for i in vboxdrv vboxnetadp vboxnetflt; do
+	make -C src/$i
+	make -C src/$i INSTALL_MOD_PATH=$PKG install
+done
+
+# load modules at boot time
+install -d $PKG/etc/modules-load.d/
+echo "# Load virtualbox modules at startup" > $PKG/etc/modules-load.d/virtualbox.conf
+echo "vboxdrv" >> $PKG/etc/modules-load.d/virtualbox.conf
+echo "vboxnetadp" >> $PKG/etc/modules-load.d/virtualbox.conf
+echo "vboxnetflt" >> $PKG/etc/modules-load.d/virtualbox.conf

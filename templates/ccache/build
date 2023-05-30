@@ -1,0 +1,6 @@
+_auto_build
+install -d $PKG/usr/lib/ccache
+for c in gcc g++ cc c++; do
+	ln -s /usr/bin/ccache $PKG/usr/lib/ccache/$c
+done
+mkdir -p $PKG/var/cache/ccache

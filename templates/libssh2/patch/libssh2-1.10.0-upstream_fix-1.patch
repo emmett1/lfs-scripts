@@ -1,0 +1,1754 @@
+Submitted by: Xi Ruoyao <xry111 at xry111 dot site>
+Date: 2022-09-01
+Initial Package Version: 1.10.0
+Upstream Status: Applied
+Origin:
+- https://github.com/libssh2/libssh2/pull/626
+- https://github.com/libssh2/libssh2/pull/656
+Description: Fix incompatibility with latest OpenSSH.
+
+From 5d31fc6daeb5202df32cf560345cce3e735b49e2 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 30 Aug 2021 17:45:20 +0000
+Subject: [PATCH 01/16] Host Key RSA 256/512 support #536
+
+---
+ src/hostkey.c | 161 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 161 insertions(+)
+
+diff --git a/src/hostkey.c b/src/hostkey.c
+index d87a4c744..ddf13c365 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -227,6 +227,139 @@ hostkey_method_ssh_rsa_signv(LIBSSH2_SESSION * session,
+ #endif
+ }
+ 
++/*
++ * hostkey_method_ssh_rsa_sha2_256_sig_verify
++ *
++ * Verify signature created by remote
++ */
++
++static int
++hostkey_method_ssh_rsa_sha2_256_sig_verify(LIBSSH2_SESSION * session,
++                                   const unsigned char *sig,
++                                   size_t sig_len,
++                                   const unsigned char *m,
++                                   size_t m_len, void **abstract)
++{
++    libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
++    (void) session;
++
++    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-256"} + signature_len(4) */
++    if(sig_len < 20)
++        return -1;
++
++    sig += 20;
++    sig_len -= 20;
++    return _libssh2_rsa_sha2_verify(rsactx, SHA256_DIGEST_LENGTH, sig, sig_len, m, m_len);
++}
++
++/*
++ * hostkey_method_ssh_rsa_sha2_256_signv
++ *
++ * Construct a signature from an array of vectors
++ */
++
++static int
++hostkey_method_ssh_rsa_sha2_256_signv(LIBSSH2_SESSION * session,
++                             unsigned char **signature,
++                             size_t *signature_len,
++                             int veccount,
++                             const struct iovec datavec[],
++                             void **abstract)
++{
++    libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
++
++#ifdef _libssh2_rsa_sha2_256_signv
++    return _libssh2_rsa_sha2_256_signv(session, signature, signature_len,
++                                       veccount, datavec, rsactx);
++#else
++    int ret;
++    int i;
++    unsigned char hash[SHA256_DIGEST_LENGTH];
++    libssh2_sha256_ctx ctx;
++
++    libssh2_sha256_init(&ctx);
++    for(i = 0; i < veccount; i++) {
++        libssh2_sha256_update(ctx, datavec[i].iov_base, datavec[i].iov_len);
++    }
++    libssh2_sha256_final(ctx, hash);
++
++    ret = _libssh2_rsa_sha2_sign(session, rsactx, hash, SHA256_DIGEST_LENGTH,
++                                 signature, signature_len);
++    if(ret) {
++        return -1;
++    }
++
++    return 0;
++#endif
++}
++
++/*
++ * hostkey_method_ssh_rsa_sha2_512_sig_verify
++ *
++ * Verify signature created by remote
++ */
++
++static int
++hostkey_method_ssh_rsa_sha2_512_sig_verify(LIBSSH2_SESSION * session,
++                                   const unsigned char *sig,
++                                   size_t sig_len,
++                                   const unsigned char *m,
++                                   size_t m_len, void **abstract)
++{
++    libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
++    (void) session;
++
++    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-512"} + signature_len(4) */
++    if(sig_len < 20)
++        return -1;
++
++    sig += 20;
++    sig_len -= 20;
++    return _libssh2_rsa_sha2_verify(rsactx, SHA512_DIGEST_LENGTH, sig, sig_len, m, m_len);
++}
++
++
++/*
++ * hostkey_method_ssh_rsa_sha2_512_signv
++ *
++ * Construct a signature from an array of vectors
++ */
++static int
++hostkey_method_ssh_rsa_sha2_512_signv(LIBSSH2_SESSION * session,
++                             unsigned char **signature,
++                             size_t *signature_len,
++                             int veccount,
++                             const struct iovec datavec[],
++                             void **abstract)
++{
++    libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
++
++#ifdef _libssh2_rsa_sha2_512_signv
++    return _libssh2_rsa_sha2_512_signv(session, signature, signature_len,
++                                       veccount, datavec, rsactx);
++#else
++    int ret;
++    int i;
++    unsigned char hash[SHA512_DIGEST_LENGTH];
++    libssh2_sha512_ctx ctx;
++
++    libssh2_sha512_init(&ctx);
++    for(i = 0; i < veccount; i++) {
++        libssh2_sha512_update(ctx, datavec[i].iov_base, datavec[i].iov_len);
++    }
++    libssh2_sha512_final(ctx, hash);
++
++    ret = _libssh2_rsa_sha2_sign(session, rsactx, hash, SHA512_DIGEST_LENGTH,
++                                 signature, signature_len);
++    if(ret) {
++        return -1;
++    }
++
++    return 0;
++#endif
++}
++
++
+ /*
+  * hostkey_method_ssh_rsa_dtor
+  *
+@@ -260,6 +393,32 @@ static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa = {
+     NULL,                       /* encrypt */
+     hostkey_method_ssh_rsa_dtor,
+ };
++
++
++static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa_sha2_256 = {
++    "rsa-sha2-256",
++    SHA256_DIGEST_LENGTH,
++    hostkey_method_ssh_rsa_init,
++    hostkey_method_ssh_rsa_initPEM,
++    hostkey_method_ssh_rsa_initPEMFromMemory,
++    hostkey_method_ssh_rsa_sha2_256_sig_verify,
++    hostkey_method_ssh_rsa_sha2_256_signv,
++    NULL,                       /* encrypt */
++    hostkey_method_ssh_rsa_dtor,
++};
++
++static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa_sha2_512 = {
++    "rsa-sha2-512",
++    SHA512_DIGEST_LENGTH,
++    hostkey_method_ssh_rsa_init,
++    hostkey_method_ssh_rsa_initPEM,
++    hostkey_method_ssh_rsa_initPEMFromMemory,
++    hostkey_method_ssh_rsa_sha2_512_sig_verify,
++    hostkey_method_ssh_rsa_sha2_512_signv,
++    NULL,                       /* encrypt */
++    hostkey_method_ssh_rsa_dtor,
++};
++
+ #endif /* LIBSSH2_RSA */
+ 
+ #if LIBSSH2_DSA
+@@ -1043,6 +1202,8 @@ static const LIBSSH2_HOSTKEY_METHOD *hostkey_methods[] = {
+     &hostkey_method_ssh_ed25519,
+ #endif
+ #if LIBSSH2_RSA
++    &hostkey_method_ssh_rsa_sha2_512,
++    &hostkey_method_ssh_rsa_sha2_256,
+     &hostkey_method_ssh_rsa,
+ #endif /* LIBSSH2_RSA */
+ #if LIBSSH2_DSA
+
+From b10ccc7633932207cf406d022b125251fe86b466 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 30 Aug 2021 23:05:56 +0000
+Subject: [PATCH 02/16] Host Key RSA 256/512 support libssh2 #536
+
+---
+ docs/HACKING-CRYPTO | 26 ++++++++++++
+ src/crypto.h        | 13 ++++++
+ src/hostkey.c       |  8 ++++
+ src/libgcrypt.h     |  1 +
+ src/mbedtls.h       |  1 +
+ src/openssl.c       | 99 ++++++++++++++++++++++++++++++++++++++++++---
+ src/openssl.h       |  2 +
+ src/wincng.h        |  1 +
+ 9 files changed, 146 insertions(+), 6 deletions(-)
+
+diff --git a/docs/HACKING-CRYPTO b/docs/HACKING-CRYPTO
+index ca9477286..d0173553f 100644
+--- a/docs/HACKING-CRYPTO
++++ b/docs/HACKING-CRYPTO
+@@ -637,6 +637,32 @@ Note: this procedure is not used if macro _libssh2_rsa_sha1_signv() is defined.
+ void _libssh2_rsa_free(libssh2_rsa_ctx *rsactx);
+ Releases the RSA computation context at rsactx.
+ 
++LIBSSH2_RSA_SHA2
++#define as 1 if the crypto library supports RSA SHA2 256/512, else 0.
++If defined as 0, the rest of this section can be omitted.
++
++int _libssh2_rsa_sha2_sign(LIBSSH2_SESSION * session,
++                           libssh2_rsa_ctx * rsactx,
++                           const unsigned char *hash,
++                           size_t hash_len,
++                           unsigned char **signature,
++                           size_t *signature_len);
++RSA signs the (hash, hashlen) SHA-2 hash bytes based on hash length and stores
++the allocated signature at (signature, signature_len).
++Signature buffer must be allocated from the given session.
++Returns 0 if OK, else -1.
++This procedure is already prototyped in crypto.h.
++Note: this procedure is not used if macro _libssh2_rsa_sha1_signv() is defined.
++
++int _libssh2_rsa_sha2_verify(libssh2_rsa_ctx * rsa,
++                             size_t hash_len,
++                             const unsigned char *sig,
++                             unsigned long sig_len,
++                             const unsigned char *m, unsigned long m_len);
++Verify (sig, sig_len) signature of (m, m_len) using an SHA-2 hash based on
++hash length and the RSA context.
++Return 0 if OK, else -1.
++This procedure is already prototyped in crypto.h.
+ 
+ 7.2) DSA
+ LIBSSH2_DSA
+diff --git a/src/crypto.h b/src/crypto.h
+index f512d6039..efaf15646 100644
+--- a/src/crypto.h
++++ b/src/crypto.h
+@@ -93,6 +93,19 @@ int _libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
+                            size_t hash_len,
+                            unsigned char **signature,
+                            size_t *signature_len);
++#if LIBSSH2_RSA_SHA2
++int _libssh2_rsa_sha2_sign(LIBSSH2_SESSION * session,
++                           libssh2_rsa_ctx * rsactx,
++                           const unsigned char *hash,
++                           size_t hash_len,
++                           unsigned char **signature,
++                           size_t *signature_len);
++int _libssh2_rsa_sha2_verify(libssh2_rsa_ctx * rsa,
++                             size_t hash_len,
++                             const unsigned char *sig,
++                             unsigned long sig_len,
++                             const unsigned char *m, unsigned long m_len);
++#endif
+ int _libssh2_rsa_new_private_frommemory(libssh2_rsa_ctx ** rsa,
+                                         LIBSSH2_SESSION * session,
+                                         const char *filedata,
+diff --git a/src/hostkey.c b/src/hostkey.c
+index ddf13c365..8040a4ea1 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -232,6 +232,7 @@ hostkey_method_ssh_rsa_signv(LIBSSH2_SESSION * session,
+  *
+  * Verify signature created by remote
+  */
++#if LIBSSH2_RSA_SHA2
+ 
+ static int
+ hostkey_method_ssh_rsa_sha2_256_sig_verify(LIBSSH2_SESSION * session,
+@@ -359,6 +360,8 @@ hostkey_method_ssh_rsa_sha2_512_signv(LIBSSH2_SESSION * session,
+ #endif
+ }
+ 
++#endif /* LIBSSH2_RSA_SHA2 */
++
+ 
+ /*
+  * hostkey_method_ssh_rsa_dtor
+@@ -394,6 +397,7 @@ static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa = {
+     hostkey_method_ssh_rsa_dtor,
+ };
+ 
++#if LIBSSH2_RSA_SHA2
+ 
+ static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa_sha2_256 = {
+     "rsa-sha2-256",
+@@ -419,6 +423,8 @@ static const LIBSSH2_HOSTKEY_METHOD hostkey_method_ssh_rsa_sha2_512 = {
+     hostkey_method_ssh_rsa_dtor,
+ };
+ 
++#endif /* LIBSSH2_RSA_SHA2 */
++
+ #endif /* LIBSSH2_RSA */
+ 
+ #if LIBSSH2_DSA
+@@ -1202,8 +1208,10 @@ static const LIBSSH2_HOSTKEY_METHOD *hostkey_methods[] = {
+     &hostkey_method_ssh_ed25519,
+ #endif
+ #if LIBSSH2_RSA
++#if LIBSSH2_RSA_SHA2
+     &hostkey_method_ssh_rsa_sha2_512,
+     &hostkey_method_ssh_rsa_sha2_256,
++#endif /* LIBSSH2_RSA_SHA2 */
+     &hostkey_method_ssh_rsa,
+ #endif /* LIBSSH2_RSA */
+ #if LIBSSH2_DSA
+diff --git a/src/libgcrypt.h b/src/libgcrypt.h
+index 298c65ed0..95876b96d 100644
+--- a/src/libgcrypt.h
++++ b/src/libgcrypt.h
+@@ -55,6 +55,7 @@
+ #define LIBSSH2_3DES 1
+ 
+ #define LIBSSH2_RSA 1
++#define LIBSSH2_RSA_SHA2 0
+ #define LIBSSH2_DSA 1
+ #define LIBSSH2_ECDSA 0
+ #define LIBSSH2_ED25519 0
+diff --git a/src/mbedtls.h b/src/mbedtls.h
+index 671932c58..0450113f0 100644
+--- a/src/mbedtls.h
++++ b/src/mbedtls.h
+@@ -71,6 +71,7 @@
+ #define LIBSSH2_3DES            1
+ 
+ #define LIBSSH2_RSA             1
++#define LIBSSH2_RSA_SHA2        0
+ #define LIBSSH2_DSA             0
+ #ifdef MBEDTLS_ECDSA_C
+ # define LIBSSH2_ECDSA          1
+diff --git a/src/openssl.c b/src/openssl.c
+index 7a6810f13..8b5327d44 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -154,21 +154,57 @@ _libssh2_rsa_new(libssh2_rsa_ctx ** rsa,
+ }
+ 
+ int
+-_libssh2_rsa_sha1_verify(libssh2_rsa_ctx * rsactx,
++_libssh2_rsa_sha2_verify(libssh2_rsa_ctx * rsactx,
++                         size_t hash_len,
+                          const unsigned char *sig,
+                          unsigned long sig_len,
+                          const unsigned char *m, unsigned long m_len)
+ {
+-    unsigned char hash[SHA_DIGEST_LENGTH];
+     int ret;
++    int nid_type;
++    unsigned char *hash = malloc(hash_len);
++    if (hash == NULL)
++        return -1;
+ 
+-    if(_libssh2_sha1(m, m_len, hash))
++    if(hash_len == SHA_DIGEST_LENGTH) {
++        nid_type = NID_sha1;
++        ret = _libssh2_sha1(m, m_len, hash);
++    }
++    else if(hash_len == SHA256_DIGEST_LENGTH) {
++        nid_type = NID_sha256;
++        ret = _libssh2_sha256(m, m_len, hash);
++
++    }
++    else if(hash_len == SHA512_DIGEST_LENGTH) {
++        nid_type = NID_sha512;
++        ret = _libssh2_sha512(m, m_len, hash);
++    }
++    else
++        ret = -1; /* unsupported digest */
++
++    if(ret != 0)
++    {
++        free(hash);
+         return -1; /* failure */
+-    ret = RSA_verify(NID_sha1, hash, SHA_DIGEST_LENGTH,
++    }
++
++    ret = RSA_verify(nid_type, hash, hash_len,
+                      (unsigned char *) sig, sig_len, rsactx);
++
++    free(hash);
++
+     return (ret == 1) ? 0 : -1;
+ }
+ 
++int
++_libssh2_rsa_sha1_verify(libssh2_rsa_ctx * rsactx,
++                         const unsigned char *sig,
++                         unsigned long sig_len,
++                         const unsigned char *m, unsigned long m_len)
++{
++    return _libssh2_rsa_sha2_verify(rsactx, SHA_DIGEST_LENGTH, sig, sig_len, m, m_len);
++}
++
+ #if LIBSSH2_DSA
+ int
+ _libssh2_dsa_new(libssh2_dsa_ctx ** dsactx,
+@@ -1876,7 +1912,7 @@ _libssh2_ed25519_new_public(libssh2_ed25519_ctx ** ed_ctx,
+ 
+ 
+ int
+-_libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
++_libssh2_rsa_sha2_sign(LIBSSH2_SESSION * session,
+                        libssh2_rsa_ctx * rsactx,
+                        const unsigned char *hash,
+                        size_t hash_len,
+@@ -1893,7 +1929,17 @@ _libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
+         return -1;
+     }
+ 
+-    ret = RSA_sign(NID_sha1, hash, hash_len, sig, &sig_len, rsactx);
++    if(hash_len == SHA_DIGEST_LENGTH)
++        ret = RSA_sign(NID_sha1, hash, hash_len, sig, &sig_len, rsactx);
++    else if(hash_len == SHA256_DIGEST_LENGTH)
++        ret = RSA_sign(NID_sha256, hash, hash_len, sig, &sig_len, rsactx);
++    else if(hash_len == SHA512_DIGEST_LENGTH)
++        ret = RSA_sign(NID_sha512, hash, hash_len, sig, &sig_len, rsactx);
++    else {
++        _libssh2_error(session, LIBSSH2_ERROR_PROTO,
++                       "Unsupported hash digest length");
++        ret = -1;
++    }
+ 
+     if(!ret) {
+         LIBSSH2_FREE(session, sig);
+@@ -1906,6 +1952,19 @@ _libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
+     return 0;
+ }
+ 
++
++int
++_libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
++                       libssh2_rsa_ctx * rsactx,
++                       const unsigned char *hash,
++                       size_t hash_len,
++                       unsigned char **signature, size_t *signature_len)
++ {
++     return _libssh2_rsa_sha2_sign(session, rsactx, hash, hash_len,
++                                   signature, signature_len);
++ }
++
++
+ #if LIBSSH2_DSA
+ int
+ _libssh2_dsa_sha1_sign(libssh2_dsa_ctx * dsactx,
+@@ -3283,4 +3342,32 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+     *dhctx = NULL;
+ }
+ 
++#pragma mark PANIC
++
++int
++_libssh2_cipher_crypt_buffer(_libssh2_cipher_ctx * ctx,
++                             _libssh2_cipher_type(algo),
++                             int encrypt, unsigned int seqno, unsigned char *buf,
++                             size_t buf_len, unsigned char *out_buf, int blocksize)
++{
++    int ret = 0;
++
++    while (buf_len >= blocksize) {
++
++#ifdef HAVE_OPAQUE_STRUCTS
++        ret = EVP_Cipher(*ctx, out_buf, buf, blocksize);
++#else
++        ret = EVP_Cipher(ctx, out_buf, buf, blocksize);
++#endif
++
++        buf_len -= blocksize;     /* less bytes left */
++        out_buf += blocksize;     /* advance write pointer */
++        buf += blocksize;            /* advance read pointer */
++    }
++
++    return ret == 1 ? 0 : 1;
++}
++
++#pragma mark END PANIC
++
+ #endif /* LIBSSH2_OPENSSL */
+diff --git a/src/openssl.h b/src/openssl.h
+index 658b040d6..2a002b41e 100644
+--- a/src/openssl.h
++++ b/src/openssl.h
+@@ -64,8 +64,10 @@
+ 
+ #ifdef OPENSSL_NO_RSA
+ # define LIBSSH2_RSA 0
++# define LIBSSH2_RSA_SHA2 0
+ #else
+ # define LIBSSH2_RSA 1
++# define LIBSSH2_RSA_SHA2 1
+ #endif
+ 
+ #ifdef OPENSSL_NO_DSA
+diff --git a/src/wincng.h b/src/wincng.h
+index eaf6f9051..538cc4314 100755
+--- a/src/wincng.h
++++ b/src/wincng.h
+@@ -63,6 +63,7 @@
+ #define LIBSSH2_3DES 1
+ 
+ #define LIBSSH2_RSA 1
++#define LIBSSH2_RSA_SHA2 0
+ #define LIBSSH2_DSA 1
+ #define LIBSSH2_ECDSA 0
+ #define LIBSSH2_ED25519 0
+
+From 33e98c4595ea82efe2d796ebdb2bbaf4a63f4f04 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 30 Aug 2021 23:07:49 +0000
+Subject: [PATCH 03/16] Remove unnecessary code
+
+---
+ src/openssl.c | 28 ----------------------------
+ 1 file changed, 28 deletions(-)
+
+diff --git a/src/openssl.c b/src/openssl.c
+index 8b5327d44..60f715ada 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -3342,32 +3342,4 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+     *dhctx = NULL;
+ }
+ 
+-#pragma mark PANIC
+-
+-int
+-_libssh2_cipher_crypt_buffer(_libssh2_cipher_ctx * ctx,
+-                             _libssh2_cipher_type(algo),
+-                             int encrypt, unsigned int seqno, unsigned char *buf,
+-                             size_t buf_len, unsigned char *out_buf, int blocksize)
+-{
+-    int ret = 0;
+-
+-    while (buf_len >= blocksize) {
+-
+-#ifdef HAVE_OPAQUE_STRUCTS
+-        ret = EVP_Cipher(*ctx, out_buf, buf, blocksize);
+-#else
+-        ret = EVP_Cipher(ctx, out_buf, buf, blocksize);
+-#endif
+-
+-        buf_len -= blocksize;     /* less bytes left */
+-        out_buf += blocksize;     /* advance write pointer */
+-        buf += blocksize;            /* advance read pointer */
+-    }
+-
+-    return ret == 1 ? 0 : 1;
+-}
+-
+-#pragma mark END PANIC
+-
+ #endif /* LIBSSH2_OPENSSL */
+
+From f8db95b1d2502dd2729a1d3f14cee913ae7db962 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Thu, 2 Sep 2021 20:28:42 +0000
+Subject: [PATCH 04/16] formatting
+
+---
+ src/hostkey.c | 12 ++++++++----
+ src/openssl.c | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/src/hostkey.c b/src/hostkey.c
+index 8040a4ea1..5939ffc9e 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -244,13 +244,15 @@ hostkey_method_ssh_rsa_sha2_256_sig_verify(LIBSSH2_SESSION * session,
+     libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
+     (void) session;
+ 
+-    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-256"} + signature_len(4) */
++    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-256"} +
++    signature_len(4) */
+     if(sig_len < 20)
+         return -1;
+ 
+     sig += 20;
+     sig_len -= 20;
+-    return _libssh2_rsa_sha2_verify(rsactx, SHA256_DIGEST_LENGTH, sig, sig_len, m, m_len);
++    return _libssh2_rsa_sha2_verify(rsactx, SHA256_DIGEST_LENGTH, sig, sig_len,
++                                    m, m_len);
+ }
+ 
+ /*
+@@ -310,13 +312,15 @@ hostkey_method_ssh_rsa_sha2_512_sig_verify(LIBSSH2_SESSION * session,
+     libssh2_rsa_ctx *rsactx = (libssh2_rsa_ctx *) (*abstract);
+     (void) session;
+ 
+-    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-512"} + signature_len(4) */
++    /* Skip past keyname_len(4) + keyname(12){"rsa-sha2-512"} +
++    signature_len(4) */
+     if(sig_len < 20)
+         return -1;
+ 
+     sig += 20;
+     sig_len -= 20;
+-    return _libssh2_rsa_sha2_verify(rsactx, SHA512_DIGEST_LENGTH, sig, sig_len, m, m_len);
++    return _libssh2_rsa_sha2_verify(rsactx, SHA512_DIGEST_LENGTH, sig,
++                                    sig_len, m, m_len);
+ }
+ 
+ 
+diff --git a/src/openssl.c b/src/openssl.c
+index 60f715ada..537031e1d 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -163,7 +163,7 @@ _libssh2_rsa_sha2_verify(libssh2_rsa_ctx * rsactx,
+     int ret;
+     int nid_type;
+     unsigned char *hash = malloc(hash_len);
+-    if (hash == NULL)
++    if(hash == NULL)
+         return -1;
+ 
+     if(hash_len == SHA_DIGEST_LENGTH) {
+@@ -182,8 +182,7 @@ _libssh2_rsa_sha2_verify(libssh2_rsa_ctx * rsactx,
+     else
+         ret = -1; /* unsupported digest */
+ 
+-    if(ret != 0)
+-    {
++    if(ret != 0) {
+         free(hash);
+         return -1; /* failure */
+     }
+@@ -202,7 +201,8 @@ _libssh2_rsa_sha1_verify(libssh2_rsa_ctx * rsactx,
+                          unsigned long sig_len,
+                          const unsigned char *m, unsigned long m_len)
+ {
+-    return _libssh2_rsa_sha2_verify(rsactx, SHA_DIGEST_LENGTH, sig, sig_len, m, m_len);
++    return _libssh2_rsa_sha2_verify(rsactx, SHA_DIGEST_LENGTH, sig, sig_len, m,
++                                    m_len);
+ }
+ 
+ #if LIBSSH2_DSA
+@@ -1959,10 +1959,10 @@ _libssh2_rsa_sha1_sign(LIBSSH2_SESSION * session,
+                        const unsigned char *hash,
+                        size_t hash_len,
+                        unsigned char **signature, size_t *signature_len)
+- {
+-     return _libssh2_rsa_sha2_sign(session, rsactx, hash, hash_len,
+-                                   signature, signature_len);
+- }
++{
++    return _libssh2_rsa_sha2_sign(session, rsactx, hash, hash_len,
++                                  signature, signature_len);
++}
+ 
+ 
+ #if LIBSSH2_DSA
+
+From 428c54c9ce41de0cdd5cedf8bae1a808755bbe23 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 19:32:37 +0000
+Subject: [PATCH 05/16] Client side key hash upgrading for RFC 8332
+
+---
+ docs/HACKING-CRYPTO            |  11 +++
+ docs/libssh2_session_methods.3 |   7 +-
+ include/libssh2.h              |   1 +
+ src/crypto.h                   |  19 ++++
+ src/kex.c                      |  10 ++
+ src/libssh2_priv.h             |   8 ++
+ src/mbedtls.c                  |  15 +++
+ src/openssl.c                  |  21 +++++
+ src/packet.c                   |  69 ++++++++++++++
+ src/userauth.c                 | 161 +++++++++++++++++++++++++++++++--
+ src/wincng.c                   |  14 +++
+ 12 files changed, 338 insertions(+), 12 deletions(-)
+
+diff --git a/docs/HACKING-CRYPTO b/docs/HACKING-CRYPTO
+index d0173553f..7352d193c 100644
+--- a/docs/HACKING-CRYPTO
++++ b/docs/HACKING-CRYPTO
+@@ -926,3 +926,14 @@ If this is not needed, it should be defined as an empty macro.
+ int _libssh2_random(unsigned char *buf, int len);
+ Store len random bytes at buf.
+ Returns 0 if OK, else -1.
++
++char * _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                              unsigned char *key_method,
++                                              size_t key_method_len);
++
++This function is for implementing key hash upgrading as defined in RFC 8332.
++
++Based on the incoming key_method value, this function will return a
++list of supported algorithms that can upgrade the original key method algorithm
++as a comma seperated list, if there is no upgrade option this function should
++return NULL.
+diff --git a/docs/libssh2_session_methods.3 b/docs/libssh2_session_methods.3
+index cc4f6d49f..0e7f79fa9 100644
+--- a/docs/libssh2_session_methods.3
++++ b/docs/libssh2_session_methods.3
+@@ -1,4 +1,4 @@
+-.TH libssh2_session_methods 3 "1 Jun 2007" "libssh2 0.15" "libssh2 manual"
++.TH libssh2_session_methods 3 "8 Nov 2021" "libssh2 1.11" "libssh2 manual"
+ .SH NAME
+ libssh2_session_methods - return the currently active algorithms
+ .SH SYNOPSIS
+@@ -8,13 +8,14 @@ const char *
+ libssh2_session_methods(LIBSSH2_SESSION *session, int method_type);
+ 
+ .SH DESCRIPTION
+-\fIsession\fP - Session instance as returned by 
++\fIsession\fP - Session instance as returned by
+ .BR libssh2_session_init_ex(3)
+ 
+ \fImethod_type\fP - one of the method type constants: LIBSSH2_METHOD_KEX,
+ LIBSSH2_METHOD_HOSTKEY, LIBSSH2_METHOD_CRYPT_CS, LIBSSH2_METHOD_CRYPT_SC,
+ LIBSSH2_METHOD_MAC_CS, LIBSSH2_METHOD_MAC_SC, LIBSSH2_METHOD_COMP_CS,
+-LIBSSH2_METHOD_COMP_SC, LIBSSH2_METHOD_LANG_CS, LIBSSH2_METHOD_LANG_SC.
++LIBSSH2_METHOD_COMP_SC, LIBSSH2_METHOD_LANG_CS, LIBSSH2_METHOD_LANG_SC,
++LIBSSH2_METHOD_SIGN_ALGO.
+ 
+ Returns the actual method negotiated for a particular transport parameter.
+ .SH RETURN VALUE
+diff --git a/include/libssh2.h b/include/libssh2.h
+index f17b502e0..7a2103c9e 100644
+--- a/include/libssh2.h
++++ b/include/libssh2.h
+@@ -356,6 +356,7 @@ typedef struct _LIBSSH2_USERAUTH_KBDINT_RESPONSE
+ #define LIBSSH2_METHOD_COMP_SC      7
+ #define LIBSSH2_METHOD_LANG_CS      8
+ #define LIBSSH2_METHOD_LANG_SC      9
++#define LIBSSH2_METHOD_SIGN_ALGO    10
+ 
+ /* flags */
+ #define LIBSSH2_FLAG_SIGPIPE        1
+diff --git a/src/crypto.h b/src/crypto.h
+index efaf15646..66e501791 100644
+--- a/src/crypto.h
++++ b/src/crypto.h
+@@ -258,4 +258,23 @@ int _libssh2_pub_priv_keyfilememory(LIBSSH2_SESSION *session,
+                                     size_t privatekeydata_len,
+                                     const char *passphrase);
+ 
++
++/**
++ * @function _libssh2_supported_key_sign_algorithms
++ * @abstract Returns supported algorithms used for upgrading public
++ * key signing RFC 8332
++ * @discussion Based on the incoming key_method value, this function
++ * will return supported algorithms that can upgrade the key method
++ * @related _libssh2_key_sign_algorithm()
++ * @param key_method current key method, usually the default key sig method
++ * @param key_method_len length of the key method buffer
++ * @result comma seperated list of supported upgrade options per RFC 8332, if
++ * there is no upgrade option return NULL
++ */
++
++char *
++_libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                       unsigned char *key_method,
++                                       size_t key_method_len);
++
+ #endif /* __LIBSSH2_CRYPTO_H */
+diff --git a/src/kex.c b/src/kex.c
+index 9f3ef7992..432a4f470 100644
+--- a/src/kex.c
++++ b/src/kex.c
+@@ -3978,6 +3978,11 @@ libssh2_session_method_pref(LIBSSH2_SESSION * session, int method_type,
+         mlist = NULL;
+         break;
+ 
++    case LIBSSH2_METHOD_SIGN_ALGO:
++        prefvar = &session->sign_algo_prefs;
++        mlist = NULL;
++        break;
++
+     default:
+         return _libssh2_error(session, LIBSSH2_ERROR_INVAL,
+                               "Invalid parameter specified for method_type");
+@@ -4073,6 +4078,11 @@ LIBSSH2_API int libssh2_session_supported_algs(LIBSSH2_SESSION* session,
+             _libssh2_comp_methods(session);
+         break;
+ 
++    case LIBSSH2_METHOD_SIGN_ALGO:
++        /* no built-in supported list due to backend support */
++        mlist = NULL;
++        break;
++
+     default:
+         return _libssh2_error(session, LIBSSH2_ERROR_METHOD_NOT_SUPPORTED,
+                               "Unknown method type");
+diff --git a/src/libssh2_priv.h b/src/libssh2_priv.h
+index da488b744..aff791e7c 100644
+--- a/src/libssh2_priv.h
++++ b/src/libssh2_priv.h
+@@ -640,6 +640,13 @@ struct _LIBSSH2_SESSION
+     unsigned char server_hostkey_sha256[SHA256_DIGEST_LENGTH];
+     int server_hostkey_sha256_valid;
+ 
++    /* public key algorithms accepted as comma separated list */
++    char *server_sign_algorithms;
++    size_t server_sign_algorithms_len;
++
++    /* key signing algorithm preferences -- NULL yields server order */
++    char *sign_algo_prefs;
++
+     /* (remote as source of data -- packet_read ) */
+     libssh2_endpoint_data remote;
+ 
+@@ -1006,6 +1013,7 @@ _libssh2_debug(LIBSSH2_SESSION * session, int context, const char *format, ...)
+ #define SSH_MSG_DEBUG                               4
+ #define SSH_MSG_SERVICE_REQUEST                     5
+ #define SSH_MSG_SERVICE_ACCEPT                      6
++#define SSH_MSG_EXT_INFO                            7
+ 
+ #define SSH_MSG_KEXINIT                             20
+ #define SSH_MSG_NEWKEYS                             21
+diff --git a/src/mbedtls.c b/src/mbedtls.c
+index 4629ce4a9..4ae10acf4 100644
+--- a/src/mbedtls.c
++++ b/src/mbedtls.c
+@@ -1247,5 +1247,20 @@ _libssh2_mbedtls_ecdsa_free(libssh2_ecdsa_ctx *ctx)
+     mbedtls_free(ctx);
+ }
+ 
++
++/* _libssh2_supported_key_sign_algorithms
++ *
++ * Return supported key hash algo upgrades, see crypto.h
++ *
++ */
++
++char *
++_libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                       unsigned char *key_method,
++                                       size_t key_method_len)
++{
++    return NULL;
++}
++
+ #endif /* LIBSSH2_ECDSA */
+ #endif /* LIBSSH2_MBEDTLS */
+diff --git a/src/openssl.c b/src/openssl.c
+index 537031e1d..836470924 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -3342,4 +3342,25 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+     *dhctx = NULL;
+ }
+ 
++/* _libssh2_supported_key_sign_algorithms
++ *
++ * Return supported key hash algo upgrades, see crypto.h
++ *
++ */
++
++char *
++_libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                       unsigned char *key_method,
++                                       size_t key_method_len)
++{
++#if LIBSSH2_RSA_SHA2
++    if (key_method_len == 7 && memcmp(key_method, "ssh-rsa", key_method_len) == 0)
++    {
++        return "rsa-sha2-512,rsa-sha2-256,ssh-rsa";
++    }
++#endif
++
++    return NULL;
++}
++
+ #endif /* LIBSSH2_OPENSSL */
+diff --git a/src/packet.c b/src/packet.c
+index 04937d62a..7b24fb60c 100644
+--- a/src/packet.c
++++ b/src/packet.c
+@@ -615,6 +615,75 @@ _libssh2_packet_add(LIBSSH2_SESSION * session, unsigned char *data,
+             session->packAdd_state = libssh2_NB_state_idle;
+             return 0;
+ 
++            /*
++              byte      SSH_MSG_EXT_INFO
++              uint32    nr-extensions
++              [repeat   "nr-extensions" times]
++              string    extension-name  [RFC8308]
++              string    extension-value (binary)
++            */
++
++        case SSH_MSG_EXT_INFO:
++            if(datalen >= 5) {
++                struct string_buf buf;
++                buf.data = (unsigned char *)data;
++                buf.dataptr = buf.data;
++                buf.len = datalen;
++                buf.dataptr += 1; /* advance past type */
++
++                uint32_t nr_extensions = 0;
++                if(_libssh2_get_u32(&buf, &nr_extensions) != 0 ) {
++                    rc = _libssh2_error(session, LIBSSH2_ERROR_PROTO,
++                                        "Invalid extension info received");
++                }
++
++                while(rc == 0 && nr_extensions > 0) {
++
++                    size_t name_len = 0;
++                    size_t value_len = 0;
++                    unsigned char *name = NULL;
++                    unsigned char *value = NULL;
++
++                    nr_extensions -= 1;
++
++                    _libssh2_get_string(&buf, &name, &name_len);
++                    _libssh2_get_string(&buf, &value, &value_len);
++
++                    if(name != NULL && value != NULL) {
++                        _libssh2_debug(session,
++                                       LIBSSH2_TRACE_KEX,
++                                       "Server to Client extension %.*s: %.*s",
++                                       name_len, name, value_len, value);
++                    }
++
++                    if(name_len == 15 &&
++                        memcmp(name, "server-sig-algs", 15) == 0) {
++                        if(session->server_sign_algorithms) {
++                            LIBSSH2_FREE(session,
++                                         session->server_sign_algorithms);
++                        }
++
++                        session->server_sign_algorithms =
++                                                LIBSSH2_ALLOC(session,
++                                                              value_len);
++
++                        if(session->server_sign_algorithms) {
++                            session->server_sign_algorithms_len = value_len;
++                            memcpy(session->server_sign_algorithms,
++                                   value, value_len);
++                        }
++                        else {
++                            rc = _libssh2_error(session, LIBSSH2_ERROR_ALLOC,
++                                                "memory for server sign algo");
++                        }
++                    }
++                }
++            }
++
++            LIBSSH2_FREE(session, data);
++            session->packAdd_state = libssh2_NB_state_idle;
++            return rc;
++
+             /*
+               byte      SSH_MSG_GLOBAL_REQUEST
+               string    request name in US-ASCII only
+diff --git a/src/userauth.c b/src/userauth.c
+index 40ef9153a..86dd95e87 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1086,6 +1086,150 @@ static int plain_method_len(const char *method, size_t method_len)
+     return method_len;
+ }
+ 
++/**
++ * @function _libssh2_key_sign_algorithm
++ * @abstract Upgrades the algorithm used for public key signing RFC 8332
++ * @discussion Based on the incoming key_method value, this function
++ * will upgrade the key method input based on user preferences,
++ * server support algos and crypto backend support
++ * @related _libssh2_supported_key_sign_algorithms()
++ * @param key_method current key method, usually the default key sig method
++ * @param key_method_len length of the key method buffer
++ * @result error code or zero on success
++ */
++
++static int
++_libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
++                            unsigned char **key_method,
++                            size_t *key_method_len)
++{
++    char *s = NULL;
++    char *p = NULL;
++    char *f = NULL;
++    char *a = NULL;
++    char *i = NULL;
++    int p_len = 0;
++    int f_len = 0;
++    int rc = 0;
++    char *match = NULL;
++    int match_len = 0;
++
++    char *supported_algs =
++    _libssh2_supported_key_sign_algorithms(session,
++                                           *key_method,
++                                           *key_method_len);
++
++    if(supported_algs == NULL || session->server_sign_algorithms == NULL) {
++        /* no upgrading key algorithm supported, do nothing */
++        return LIBSSH2_ERROR_NONE;
++    }
++
++    char *filtered_algs = LIBSSH2_ALLOC(session, strlen(supported_algs) + 1);
++    if(!filtered_algs) {
++        rc = _libssh2_error(session, LIBSSH2_ERROR_ALLOC,
++                            "Unable to allocate filtered algs");
++        return rc;
++    }
++
++    s = session->server_sign_algorithms;
++    i = filtered_algs;
++
++    /* this walks the server algo list and the supported algo list and creates
++     a filtered list that includes matches */
++
++    while(s && *s) {
++        p = strchr(s, ',');
++        p_len = p ? (p - s) : (int) strlen(s);
++        a = supported_algs;
++
++        while(a && *a) {
++            f = strchr(a, ',');
++            f_len = f ? (f - a) : (int) strlen(a);
++
++            if(memmem(a, f_len, s, p_len)) {
++
++                if(i != filtered_algs) {
++                    memcpy(i, ",", 1);
++                    i += 1;
++                }
++
++                memcpy(i, s, p_len);
++                i += p_len;
++            }
++
++            a = f ? (f + 1) : NULL;
++        }
++
++        s = p ? (p + 1) : NULL;
++    }
++
++    filtered_algs[i - filtered_algs] = '\0';
++
++    if(session->sign_algo_prefs) {
++        s = session->sign_algo_prefs;
++    }
++    else {
++        s = supported_algs;
++    }
++
++    /* now that we have the possible supported algos, match based on the prefs
++     or what is supported by the crypto backend, look for a match */
++
++    while(s && *s && !match) {
++        p = strchr(s, ',');
++        p_len = p ? (p - s) : (int) strlen(s);
++        a = filtered_algs;
++
++        while(a && *a && !match) {
++            f = strchr(a, ',');
++            f_len = f ? (f - a) : (int) strlen(a);
++
++            if(memmem(a, f_len, s, p_len)) {
++
++                //found a match, upgrade key method
++                match = s;
++                match_len = p_len;
++            }
++            else {
++                a = f ? (f + 1) : NULL;
++            }
++        }
++
++        s = p ? (p + 1) : NULL;
++    }
++
++    if(match != NULL)
++    {
++        if(*key_method)
++            LIBSSH2_FREE(session, *key_method);
++
++        *key_method = LIBSSH2_ALLOC(session, match_len);
++        if(key_method)
++        {
++            memcpy(*key_method, match, match_len);
++            *key_method_len = match_len;
++
++            _libssh2_debug(session, LIBSSH2_TRACE_KEX,
++                           "Signing using %.*s", match_len, match);
++        }
++        else {
++            *key_method_len = 0;
++            rc = _libssh2_error(session, LIBSSH2_ERROR_ALLOC,
++                                "Unable to allocate key method upgrade");
++        }
++    }
++    else {
++        /* no match was found */
++        rc = _libssh2_error(session, LIBSSH2_ERROR_METHOD_NONE,
++                            "No signing signature matched");
++    }
++
++    if(filtered_algs)
++        LIBSSH2_FREE(session, filtered_algs);
++
++    return rc;
++}
++
+ int
+ _libssh2_userauth_publickey(LIBSSH2_SESSION *session,
+                             const char *username,
+@@ -1144,15 +1288,14 @@ _libssh2_userauth_publickey(LIBSSH2_SESSION *session,
+             memcpy(session->userauth_pblc_method, pubkeydata + 4,
+                    session->userauth_pblc_method_len);
+         }
+-        /*
+-         * The length of the method name read from plaintext prefix in the
+-         * file must match length embedded in the key.
+-         * TODO: The data should match too but we don't check that. Should we?
+-         */
+-        else if(session->userauth_pblc_method_len !=
+-                 _libssh2_ntohu32(pubkeydata))
+-            return _libssh2_error(session, LIBSSH2_ERROR_PUBLICKEY_UNVERIFIED,
+-                                  "Invalid public key");
++
++        /* upgrade key key signing algo needed */
++        rc = _libssh2_key_sign_algorithm(session,
++                                         &session->userauth_pblc_method,
++                                         &session->userauth_pblc_method_len);
++
++        if(rc)
++            return rc;
+ 
+         /*
+          * 45 = packet_type(1) + username_len(4) + servicename_len(4) +
+diff --git a/src/wincng.c b/src/wincng.c
+index cbb2b61cb..08fbc76eb 100644
+--- a/src/wincng.c
++++ b/src/wincng.c
+@@ -2590,4 +2590,18 @@ _libssh2_dh_secret(_libssh2_dh_ctx *dhctx, _libssh2_bn *secret,
+     return _libssh2_wincng_bignum_mod_exp(secret, f, dhctx->bn, p);
+ }
+ 
++/* _libssh2_supported_key_sign_algorithms
++ *
++ * Return supported key hash algo upgrades, see crypto.h
++ *
++ */
++
++char *
++_libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                       unsigned char *key_method,
++                                       size_t key_method_len)
++{
++    return NULL;
++}
++
+ #endif /* LIBSSH2_WINCNG */
+
+From 6427e9fe4d0d4c460b9e77f48f6f55a49ef82413 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 19:40:33 +0000
+Subject: [PATCH 06/16] style points
+
+---
+ src/openssl.c  | 4 ++--
+ src/packet.c   | 2 +-
+ src/userauth.c | 9 +++------
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/openssl.c b/src/openssl.c
+index 836470924..175b170e9 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -3354,8 +3354,8 @@ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        size_t key_method_len)
+ {
+ #if LIBSSH2_RSA_SHA2
+-    if (key_method_len == 7 && memcmp(key_method, "ssh-rsa", key_method_len) == 0)
+-    {
++    if(key_method_len == 7 &&
++       memcmp(key_method, "ssh-rsa", key_method_len) == 0) {
+         return "rsa-sha2-512,rsa-sha2-256,ssh-rsa";
+     }
+ #endif
+diff --git a/src/packet.c b/src/packet.c
+index 7b24fb60c..a42515846 100644
+--- a/src/packet.c
++++ b/src/packet.c
+@@ -632,7 +632,7 @@ _libssh2_packet_add(LIBSSH2_SESSION * session, unsigned char *data,
+                 buf.dataptr += 1; /* advance past type */
+ 
+                 uint32_t nr_extensions = 0;
+-                if(_libssh2_get_u32(&buf, &nr_extensions) != 0 ) {
++                if(_libssh2_get_u32(&buf, &nr_extensions) != 0) {
+                     rc = _libssh2_error(session, LIBSSH2_ERROR_PROTO,
+                                         "Invalid extension info received");
+                 }
+diff --git a/src/userauth.c b/src/userauth.c
+index 86dd95e87..395cf34ab 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1185,8 +1185,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+             f_len = f ? (f - a) : (int) strlen(a);
+ 
+             if(memmem(a, f_len, s, p_len)) {
+-
+-                //found a match, upgrade key method
++                /* found a match, upgrade key method */
+                 match = s;
+                 match_len = p_len;
+             }
+@@ -1198,14 +1197,12 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+         s = p ? (p + 1) : NULL;
+     }
+ 
+-    if(match != NULL)
+-    {
++    if(match != NULL) {
+         if(*key_method)
+             LIBSSH2_FREE(session, *key_method);
+ 
+         *key_method = LIBSSH2_ALLOC(session, match_len);
+-        if(key_method)
+-        {
++        if(key_method) {
+             memcpy(*key_method, match, match_len);
+             *key_method_len = match_len;
+ 
+
+From 26c3ce1f00146d979ae350d58e4bb7a1bc3f44d9 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 19:47:52 +0000
+Subject: [PATCH 07/16] =?UTF-8?q?don=E2=80=99t=20use=20memmem?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/userauth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/userauth.c b/src/userauth.c
+index 395cf34ab..fa9e7ca8f 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1146,7 +1146,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+             f = strchr(a, ',');
+             f_len = f ? (f - a) : (int) strlen(a);
+ 
+-            if(memmem(a, f_len, s, p_len)) {
++            if(f_len == p_len && memcmp(a, s, p_len)) {
+ 
+                 if(i != filtered_algs) {
+                     memcpy(i, ",", 1);
+@@ -1184,7 +1184,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+             f = strchr(a, ',');
+             f_len = f ? (f - a) : (int) strlen(a);
+ 
+-            if(memmem(a, f_len, s, p_len)) {
++            if(f_len == p_len && memcmp(a, s, p_len)) {
+                 /* found a match, upgrade key method */
+                 match = s;
+                 match_len = p_len;
+
+From 3841799a9b145be6d1eba29266b1f8301839543f Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 19:51:25 +0000
+Subject: [PATCH 08/16] more ci building fixes
+
+---
+ src/libgcrypt.c | 14 ++++++++++++++
+ src/packet.c    |  2 +-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/libgcrypt.c b/src/libgcrypt.c
+index 0aff176a6..fba5c9dc6 100644
+--- a/src/libgcrypt.c
++++ b/src/libgcrypt.c
+@@ -664,4 +664,18 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+     *dhctx = NULL;
+ }
+ 
++/* _libssh2_supported_key_sign_algorithms
++ *
++ * Return supported key hash algo upgrades, see crypto.h
++ *
++ */
++
++char *
++_libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                       unsigned char *key_method,
++                                       size_t key_method_len)
++{
++    return NULL;
++}
++
+ #endif /* LIBSSH2_LIBGCRYPT */
+diff --git a/src/packet.c b/src/packet.c
+index a42515846..686be5cc7 100644
+--- a/src/packet.c
++++ b/src/packet.c
+@@ -625,13 +625,13 @@ _libssh2_packet_add(LIBSSH2_SESSION * session, unsigned char *data,
+ 
+         case SSH_MSG_EXT_INFO:
+             if(datalen >= 5) {
++                uint32_t nr_extensions = 0;
+                 struct string_buf buf;
+                 buf.data = (unsigned char *)data;
+                 buf.dataptr = buf.data;
+                 buf.len = datalen;
+                 buf.dataptr += 1; /* advance past type */
+ 
+-                uint32_t nr_extensions = 0;
+                 if(_libssh2_get_u32(&buf, &nr_extensions) != 0) {
+                     rc = _libssh2_error(session, LIBSSH2_ERROR_PROTO,
+                                         "Invalid extension info received");
+
+From 9267a1afa4d3a6468a141d357aee742c937d10ff Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 19:56:37 +0000
+Subject: [PATCH 09/16] CI fixes
+
+---
+ src/libgcrypt.c | 4 ++++
+ src/mbedtls.c   | 4 ++++
+ src/openssl.c   | 2 ++
+ src/wincng.c    | 4 ++++
+ 5 files changed, 18 insertions(+)
+
+diff --git a/src/libgcrypt.c b/src/libgcrypt.c
+index fba5c9dc6..97541aa8a 100644
+--- a/src/libgcrypt.c
++++ b/src/libgcrypt.c
+@@ -675,6 +675,10 @@ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+ {
++    (void)session;
++    (void)key_method;
++    (void)key_method_len;
++
+     return NULL;
+ }
+ 
+diff --git a/src/mbedtls.c b/src/mbedtls.c
+index 4ae10acf4..658533ea8 100644
+--- a/src/mbedtls.c
++++ b/src/mbedtls.c
+@@ -1259,6 +1259,10 @@ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+ {
++    (void)session;
++    (void)key_method;
++    (void)key_method_len;
++
+     return NULL;
+ }
+ 
+diff --git a/src/openssl.c b/src/openssl.c
+index 175b170e9..b667059c0 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -3353,6 +3353,8 @@ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+ {
++    (void)session;
++
+ #if LIBSSH2_RSA_SHA2
+     if(key_method_len == 7 &&
+        memcmp(key_method, "ssh-rsa", key_method_len) == 0) {
+diff --git a/src/wincng.c b/src/wincng.c
+index 08fbc76eb..e4151ec88 100644
+--- a/src/wincng.c
++++ b/src/wincng.c
+@@ -2601,6 +2601,10 @@ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+ {
++    (void)session;
++    (void)key_method;
++    (void)key_method_len;
++
+     return NULL;
+ }
+ 
+
+From 4ec7ca7d827369e02f0d258eebb09c87eadc3434 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 20:03:35 +0000
+Subject: [PATCH 10/16] made _libssh2_supported_key_sign_algorithms() const
+
+---
+ src/crypto.h    |  2 +-
+ src/libgcrypt.c |  2 +-
+ src/mbedtls.c   |  2 +-
+ src/openssl.c   |  2 +-
+ src/userauth.c  | 12 ++++++------
+ src/wincng.c    |  2 +-
+ 7 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/crypto.h b/src/crypto.h
+index 66e501791..809aef7e9 100644
+--- a/src/crypto.h
++++ b/src/crypto.h
+@@ -272,7 +272,7 @@ int _libssh2_pub_priv_keyfilememory(LIBSSH2_SESSION *session,
+  * there is no upgrade option return NULL
+  */
+ 
+-char *
++const char *
+ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len);
+diff --git a/src/libgcrypt.c b/src/libgcrypt.c
+index 97541aa8a..f6e9b64a3 100644
+--- a/src/libgcrypt.c
++++ b/src/libgcrypt.c
+@@ -670,7 +670,7 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+  *
+  */
+ 
+-char *
++const char *
+ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+diff --git a/src/mbedtls.c b/src/mbedtls.c
+index 658533ea8..dc76ef59a 100644
+--- a/src/mbedtls.c
++++ b/src/mbedtls.c
+@@ -1254,7 +1254,7 @@ _libssh2_mbedtls_ecdsa_free(libssh2_ecdsa_ctx *ctx)
+  *
+  */
+ 
+-char *
++const char *
+ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+diff --git a/src/openssl.c b/src/openssl.c
+index b667059c0..72a85b3b6 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -3348,7 +3348,7 @@ _libssh2_dh_dtor(_libssh2_dh_ctx *dhctx)
+  *
+  */
+ 
+-char *
++const char *
+ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+diff --git a/src/userauth.c b/src/userauth.c
+index fa9e7ca8f..8a5adf690 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1103,18 +1103,18 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+                             unsigned char **key_method,
+                             size_t *key_method_len)
+ {
+-    char *s = NULL;
+-    char *p = NULL;
+-    char *f = NULL;
+-    char *a = NULL;
++    const char *s = NULL;
++    const char *a = NULL;
++    const char *match = NULL;
++    const char *p = NULL;
++    const char *f = NULL;
+     char *i = NULL;
+     int p_len = 0;
+     int f_len = 0;
+     int rc = 0;
+-    char *match = NULL;
+     int match_len = 0;
+ 
+-    char *supported_algs =
++    const char *supported_algs =
+     _libssh2_supported_key_sign_algorithms(session,
+                                            *key_method,
+                                            *key_method_len);
+diff --git a/src/wincng.c b/src/wincng.c
+index e4151ec88..654f50db0 100644
+--- a/src/wincng.c
++++ b/src/wincng.c
+@@ -2596,7 +2596,7 @@ _libssh2_dh_secret(_libssh2_dh_ctx *dhctx, _libssh2_bn *secret,
+  *
+  */
+ 
+-char *
++const char *
+ _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+                                        unsigned char *key_method,
+                                        size_t key_method_len)
+
+From 2cee98cb8379a883b62d1be3f4bde31509689ab6 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 20:09:38 +0000
+Subject: [PATCH 11/16] ci build warning
+
+---
+ src/userauth.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/userauth.c b/src/userauth.c
+index 8a5adf690..d56c5eb17 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1113,6 +1113,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+     int f_len = 0;
+     int rc = 0;
+     int match_len = 0;
++    char *filtered_algs = NULL;
+ 
+     const char *supported_algs =
+     _libssh2_supported_key_sign_algorithms(session,
+@@ -1124,7 +1125,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+         return LIBSSH2_ERROR_NONE;
+     }
+ 
+-    char *filtered_algs = LIBSSH2_ALLOC(session, strlen(supported_algs) + 1);
++    filtered_algs = LIBSSH2_ALLOC(session, strlen(supported_algs) + 1);
+     if(!filtered_algs) {
+         rc = _libssh2_error(session, LIBSSH2_ERROR_ALLOC,
+                             "Unable to allocate filtered algs");
+
+From 10beabd2e29ea74c621380bb3d2ddb31fccff67f Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Mon, 8 Nov 2021 20:46:38 +0000
+Subject: [PATCH 12/16] updated docs
+
+---
+ docs/HACKING-CRYPTO | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/HACKING-CRYPTO b/docs/HACKING-CRYPTO
+index 7352d193c..85d813aa6 100644
+--- a/docs/HACKING-CRYPTO
++++ b/docs/HACKING-CRYPTO
+@@ -927,9 +927,9 @@ int _libssh2_random(unsigned char *buf, int len);
+ Store len random bytes at buf.
+ Returns 0 if OK, else -1.
+ 
+-char * _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
+-                                              unsigned char *key_method,
+-                                              size_t key_method_len);
++const char * _libssh2_supported_key_sign_algorithms(LIBSSH2_SESSION *session,
++                                                    unsigned char *key_method,
++                                                    size_t key_method_len);
+ 
+ This function is for implementing key hash upgrading as defined in RFC 8332.
+ 
+
+From 9d1a3a5189ef2531978695aeee8a1322ab984cf3 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Tue, 9 Nov 2021 16:33:12 +0000
+Subject: [PATCH 13/16] Added missing ext-info-c to commit
+
+---
+ src/kex.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/kex.c b/src/kex.c
+index 432a4f470..f45d48a2b 100644
+--- a/src/kex.c
++++ b/src/kex.c
+@@ -3026,6 +3026,17 @@ kex_method_ssh_curve25519_sha256 = {
+ };
+ #endif
+ 
++/* this kex method signals that client can receive extensions
++ * as described in https://datatracker.ietf.org/doc/html/rfc8308
++*/
++
++static const LIBSSH2_KEX_METHOD
++kex_method_extension_negotiation = {
++    "ext-info-c",
++    NULL,
++    0,
++};
++
+ static const LIBSSH2_KEX_METHOD *libssh2_kex_methods[] = {
+ #if LIBSSH2_ED25519
+     &kex_method_ssh_curve25519_sha256,
+@@ -3043,6 +3054,7 @@ static const LIBSSH2_KEX_METHOD *libssh2_kex_methods[] = {
+     &kex_method_diffie_helman_group14_sha1,
+     &kex_method_diffie_helman_group1_sha1,
+     &kex_method_diffie_helman_group_exchange_sha1,
++    &kex_method_extension_negotiation,
+   NULL
+ };
+ 
+
+From 7e5b537a01a623f97f651378d6f09b3d76107eca Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Tue, 30 Nov 2021 10:07:43 -0800
+Subject: [PATCH 14/16] added rsa-sha2-256/512 rsa key init support
+
+---
+ src/hostkey.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/src/hostkey.c b/src/hostkey.c
+index 5939ffc9e..3874eaafa 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -64,8 +64,8 @@ hostkey_method_ssh_rsa_init(LIBSSH2_SESSION * session,
+                             void **abstract)
+ {
+     libssh2_rsa_ctx *rsactx;
+-    unsigned char *e, *n;
+-    size_t e_len, n_len;
++    unsigned char *e, *n, *type;
++    size_t e_len, n_len, type_len;
+     struct string_buf buf;
+ 
+     if(*abstract) {
+@@ -83,8 +83,24 @@ hostkey_method_ssh_rsa_init(LIBSSH2_SESSION * session,
+     buf.dataptr = buf.data;
+     buf.len = hostkey_data_len;
+ 
+-    if(_libssh2_match_string(&buf, "ssh-rsa"))
++    if(_libssh2_get_string(&buf, &type, &type_len)) {
+         return -1;
++    }
++
++    // we accept one of 3 header types
++    if(type_len == 7 && strncmp("ssh-rsa", (char*)type, 7) == 0) {
++    }
++#if LIBSSH2_RSA_SHA2
++    else if(type_len == 12 && strncmp("rsa-sha2-256", (char*)type, 12) == 0) {
++    }
++    else if(type_len == 12 && strncmp("rsa-sha2-512", (char*)type, 12) == 0) {
++    }
++#endif
++    else {
++        _libssh2_debug(session, LIBSSH2_TRACE_ERROR,
++                       "unexpected rsa type: %.*s", type_len, type);
++        return -1;
++    }
+ 
+     if(_libssh2_get_string(&buf, &e, &e_len))
+         return -1;
+
+From 2b48eaf41701ddd4f5056eea7f135434abfdcc2f Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Tue, 30 Nov 2021 10:09:46 -0800
+Subject: [PATCH 15/16] formatting
+
+---
+ src/hostkey.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/hostkey.c b/src/hostkey.c
+index 3874eaafa..7d1ef2f2e 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -87,13 +87,13 @@ hostkey_method_ssh_rsa_init(LIBSSH2_SESSION * session,
+         return -1;
+     }
+ 
+-    // we accept one of 3 header types
+-    if(type_len == 7 && strncmp("ssh-rsa", (char*)type, 7) == 0) {
++    /* we accept one of 3 header types */
++    if(type_len == 7 && strncmp("ssh-rsa", (char *)type, 7) == 0) {
+     }
+ #if LIBSSH2_RSA_SHA2
+-    else if(type_len == 12 && strncmp("rsa-sha2-256", (char*)type, 12) == 0) {
++    else if(type_len == 12 && strncmp("rsa-sha2-256", (char *)type, 12) == 0) {
+     }
+-    else if(type_len == 12 && strncmp("rsa-sha2-512", (char*)type, 12) == 0) {
++    else if(type_len == 12 && strncmp("rsa-sha2-512", (char *)type, 12) == 0) {
+     }
+ #endif
+     else {
+
+From d007d4d4a2a98ed0eedf9c4ee57ff6ee45532673 Mon Sep 17 00:00:00 2001
+From: Will Cosgrove <will@everydaysoftware.net>
+Date: Tue, 30 Nov 2021 10:17:12 -0800
+Subject: [PATCH 16/16] making style checker happy, maybe
+
+---
+ src/hostkey.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/hostkey.c b/src/hostkey.c
+index 7d1ef2f2e..eeb9e579e 100644
+--- a/src/hostkey.c
++++ b/src/hostkey.c
+@@ -89,11 +89,14 @@ hostkey_method_ssh_rsa_init(LIBSSH2_SESSION * session,
+ 
+     /* we accept one of 3 header types */
+     if(type_len == 7 && strncmp("ssh-rsa", (char *)type, 7) == 0) {
++        /* ssh-rsa */
+     }
+ #if LIBSSH2_RSA_SHA2
+     else if(type_len == 12 && strncmp("rsa-sha2-256", (char *)type, 12) == 0) {
++        /* rsa-sha2-256 */
+     }
+     else if(type_len == 12 && strncmp("rsa-sha2-512", (char *)type, 12) == 0) {
++        /* rsa-sha2-512 */
+     }
+ #endif
+     else {
+
+From af077e2ce706f4a7c5f821f79d185b8908a060a7 Mon Sep 17 00:00:00 2001
+From: Michael Buckley <michael@buckleyisms.com>
+Date: Thu, 6 Jan 2022 12:58:05 -0800
+Subject: [PATCH] Fix a couple memcmp errors in code that was changed from
+ memmem to memcmp
+
+---
+ src/userauth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/userauth.c b/src/userauth.c
+index 988dc17ff..29f58bab9 100644
+--- a/src/userauth.c
++++ b/src/userauth.c
+@@ -1147,7 +1147,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+             f = strchr(a, ',');
+             f_len = f ? (f - a) : (int) strlen(a);
+ 
+-            if(f_len == p_len && memcmp(a, s, p_len)) {
++            if(f_len == p_len && memcmp(a, s, p_len) == 0) {
+ 
+                 if(i != filtered_algs) {
+                     memcpy(i, ",", 1);
+@@ -1185,7 +1185,7 @@ _libssh2_key_sign_algorithm(LIBSSH2_SESSION *session,
+             f = strchr(a, ',');
+             f_len = f ? (f - a) : (int) strlen(a);
+ 
+-            if(f_len == p_len && memcmp(a, s, p_len)) {
++            if(f_len == p_len && memcmp(a, s, p_len) == 0) {
+                 /* found a match, upgrade key method */
+                 match = s;
+                 match_len = p_len;

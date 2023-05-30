@@ -1,0 +1,24 @@
+# The upstream expects them extracted at the same level as the llvm tarball, and 
+# the extracted directories renamed to cmake and third-party:
+tar -xf $SRC/cmake-${version}.src.tar.xz
+tar -xf $SRC/third-party-${version}.src.tar.xz
+sed "/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-${version}.src@" -i CMakeLists.txt                 
+sed "/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-${version}.src@" \
+	-i cmake/modules/HandleLLVMOptions.cmake
+
+# Install clang into the source tree
+#tar -xf $SRC/clang-${version}.src.tar.xz -C tools
+#mv tools/clang-${version}.src tools/clang
+mv ../clang-${version}.src tools/clang
+
+# Fix Python scripts which use /usr/bin/env python to access the system Python:
+grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+
+CC=gcc CXX=g++ _cmake_build
+cp bin/FileCheck $PKG/usr/bin
+
+# multilib stub
+mv $PKG/usr/include/llvm/Config/llvm-config.h \
+   $PKG/usr/include/llvm/Config/llvm-config-64.h
+cp $FILES/llvm-config.h \
+   $PKG/usr/include/llvm/Config/llvm-config.h	

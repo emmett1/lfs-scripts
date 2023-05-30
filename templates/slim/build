@@ -1,0 +1,4 @@
+_auto_build 
+
+# pam
+install -Dm644 $FILES/$name.pam $PKG/etc/pam.d/$name

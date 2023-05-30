@@ -1,0 +1,1 @@
+https://w1.fi/releases/wpa_supplicant-2.10.tar.gz

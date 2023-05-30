@@ -1,0 +1,14 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+-rwxr-xr-x root/root usr/lib/libksba.so.8.14.3
+lrwxrwxrwx root/root usr/lib/libksba.so
+lrwxrwxrwx root/root usr/lib/libksba.so.8
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/ksba.pc
+-rw-r--r-- root/root usr/include/ksba.h
+drwxr-xr-x root/root usr/share/aclocal/
+drwxr-xr-x root/root usr/share/info/
+-rw-r--r-- root/root usr/share/info/ksba.info.gz
+-rw-r--r-- root/root usr/share/aclocal/ksba.m4

@@ -1,0 +1,7 @@
+_configure_build
+
+install -m755 contrib/ssh-copy-id $PKG/usr/bin
+install -m644 contrib/ssh-copy-id.1 \
+	$PKG/usr/share/man/man1
+
+echo "PermitRootLogin no" >> $PKG/etc/ssh/sshd_config

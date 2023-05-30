@@ -1,0 +1,44 @@
+cat > lua.pc << "EOF"
+V=5.2
+R=5.2.4
+
+prefix=/usr
+INSTALL_BIN=${prefix}/bin
+INSTALL_INC=${prefix}/include/lua5.2
+INSTALL_LIB=${prefix}/lib
+INSTALL_MAN=${prefix}/share/man/man1
+INSTALL_LMOD=${prefix}/share/lua/${V}
+INSTALL_CMOD=${prefix}/lib/lua/${V}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/lua5.2
+
+Name: Lua
+Description: An Extensible Extension Language
+Version: ${R}
+Requires:
+Libs: -L${libdir} -llua5.2 -lm -ldl
+Cflags: -I${includedir}
+EOF
+
+sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h
+
+sed -r -e "/^LUA_(SO|A|T)=/ s/lua/lua${version%.*}/" \
+       -e "/^LUAC_T=/ s/luac/luac${version%.*}/"     \
+       -i src/Makefile
+
+make MYCFLAGS="$CFLAGS -fPIC" linux
+make TO_BIN="lua${version%.*} luac${version%.*}"                     \
+     TO_LIB="liblua${version%.*}.so liblua${version%.*}.so.${version%.*} liblua${version%.*}.so.${version}" \
+     INSTALL_DATA="cp -d"                        \
+     INSTALL_TOP=$PKG/usr                \
+     INSTALL_INC=$PKG/usr/include/lua5.2 \
+     INSTALL_MAN=$PKG/usr/share/man/man1 \
+     install
+
+install -Dm644 lua.pc $PKG/usr/lib/pkgconfig/lua52.pc
+ln -s liblua${version%.*}.so $PKG/usr/lib/liblua.so.${version%.*}
+ln -s liblua${version%.*}.so $PKG/usr/lib/liblua.so.${version}
+
+ln -s lua${version%.*} $PKG/usr/bin/lua
+ln -s luac${version%.*} $PKG/usr/bin/luac

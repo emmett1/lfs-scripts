@@ -1,0 +1,13 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/share/
+drwxr-xr-x root/root usr/bin/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/lib/xorg/
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/xwayland.pc
+-rwxr-xr-x root/root usr/bin/Xwayland
+drwxr-xr-x root/root usr/share/applications/
+drwxr-xr-x root/root usr/share/man/
+drwxr-xr-x root/root usr/share/man/man1/
+-rw-r--r-- root/root usr/share/man/man1/Xwayland.1.gz
+-rw-r--r-- root/root usr/share/applications/org.freedesktop.Xwayland.desktop

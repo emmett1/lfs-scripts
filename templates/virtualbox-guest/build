@@ -1,0 +1,49 @@
+export VBOX_ONLY_ADDITIONS=1
+
+./configure \
+	--disable-docs \
+	--disable-java \
+	--disable-python \
+	--disable-kmods \
+	--disable-qt \
+	--disable-alsa \
+	--disable-pulse \
+	--disable-dbus \
+	--disable-opengl \
+	--disable-libvpx \
+	--disable-udptunnel \
+	--disable-devmapper \
+	--nofatal
+. ./env.sh
+kmk all
+
+cd "out/linux.$BUILD_PLATFORM_ARCH/release/bin/additions"
+
+install -d "$PKG/usr/bin"
+install -m0755 VBoxClient VBoxControl VBoxService mount.vboxsf "$PKG/usr/bin"
+install -d "$PKG/usr/lib/xorg/modules/dri"
+install -m0755 -D pam_vbox.so "$PKG/lib/security/pam_vbox.so"
+install -Dm0644 $FILES/60-vboxguest.rules "$PKG/lib/udev/rules.d/60-vboxguest.rules"
+install -Dm0644 $FILES/vboxclient.desktop "$PKG/etc/xdg/autostart/vboxclient.desktop"
+install -Dm0755 $FILES/VBoxClient-all "$PKG/usr/bin/VBoxClient-all"
+
+# source modules
+install -dm0755 "$PKG/usr/src"
+cp -r src "$PKG/usr/src/vboxguest-${version}_OSE"
+
+# make the modules
+for i in vboxguest vboxsf vboxvideo; do
+	make -C src/$i
+	make -C src/$i INSTALL_MOD_PATH=$PKG install
+done
+
+# load modules at boot time
+install -d $PKG/etc/modules-load.d/
+echo "# Load virtualbox guest modules at startup" > $PKG/etc/modules-load.d/virtualbox-guest.conf
+echo "vboxguest" >> $PKG/etc/modules-load.d/virtualbox-guest.conf
+echo "vboxsf" >> $PKG/etc/modules-load.d/virtualbox-guest.conf
+echo "vboxvideo" >> $PKG/etc/modules-load.d/virtualbox-guest.conf
+
+# mkinitramfs hook to include vbox guest modules into initramfs
+install -d $PKG/etc/mkinitramfs.d
+install -m644 $FILES/vboxguest.hook $PKG/etc/mkinitramfs.d

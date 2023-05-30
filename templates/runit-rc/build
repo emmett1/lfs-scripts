@@ -1,0 +1,40 @@
+cd $FILES
+
+install -d $PKG/etc/runit/runsvdir/default
+install -d $PKG/etc/runit/runsvdir/single
+install -d $PKG/etc/sv
+install -d $PKG/sbin
+#install -d $PKG/usr/share/man/man1
+#install -d $PKG/usr/share/man/man8
+install -d $PKG/var
+
+ln -s default $PKG/etc/runit/runsvdir/current
+ln -s /etc/runit/runsvdir/current $PKG/var/service
+
+${CC:-gcc} ${CFLAGS} pause.c -o pause
+
+#install -m755 pause runit-halt runit-shutdown $PKG/sbin
+#ln -s runit-halt $PKG/sbin/runit-reboot
+#ln -s runit-halt $PKG/sbin/runit-poweroff
+
+install -m755 1 2 3 ctrlaltdel rc.startup.local \
+	rc.shutdown.local rc.startup rc.shutdown \
+	$PKG/etc/runit
+install -m644 runit.conf $PKG/etc/runit
+#install -m644 pause.1 $PKG/usr/share/man/man1
+#install -m644 shutdown.8 $PKG/usr/share/man/man8
+
+touch $PKG/etc/runit/reboot
+touch $PKG/etc/runit/stopit
+chmod 0 $PKG/etc/runit/reboot
+chmod 0 $PKG/etc/runit/stopit
+
+install -Dm755 sulogin.run $PKG/etc/sv/sulogin/run
+for i in $(seq 6); do
+	install -Dm755 agetty-tty.run $PKG/etc/sv/agetty-tty$i/run
+	install -Dm755 agetty-tty.finish $PKG/etc/sv/agetty-tty$i/finish
+	ln -s /etc/sv/agetty-tty$i $PKG/etc/runit/runsvdir/default
+        ln -s /run/runit/supervise.agetty-tty$i $PKG/etc/sv/agetty-tty$i/supervise
+done
+ln -s /etc/sv/sulogin $PKG/etc/runit/runsvdir/single
+	ln -s /run/runit/supervise.sulogin $PKG/etc/sv/sulogin/supervise

@@ -1,0 +1,2 @@
+_auto_build
+rm -fr $PKG/$(echo $WORKDIR | cut -d / -f2)

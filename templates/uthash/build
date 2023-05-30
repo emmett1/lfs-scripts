@@ -1,0 +1,8 @@
+cd src
+# create directory for header files 
+install -dm755 "$PKG"/usr/include/
+
+# install header files in /usr/include
+for h in *.h; do
+        install -m 644 ${h} "$PKG"/usr/include/
+done

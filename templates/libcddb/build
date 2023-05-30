@@ -1,0 +1,5 @@
+sed -e '/DEFAULT_SERVER/s/freedb.org/gnudb.gnudb.org/' \
+    -e '/DEFAULT_PORT/s/888/&0/'                       \
+    -i include/cddb/cddb_ni.h
+
+_auto_build

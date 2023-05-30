@@ -1,0 +1,8 @@
+_auto_build
+
+mkdir -p $PKG/bin
+mv $PKG/usr/bin/bash $PKG/bin
+
+install -d $PKG/etc
+install -m644 $FILES/bashrc $PKG/etc
+install -m644 $FILES/profile $PKG/etc

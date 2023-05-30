@@ -1,0 +1,5 @@
+./INSTALL.sh
+install -m644 $FILES/mkinitramfs.conf $PKG/etc/
+install -m644 $FILES/base.hook $PKG/usr/share/mkinitramfs/hooks/base.hook
+install -m644 $FILES/liveiso.hook $PKG/usr/share/mkinitramfs/hooks/liveiso.hook
+rm $PKG/usr/share/mkinitramfs/hooks/venomiso.hook

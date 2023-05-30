@@ -1,0 +1,9 @@
+getent group sshd >/dev/null || groupadd -g 50 sshd
+getent passwd sshd >/dev/null || useradd -c 'sshd PrivSep' \
+	-d /var/lib/sshd  \
+	-g sshd           \
+	-s /bin/false     \
+	-u 50 sshd
+
+chmod 700 var/lib/sshd
+chown root:sys var/lib/sshd

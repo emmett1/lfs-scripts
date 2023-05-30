@@ -1,0 +1,2 @@
+mkdir -p $PKG/usr/share/themes/Arcbox
+cp -Ra openbox-3 $PKG/usr/share/themes/Arcbox

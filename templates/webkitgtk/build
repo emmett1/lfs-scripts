@@ -1,0 +1,6 @@
+# Fix a non-standard grammar construction rejected by GCC 13
+sed '/m_brush =/s/{/Brush {/' \
+    -i Source/WebCore/platform/graphics/SourceBrush.cpp
+
+_auto_build
+	

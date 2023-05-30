@@ -1,0 +1,1 @@
+getent group vboxusers >/dev/null || groupadd vboxusers

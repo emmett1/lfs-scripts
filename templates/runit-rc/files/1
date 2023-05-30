@@ -1,0 +1,12 @@
+#!/bin/sh
+# system one time tasks
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+# run startup script
+/etc/runit/rc.startup
+
+mkdir -p /run/runit
+
+touch /etc/runit/stopit
+chmod 0 /etc/runit/stopit

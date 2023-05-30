@@ -1,0 +1,3 @@
+export CFLAGS="$CFLAGS -Wno-dangling-pointer"
+make
+make install

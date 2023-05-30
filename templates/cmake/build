@@ -1,0 +1,10 @@
+sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake
+./bootstrap --prefix=/usr        \
+            --system-libs        \
+            --mandir=/share/man  \
+            --no-system-jsoncpp  \
+            --no-system-librhash
+make
+make install
+mkdir -p $PKG/usr/share
+mv $PKG/usr/doc $PKG/usr/share

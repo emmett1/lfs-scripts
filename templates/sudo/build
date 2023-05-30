@@ -1,0 +1,9 @@
+_auto_build
+
+ln -sfv libsudo_util.so.0.0.0 $PKG/usr/lib/sudo/libsudo_util.so.0
+
+mkdir -m 755 $PKG/etc/pam.d
+install -Dm 644 $FILES/sudo $PKG/etc/pam.d/sudo
+
+rm -fr $PKG/var/run
+rm -fr $PKG/run/sudo

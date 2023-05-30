@@ -1,0 +1,3 @@
+./configure --prefix=/usr --disable-static --with-curses
+make SHLIB_LIBS="-lncursesw"
+make SHLIB_LIBS="-lncursesw" DESTDIR=$PKG install

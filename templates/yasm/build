@@ -1,0 +1,2 @@
+sed -i 's#) ytasm.*#)#' Makefile.in
+_configure_build

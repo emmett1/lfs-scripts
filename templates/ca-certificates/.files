@@ -1,0 +1,6 @@
+drwxr-xr-x root/root etc/
+drwxr-xr-x root/root etc/ssl/
+-rw-r--r-- root/root etc/ssl/cert.pem
+lrwxrwxrwx root/root etc/ssl/ca-bundle.crt
+drwxr-xr-x root/root etc/ssl/certs/
+lrwxrwxrwx root/root etc/ssl/certs/ca-certificates.crt

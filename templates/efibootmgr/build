@@ -1,0 +1,2 @@
+make EFIDIR=/boot/efi
+make install EFIDIR=/boot/efi

@@ -1,0 +1,2 @@
+_configure_build
+rm $PKG/usr/include/event.h

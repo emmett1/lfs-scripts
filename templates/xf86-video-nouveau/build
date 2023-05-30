@@ -1,0 +1,2 @@
+grep -rl slave | xargs sed -i s/slave/secondary/
+_auto_build

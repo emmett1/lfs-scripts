@@ -1,0 +1,8 @@
+drwxr-xr-x root/root etc/
+drwxr-xr-x root/root etc/profile.d/
+-rw-r--r-- root/root etc/profile.d/libvdpau-va-gl.sh
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/lib/
+drwxr-xr-x root/root usr/lib/vdpau/
+-rwxr-xr-x root/root usr/lib/vdpau/libvdpau_va_gl.so.1
+lrwxrwxrwx root/root usr/lib/vdpau/libvdpau_va_gl.so

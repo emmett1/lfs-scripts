@@ -1,0 +1,4 @@
+sed -e '/#include <stdlib.h>/a #include <string>' -i src/api-device.cc
+_cmake_build
+mkdir -p $PKG/etc/profile.d
+echo "export VDPAU_DRIVER=va_gl" > $PKG/etc/profile.d/libvdpau-va-gl.sh

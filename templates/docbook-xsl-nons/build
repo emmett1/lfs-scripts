@@ -1,0 +1,9 @@
+for i in xsl-stylesheets xsl-stylesheets-nons; do
+	install -v -m755 -d $PKG/usr/share/xml/docbook/$i-$version	
+	cp -v -R VERSION assembly common eclipse epub epub3 extensions fo        \
+	         highlighting html htmlhelp images javahelp lib manpages params  \
+	         profiling roundtrip slides template tests tools webhelp website \
+	         xhtml xhtml-1_1 xhtml5                                          \
+	    $PKG/usr/share/xml/docbook/$i-$version	
+	ln -s VERSION $PKG/usr/share/xml/docbook/$i-$version/VERSION.xsl
+done

@@ -1,0 +1,3 @@
+sed -i '/v0/{n;s/new:/new:kb=^?:/}' termcap
+printf '\tkbs=\\177,\n' >> terminfo
+_configure_build

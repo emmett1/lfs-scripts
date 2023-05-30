@@ -1,0 +1,21 @@
+install -d $PKG/usr/lib $PKG/usr/bin
+mv $SRC/firefox $PKG/usr/lib/firefox
+ln -s /usr/lib/firefox/firefox $PKG/usr/bin/firefox
+mkdir -p $PKG/usr/lib/firefox/lib
+
+# For apply ALSA support, apulse and patchelf must be installed
+#scratch isinstalled apulse && scratch isinstalled patchelf && \
+#patchelf --set-rpath /usr/lib/apulse $PKG/usr/lib/firefox/libxul.so 
+
+# We don't want these 'features'
+rm -r $PKG/usr/lib/firefox/browser/features
+
+# Disable autoupdate
+mkdir $PKG/usr/lib/firefox/distribution
+
+install -m644 $CWD/files/policies.json $PKG/usr/lib/firefox/distribution/
+
+install -m644 -D $CWD/files/firefox.desktop $PKG/usr/share/applications/firefox.desktop
+install -m755 -d $PKG/usr/share/pixmaps
+ln -s /usr/lib/firefox/browser/chrome/icons/default/default32.png \
+	$PKG/usr/share/pixmaps/firefox.png

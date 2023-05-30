@@ -1,0 +1,11 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+lrwxrwxrwx root/root usr/lib/libass.so.9
+lrwxrwxrwx root/root usr/lib/libass.so
+-rwxr-xr-x root/root usr/lib/libass.so.9.2.1
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/libass.pc
+drwxr-xr-x root/root usr/include/ass/
+-rw-r--r-- root/root usr/include/ass/ass.h
+-rw-r--r-- root/root usr/include/ass/ass_types.h

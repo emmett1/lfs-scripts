@@ -1,0 +1,10 @@
+# causing the package to be rebuilt during installation
+sed '/prep :/a\\ttouch prep' -i src/Makefile
+
+# faking mandoc
+mkdir bin
+ln -s /bin/true bin/mandoc
+export PATH=$PWD/bin:$PATH
+
+make ERRORS=
+make install LIBDIR=/usr/lib

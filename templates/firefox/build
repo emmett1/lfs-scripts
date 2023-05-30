@@ -1,0 +1,105 @@
+cat <<- EOF > .mozconfig
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-shared
+unset MOZ_CRASHREPORTER
+unset MOZ_DATA_REPORTING
+unset MOZ_SERVICES_HEALTHREPORT
+unset MOZ_TELEMETRY_REPORTING
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/usr/lib
+ac_add_options --disable-callgrind
+ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-elf-hack
+ac_add_options --disable-eme
+ac_add_options --disable-jemalloc
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-parental-controls
+ac_add_options --disable-profiling
+ac_add_options --disable-system-extension-dirs
+ac_add_options --disable-tests
+ac_add_options --disable-updater
+ac_add_options --disable-vtune
+ac_add_options --enable-application=browser
+ac_add_options --enable-audio-backends=alsa
+ac_add_options --enable-default-toolkit=cairo-gtk3
+ac_add_options --enable-install-strip
+ac_add_options --enable-linker=lld
+ac_add_options --enable-lto=thin
+ac_add_options --enable-official-branding
+ac_add_options --enable-optimize
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --enable-strip
+ac_add_options --with-system-ffi
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-pixman
+ac_add_options --with-system-png
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
+ac_add_options --without-wasm-sandboxed-libraries
+EOF
+
+	# A change in cbindgen-0.24.2 causes a symbol to now be output by cbindgen, but it has already been defined in a header. 
+	sed -i '/ROOT_CLIP_CHAIN/d' gfx/webrender_bindings/webrender_ffi.h
+	
+	# Remove an obsolete flag in python code, that has been removed in python-3.11.
+	grep -rl \"rU\" | xargs sed -i 's/"rU"/"r"/'
+
+	# Fix an issue with regular expressions in python-3.11.
+	sed -e 's/?s)\./?s:.)/'               \
+	    -e '/?m)/{s/?m)/?m:/;s/\$"/$)"/}' \
+	    -e '/?s)%/{s/?s)/?s:/;s/?"/?)"/}' \
+	    -i xpcom/idl-parser/xpidl/xpidl.py
+
+	export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib
+	export CFLAGS="${CFLAGS} -w" CXXFLAGS="${CXXFLAGS} -w" # disable warnings
+	export MOZBUILD_STATE_PATH=${PWD}/.mozbuild
+	export CARGO_HOME=$PWD/cargohome
+	export MOZ_NOSPAM=1
+	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+
+	# Show flags set at the beginning.
+ 	echo "Current BINDGEN_CFLAGS:\t${BINDGEN_CFLAGS:-no value set}"
+	echo "Current CFLAGS:\t\t${CFLAGS:-no value set}"
+	echo "Current CXXFLAGS:\t\t${CXXFLAGS:-no value set}"
+	echo "Current LDFLAGS:\t\t${LDFLAGS:-no value set}"
+	echo "Current RUSTFLAGS:\t\t${RUSTFLAGS:-no value set}"
+	
+	./mach build
+	DESTDIR=$PKG ./mach install
+
+	unset MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE MOZBUILD_STATE_PATH
+
+	mkdir -pv    $PKG/usr/lib/mozilla/plugins
+	ln    -sfv   ../../mozilla/plugins $PKG/usr/lib/$name/browser
+
+  local vendorjs="$PKG/usr/lib/$name/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
+pref("intl.locale.requested", "");
+pref("browser.shell.checkDefaultBrowser", false);
+pref("extensions.autoDisableScopes", 11);
+END
+
+  local distini="$PKG/usr/lib/$name/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
+[Global]
+id=linuxfromscratch
+version=$version
+about=Mozilla Firefox for Linux From Scratch
+[Preferences]
+app.distributor=linuxfromscratch
+app.distributor.channel=$name
+app.partner.linuxfromscratch=linuxfromscratch
+END
+
+	for i in 16 22 24 32 48 64 128 256; do
+	install -Dm644 browser/branding/official/default$i.png \
+		$PKG/usr/share/icons/hicolor/${i}x${i}/apps/$name.png
+	done
+
+	install -Dm644 $CWD/files/$name.desktop \
+		$PKG/usr/share/applications/$name.desktop

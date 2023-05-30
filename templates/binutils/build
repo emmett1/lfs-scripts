@@ -1,0 +1,17 @@
+mkdir -v build
+cd       build
+
+../configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--enable-gold \
+	--enable-ld=default \
+	--enable-lto \
+	--enable-plugins \
+	--enable-shared \
+	--disable-werror \
+	--with-system-zlib \
+	--enable-multilib \
+	--with-lib-path=/usr/lib:/lib:/usr/lib32
+make tooldir=/usr
+make tooldir=/usr install

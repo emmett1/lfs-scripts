@@ -1,0 +1,15 @@
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+if [ -e /run/runit.reboot ]; then
+    touch /etc/runit/reboot
+    chmod 100 /etc/runit/reboot
+fi
+
+echo 'Waiting for services to stop...'
+sv force-stop /var/service/*
+sv exit /var/service/*
+
+# run shutdown script
+/etc/runit/rc.shutdown

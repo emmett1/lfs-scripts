@@ -1,0 +1,46 @@
+#!/bin/sh
+
+COLOUR="\033[90m"
+CRESET="\033[0m"
+
+msg() {
+	printf "%b" "${COLOUR}::${CRESET} $@\n"
+}
+
+[ -r /etc/runit/runit.conf ] && . /etc/runit/runit.conf
+[ -x /etc/runit/rc.shutdown.local ] && /etc/runit/rc.shutdown.local
+
+msg "Stopping udev..."
+udevadm control --exit
+
+msg "Saving random seed..."
+dd if=/dev/urandom of=/var/lib/random-seed count=1 bs=512 2>/dev/null
+
+msg "Saving system time to hardware clock..."
+hwclock --systohc ${HARDWARECLOCK:+--$(echo $HARDWARECLOCK | tr A-Z a-z)}
+
+msg "Sending TERM signal to processes..."
+pkill --inverse -s0,1 -TERM
+sleep 1
+msg "Sending KILL signal to processes..."
+pkill --inverse -s0,1 -KILL
+
+msg "Deactivating all swap files/partitions..."
+swapoff -a
+
+msg "Bringing down the loopback interface..."
+ip link set lo down
+      
+msg "Unmounting all other currently mounted file systems..."
+umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts
+
+msg "Remount root filesystem in read-only mode..."
+mount --options remount,ro /
+
+msg "Bringing down the loopback interface..."
+ip link set lo down
+
+msg "Flushing filesystem buffers..."
+sync
+
+sleep 1

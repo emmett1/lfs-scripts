@@ -1,0 +1,113 @@
+#!/bin/sh
+
+_unmount() {
+	while true; do
+		mountpoint -q $1 || break
+		umount $1 2>/dev/null
+	done
+}
+
+_chroot() {
+	mount --bind /dev $newroot/dev
+	mount -t proc proc $newroot/proc
+	mount -t sysfs sysfs $newroot/sys
+	chroot $newroot $@
+	_unmount $newroot/sys
+	_unmount $newroot/proc
+	_unmount $newroot/dev
+}
+
+build_hook() {
+	add_module cdrom
+	add_module loop
+	add_module overlay
+	
+	add_file /lib/udev/rules.d/60-cdrom_id.rules
+	         
+	add_binary /lib/udev/cdrom_id
+	add_binary blockdev
+	add_binary losetup
+	add_binary mountpoint
+}
+
+run_earlyhook() {
+	for mod in cdrom loop overlay; do
+		modprobe $mod 2>/dev/null
+	done
+	
+	if [ -z "$root" ]; then
+		mount_handler=mount_venomiso
+	fi
+}
+
+mount_venomiso() {
+	newroot=$1
+		
+	MEDIA=/dev/disk/by-label/LIVEISO
+	MEDIUM=/run/initramfs/medium
+	SYSTEM=/run/initramfs/system
+	WRITEDIR=/run/initramfs/overlayfs/write
+	WORKDIR=/run/initramfs/overlayfs/work
+	sfsimg=/run/initramfs/medium/rootfs/filesystem.sfs
+	listpkg=/run/initramfs/medium/rootfs/pkglist
+	wait=${wait:-5}
+	count=0
+	
+	if [ ! -e $MEDIA ]; then
+		msg "wait for media device..."
+		while [ ! -e $MEDIA ]; do
+			sleep 1
+			count=$((count+1))
+			if [ "$count" -ge "$wait" ]; then
+				msg "media is not appeared even after wait for $wait seconds..."
+				msg "try increase wait time by append 'wait=<seconds>' to boot cmdline"
+				sleep 9999
+			fi
+		done
+	fi
+	
+	mkdir -p $MEDIUM $SYSTEM $WRITEDIR $WORKDIR
+	
+	msg "mounting media to $MEDIUM..."
+	mount -o ro $MEDIA $MEDIUM || problem
+	
+	if [ "$ram" = y ]; then
+		msg "mounting /run/initramfs/ram to ram..."
+		mkdir -p /run/initramfs/ram
+		mount -t tmpfs -o "size=75%",mode=0755 ram /run/initramfs/ram || problem
+		msg "copying squashfs img to /run/initramfs/ram..."
+		cp $sfsimg /run/initramfs/ram/ || problem
+		cp $listpkg /run/initramfs/ram/ || problem
+		sfsimg=/run/initramfs/ram/filesystem.sfs
+		listpkg=/run/initramfs/ram/listpkg
+		if [ -d /run/initramfs/medium/customize ]; then
+			cp -Ra /run/initramfs/medium/customize /run/initramfs/ram/
+		fi
+	fi
+	sfs_dev=$(losetup --find --show --read-only $sfsimg)
+	msg "mounting squashfs img to $SYSTEM..."
+	mount -o defaults -r $sfs_dev $SYSTEM || problem
+
+	# overlayfs mount	
+	msg "mounting overlays to $newroot..."
+	mount -t overlay overlay -o upperdir=$WRITEDIR,lowerdir=$SYSTEM,workdir=$WORKDIR $newroot || problem
+
+	if [ -d $MEDIUM/virootfs/ ]; then
+		msg "copying virootfs files to $newroot..."
+		cp -aR $MEDIUM/virootfs/* $newroot/ || problem
+	fi
+
+	# Tell system to skip fsck during startup
+	> $newroot/fastboot
+
+	# Execute custom script before switch root
+	if [ -f $newroot/root/custom_script.sh ]; then
+		msg "running custom_script.sh script..."
+		chmod +x $newroot/root/custom_script.sh
+		_chroot /root/custom_script.sh 2>/dev/null
+	fi
+	
+	if [ "$ram" = y ]; then
+		umount $MEDIUM
+	fi
+}

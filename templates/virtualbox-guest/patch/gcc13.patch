@@ -1,0 +1,11 @@
+diff -Naur VirtualBox-7.0.8-orig/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h VirtualBox-7.0.8/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
+--- VirtualBox-7.0.8-orig/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h	2023-04-17 15:54:19.000000000 +0000
++++ VirtualBox-7.0.8/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h	2023-05-21 17:14:24.054995924 +0000
+@@ -18,6 +18,7 @@
+ 
+ #include <cstring>
+ #include <iterator>
++#include <cstdint>
+ #include <type_traits>
+ 
+ namespace dxvk::bit {

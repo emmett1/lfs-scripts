@@ -1,0 +1,2 @@
+_auto_build
+install -m644 liba52/a52_internal.h $PKG/usr/include/a52dec/

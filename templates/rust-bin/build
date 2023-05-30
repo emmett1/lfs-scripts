@@ -1,0 +1,5 @@
+./install.sh --prefix=/usr --destdir="$PKG"
+# move bash-completion files to correct directory
+mkdir -p $PKG/usr/share/bash-completion/completions/
+mv $PKG/usr/etc/bash_completion.d/cargo $PKG/usr/share/bash-completion/completions/
+rm -fr $PKG/usr/etc

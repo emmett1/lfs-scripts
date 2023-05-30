@@ -8,3 +8,5 @@ ports/.outdate
 src/
 pkg/
 lfs-rootfs/
+packages/
+sources/

@@ -1,0 +1,1 @@
+https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2

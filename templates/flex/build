@@ -1,0 +1,2 @@
+_auto_build
+ln -s flex $PKG/usr/bin/lex

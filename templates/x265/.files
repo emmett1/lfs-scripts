@@ -1,0 +1,11 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/bin/
+drwxr-xr-x root/root usr/lib/
+-rwxr-xr-x root/root usr/lib/libx265.so.207
+lrwxrwxrwx root/root usr/lib/libx265.so
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/x265.pc
+-rwxr-xr-x root/root usr/bin/x265
+-rw-r--r-- root/root usr/include/x265.h
+-rw-r--r-- root/root usr/include/x265_config.h

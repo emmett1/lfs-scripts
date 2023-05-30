@@ -1,0 +1,143 @@
+#!/bin/sh
+#
+# System Initialization Script
+#
+
+COLOUR="\033[90m"
+CRESET="\033[0m"
+
+welcome() {
+	msg "Booting up ${COLOUR}$1${CRESET}!"
+}
+
+msg() {
+	printf "%b" "${COLOUR}::${CRESET} $@\n"
+}
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+[ -r /etc/runit/runit.conf ] && . /etc/runit/runit.conf
+[ -r /etc/os-release ] && . /etc/os-release
+
+welcome "${PRETTY_NAME:-'GNU/Linux'}"
+
+msg "Mounting virtual file systems..."
+mountpoint -q /proc    || mount -t proc proc /proc -o nosuid,noexec,nodev
+mountpoint -q /sys     || mount -t sysfs sys /sys -o nosuid,noexec,nodev
+mountpoint -q /run     || mount -t tmpfs run /run -o mode=0755,nosuid,nodev
+mountpoint -q /dev     || mount -t devtmpfs dev /dev -o mode=0755,nosuid
+mkdir -p -m0755 /run/lock /dev/pts /dev/shm
+mountpoint -q /dev/pts || mount /dev/pts >/dev/null 2>&1 || mount -t devpts devpts /dev/pts -o mode=0620,gid=5,nosuid,noexec
+mountpoint -q /dev/shm || mount /dev/shm >/dev/null 2>&1 || mount -t tmpfs shm /dev/shm -o mode=1777,nosuid,nodev
+
+msg "Loading kernel modules..."
+modules-load
+
+msg "Populating /dev with device nodes..."
+udevd --daemon
+udevadm trigger --action=add    --type=subsystems
+udevadm trigger --action=add    --type=devices
+udevadm trigger --action=change --type=devices
+udevadm settle
+
+if [ -x /sbin/vgchange ]; then
+	msg "Activating LVM devices..."
+	/sbin/vgchange -a y >/dev/null
+fi
+
+msg "Activating all swap files/partitions..."
+swapon -a
+
+msg "Bringing up the loopback interface..."
+ip addr add 127.0.0.1/8 label lo dev lo
+ip link set lo up
+
+msg "Mounting root file system in read-only mode..."
+mount -n -o remount,ro / >/dev/null
+
+[ -f /fastboot ] && FASTBOOT=1
+[ -f /forcefsck ] && FORCEFSCK="-f"
+for arg in $(cat /proc/cmdline); do
+    case $arg in
+         fastboot) FASTBOOT=1;;
+        forcefsck) FORCEFSCK="-f";;
+    esac
+done
+
+if [ -z "$FASTBOOT" ]; then
+	msg "Checking root filesystem..."
+	fsck $FORCEFSCK -a -A -C -T >/dev/null
+	if [ "$?" -gt 1 ]; then
+		echo "*******************************************"
+		echo "**        Filesystem check failed        **"
+		echo "** You been dropped to maintenance shell **"
+		echo "*******************************************"
+		sulogin -p
+	fi
+fi
+
+msg "Mounting root file system in read-write mode..."
+mount --options remount,rw / >/dev/null
+
+msg "Mounting remaining file systems..."
+mount --all --test-opts no_netdev >/dev/null
+
+msg "Setting up hostname..."
+if [ -f /etc/hostname ]; then
+	hostname -F /etc/hostname
+else
+	hostname linux
+fi
+
+msg "Cleanup system..."
+> /var/run/utmp
+if grep -q '^utmp:' /etc/group ; then
+	chmod 664 /var/run/utmp
+	chgrp utmp /var/run/utmp
+fi
+rm -f /fastboot /forcefsck
+find /var/run -name "*.pid" -delete
+find /tmp -xdev -mindepth 1 ! -name lost+found -delete
+mkdir -m 1777 /tmp/.ICE-unix
+mkdir -m 1777 /tmp/.X11-unix
+
+if [  "$FONT" ]; then
+	msg "Setting console font..."
+	setfont "$FONT"
+fi
+
+if [ "$KEYMAP" ]; then
+	msg "Setting keyboard..."
+	loadkeys -q "$KEYMAP"
+fi
+
+if [ -f "/etc/sysctl.conf" ]; then
+	msg "Setting kernel runtime parameters..."
+	sysctl -q -p
+fi
+
+if [ "$TIMEZONE" ]; then
+	msg "Setting system timezone..."
+	ln -snf /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
+fi
+
+msg "Setting up system time..."
+hwclock --hctosys ${HARDWARECLOCK:+--$(echo $HARDWARECLOCK | tr A-Z a-z)}
+
+msg "Updating shared library links..."
+ldconfig
+
+if [ -f "/var/lib/random-seed" ]; then
+	msg "Initializing random number generator..."
+	cat /var/lib/random-seed >/dev/urandom
+	rm -f /var/lib/random-seed
+fi
+
+if [ -d /sys/firmware/efi/efivars ]; then
+	msg "Mounting efivarfs..."
+	mount -t efivarfs none /sys/firmware/efi/efivars
+fi
+
+dmesg >/var/log/dmesg.log
+
+msg "Initialization complete..."

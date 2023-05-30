@@ -1,0 +1,2 @@
+make -C src
+make -C src ROOT=$PKG install

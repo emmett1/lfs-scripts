@@ -1,0 +1,7 @@
+#!/bin/sh
+
+build_hook() {
+	add_module vboxguest
+	add_module vboxsf
+	add_module vboxvideo
+}
