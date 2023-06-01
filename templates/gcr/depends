@@ -1,0 +1,7 @@
+cairo
+gdk-pixbuf
+glib
+gtk3
+libsecret
+p11-kit
+pango

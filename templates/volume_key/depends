@@ -1,0 +1,6 @@
+cryptsetup
+glib
+gpgme
+nspr
+nss
+util-linux

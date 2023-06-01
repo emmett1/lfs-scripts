@@ -1,0 +1,9 @@
+cairo
+fontconfig
+freetype
+gdk-pixbuf
+glib
+harfbuzz
+libpng
+libxml2
+pango

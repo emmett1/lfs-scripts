@@ -1,0 +1,17 @@
+bzip2
+cairo
+freetype
+gdk-pixbuf
+giflib
+glib
+libjpeg-turbo
+libpng
+librsvg
+libtiff
+libwebp
+libx11
+libxcb
+libxext
+openjpeg
+xz
+zlib

@@ -1,0 +1,12 @@
+cairo
+gdk-pixbuf
+glib
+harfbuzz
+libnotify
+libx11
+libxext
+libxinerama
+libxrandr
+libxscrnsaver
+pango
+wayland

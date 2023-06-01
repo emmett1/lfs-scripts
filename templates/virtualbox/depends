@@ -1,0 +1,13 @@
+curl
+libpng
+libvpx
+libx11
+libxcb
+libxcursor
+libxext
+libxml2
+libxt
+mesa
+openssl
+qt5
+zlib

@@ -1,0 +1,13 @@
+consolekit2
+dbus
+fontconfig
+freetype
+libjpeg-turbo
+libpng
+libx11
+libxft
+libxmu
+libxrandr
+libxrender
+linux-pam
+zlib

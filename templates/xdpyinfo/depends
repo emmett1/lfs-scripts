@@ -1,0 +1,10 @@
+libx11
+libxcb
+libxcomposite
+libxext
+libxi
+libxinerama
+libxrender
+libxtst
+libxxf86dga
+libxxf86vm

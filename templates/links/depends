@@ -1,0 +1,6 @@
+bzip2
+libevent
+openssl
+xz
+zlib
+zstd

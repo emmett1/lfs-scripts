@@ -1,0 +1,7 @@
+libidn2
+libpsl
+libunistring
+openssl
+pcre2
+util-linux
+zlib

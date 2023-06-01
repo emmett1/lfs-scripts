@@ -1,0 +1,7 @@
+acl
+glib
+libatasmart
+libblockdev
+libgudev
+polkit
+util-linux

@@ -1,0 +1,7 @@
+gmp
+libffi
+ncurses
+openssl
+readline
+yaml
+zlib

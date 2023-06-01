@@ -1,0 +1,12 @@
+libdrm
+libepoxy
+libtirpc
+libxau
+libxcvt
+libxdmcp
+libxfont2
+libxshmfence
+mesa
+nettle
+pixman
+wayland

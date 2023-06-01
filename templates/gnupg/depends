@@ -1,0 +1,11 @@
+bzip2
+gnutls
+libassuan
+libgcrypt
+libgpg-error
+libksba
+libusb
+npth
+readline
+sqlite
+zlib

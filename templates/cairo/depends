@@ -1,0 +1,10 @@
+fontconfig
+freetype
+glib
+libpng
+libx11
+libxcb
+libxext
+libxrender
+pixman
+zlib

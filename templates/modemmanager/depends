@@ -1,0 +1,5 @@
+glib
+libgudev
+libmbim
+libqmi
+polkit

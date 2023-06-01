@@ -1,0 +1,8 @@
+at-spi2-core
+cairo
+gdk-pixbuf
+glib
+gtk3
+harfbuzz
+pango
+zlib

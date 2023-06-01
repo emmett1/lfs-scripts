@@ -1,0 +1,13 @@
+fuse
+gcr
+glib
+libarchive
+libcdio
+libcdio-paranoia
+libgcrypt
+libgudev
+libsecret
+libsoup
+libxml2
+polkit
+udisks

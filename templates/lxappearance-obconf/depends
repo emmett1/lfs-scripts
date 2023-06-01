@@ -1,0 +1,17 @@
+at-spi2-core
+cairo
+fontconfig
+freetype
+gdk-pixbuf
+glib
+gtk2
+harfbuzz
+imlib2
+libice
+librsvg
+libsm
+libx11
+libxft
+libxml2
+openbox
+pango

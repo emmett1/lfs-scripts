@@ -1,0 +1,12 @@
+cryptsetup
+eudev
+glib
+kmod
+libbytesize
+lvm2
+nspr
+nss
+parted
+util-linux
+volume_key
+yaml

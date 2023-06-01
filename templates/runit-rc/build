@@ -20,7 +20,6 @@ ${CC:-gcc} ${CFLAGS} pause.c -o pause
 install -m755 1 2 3 ctrlaltdel rc.startup.local \
 	rc.shutdown.local rc.startup rc.shutdown \
 	$PKG/etc/runit
-install -m644 runit.conf $PKG/etc/runit
 #install -m644 pause.1 $PKG/usr/share/man/man1
 #install -m644 shutdown.8 $PKG/usr/share/man/man8
 

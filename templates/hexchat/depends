@@ -1,0 +1,9 @@
+dbus-glib
+gdk-pixbuf
+glib
+gtk2
+libcanberra
+libx11
+openssl
+pango
+perl

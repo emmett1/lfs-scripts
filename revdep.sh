@@ -1,5 +1,7 @@
 #!/bin/sh
 
+LIST1=/tmp/$$-list1
+
 SEARCH_DIRS="/bin /usr/bin /sbin /usr/sbin /lib /usr/lib /lib64 /usr/lib64 /usr/libexec"
 
 while read -r line; do
@@ -20,9 +22,9 @@ fi
 
 SEARCH_DIRS=$(echo $SEARCH_DIRS $EXTRA_SEARCH_DIRS | tr ' ' '\n' | sort | uniq | tr '\n' ' ')
 
-find $SEARCH_DIRS -type f \( -perm /+u+x -o -name '*.so' -o -name '*.so.*' \) -print 2> /dev/null | sort -u > /tmp/list
+find $SEARCH_DIRS -type f \( -perm /+u+x -o -name '*.so' -o -name '*.so.*' \) -print 2> /dev/null | sort -u > $LIST1
 
-total=$(wc -l /tmp/list | awk '{print $1}')
+total=$(wc -l $LIST1 | awk '{print $1}')
 count=0
 while read -r line; do
 	count=$(( count + 1 ))
@@ -40,7 +42,7 @@ while read -r line; do
 				done
 			fi;;
 	esac
-done < /tmp/list
+done < $LIST1
 printf "\033[0K"
 
-rm -f /tmp/list
+rm -f $LIST1

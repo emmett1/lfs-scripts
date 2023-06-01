@@ -1,0 +1,5 @@
+dbus
+libnl
+ncurses
+openssl
+readline

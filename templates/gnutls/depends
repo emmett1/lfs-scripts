@@ -1,0 +1,8 @@
+gmp
+libidn2
+libtasn1
+libunistring
+nettle
+p11-kit
+zlib
+zstd

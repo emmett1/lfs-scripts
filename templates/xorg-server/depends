@@ -1,0 +1,16 @@
+dbus
+eudev
+libdrm
+libepoxy
+libpciaccess
+libtirpc
+libx11
+libxau
+libxcvt
+libxdmcp
+libxext
+libxfont2
+libxshmfence
+mesa
+nettle
+pixman

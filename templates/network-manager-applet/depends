@@ -1,0 +1,11 @@
+at-spi2-core
+cairo
+gdk-pixbuf
+glib
+gtk3
+jansson
+libnma
+libsecret
+modemmanager
+networkmanager
+pango

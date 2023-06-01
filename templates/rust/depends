@@ -1,0 +1,5 @@
+curl
+libssh2
+llvm
+openssl
+zlib

@@ -1,0 +1,12 @@
+at-spi2-core
+cairo
+dbus
+dbus-glib
+fontconfig
+freetype
+gdk-pixbuf
+glib
+gtk2
+harfbuzz
+libx11
+pango

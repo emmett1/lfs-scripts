@@ -1,0 +1,11 @@
+curl
+freetype
+harfbuzz
+libjpeg-turbo
+libx11
+libxext
+libxrandr
+mesa
+openjpeg
+openssl
+zlib
