@@ -2,5 +2,11 @@ make mrproper
 make headers
 find usr/include -name '.*' -delete
 rm usr/include/Makefile
-mkdir -p $PKG/usr/include
-cp -rv usr/include/* $PKG/usr/include
+
+if [ "$BOOTSTRAP" ]; then
+	mkdir -p $TOOLS/include
+	cp -rv usr/include/* $TOOLS/include
+else
+	mkdir -p $PKG/usr/include
+	cp -rv usr/include/* $PKG/usr/include
+fi

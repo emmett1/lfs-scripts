@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep -Eo LVM2.[0-9.]+.tgz \
+	| sed 's/LVM2\.//;s/\.tgz//'
+}

@@ -73,15 +73,21 @@ _python3_build() {
 }
 
 _configure_build() {
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib \
-		--localstatedir=/var \
-		--mandir=/usr/share/man \
-		$build_opt  $@ || return $?
-	make || return $?
-	make DESTDIR=$PKG install || return $?
+	if [ "$BOOTSTRAP" ]; then
+		./configure --prefix=$TOOLS $build_opt $@ || return $?
+		make || return $?
+		make install || return $?
+	else
+		./configure \
+			--prefix=/usr \
+			--sysconfdir=/etc \
+			--libexecdir=/usr/lib \
+			--localstatedir=/var \
+			--mandir=/usr/share/man \
+			$build_opt $@ || return $?
+		make || return $?
+		make DESTDIR=$PKG install || return $?
+	fi
 }
 
 _meson_build() {
@@ -112,7 +118,7 @@ _meson_build() {
 
 export PATH=$PATH:/sbin:/usr/sbin
 
-if [ "$(id -u)" != 0 ]; then
+if [ "$(id -u)" != 0 ] && [ ! "$FAKEROOTKEY" ]; then
 	echo "run this script as root or use fakeroot"
 	exit 1
 fi
@@ -136,24 +142,20 @@ if [ -s ./release ]; then
 else
 	export release=1
 fi
-if [ -s ./tag ]; then
-	export tag=$(head -n1 ./tag)
-else
-	export tag=any
-fi
 if [ -s ./source ]; then
 	source=$(cat ./source)
 fi
 
-PKGTYPE=${PKGTYPE:-txz}
 PKGFILE=$name#$version-$release.pkg.tar.xz
 
 while [ $1 ]; do
 	case $1 in
-		-f) REBUILD=1;;
+		-b) REBUILD=1;;
 		-i) INSTALL=1;;
-		-u|-r) UPGRADE=1;;
-		--root) $pkgadd_opt="-r $2"; ROOT="$2"; shift;;
+		-u) UPGRADE=1;;
+		-f) pkgadd_opt="$pkgadd_opt $1";;
+		-r) pkgadd_opt="$pkgadd_opt $1 $2"; ROOT="$2"; shift;;
+		-c) pkgadd_opt="$pkgadd_opt $1 $2"; shift;;
 	esac
 	shift
 done
@@ -197,7 +199,7 @@ else
 		url=${i%::*}
 		case $i in
 			*::noextract) cp $SOURCEDIR/${url##*/} $SRC;;
-			*.tar.*|*.tgz) bsdtar xvf $SOURCEDIR/${url##*/} -C $SRC;;
+			*.tar.*|*.t?z) bsdtar xvf $SOURCEDIR/${url##*/} -C $SRC || { echo ":: failed extracting ${url##*/}"; exit 1; };;
 			*) cp $SOURCEDIR/${url##*/} $SRC;;
 		esac
 	done
@@ -220,10 +222,14 @@ else
 		_auto_patch
 	fi
 
-	export DESTDIR=$PKG
-	export INSTALLROOT=$PKG  # syslinux
-	export install_root=$PKG # glibc
-	export INSTALL_ROOT=$PKG # qt5
+	# dont export this if bootsrap
+	if [ ! "$BOOTSTRAP" ]; then
+		export DESTDIR=$PKG
+		export DEST_DIR=$PKG     # p7zip
+		export INSTALLROOT=$PKG  # syslinux
+		export install_root=$PKG # glibc
+		export INSTALL_ROOT=$PKG # qt5
+	fi
 	
 	if [ -f $CWD/build ]; then
 		echo ":: running build script: $CWD/build"
@@ -299,6 +305,12 @@ else
 		done
 	done
 
+	# if bootstrap, dont package it, just exit after build
+	if [ "$BOOTSTRAP" ]; then
+		rm -fr $WORKDIR
+		exit 0
+	fi
+
 	rm -f $PACKAGEDIR/$PKGFILE
 	cd $PKG
 	echo ":: packaging $PKGFILE..."
@@ -316,8 +328,8 @@ fi
 
 if [ "$INSTALL" = 1 ]; then
 	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to install packages"; exit 1; }
-	if [ $(pkginfo -i $pkgadd_opt | awk '{print $1}' | grep -x $name) ]; then
-		echo "$name is installed already"
+	if [ $(pkginfo -i | awk '{print $1}' | grep -x $name) ]; then
+		echo "$name is already installed"
 		exit 0
 	else
 		echo ":: installing $PKGFILE..."
@@ -331,7 +343,7 @@ if [ "$INSTALL" = 1 ]; then
 fi
 if [ "$UPGRADE" = 1 ]; then
 	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to upgrade packages"; exit 1; }
-	if [ ! $(pkginfo -i $pkgadd_opt | awk '{print $1}' | grep -x $name) ]; then
+	if [ ! $(pkginfo -i | awk '{print $1}' | grep -x $name) ]; then
 		echo "$name not installed"
 		exit 1
 	else

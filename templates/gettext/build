@@ -1,8 +1,14 @@
-autoreconf -fiv
-#_auto_build
-./configure --prefix=/usr --disable-rpath
-make
-make install
-
-# idk what the fuck is wrong with this??
-rm -fr $PKG/$(echo $WORKDIR | cut -d / -f2)
+if [ "$BOOTSTRAP" ]; then
+	./configure --disable-shared
+	make -j1
+	cp -v gettext-tools/src/msgfmt \
+	      gettext-tools/src/msgmerge \
+	      gettext-tools/src/xgettext \
+	      $TOOLS/bin
+else
+	autoreconf -fiv
+	_auto_build
+	
+	# idk what the fuck is wrong with this??
+	rm -fr $PKG/$(echo $WORKDIR | cut -d / -f2)
+fi

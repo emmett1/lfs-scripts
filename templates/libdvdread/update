@@ -1,0 +1,8 @@
+url=$(dirname $url)
+url=$url/$(fetch \
+| cut -d '"' -f2 \
+| grep ^[[:digit:]] \
+| sed 's,\/,,' \
+| sort -V \
+| uniq \
+| tail -n1)/

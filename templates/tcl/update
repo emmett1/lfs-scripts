@@ -1,0 +1,7 @@
+url=http://www.tcl.tk/
+
+port_getver() {
+	fetch \
+	| grep Source \
+	| sed "s/.*Tk //;s/<.*//"
+}

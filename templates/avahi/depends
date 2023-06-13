@@ -1,14 +1,5 @@
-at-spi2-core
-cairo
 dbus
-expat
-gdbm
-gdk-pixbuf
 glib
 gtk3
-harfbuzz
-libcap
 libdaemon
-pango
 qt5
-zlib

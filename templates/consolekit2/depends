@@ -1,8 +1,5 @@
-acl
 dbus
-eudev
 glib
 libx11
 linux-pam
 polkit
-zlib

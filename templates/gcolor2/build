@@ -1,0 +1,2 @@
+sed -i 's/\[:space:\]/[&]/g' configure
+_auto_build

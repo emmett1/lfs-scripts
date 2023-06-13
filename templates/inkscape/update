@@ -1,0 +1,8 @@
+url=https://inkscape.org/release/
+
+port_getver() {
+	fetch \
+	| grep -Eo inkscape-[0-9.]+/ \
+	| sed 's/inkscape-//;s/\///' \
+	| grep -v "1.0"
+}

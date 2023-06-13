@@ -1,6 +1,4 @@
 alsa-lib
-at-spi2-core
-cairo
 dbus
 dbus-glib
 fontconfig

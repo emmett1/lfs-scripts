@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep -Eo v[0-9.]+.tar.[bgx]z2? \
+	| sed 's/v//;s/\.tar.*//'
+}

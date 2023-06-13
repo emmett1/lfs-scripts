@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep -Eo x264-snapshot-[0-9.]+-2245-stable.tar.[bgx]z2? \
+	| sed 's/x264-snapshot-//;s/-stable.tar..*//;s/-/\./'
+}

@@ -4,4 +4,3 @@ libxcb
 libxext
 libxfixes
 mesa
-wayland

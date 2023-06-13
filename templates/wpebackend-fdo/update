@@ -1,0 +1,9 @@
+url=https://wpewebkit.org/code
+
+port_getver() {
+	fetch \
+	| grep "Download wpebackend-fdo" \
+	| head -n1 \
+	| awk '{print $3}' \
+	| sed 's/\"//'
+}

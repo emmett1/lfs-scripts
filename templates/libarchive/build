@@ -1,2 +1,4 @@
 _auto_build
-sed -i "s/iconv //" $PKG/usr/lib/pkgconfig/libarchive.pc
+if [ ! "$BOOTSTRAP" ]; then
+	sed -i "s/iconv //" $PKG/usr/lib/pkgconfig/libarchive.pc
+fi

@@ -1,0 +1,9 @@
+url=https://gitlab.com/cryptsetup/cryptsetup/-/tags
+
+port_getver() {	
+	fetch \
+	| grep archive \
+	| tr '_' '.' \
+	| grep -Eo cryptsetup-v[0-9.]+.tar.gz \
+	| sed 's,cryptsetup-v,,;s,\.tar\.gz,,'
+}

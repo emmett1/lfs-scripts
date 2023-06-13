@@ -1,5 +1,0 @@
-mkdir -p $PKG/sbin
-for i in $SRC/*; do
-	install -m755 $i $PKG/sbin/${i##*/}
-done
-sed 's,/bin/du,du,g' -i $PKG/sbin/installpkg

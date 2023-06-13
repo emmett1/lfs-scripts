@@ -1,0 +1,9 @@
+url=http://site.icu-project.org/download
+
+port_getver() {
+	fetch \
+	| grep -Eo 'ICU4C-Download">[0-9.]+' \
+	| sed 's/ICU4C-Download">//' \
+	| sort -V \
+	| grep -v [a-z]
+}

@@ -1,0 +1,6 @@
+
+port_getver() {
+	fetch \
+	| grep -Eo libtheora-[0-9.]+.tar.gz \
+	| sed 's/libtheora-//;s/\.tar\.gz//'
+}

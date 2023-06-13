@@ -37,7 +37,6 @@ pango
 pcre2
 sdl2
 sqlite
-wayland
 xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil

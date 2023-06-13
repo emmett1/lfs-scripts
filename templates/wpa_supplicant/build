@@ -45,3 +45,8 @@ install -v -m644 dbus/fi.w1.wpa_supplicant1.service \
 install -v -d -m755 /etc/dbus-1/system.d
 install -v -m644 dbus/dbus-wpa_supplicant.conf \
                  $PKG/etc/dbus-1/system.d/wpa_supplicant.conf
+
+cat > $PKG/etc/wpa_supplicant.conf << "EOF"
+ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
+update_config=1
+EOF

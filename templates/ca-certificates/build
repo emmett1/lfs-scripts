@@ -1,4 +1,8 @@
-install -Dm644 $SRC/cacert-2023-01-10.pem $PKG/etc/ssl/cert.pem
-install -d $PKG/etc/ssl/certs
-ln -s /etc/ssl/cert.pem $PKG/etc/ssl/certs/ca-certificates.crt
-ln -s /etc/ssl/cert.pem $PKG/etc/ssl/ca-bundle.crt
+if [ "$BOOTSTRAP" ]; then
+	install -Dm644 $SRC/cacert-2023-01-10.pem $TOOLS/etc/ssl/cert.pem
+else
+	install -Dm644 $SRC/cacert-2023-01-10.pem $PKG/etc/ssl/cert.pem
+	install -d $PKG/etc/ssl/certs
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/certs/ca-certificates.crt
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/ca-bundle.crt
+fi

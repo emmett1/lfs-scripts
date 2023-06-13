@@ -1,1 +1,7 @@
-make DESTDIR=$PKG install
+if [ "$BOOTSTRAP" ]; then
+	sed -i -e 's/ --static//' \
+	       -e 's/ -static//' Makefile
+	make BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
+else
+	make DESTDIR=$PKG install
+fi

@@ -1,0 +1,3 @@
+port_getver() {
+	getver_default | grep ^4
+}

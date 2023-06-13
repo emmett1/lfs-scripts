@@ -2,5 +2,3 @@ avahi
 dbus
 libusb
 linux-pam
-openssl
-zlib

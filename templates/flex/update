@@ -1,0 +1,6 @@
+port_getver() {
+	fetch \
+	| grep archive \
+	| grep -Eo '(v|flex-)'[0-9a-z.]+.tar.gz \
+	| sed 's/^v//;s/flex-//;s/\.tar.*//'
+}

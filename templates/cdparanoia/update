@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep -Eo cdparanoia-III-[0-9.]+.src.tgz \
+	| sed 's/cdparanoia-III-//;s/\.src\.tgz//'
+}

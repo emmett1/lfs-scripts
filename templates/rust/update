@@ -1,0 +1,7 @@
+url=https://www.rust-lang.org/
+
+port_getver() {
+	fetch \
+	| grep Version \
+	| sed 's/.*Version //;s/<.*//'
+}

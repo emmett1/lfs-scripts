@@ -1,6 +1,3 @@
-libidn2
-libpsl
-nghttp2
 openssl
 zlib
 zstd

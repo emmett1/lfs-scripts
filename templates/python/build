@@ -3,9 +3,11 @@ rm -rv Lib/test Lib/*/test Lib/*/tests Lib/*/idle_test
 
 _auto_build
 
-chmod -v 755 $PKG/usr/lib/libpython${version%.*}.so
-chmod -v 755 $PKG/usr/lib/libpython3.so
-
-mv $PKG/usr/include/python${version%.*}/pyconfig.h \
-   $PKG/usr/include/python${version%.*}/pyconfig-64.h
-install -m 0644 $FILES/pyconfig.h $PKG/usr/include/python${version%.*}/
+if [ ! "$BOOTSTRAP" ]; then
+	chmod -v 755 $PKG/usr/lib/libpython${version%.*}.so
+	chmod -v 755 $PKG/usr/lib/libpython3.so
+	
+	mv $PKG/usr/include/python${version%.*}/pyconfig.h \
+	   $PKG/usr/include/python${version%.*}/pyconfig-64.h
+	install -m 0644 $FILES/pyconfig.h $PKG/usr/include/python${version%.*}/
+fi

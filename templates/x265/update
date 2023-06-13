@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep -Eo x265_[0-9.]+.tar.gz \
+	| sed 's/x265_//;s/\.tar.*//'
+}

@@ -1,0 +1,4 @@
+url=https://codeberg.org/soundtouch/soundtouch/tags
+port_getver() {
+	getver_github | grep [[:digit:]]
+}

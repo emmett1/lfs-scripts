@@ -28,5 +28,3 @@ mkdir -p templates/$name
 echo $version > templates/$name/version
 echo $1 > templates/$name/source
 echo 1 > templates/$name/release
-leafpad templates/$name/build
-leafpad templates/$name/config

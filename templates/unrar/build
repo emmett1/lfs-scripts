@@ -1,0 +1,3 @@
+sed -e '/CXXFLAGS=/d' -e '/LDFLAGS=/d' -i makefile
+make -f makefile STRIP=:
+install -Dm755 unrar $PKG/usr/bin/unrar

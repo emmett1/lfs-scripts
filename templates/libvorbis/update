@@ -1,0 +1,6 @@
+
+port_getver() {
+	fetch \
+	| grep -Eo libvorbis-[0-9.]+.tar.gz \
+	| sed 's/libvorbis-//;s/\.tar\.gz//'
+}

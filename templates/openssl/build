@@ -1,7 +1,17 @@
-./config --prefix=/usr \
-         --openssldir=/etc/ssl \
-         --libdir=lib \
-         shared \
-         zlib-dynamic
-make
-make MANSUFFIX=ssl DESTDIR=$PKG install
+if [ "$BOOTSTRAP" ]; then
+	./config --prefix=$TOOLS \
+		--openssldir=$TOOLS/etc/ssl \
+		--libdir=lib \
+		shared \
+		no-ssl3-method
+	make
+	make -j1 MANDIR=$TOOLS/share/man MANSUFFIX=ssl install
+else
+	./config --prefix=/usr \
+	         --openssldir=/etc/ssl \
+	         --libdir=lib \
+	         shared \
+	         zlib-dynamic
+	make
+	make MANSUFFIX=ssl DESTDIR=$PKG install
+fi

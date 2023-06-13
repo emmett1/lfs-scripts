@@ -1,7 +1,7 @@
 #!/bin/sh
 
 printpkg() {
-	grep -qx $1 $INSTALLED && echo "[i] $1" || echo "[-] $1"
+	grep -qx $1 $INSTALLED && echo "[i] $1 $2" || echo "[-] $1"
 }
 
 [ "$1" ] || exit 1
@@ -24,7 +24,7 @@ for i in templates/*; do
 		else
 			release=1
 		fi
-		printpkg $name
+		printpkg $name $version-$release
 	esac
 done
 rm -f $INSTALLED

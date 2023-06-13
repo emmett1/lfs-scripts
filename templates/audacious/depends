@@ -1,7 +1,2 @@
-cairo
-gdk-pixbuf
-glib
 gtk3
 libarchive
-pango
-qt5

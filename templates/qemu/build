@@ -1,3 +1,1 @@
 _configure_build
-chgrp kvm  $PKG/usr/lib/qemu-bridge-helper
-chmod 4750 $PKG/usr/lib/qemu-bridge-helper

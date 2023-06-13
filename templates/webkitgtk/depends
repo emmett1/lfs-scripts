@@ -35,6 +35,5 @@ mesa
 openjpeg
 pango
 sqlite
-wayland
 wpebackend-fdo
 zlib

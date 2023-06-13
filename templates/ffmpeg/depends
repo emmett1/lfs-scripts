@@ -1,5 +1,4 @@
 alsa-lib
-bzip2
 fdk-aac
 freetype
 lame
@@ -13,10 +12,7 @@ libx11
 libxcb
 libxext
 libxv
-openssl
 opus
 sdl2
 x264
 x265
-xz
-zlib

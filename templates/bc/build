@@ -1,3 +1,4 @@
-./configure --prefix=/usr -r
+PREFIX=/usr CC=gcc CFLAGS="-std=c99" ./configure.sh -G -O3
+#./configure --prefix=/usr -r
 make
 make install
