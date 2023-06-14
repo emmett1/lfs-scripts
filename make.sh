@@ -160,6 +160,15 @@ while [ $1 ]; do
 	shift
 done
 
+if [ "$ROOT" ]; then
+	pkginfoopt="-r $ROOT"
+fi
+
+if [ ! -f "$ROOT"/var/lib/pkg/db ]; then
+	echo "package database file not exist: $ROOT/var/lib/pkg/db"
+	exit 1
+fi
+
 if [ -f $TOPDIR/config ]; then
 	. $TOPDIR/config
 fi
@@ -328,7 +337,7 @@ fi
 
 if [ "$INSTALL" = 1 ]; then
 	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to install packages"; exit 1; }
-	if [ $(pkginfo -i | awk '{print $1}' | grep -x $name) ]; then
+	if [ $(pkginfo -i $pkginfoopt | awk '{print $1}' | grep -x $name) ]; then
 		echo "$name is already installed"
 		exit 0
 	else
@@ -343,7 +352,7 @@ if [ "$INSTALL" = 1 ]; then
 fi
 if [ "$UPGRADE" = 1 ]; then
 	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to upgrade packages"; exit 1; }
-	if [ ! $(pkginfo -i | awk '{print $1}' | grep -x $name) ]; then
+	if [ ! $(pkginfo -i $pkginfoopt | awk '{print $1}' | grep -x $name) ]; then
 		echo "$name not installed"
 		exit 1
 	else

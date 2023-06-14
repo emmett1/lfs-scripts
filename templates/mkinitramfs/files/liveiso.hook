@@ -48,8 +48,7 @@ mount_venomiso() {
 	SYSTEM=/run/initramfs/system
 	WRITEDIR=/run/initramfs/overlayfs/write
 	WORKDIR=/run/initramfs/overlayfs/work
-	sfsimg=/run/initramfs/medium/rootfs/filesystem.sfs
-	listpkg=/run/initramfs/medium/rootfs/pkglist
+	sfsimg=/run/initramfs/medium/boot/rootfs.sfs
 	wait=${wait:-5}
 	count=0
 	
@@ -78,8 +77,7 @@ mount_venomiso() {
 		msg "copying squashfs img to /run/initramfs/ram..."
 		cp $sfsimg /run/initramfs/ram/ || problem
 		cp $listpkg /run/initramfs/ram/ || problem
-		sfsimg=/run/initramfs/ram/filesystem.sfs
-		listpkg=/run/initramfs/ram/listpkg
+		sfsimg=/run/initramfs/ram/rootfs.sfs
 		if [ -d /run/initramfs/medium/customize ]; then
 			cp -Ra /run/initramfs/medium/customize /run/initramfs/ram/
 		fi
@@ -105,6 +103,10 @@ mount_venomiso() {
 		msg "running custom_script.sh script..."
 		chmod +x $newroot/root/custom_script.sh
 		_chroot /root/custom_script.sh 2>/dev/null
+	else
+		_chroot passwd
+		_chroot useradd -m -G users,wheel,audio,video -s /bin/bash live
+		_chroot passwd live
 	fi
 	
 	if [ "$ram" = y ]; then

@@ -36,7 +36,8 @@ while [ $1 ]; do
 		-i) install=1;;
 		-u) upgrade=1;;
 		-f) _opt="$_opt $1";;
-		-r|-c) _opt="$1 $2"; shift;;
+		-r) _opt="$1 $2"; ROOT=$2; shift;;
+		-c) _opt="$1 $2"; shift;;
 		 *) _pkg="$_pkg $1";;
 	esac
 	shift
@@ -48,7 +49,7 @@ if [ "$deps" ]; then
 		echo "'-d' option need to use with '-i' option"
 		exit 1
 	fi
-	_pkg=$(./deplist.sh $_pkg | grep [-] | awk '{print $2}' | tr '\n' ' ')
+	_pkg=$(ROOT=$ROOT ./deplist.sh $_pkg | grep '\[-\]' | awk '{print $2}' | tr '\n' ' ')
 fi
 
 if [ ! "$_pkg" ]; then

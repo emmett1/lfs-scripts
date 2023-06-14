@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 printpkg() {
 	grep -qx $1 $INSTALLED && echo "[i] $1" || echo "[-] $1"
@@ -10,7 +10,7 @@ checkdep() {
 	if [ -f templates/$1/depends ]; then
 		for i in $(cat templates/$1/depends); do
 			# if deps already in process list, skip, cycle deps detected
-			echo $process | grep -qw $i && continue
+			echo $process | tr ' ' '\n' | grep -qx $i && continue
 			# skip if itself in depends list
 			[ "$i" = "$1" ] && continue
 			# skip if pkg already in deps list
@@ -35,8 +35,12 @@ run_checkdep() {
 LIST1=/tmp/$$-list1
 INSTALLED=/tmp/$$-installed
 
+if [ "$ROOT" ]; then
+	pkginfoopt="-r $ROOT"
+fi
+
 # list all installed into file
-pkginfo -i | awk '{print $1}' > $INSTALLED
+pkginfo -i $pkginfoopt | awk '{print $1}' > $INSTALLED
 
 rm -f $LIST1
 touch $LIST1
