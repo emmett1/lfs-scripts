@@ -1,0 +1,17 @@
+# configure to your liking and save as config
+
+#PACKAGEDIR="$TOPDIR/packages"
+#SOURCEDIR="$TOPDIR/sources"
+#WORKDIR="/tmp/pkg-$name"
+
+#export MAKEFLAGS=-j$(nproc)
+#export CFLAGS="-O2 -march=x86-64 -pipe"
+#export CXXFLAGS="$CFLAGS"
+
+#export PATH="/usr/lib/ccache:$PATH"
+#export CCACHE_DIR="/var/cache/ccache"
+
+#KEEP_LIBTOOL=1
+#KEEP_STATICLIB=1
+#KEEP_LOCALE=1
+#NO_STRIP=1
