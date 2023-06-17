@@ -1,0 +1,9 @@
+export CC="${CC:-gcc} -m32"
+export CXX="${CXX:-g++} -m32"
+export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
+
+./configure --prefix=/usr --disable-static --with-curses --libdir=/usr/lib32
+make SHLIB_LIBS="-lncursesw"
+make SHLIB_LIBS="-lncurses" DESTDIR=$PWD/DESTDIR install
+mkdir -p $PKG/usr/lib32
+cp -Rv DESTDIR/usr/lib32/* $PKG/usr/lib32

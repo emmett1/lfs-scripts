@@ -1,0 +1,3 @@
+sed 's/datarootdir/libdir/' -i Makefile.am
+sed -i -e 's,$(datadir)/pkgconfig,$(libdir)/pkgconfig,' Makefile.in
+_auto_build

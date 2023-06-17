@@ -1,0 +1,9 @@
+libdrm-32
+elfutils-32
+libx11-32
+libxext-32
+libxfixes-32
+libxshmfence-32
+libxxf86vm-32
+libxrandr-32
+expat-32

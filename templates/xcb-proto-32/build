@@ -1,0 +1,2 @@
+sed 's/datarootdir/libdir/' -i Makefile.am
+_auto_build

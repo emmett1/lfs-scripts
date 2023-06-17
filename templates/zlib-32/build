@@ -1,0 +1,9 @@
+export CC="${CC:-gcc} -m32"
+export CXX="${CXX:-g++} -m32"
+export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
+
+./configure --prefix=/usr --localstatedir=/var --libdir=/usr/lib32
+make
+make DESTDIR=$PWD/DESTDIR install
+mkdir -p $PKG/usr/lib32
+cp -Rv DESTDIR/usr/lib32/* $PKG/usr/lib32

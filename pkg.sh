@@ -56,6 +56,16 @@ if [ ! "$_pkg" ]; then
 	echo "nothing will be installed"
 	exit 0
 else
+	for i in $_pkg; do
+		[ -d templates/$i ] || missingtemplates="$missingtemplates $i"
+	done
+	if [ "$missingtemplates" ]; then
+		echo "these templates not exist:"
+		for i in $missingtemplates; do
+			echo " $i"
+		done
+		exit 1
+	fi
 	# without '-i' option, only build, no need to prompt user
 	if [ "$install" ] && [ ! "$noprompt" ]; then
 		echo "these packages will be installed:"

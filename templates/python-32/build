@@ -1,0 +1,25 @@
+# Remove tests
+rm -rv Lib/test Lib/*/test Lib/*/tests Lib/*/idle_test
+
+export CC="${CC:-gcc} -m32"
+export CXX="${CXX:-g++} -m32"
+export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
+
+./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--libexecdir=/usr/lib \
+	--localstatedir=/var \
+	--mandir=/usr/share/man \
+	--libdir=/usr/lib32 \
+	$build_opt
+make
+make DESTDIR=$PWD/DESTDIR install
+mkdir -p $PKG/usr/lib32
+cp -r $PWD/DESTDIR/usr/lib32/* $PKG/usr/lib32/
+
+chmod -v 755 $PKG/usr/lib32/libpython${version%.*}.so
+chmod -v 755 $PKG/usr/lib32/libpython3.so
+	
+mkdir -p $PKG/usr/include/python${version%.*}
+cp $PWD/DESTDIR/usr/include/python${version%.*}/pyconfig.h $PKG/usr/include/python${version%.*}/pyconfig-32.h

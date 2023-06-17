@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 echo "Checking outdated packages..."
 outdatepkg=$(./pkgdiff.sh | awk '{print $1}' | tr '\n' ' ')

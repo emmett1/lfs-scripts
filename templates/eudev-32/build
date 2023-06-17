@@ -1,0 +1,3 @@
+_configure_build
+mkdir -p $PKG/lib/udev/rules.d
+mkdir -p $PKG/etc/udev/rules.d

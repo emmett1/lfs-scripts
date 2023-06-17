@@ -1,0 +1,6 @@
+cd source
+_configure_build
+
+mv $PKG $PKG-tmp
+mkdir -p $PKG/usr
+cp -rv $PKG-tmp/usr/lib32 $PKG/usr

@@ -1,0 +1,5 @@
+port_getver() {
+	fetch \
+	| grep archive \
+	| grep -Eo ._._[0-9a-z.]+\.tar\.gz | sed 's/\.tar.*//;s/_/\./g'
+}

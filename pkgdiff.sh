@@ -3,12 +3,18 @@
 pkginfo -i | while read -r iname iversion; do
 	irelease=${iversion#*-}
 	iversion=${iversion%-*}
-	#echo ":: $iname - $iversion - $irelease"
 	[ -d templates/$iname ] || continue
-	version=$(cat templates/$iname/version)
-	release=$(cat templates/$iname/release)
-	#echo $iname $version $iversion
-	if [ "$version" != "$iversion" ]; then
-		echo " $iname $iversion => $version"
+	if [ -s templates/$iname/version ]; then
+		version=$(cat templates/$iname/version)
+	else
+		version=0
+	fi
+	if [ -s templates/$iname/release ]; then
+		release=$(cat templates/$iname/release)
+	else
+		release=0
+	fi
+	if [ "$version" != "$iversion" ] || [ "$release" != "$irelease" ]; then
+		echo " $iname $iversion-$irelease => $version-$release"
 	fi
 done

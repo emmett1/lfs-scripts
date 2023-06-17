@@ -1,0 +1,9 @@
+drwxr-xr-x root/root usr/
+drwxr-xr-x root/root usr/include/
+drwxr-xr-x root/root usr/lib/
+-rwxr-xr-x root/root usr/lib/libpciaccess.so.0.11.1
+lrwxrwxrwx root/root usr/lib/libpciaccess.so.0
+lrwxrwxrwx root/root usr/lib/libpciaccess.so
+drwxr-xr-x root/root usr/lib/pkgconfig/
+-rw-r--r-- root/root usr/lib/pkgconfig/pciaccess.pc
+-rw-r--r-- root/root usr/include/pciaccess.h

@@ -1,0 +1,25 @@
+_auto_build
+
+#mkdir -p $PKG/lib
+#mv $PKG/usr/lib/libncursesw.so.* $PKG/lib
+#ln -sf ../../lib/libncursesw.so.$version $PKG/usr/lib/libncursesw.so
+#ln -s libncursesw.so.$version $PKG/lib/libncurses.so.${version%%.*}
+
+# Create libtinfo symlinks.
+ln -sfr $PKG/usr/lib32/libncursesw.so \
+$PKG/usr/lib32/libtinfo.so
+ln -sfr $PKG/lib32/libncursesw.so.${version} \
+$PKG/usr/lib32/libtinfo.so.${version}
+ln -sfr $PKG/usr/lib32/libtinfo.so.${version} \
+$PKG/usr/lib32/libtinfo.so.6
+ln -sfr $PKG/usr/lib32/pkgconfig/ncursesw.pc \
+$PKG/usr/lib32/pkgconfig/tinfo.pc
+for lib in ncurses form panel menu ; do
+rm -vf                    $PKG/usr/lib32/lib${lib}.so
+echo "INPUT(-l${lib}w)" > $PKG/usr/lib32/lib${lib}.so
+ln -sfv ${lib}w.pc        $PKG/usr/lib32/pkgconfig/${lib}.pc
+done
+
+rm -vf                     $PKG/usr/lib32/libcursesw.so
+echo "INPUT(-lncursesw)" > $PKG/usr/lib32/libcursesw.so
+ln -sfv libncurses.so      $PKG/usr/lib32/libcurses.so

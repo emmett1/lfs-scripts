@@ -27,4 +27,3 @@ mkdir -p templates/$name
 
 echo $version > templates/$name/version
 echo $1 > templates/$name/source
-echo 1 > templates/$name/release

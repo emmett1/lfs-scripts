@@ -1,0 +1,2 @@
+_auto_build
+rm -rf $PKG/usr/lib32/doc/

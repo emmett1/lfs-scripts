@@ -1,5 +1,12 @@
 #!/bin/sh -e
 
+is32bit() {
+	case $name in
+		*-32) return 0;;
+		*) return 1;;
+	esac
+}
+
 _auto_patch() {
 	if [ -d $CWD/patch ]; then
 		for p in $CWD/patch/*.patch; do
@@ -10,21 +17,40 @@ _auto_patch() {
 
 _auto_build() {
 	if [ -f meson.build ]; then
-		_meson_build $@
+		is32bit && build_opt="$build_opt --libdir=/usr/lib32" || :
+		echo ":: running _meson_build"
+		_meson_build $@ || return $?
 	elif [ -f configure ]; then
-		_configure_build $@
+		is32bit && build_opt="$build_opt --libdir=/usr/lib32" || :
+		echo ":: running _configure_build"
+		_configure_build $@ || return $?
 	elif [ -f CMakeLists.txt ]; then
-		_cmake_build $@
+		echo ":: running _cmake_build"
+		_cmake_build $@ || return $?
 	elif [ -f setup.py ]; then
-		_python3_build $@
+		echo ":: running _python3_build"
+		_python3_build $@ || return $?
 	elif [ -f Makefile.PL ]; then
-		_perlmodule_build
+		echo ":: running _perlmodule_build"
+		_perlmodule_build || return $?
 	elif [ -f Makefile ]; then
-		_makefile_build $@
+		echo ":: running _makefile_build"
+		is32bit && {
+			export LIBDIR=/usr/lib32
+			export PKGCONFIGDIR=/usr/lib32/pkgconfig
+		} || :
+		_makefile_build $@ || return $?
 	else
 		echo "failed to detect buildtype"
 		exit 1
 	fi
+	
+	# keep only usr/lib32 if 32bit pkg
+	is32bit && {
+		mv $PKG lib32PKG
+		mkdir -p $PKG/usr
+		cp -rv lib32PKG/usr/lib32 $PKG/usr
+	} || :
 }
 
 _makefile_build() {
@@ -123,6 +149,10 @@ if [ "$(id -u)" != 0 ] && [ ! "$FAKEROOTKEY" ]; then
 	exit 1
 fi
 
+if [ "$DEBUG" = 1 ]; then
+	set -x
+fi
+
 TOPDIR=$(dirname $(realpath $0))
 
 umask 022
@@ -135,12 +165,12 @@ export FILES=$CWD/files
 if [ -s ./version ]; then
 	export version=$(head -n1 ./version)
 else
-	export version=1
+	export version=0
 fi
 if [ -s ./release ]; then
 	export release=$(head -n1 ./release)
 else
-	export release=1
+	export release=0
 fi
 if [ -s ./source ]; then
 	source=$(cat ./source)
@@ -239,6 +269,12 @@ else
 		export install_root=$PKG # glibc
 		export INSTALL_ROOT=$PKG # qt5
 	fi
+	
+	is32bit && {
+		export CC="${CC:-gcc} -m32"
+		export CXX="${CXX:-g++} -m32"
+		export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
+	} || :
 	
 	if [ -f $CWD/build ]; then
 		echo ":: running build script: $CWD/build"
