@@ -7,7 +7,6 @@ make olddefconfig
 sed '/^CONFIG_LOCALVERSION=/d' -i .config
 echo 'CONFIG_LOCALVERSION="-LFS"' >> .config
 
-
 kernver=${version}$(grep CONFIG_LOCALVERSION= .config | cut -d '"' -f2)
 
 #make menuconfig

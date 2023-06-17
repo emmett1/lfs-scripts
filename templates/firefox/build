@@ -1,3 +1,5 @@
+cd firefox-$version
+
 cat <<- EOF > .mozconfig
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-shared
 unset MOZ_CRASHREPORTER
@@ -24,7 +26,7 @@ ac_add_options --enable-application=browser
 ac_add_options --enable-audio-backends=alsa
 ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --enable-install-strip
-ac_add_options --enable-linker=lld
+#ac_add_options --enable-linker=lld
 ac_add_options --enable-lto=thin
 ac_add_options --enable-official-branding
 ac_add_options --enable-optimize
@@ -44,16 +46,16 @@ ac_add_options --without-wasm-sandboxed-libraries
 EOF
 
 	# A change in cbindgen-0.24.2 causes a symbol to now be output by cbindgen, but it has already been defined in a header. 
-	sed -i '/ROOT_CLIP_CHAIN/d' gfx/webrender_bindings/webrender_ffi.h
+	#sed -i '/ROOT_CLIP_CHAIN/d' gfx/webrender_bindings/webrender_ffi.h
 	
 	# Remove an obsolete flag in python code, that has been removed in python-3.11.
 	grep -rl \"rU\" | xargs sed -i 's/"rU"/"r"/'
 
 	# Fix an issue with regular expressions in python-3.11.
-	sed -e 's/?s)\./?s:.)/'               \
-	    -e '/?m)/{s/?m)/?m:/;s/\$"/$)"/}' \
-	    -e '/?s)%/{s/?s)/?s:/;s/?"/?)"/}' \
-	    -i xpcom/idl-parser/xpidl/xpidl.py
+	#sed -e 's/?s)\./?s:.)/'               \
+	#    -e '/?m)/{s/?m)/?m:/;s/\$"/$)"/}' \
+	#    -e '/?s)%/{s/?s)/?s:/;s/?"/?)"/}' \
+	#    -i xpcom/idl-parser/xpidl/xpidl.py
 
 	export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib
 	export CFLAGS="${CFLAGS} -w" CXXFLAGS="${CXXFLAGS} -w" # disable warnings
@@ -70,7 +72,7 @@ EOF
 	echo "Current RUSTFLAGS:\t\t${RUSTFLAGS:-no value set}"
 	
 	./mach build
-	DESTDIR=$PKG ./mach install
+	./mach install
 
 	unset MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE MOZBUILD_STATE_PATH
 

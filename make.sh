@@ -194,7 +194,7 @@ if [ "$ROOT" ]; then
 	pkginfoopt="-r $ROOT"
 fi
 
-if [ ! -f "$ROOT"/var/lib/pkg/db ]; then
+if [ ! -f "$ROOT"/var/lib/pkg/db ] && [ ! "$BOOTSTRAP" ]; then
 	echo "package database file not exist: $ROOT/var/lib/pkg/db"
 	exit 1
 fi
