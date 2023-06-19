@@ -1,0 +1,7 @@
+build_opt="
+	--libdir=/usr/lib
+	--exec-prefix=
+	--enable-cmdlib
+	--enable-pkgconfig
+	--enable-udev_sync
+"

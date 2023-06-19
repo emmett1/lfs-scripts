@@ -1,0 +1,2 @@
+KEEP_STATICLIB=1
+build_opt="--without-xml2"

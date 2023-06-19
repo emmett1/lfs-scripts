@@ -1,0 +1,4 @@
+build_opt="
+	-Dudev=true
+	-Dvalgrind=disabled
+"

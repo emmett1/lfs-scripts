@@ -1,0 +1,15 @@
+if [ "$BOOTSTRAP" ]; then
+	build_opt="--disable-static \
+		--enable-threaded-resolver \
+		--with-openssl \
+		--with-ca-bundle=$TOOLS/etc/ssl/cert.pem"
+else
+	build_opt="--with-openssl
+		--enable-threaded-resolver
+		--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+		--without-brotli
+		--without-libidn2
+		--without-libpsl
+		--without-librtmp
+		--without-nghttp2"
+fi

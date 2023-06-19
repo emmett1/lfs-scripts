@@ -1,0 +1,2 @@
+[ -f /usr/lib/pkgconfig/wayland-client.pc ] || waylandopt='-Denable-wayland=false'
+build_opt="$waylandopt -Denable-docs=false"

@@ -1,0 +1,2 @@
+build_opt="-Dexamples=false -Dgtk_doc=false"
+

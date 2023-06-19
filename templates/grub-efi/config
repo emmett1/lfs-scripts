@@ -1,0 +1,9 @@
+build_opt="
+	--disable-efiemu
+	--enable-grub-mount
+	--enable-grub-mkfont
+	--enable-device-mapper
+	--with-platform=efi
+	--target=x86_64
+	--disable-werror
+"

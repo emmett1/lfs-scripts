@@ -1,0 +1,1 @@
+build_opt="-Dboost-shared=true"

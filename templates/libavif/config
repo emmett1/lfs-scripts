@@ -1,0 +1,4 @@
+build_opt="
+	-DAVIF_CODEC_AOM=ON
+	-DAVIF_BUILD_GDK_PIXBUF=ON
+"

@@ -1,0 +1,5 @@
+build_opt="
+	--sysconfdir=/etc/ssh \
+	--with-privsep-path=/var/lib/sshd \
+	--with-pid-dir=/run
+"

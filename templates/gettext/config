@@ -1,0 +1,6 @@
+build_opt="
+	--with-included-glib
+	--with-included-libcroco
+	--with-included-libunistring
+	--with-included-libxml
+"

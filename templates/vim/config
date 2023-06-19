@@ -1,0 +1,5 @@
+build_opt="
+	--without-x
+	--disable-gui
+	--disable-canberra
+"

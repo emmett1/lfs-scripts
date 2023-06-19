@@ -1,0 +1,6 @@
+build_opt="
+	--with-python3
+	--without-gtk-doc
+	--without-nvdimm
+	--without-dm
+"

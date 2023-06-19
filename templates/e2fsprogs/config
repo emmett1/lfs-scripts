@@ -1,0 +1,8 @@
+build_opt="
+	--enable-elf-shlibs
+	--disable-libblkid
+	--disable-libuuid
+	--disable-uuidd
+	--disable-fsck
+	--disable-fuse2fs
+"

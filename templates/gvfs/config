@@ -1,0 +1,14 @@
+build_opt="
+	-Dtmpfilesdir=no
+	-Dsystemduserunitdir=no
+	-Dlogind=false
+	-Ddnssd=false
+	-Dafc=false
+	-Dgoa=false
+	-Dgoogle=false
+	-Dbluray=false
+	-Dsmb=false
+	-Dgphoto2=false
+	-Dmtp=false
+	-Dnfs=false
+"

@@ -1,0 +1,25 @@
+KEEP_LIBTOOL=1
+build_opt="
+	--enable-hdri
+	--enable-opencl
+	--without-gslib
+	--with-djvu
+	--with-jxl
+	--with-lqr
+	--with-modules
+	--with-openexr
+	--with-openjp2
+	--with-perl
+	--with-perl-options=INSTALLDIRS=vendor
+	--with-rsvg
+	--with-webp
+	--with-wmf
+	--with-xml
+	--without-autotrace
+	--without-dps
+	--without-fftw
+	--without-fpx
+	--without-gcc-arch
+	--without-gvc
+	--with-dejavu-font-dir=/usr/share/fonts/TTF
+"

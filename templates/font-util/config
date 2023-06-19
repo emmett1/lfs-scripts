@@ -1,0 +1,4 @@
+build_opt="
+	--with-mapdir=/usr/share/fonts/util
+	--with-fontrootdir=/usr/share/fonts
+"

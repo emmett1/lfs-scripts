@@ -1,0 +1,6 @@
+build_opt="
+	-Dgtk-doc=false
+	-Dsystemdsystemunitdir=no
+	-Dudevrulesdir=/lib/udev/rules.d
+	-Dudevhwdbdir=/lib/udev/hwdb.d
+"

@@ -1,0 +1,2 @@
+build_opt="--without-libpam
+	--with-group-name-max-length=32"

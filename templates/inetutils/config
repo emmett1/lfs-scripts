@@ -1,0 +1,9 @@
+build_opt="
+	--disable-logger
+	--disable-whois
+	--disable-rcp
+	--disable-rexec
+	--disable-rlogin
+	--disable-rsh
+	--disable-servers
+"

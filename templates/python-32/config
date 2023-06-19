@@ -1,0 +1,7 @@
+build_opt="
+	--without-ensurepip
+	--enable-shared
+	--with-system-expat
+	--with-system-ffi
+	--enable-optimizations
+"

@@ -1,0 +1,6 @@
+build_opt="
+	-Dman=false
+	-Dgtk_doc=false
+	-Dselinux=disabled
+	-Dtests=false
+"

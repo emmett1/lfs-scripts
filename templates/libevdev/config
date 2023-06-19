@@ -1,0 +1,2 @@
+# required doxygen
+build_opt="-Ddocumentation=disabled"

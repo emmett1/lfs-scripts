@@ -1,0 +1,6 @@
+build_opt="
+	-Dsuid_wrapper=true   \
+	-Dxkb_output_dir=/var/lib/xkb \
+	-Dxkb_dir=/usr/share/X11/xkb \
+	-Dxorg=true
+"

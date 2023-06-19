@@ -1,10 +1,8 @@
 *.iso
 *.tar.xz
 *.img
-config
+^config
 *.qcow2
 .outdate.*
-src/
-pkg/
 packages/
 sources/

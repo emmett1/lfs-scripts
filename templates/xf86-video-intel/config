@@ -1,0 +1,11 @@
+# for meson_build
+#	-Dvalgrind=false \
+#	-Ddefault-dri=3 \
+#	-Dxvmc=false
+
+build_opt="
+	--enable-kms-only
+	--enable-uxa
+	--enable-tools
+	--with-default-dri=3
+"

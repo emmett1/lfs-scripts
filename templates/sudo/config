@@ -1,0 +1,3 @@
+build_opt="--with-secure-path
+    --with-all-insults
+    --with-env-editor"

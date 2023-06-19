@@ -1,0 +1,6 @@
+build_opt="
+            --libexecdir=/usr/lib/dhcpcd
+            --dbdir=/var/lib/dhcpcd
+            --runstatedir=/run
+            --disable-privsep
+"

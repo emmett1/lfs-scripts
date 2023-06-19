@@ -1,0 +1,3 @@
+if [ "$BOOTSTRAP" ]; then
+	build_opt=--without-guile
+fi

@@ -1,0 +1,4 @@
+build_opt="
+	--enable-shared
+	--disable-cli
+"

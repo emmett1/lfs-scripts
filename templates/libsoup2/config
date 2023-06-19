@@ -1,0 +1,1 @@
+build_opt="-Dvapi=enabled -Dgssapi=disabled -Dsysprof=disabled"

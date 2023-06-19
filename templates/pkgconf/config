@@ -1,0 +1,3 @@
+build_opt="--with-pkg-config-dir=/usr/lib/pkgconfig:/usr/share/pkgconfig
+	--with-system-libdir=/lib:/usr/lib
+	--with-system-includedir=/usr/include"

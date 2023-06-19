@@ -1,0 +1,1 @@
+build_opt="--with-gpm-support --with-python=python3.11"

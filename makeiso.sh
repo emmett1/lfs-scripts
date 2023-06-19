@@ -22,8 +22,9 @@ touch $ROOT/var/lib/pkg/db
 ./pkg.sh -r $ROOT -y -i -d linux-lts linux-firmware squashfs-tools syslinux grub-efi runit-rc
 
 # custom packages
-./pkg.sh -r $ROOT -y -i -d xorg-server xinit openbox tint2 picom obmenu-generator networkmanager pcmanfm gvfs \
-	firefox-esr slim polkit-gnome lxappearance-obconf
+./pkg.sh -r $ROOT -y -i -d xorg-server xinit xterm xclock twm
+./pkg.sh -r $ROOT -y -i -d openbox tint2 obmenu-generator picom pcmanfm firefox-esr polkit-gnome lxappearance-obconf
+#openbox tint2 picom obmenu-generator networkmanager pcmanfm gvfs firefox-esr slim polkit-gnome lxappearance-obconf
 
 mkdir -p $LIVE/boot
 mkdir -p $LIVE/isolinux

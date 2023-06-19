@@ -1,0 +1,2 @@
+export PAGE=A4
+build_opt="--without-x"

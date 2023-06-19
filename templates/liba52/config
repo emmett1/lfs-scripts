@@ -1,0 +1,6 @@
+build_opt="
+	--disable-solaris-audio \
+	--disable-win \
+	--enable-shared \
+	--with-pic
+"

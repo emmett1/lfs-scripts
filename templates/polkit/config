@@ -1,0 +1,5 @@
+build_opt="
+	-Dman=true
+	-Dtests=false
+	-Dos_type=lfs
+"

@@ -1,0 +1,9 @@
+build_opt="
+	--disable-doxygen-docs
+	--disable-xml-docs
+	--disable-static
+	--with-systemduserunitdir=no
+	--with-systemdsystemunitdir=no
+	--with-system-socket=/run/dbus/system_bus_socket
+	--with-console-auth-dir=/run/console
+"

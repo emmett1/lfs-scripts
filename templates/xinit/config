@@ -1,0 +1,1 @@
+build_opt="--with-xinitdir=/etc/X11/app-defaults"

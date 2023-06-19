@@ -1,0 +1,6 @@
+build_opt="--without-debug
+	--with-shared
+	--without-normal
+	--with-cxx-shared
+	--enable-pc-files
+	--enable-widec"

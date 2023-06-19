@@ -1,0 +1,3 @@
+build_opt="
+	-DREDIS_STORAGE_BACKEND=OFF
+"

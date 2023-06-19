@@ -1,0 +1,5 @@
+build_opt="
+	--enable-a4
+	--enable-metric
+	--with-libpotrace
+"

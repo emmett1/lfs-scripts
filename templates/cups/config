@@ -1,0 +1,4 @@
+build_opt="--libdir=/usr/lib
+	--disable-systemd
+	--with-rcdir=/tmp/cupsinit
+	--with-system-groups=lpadmin"

@@ -1,0 +1,10 @@
+export LLVM_CONFIG="/usr/bin/llvm-config-32"
+
+build_opt="
+	--native-file $FILES/crossfile
+	-Dplatforms=x11
+	-Dgallium-drivers=auto
+	-Dvulkan-drivers=""
+	-Dvalgrind=disabled
+	-Dlibunwind=disabled
+"

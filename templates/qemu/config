@@ -1,0 +1,6 @@
+build_opt="
+	--target-list=x86_64-softmmu
+	--audio-drv-list=alsa
+	--disable-pa
+	--disable-gtk
+"

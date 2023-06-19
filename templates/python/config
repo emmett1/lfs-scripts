@@ -1,0 +1,8 @@
+build_opt="--without-ensurepip"
+if [ ! "$BOOTSTRAP" ]; then
+	build_opt="$build_opt
+		--enable-shared
+		--with-system-expat
+		--with-system-ffi
+		--enable-optimizations"
+fi

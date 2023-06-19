@@ -1,0 +1,14 @@
+export CXXFLAGS="$CXXFLAGS -fPIC"
+build_opt="
+	-Dlibaudit=no \
+	-Dnmtui=true \
+	-Dovs=false \
+	-Dppp=false \
+	-Dselinux=false \
+	-Dudev_dir=/lib/udev \
+	-Dsession_tracking=no \
+	-Dmodem_manager=false \
+	-Dsystemdsystemunitdir=no  \
+	-Dsystemd_journal=false \
+	-Dqt=false
+"

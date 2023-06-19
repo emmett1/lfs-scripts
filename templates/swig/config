@@ -1,0 +1,3 @@
+build_opt="
+	--without-javascript
+	--without-maximum-compile-warnings"

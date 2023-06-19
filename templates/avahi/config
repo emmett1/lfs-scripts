@@ -1,0 +1,10 @@
+build_opt="--disable-libevent
+	--disable-mono
+	--disable-monodoc
+	--disable-python
+	--disable-qt3
+	--disable-qt4
+	--enable-core-docs
+	--with-distro=none
+	--with-systemdsystemunitdir=no
+	--with-dbus-system-address='unix:path=/run/dbus/system_bus_socket'"

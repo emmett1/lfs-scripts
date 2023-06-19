@@ -1,0 +1,4 @@
+build_opt="
+	-Dgtk_doc=false
+	-Dman=false
+"

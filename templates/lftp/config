@@ -1,0 +1,5 @@
+build_opt="
+	--with-gnutls \
+	--without-openssl \
+	--without-included-regex
+"

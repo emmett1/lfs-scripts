@@ -1,0 +1,10 @@
+build_opt="
+	-Ddaemon_user=colord
+	-Dvapi=true
+	-Dsystemd=false
+	-Dlibcolordcompat=true
+	-Dargyllcms_sensor=false
+	-Dbash_completion=false
+	-Ddocs=false
+	-Dman=false
+"

@@ -14,3 +14,14 @@ libxshmfence
 mesa
 nettle
 pixman
+xkeyboard-config
+xorg-lib
+xorg-font
+xorg-app
+xcb-util
+xcb-util-cursor
+xcb-util-image
+xcb-util-keysyms
+xcb-util-renderutil
+xcb-util-wm
+xf86-input-libinput

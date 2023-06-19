@@ -1,0 +1,2 @@
+export TERMINFO=/usr/share/terminfo
+build_opt="--with-app-defaults=/etc/X11/app-defaults"

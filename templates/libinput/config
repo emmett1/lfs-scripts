@@ -1,0 +1,6 @@
+build_opt="
+	-Ddebug-gui=false
+	-Dtests=false
+	-Dlibwacom=false
+	-Dudev-dir=/lib/udev
+"

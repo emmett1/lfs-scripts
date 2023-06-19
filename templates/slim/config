@@ -1,0 +1,4 @@
+build_opt="
+	-DUSE_CONSOLEKIT=yes \
+	-DUSE_PAM=yes
+"

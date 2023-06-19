@@ -1,0 +1,1 @@
+[ -f /usr/lib/pkgconfig/wayland-client.pc ] || export WAYLAND=0

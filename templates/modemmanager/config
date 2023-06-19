@@ -1,0 +1,5 @@
+build_opt="
+	--disable-maintainer-mode
+	--with-systemd-journal=no
+	--with-systemd-suspend-resume=no
+"

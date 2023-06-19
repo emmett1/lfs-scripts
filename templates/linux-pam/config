@@ -1,0 +1,3 @@
+build_opt="--libdir=/usr/lib
+	--disable-regenerate-docu
+	--enable-securedir=/lib/security"

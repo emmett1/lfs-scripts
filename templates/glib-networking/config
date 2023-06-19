@@ -1,0 +1,8 @@
+# cyclic dependencies found
+#  glib-networking required libroxy
+#  libproxy required libsoup3
+#  libsoup3 required glib-networking
+#
+# so disable libproxy in glib-networking to break this cyclic deps
+
+build_opt="-Dlibproxy=disabled"

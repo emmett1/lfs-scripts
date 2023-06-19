@@ -1,0 +1,7 @@
+[ -f /usr/lib/pkgconfig/wayland-client.pc ] || _opt='-Dwayland_backend=false'
+
+build_opt="
+	$_opt
+	-Dman=true
+	-Dbroadway_backend=true
+"

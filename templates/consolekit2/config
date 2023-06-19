@@ -1,0 +1,5 @@
+build_opt="--enable-udev-acl
+	--enable-pam-module
+	--enable-polkit
+	--with-xinitrc-dir=/etc/X11/app-defaults/xinitrc.d
+	--with-systemdsystemunitdir=no"

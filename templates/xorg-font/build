@@ -1,0 +1,2 @@
+# dummy meta template
+mkdir -p $PKG/usr
