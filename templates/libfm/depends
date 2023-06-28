@@ -9,3 +9,5 @@ harfbuzz
 libexif
 menu-cache
 pango
+shared-mime-info
+desktop-file-utils

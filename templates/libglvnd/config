@@ -1,0 +1,7 @@
+build_opt="
+	-Dx11=enabled
+	-Dglx=enabled
+	-Dgles1=false
+	-Degl=true
+	-Dtls=false
+"

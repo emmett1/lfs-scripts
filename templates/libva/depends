@@ -3,4 +3,4 @@ libx11
 libxcb
 libxext
 libxfixes
-mesa
+libglvnd

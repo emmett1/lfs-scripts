@@ -5,3 +5,5 @@ gtk3
 libsecret
 p11-kit
 pango
+shared-mime-info
+desktop-file-utils

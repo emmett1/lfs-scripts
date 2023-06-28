@@ -17,3 +17,5 @@ libxrender
 pango
 startup-notification
 zlib
+shared-mime-info
+desktop-file-utils

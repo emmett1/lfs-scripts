@@ -10,3 +10,7 @@ libxxf86vm
 llvm
 zlib
 zstd
+libvdpau
+libva
+python3-mako
+python3-markupsafe

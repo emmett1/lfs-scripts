@@ -5,7 +5,7 @@ libjpeg-turbo
 libx11
 libxext
 libxrandr
-mesa
+libglvnd
 openjpeg
 openssl
 zlib

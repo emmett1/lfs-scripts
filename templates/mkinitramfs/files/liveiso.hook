@@ -90,19 +90,19 @@ mount_venomiso() {
 	msg "mounting overlays to $newroot..."
 	mount -t overlay overlay -o upperdir=$WRITEDIR,lowerdir=$SYSTEM,workdir=$WORKDIR $newroot || problem
 
-	if [ -d $MEDIUM/virootfs/ ]; then
-		msg "copying virootfs files to $newroot..."
-		cp -aR $MEDIUM/virootfs/* $newroot/ || problem
+	if [ -d $MEDIUM/rootfs/ ]; then
+		msg "copying liverootfs files to $newroot..."
+		cp -aR $MEDIUM/rootfs/* $newroot/ || problem
 	fi
 
 	# Tell system to skip fsck during startup
 	> $newroot/fastboot
 
 	# Execute custom script before switch root
-	if [ -f $newroot/root/custom_script.sh ]; then
-		msg "running custom_script.sh script..."
-		chmod +x $newroot/root/custom_script.sh
-		_chroot /root/custom_script.sh 2>/dev/null
+	if [ -f $newroot/root/live_script.sh ]; then
+		msg "running live_script.sh script..."
+		chmod +x $newroot/root/live_script.sh
+		_chroot /root/live_script.sh 2>/dev/null
 	else
 		_chroot passwd
 		_chroot useradd -m -G users,wheel,audio,video -s /bin/bash live

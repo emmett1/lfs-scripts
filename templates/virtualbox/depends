@@ -7,7 +7,9 @@ libxcursor
 libxext
 libxml2
 libxt
-mesa
+libglvnd
 openssl
 qt5
 zlib
+shared-mime-info
+desktop-file-utils

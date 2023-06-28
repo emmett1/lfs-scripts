@@ -1,4 +1,5 @@
 build_opt="
+	--libdir=/usr/lib32
 	--disable-chfn-chsh
 	--disable-login
 	--disable-nologin

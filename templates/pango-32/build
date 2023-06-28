@@ -1,0 +1,2 @@
+sed -i '/array-bounds/d' meson.build
+_meson_build

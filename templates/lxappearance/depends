@@ -10,3 +10,4 @@ gtk2
 harfbuzz
 libx11
 pango
+desktop-file-utils

@@ -3,4 +3,4 @@ libsm
 libva
 libx11
 libxext
-mesa
+libglvnd

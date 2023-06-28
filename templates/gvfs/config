@@ -9,6 +9,7 @@ build_opt="
 	-Dbluray=false
 	-Dsmb=false
 	-Dgphoto2=false
-	-Dmtp=false
 	-Dnfs=false
 "
+
+[ -f /usr/lib/pkgconfig/libmtp.pc ] || build_opt="$build_opt -Dmtp=false"

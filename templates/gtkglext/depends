@@ -11,5 +11,5 @@ libice
 libsm
 libxmu
 libxt
-mesa
+libglvnd
 pango

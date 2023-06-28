@@ -1,3 +1,4 @@
 _configure_build
-mkdir -p $PKG/lib/udev/rules.d
-mkdir -p $PKG/etc/udev/rules.d
+mv $PKG lib32PKG
+mkdir -p $PKG/usr
+cp -rv lib32PKG/usr/lib32 $PKG/usr

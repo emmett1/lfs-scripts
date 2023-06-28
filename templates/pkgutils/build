@@ -4,4 +4,11 @@ if [ "$BOOTSTRAP" ]; then
 	make BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
 else
 	make DESTDIR=$PKG install
+	rm \
+		$PKG/etc/pkgmk.conf \
+		$PKG/usr/share/man/man5/pkgmk.conf.5 \
+		$PKG/usr/share/man/man5/pkgfile.5 \
+		$PKG/usr/share/man/man8/pkgmk.8 \
+		$PKG/usr/bin/pkgmk
+	install -m755 $FILES/revdep $PKG/usr/bin/revdep
 fi

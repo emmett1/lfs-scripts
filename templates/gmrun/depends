@@ -6,3 +6,4 @@ gtk3
 harfbuzz
 pango
 zlib
+desktop-file-utils

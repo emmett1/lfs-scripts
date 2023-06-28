@@ -7,4 +7,5 @@ build_opt="
 	-Dvulkan-drivers=""
 	-Dvalgrind=disabled
 	-Dlibunwind=disabled
+	-Dglvnd=true
 "

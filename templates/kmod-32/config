@@ -1,1 +1,1 @@
-build_opt="--with-openssl --with-xz --with-zlib"
+build_opt="--with-xz --with-zlib"

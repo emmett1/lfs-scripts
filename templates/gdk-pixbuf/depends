@@ -2,3 +2,6 @@ glib
 libjpeg-turbo
 libpng
 libtiff
+shared-mime-info
+python3-docutils
+gobject-introspection

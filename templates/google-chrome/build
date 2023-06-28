@@ -1,0 +1,27 @@
+bsdtar -xf google-chrome-stable_$version-1_amd64.deb
+bsdtar -xf data.tar.xz -C $PKG
+
+# Launcher
+#install -m755 google-chrome-stable.sh $PKG/usr/bin/google-chrome-stable
+
+# Icons
+for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+	install -Dm644 $PKG/opt/google/chrome/product_logo_${i%x*}.png \
+		$PKG/usr/share/icons/hicolor/$i/apps/google-chrome.png
+done
+
+# Fix the Chrome desktop entry
+sed -i \
+	-e "/Exec=/i\StartupWMClass=Google-chrome" \
+	-e "s/x-scheme-handler\/ftp;\?//g" \
+	$PKG/usr/share/applications/google-chrome.desktop
+
+# Remove the Debian Cron job, duplicate product logos and menu directory
+rm -r \
+	$PKG/etc/cron.daily/ \
+	$PKG/opt/google/chrome/cron/ \
+	$PKG/opt/google/chrome/product_logo_*.png \
+	$PKG/opt/google/chrome/product_logo_*.xpm \
+		$PKG/usr/share/menu/
+
+ln -s /opt/google/chrome/$name $PKG/usr/bin/$name

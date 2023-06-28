@@ -7,3 +7,4 @@ libx11
 openssl
 pango
 perl
+desktop-file-utils

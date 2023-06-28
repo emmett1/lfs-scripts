@@ -2,3 +2,4 @@ avahi
 dbus
 libusb
 linux-pam
+desktop-file-utils

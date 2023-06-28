@@ -4,3 +4,4 @@ json-glib
 libnotify
 libsoup
 modemmanager
+desktop-file-utils

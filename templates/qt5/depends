@@ -30,7 +30,7 @@ libxcomposite
 libxext
 libxkbcommon
 llvm
-mesa
+libglvnd
 mtdev
 openssl
 pango
@@ -43,3 +43,4 @@ xcb-util-renderutil
 xcb-util-wm
 zlib
 zstd
+desktop-file-utils

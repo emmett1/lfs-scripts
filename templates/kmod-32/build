@@ -1,8 +1,0 @@
-_auto_build
-
-mkdir -p $PKG/sbin $PKG/bin
-for target in depmod insmod modinfo modprobe rmmod; do
-  ln -s /usr/bin/kmod $PKG/sbin/$target
-done
-
-ln -s kmod $PKG/usr/bin/lsmod

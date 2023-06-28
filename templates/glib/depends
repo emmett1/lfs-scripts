@@ -3,3 +3,4 @@ libffi
 pcre2
 util-linux
 zlib
+libxslt

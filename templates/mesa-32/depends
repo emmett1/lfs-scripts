@@ -1,9 +1,12 @@
-libdrm-32
 elfutils-32
+expat-32
+libdrm-32
 libx11-32
+libxcb-32
 libxext-32
 libxfixes-32
 libxshmfence-32
 libxxf86vm-32
-libxrandr-32
-expat-32
+llvm-32
+zlib-32
+zstd-32

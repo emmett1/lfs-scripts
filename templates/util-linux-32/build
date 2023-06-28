@@ -1,1 +1,4 @@
 _configure_build
+mv $PKG lib32PKG
+mkdir -p $PKG/usr
+cp -rv lib32PKG/usr/lib32 $PKG/usr

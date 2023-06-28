@@ -2,3 +2,4 @@ exiv2
 gdk-pixbuf
 glib
 gtk2
+desktop-file-utils

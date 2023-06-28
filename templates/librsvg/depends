@@ -7,3 +7,6 @@ harfbuzz
 libpng
 libxml2
 pango
+rust
+gobject-introspection
+vala

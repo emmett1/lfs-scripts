@@ -3,3 +3,4 @@ glib
 gtk3
 libdaemon
 qt5
+desktop-file-utils

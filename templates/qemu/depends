@@ -21,3 +21,4 @@ pixman
 sdl2
 zlib
 zstd
+desktop-file-utils

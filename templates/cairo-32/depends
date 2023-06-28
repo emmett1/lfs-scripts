@@ -1,0 +1,10 @@
+fontconfig-32
+freetype-32
+glib-32
+libpng-32
+libx11-32
+libxcb-32
+libxext-32
+libxrender-32
+pixman-32
+zlib-32

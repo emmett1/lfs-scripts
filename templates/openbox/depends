@@ -16,3 +16,4 @@ libxrandr
 libxrender
 pango
 startup-notification
+desktop-file-utils

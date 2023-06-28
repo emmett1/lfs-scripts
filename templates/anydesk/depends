@@ -21,6 +21,7 @@ libxrandr
 libxrender
 libxt
 libxtst
-mesa
+libglvnd
 pango
 polkit
+desktop-file-utils

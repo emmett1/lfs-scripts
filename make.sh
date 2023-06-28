@@ -18,23 +18,23 @@ _auto_patch() {
 _auto_build() {
 	if [ -f meson.build ]; then
 		is32bit && build_opt="$build_opt --libdir=/usr/lib32" || :
-		echo ":: running _meson_build"
+		msg "running _meson_build"
 		_meson_build $@ || return $?
 	elif [ -f configure ]; then
 		is32bit && build_opt="$build_opt --libdir=/usr/lib32" || :
-		echo ":: running _configure_build"
+		msg "running _configure_build"
 		_configure_build $@ || return $?
 	elif [ -f CMakeLists.txt ]; then
-		echo ":: running _cmake_build"
+		msg "running _cmake_build"
 		_cmake_build $@ || return $?
 	elif [ -f setup.py ]; then
-		echo ":: running _python3_build"
+		msg "running _python3_build"
 		_python3_build $@ || return $?
 	elif [ -f Makefile.PL ]; then
-		echo ":: running _perlmodule_build"
+		msg "running _perlmodule_build"
 		_perlmodule_build || return $?
 	elif [ -f Makefile ]; then
-		echo ":: running _makefile_build"
+		msg "running _makefile_build"
 		is32bit && {
 			export LIBDIR=/usr/lib32
 			export PKGCONFIGDIR=/usr/lib32/pkgconfig
@@ -142,6 +142,71 @@ _meson_build() {
 	DESTDIR=$PKG meson install --no-rebuild -C _meson_build || return $?
 }
 
+run_trigger() {
+	set +e
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/share/mime/$ && {
+		msg "Updating the MIME type database..."
+		chroot ${ROOT:-/} update-mime-database /usr/share/mime
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/share/applications/$ && {
+		msg "Updating desktop file MIME type cache..."
+		chroot ${ROOT:-/} update-desktop-database --quiet
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^etc/udev/hwdb.d/$ && {
+		msg "Updating hardware database..."
+		chroot ${ROOT:-/} udevadm hwdb --update
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/lib/gtk-3.0/3.0.0/immodules/.*.so && {
+		msg "Probing GTK3 input method modules..."
+		chroot ${ROOT:-/} gtk-query-immodules-3.0 --update-cache
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/lib/gtk-2.0/2.10.0/immodules/.*.so && {
+		msg "Probing GTK2 input method modules..."
+		chroot ${ROOT:-/} gtk-query-immodules-2.0 --update-cache
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/share/glib-2.0/schemas/$ && {
+		msg "Compiling GSettings XML schema files..."
+		chroot ${ROOT:-/} glib-compile-schemas /usr/share/glib-2.0/schemas
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/lib/gio/modules/.*.so && {
+		msg "Updating GIO module cache..."
+		chroot ${ROOT:-/} gio-querymodules /usr/lib/gio/modules
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/.*.so && {
+		msg "Probing GDK-Pixbuf loader modules..."
+		chroot ${ROOT:-/} gdk-pixbuf-query-loaders --update-cache
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/share/fonts/$ && {
+		msg "Updating X fontdir indices..."
+		for dir in $(find ${ROOT:-/}/usr/share/fonts -maxdepth 1 -type d \( ! -path ${ROOT:-/}/usr/share/fonts \)); do
+			dir=$(echo $dir | sed "s,${ROOT:-/},,")
+			rm -f ${ROOT:-/}$dir/fonts.scale ${ROOT:-/}$dir/fonts.dir ${ROOT:-/}$dir/.uuid
+			rmdir --ignore-fail-on-non-empty ${ROOT:-/}$dir
+			[ -d "${ROOT:-/}$dir" ] || continue
+			chroot ${ROOT:-/} mkfontdir $dir
+			chroot ${ROOT:-/} mkfontscale $dir
+		done
+		msg "Updating fontconfig cache..."
+		chroot ${ROOT:-/} fc-cache -s
+	}
+	pkginfo $pkginfoopt -l $name | grep -q ^usr/share/icons/$ && {
+		msg "Updating icon theme caches..."
+		for dir in ${ROOT:-/}/usr/share/icons/* ; do
+			if [ -e $dir/index.theme ]; then
+				chroot ${ROOT:-/} gtk-update-icon-cache -q $dir 2>/dev/null
+			else
+				rm -f $dir/icon-theme.cache
+				rmdir --ignore-fail-on-non-empty $dir
+			fi
+		done
+	}
+	set +e
+}
+
+msg() {
+	echo "=> $@"
+}
+
 export PATH=$PATH:/sbin:/usr/sbin
 
 if [ "$(id -u)" != 0 ] && [ ! "$FAKEROOTKEY" ]; then
@@ -215,7 +280,7 @@ mkdir -p $SOURCEDIR $PACKAGEDIR
 
 if [ -f "$PACKAGEDIR/$PKGFILE" ] && [ "$REBUILD" != 1 ]; then
 	if [ ! "$UPGRADE" ] && [ ! "$INSTALL" ]; then
-		echo ":: $PACKAGEDIR/$PKGFILE found"
+		msg "$PACKAGEDIR/$PKGFILE found"
 	fi
 else
 	# fetch source
@@ -238,7 +303,7 @@ else
 		url=${i%::*}
 		case $i in
 			*::noextract) cp $SOURCEDIR/${url##*/} $SRC;;
-			*.tar.*|*.t?z) bsdtar xvf $SOURCEDIR/${url##*/} -C $SRC || { echo ":: failed extracting ${url##*/}"; exit 1; };;
+			*.tar.*|*.t?z) bsdtar xvf $SOURCEDIR/${url##*/} -C $SRC || { msg "failed extracting ${url##*/}"; exit 1; };;
 			*) cp $SOURCEDIR/${url##*/} $SRC;;
 		esac
 	done
@@ -277,12 +342,12 @@ else
 	} || :
 	
 	if [ -f $CWD/build ]; then
-		echo ":: running build script: $CWD/build"
+		msg "running build script: $CWD/build"
 		chmod +x $CWD/build
-		. $CWD/build || { echo ":: error, build $name failed"; exit 1; }
+		. $CWD/build || { msg "error, build $name failed"; exit 1; }
 	else
-		echo ":: running auto_build"
-		_auto_build || { echo ":: error, build $name failed"; exit 1; }
+		msg "running auto_build"
+		_auto_build || { msg "error, build $name failed"; exit 1; }
 	fi
 	
 	if [ -d $PKG/$WORKDIR ]; then
@@ -358,46 +423,48 @@ else
 
 	rm -f $PACKAGEDIR/$PKGFILE
 	cd $PKG
-	echo ":: packaging $PKGFILE..."
+	msg "packaging $PKGFILE..."
 	bsdtar --format=gnutar -c -J -f $PACKAGEDIR/$PKGFILE * || {
 		echo "error makepkg"
 		rm -f $PACKAGEDIR/$PKGFILE
 		exit  1
 	}
 	bsdtar -tvf $PACKAGEDIR/$PKGFILE
-	echo ":: package created in $PACKAGEDIR/$PKGFILE"
+	msg "package created in $PACKAGEDIR/$PKGFILE"
 	cd $CWD
 	[ -f .files ] || tar -tvf $PACKAGEDIR/$PKGFILE | awk '{print $1,$2,$6}' > .files
 	rm -fr $WORKDIR
 fi
 
 if [ "$INSTALL" = 1 ]; then
-	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to install packages"; exit 1; }
+	[ "$FAKEROOTKEY" ] && { msg "cant use fakeroot to install packages"; exit 1; }
 	if [ $(pkginfo -i $pkginfoopt | awk '{print $1}' | grep -x $name) ]; then
 		echo "$name is already installed"
 		exit 0
 	else
-		echo ":: installing $PKGFILE..."
+		msg "installing $PKGFILE..."
 		pkgadd $pkgadd_opt $PACKAGEDIR/$PKGFILE
 		if [ -x $ROOT/var/lib/pkg/installscripts/$name ]; then
-			echo ":: running installscripts for $name" 
+			msg "running installscripts for $name" 
 			chroot ${ROOT:-/} /var/lib/pkg/installscripts/$name
 		fi
+		run_trigger
 		exit 0
 	fi
 fi
 if [ "$UPGRADE" = 1 ]; then
-	[ "$FAKEROOTKEY" ] && { echo ":: cant use fakeroot to upgrade packages"; exit 1; }
+	[ "$FAKEROOTKEY" ] && { msg "cant use fakeroot to upgrade packages"; exit 1; }
 	if [ ! $(pkginfo -i $pkginfoopt | awk '{print $1}' | grep -x $name) ]; then
 		echo "$name not installed"
 		exit 1
 	else
-		echo ":: upgrading $name-$version-$release..."
+		msg "upgrading $name-$version-$release..."
 		pkgadd $pkgadd_opt -u $PACKAGEDIR/$PKGFILE
 		if [ -x $ROOT/var/lib/pkg/installscripts/$name ]; then
-			echo ":: running installscripts for $name"
+			msg "running installscripts for $name"
 			chroot ${ROOT:-/} /var/lib/pkg/installscripts/$name
 		fi
+		run_trigger
 		exit 0
 	fi
 fi

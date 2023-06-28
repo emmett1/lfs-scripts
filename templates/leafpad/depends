@@ -7,3 +7,4 @@ glib
 gtk2
 harfbuzz
 pango
+desktop-file-utils

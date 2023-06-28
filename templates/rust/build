@@ -1,5 +1,5 @@
-_date=2023-03-28
-_rust=1.68.2
+_date=2023-04-20
+_rust=1.69.0
 _cargo=$_rust
 _triplet=x86_64-unknown-linux-gnu
 

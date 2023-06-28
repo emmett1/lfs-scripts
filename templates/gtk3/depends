@@ -19,3 +19,4 @@ libxinerama
 libxkbcommon
 libxrandr
 pango
+desktop-file-utils

@@ -2,12 +2,12 @@ make mrproper
 
 cp $FILES/x86_64-dotconfig .config
 
-make olddefconfig
-
 sed -i "s/CONFIG_DEBUG_INFO_BTF=.*/# CONFIG_DEBUG_INFO_BTF is not set/" .config
 echo CONFIG_DEBUG_INFO_NONE=y >> .config
 sed '/^CONFIG_LOCALVERSION=/d' -i .config
 echo 'CONFIG_LOCALVERSION="-LFS"' >> .config
+
+make olddefconfig
 
 kernver=${version}$(grep CONFIG_LOCALVERSION= .config | cut -d '"' -f2)
 

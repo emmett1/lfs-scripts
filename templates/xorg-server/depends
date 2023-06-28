@@ -11,7 +11,7 @@ libxdmcp
 libxext
 libxfont2
 libxshmfence
-mesa
+libglvnd
 nettle
 pixman
 xkeyboard-config
@@ -24,4 +24,4 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xf86-input-libinput
+mesa

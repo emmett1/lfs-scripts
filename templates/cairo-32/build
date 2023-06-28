@@ -1,0 +1,12 @@
+# for Binutils-2.39 or later
+sed 's/PTR/void */' -i util/cairo-trace/lookup-symbol.c
+
+# Fix a pkg-config file that may cause errors later
+sed -e "/@prefix@/a exec_prefix=@exec_prefix@" \
+    -i util/cairo-script/cairo-script-interpreter.pc.in
+
+_configure_build
+
+mv $PKG lib32PKG
+mkdir -p $PKG/usr
+cp -rv lib32PKG/usr/lib32 $PKG/usr

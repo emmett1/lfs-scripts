@@ -15,7 +15,7 @@ libxcb
 libxext
 libxi
 libxv
-mesa
+libglvnd
 opus
 pango
 zlib

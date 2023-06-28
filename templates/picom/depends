@@ -3,8 +3,9 @@ libconfig
 libev
 libx11
 libxcb
-mesa
 pcre
 pixman
 xcb-util-image
 xcb-util-renderutil
+desktop-file-utils
+libglvnd

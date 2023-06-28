@@ -23,17 +23,19 @@ touch $ROOT/var/lib/pkg/db
 
 # custom packages
 ./pkg.sh -r $ROOT -y -i -d xorg-server xinit xterm xclock twm
-./pkg.sh -r $ROOT -y -i -d openbox tint2 obmenu-generator picom pcmanfm firefox-esr polkit-gnome lxappearance-obconf
-#openbox tint2 picom obmenu-generator networkmanager pcmanfm gvfs firefox-esr slim polkit-gnome lxappearance-obconf
+./pkg.sh -r $ROOT -y -i -d sudo alsa-utils gparted dosfstools mtools gvfs networkmanager neofetch xdg-user-dirs polkit-gnome ffmpeg geany firefox-esr \
+	openbox lxappearance lxappearance-obconf obconf obmenu-generator gmrun pcmanfm gvfs libmtp leafpad feh tint2 consolekit2 htop \
+	arcbox paper-icon-theme arc-gtk-theme picom dunst neofetch dfc os-prober liberation-fonts-ttf network-manager-applet clipit volumeicon wayland \
+	xf86-input-evdev xf86-input-libinput xf86-input-synaptics xf86-input-wacom xf86-video-amdgpu xf86-video-ati xf86-video-fbdev xf86-video-intel xf86-video-nouveau xf86-video-vmware
 
 mkdir -p $LIVE/boot
 mkdir -p $LIVE/isolinux
 mkdir -p $LIVE/rootfs
 
-#if [ -d rootfs ]; then
-	#cp -ra rootfs/* $LIVE/rootfs/
-	#chown -R 0:0 $LIVE/rootfs
-#fi
+if [ -d liverootfs ]; then
+	cp -ra liverootfs/* $LIVE/rootfs/
+	chown -R 0:0 $LIVE/rootfs
+fi
 
 for i in isolinux.bin chain.c32 ldlinux.c32 libutil.c32 libcom32.c32 \
 	vesamenu.c32 menu.c32 reboot.c32 poweroff.c32; do

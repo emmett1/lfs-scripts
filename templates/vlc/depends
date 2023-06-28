@@ -45,7 +45,7 @@ libxinerama
 libxml2
 libxpm
 lua
-mesa
+libglvnd
 ncurses
 opus
 pango
@@ -54,3 +54,4 @@ x264
 x265
 xcb-util-keysyms
 zlib
+desktop-file-utils

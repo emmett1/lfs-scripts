@@ -1,0 +1,8 @@
+sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
+    -i docs/faq/Makefile.in
+
+sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
+    -i docs/tutorial/Makefile.in
+
+_auto_build
+rm -f $PKG/usr/bin/gtk-update-icon-cache
