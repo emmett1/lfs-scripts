@@ -1,1 +1,1 @@
-build_opt="--disable-ssh-token"
+build_opt="--disable-ssh-token --disable-asciidoc"

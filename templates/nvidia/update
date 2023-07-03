@@ -1,0 +1,10 @@
+url=https://www.nvidia.com/en-us/drivers/unix/
+
+port_getver() {
+	fetch \
+	| sed 's/<br>/\n/g' \
+	| grep "Latest Production Branch Version:" \
+	| head -n1 \
+	| sed 's/\".*\"//' \
+	| grep -Eo [0-9.]+
+}

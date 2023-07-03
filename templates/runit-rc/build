@@ -11,7 +11,7 @@ install -d $PKG/var
 ln -s default $PKG/etc/runit/runsvdir/current
 ln -s /etc/runit/runsvdir/current $PKG/var/service
 
-${CC:-gcc} ${CFLAGS} pause.c -o pause
+${CC:-gcc} ${CFLAGS} pause.c -o $PKG/sbin/pause
 
 #install -m755 pause runit-halt runit-shutdown $PKG/sbin
 #ln -s runit-halt $PKG/sbin/runit-reboot

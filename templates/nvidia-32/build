@@ -16,7 +16,7 @@ install -m 0755 libEGL_nvidia.so.$version $PKG/usr/lib32/
 ln -s libEGL_nvidia.so.$version $PKG/usr/lib32/libEGL_nvidia.so.0
 
 # driver component libraries
-install -m 0755 libnvidia-compiler.so.$version $PKG/usr/lib32/
+#install -m 0755 libnvidia-compiler.so.$version $PKG/usr/lib32/
 install -m 0755 libnvidia-eglcore.so.$version $PKG/usr/lib32/
 install -m 0755 libnvidia-glcore.so.$version $PKG/usr/lib32/
 install -m 0755 libnvidia-glsi.so.$version $PKG/usr/lib32/

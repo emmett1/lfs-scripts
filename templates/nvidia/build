@@ -28,13 +28,8 @@ install -d -m 0755 $PKG/usr/lib/gbm
 ln -s libnvidia-allocator.so.$version $PKG/usr/lib/gbm/nvidia-drm_gbm.so
 
 # wayland config
-if prt-get isinst wayland > /dev/null; then
-	# let egl-wayland handle the library
-	echo -e "\n\nINFO: wayland is installed; if nvidia eglstream support is desired/needed, install 'egl-wayland'!\n\n"
-	sleep 5
-	install -d $PKG/usr/share/egl/egl_external_platform.d
-	install -m 0644 10_nvidia_wayland.json $PKG/usr/share/egl/egl_external_platform.d/
-fi
+install -d $PKG/usr/share/egl/egl_external_platform.d
+install -m 0644 10_nvidia_wayland.json $PKG/usr/share/egl/egl_external_platform.d/
 
 # GLVND vendor implementation libraries
 install -m 0755 libGLX_nvidia.so.$version $PKG/usr/lib/
@@ -49,7 +44,7 @@ install -D -m 0644 nvidia_icd.json $PKG/usr/share/vulkan/icd.d/nvidia_icd.json
 install -D -m 0644 nvidia_layers.json $PKG/usr/share/vulkan/implicit_layer.d/nvidia_layers.json
 
 # driver component libraries
-for C in cfg compiler eglcore glcore glsi glvkspirv rtcore allocator; do
+for C in cfg eglcore glcore glsi glvkspirv rtcore allocator; do
 	install -m 0755 libnvidia-${C}.so.$version $PKG/usr/lib/
 	ln -s libnvidia-${C}.so.$version $PKG/usr/lib/libnvidia-${C}.so.1
 	ln -s libnvidia-${C}.so.$version $PKG/usr/lib/libnvidia-${C}.so
