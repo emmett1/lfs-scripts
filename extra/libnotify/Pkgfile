@@ -1,0 +1,7 @@
+# Pkgfile for libnotify
+
+name=libnotify
+version=0.8.2
+release=1
+source=(https://download.gnome.org/sources/$name/0.8/$name-$version.tar.xz)
+build_opt="-Dgtk_doc=false -Dman=false"

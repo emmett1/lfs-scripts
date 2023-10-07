@@ -1,0 +1,7 @@
+# Pkgfile for leafpad
+
+name=leafpad
+version=0.8.19
+release=1
+source=(http://savannah.nongnu.org/download/$name/$name-$version.tar.gz)
+build_opt="--enable-chooser"

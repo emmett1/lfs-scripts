@@ -1,0 +1,7 @@
+# Pkgfile for gcr
+
+name=gcr
+version=3.41.1
+release=1
+source=(https://download.gnome.org/sources/$name/3.41/$name-$version.tar.xz)
+build_opt="-Dgtk_doc=false"

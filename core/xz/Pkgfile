@@ -1,0 +1,6 @@
+# Pkgfile for xz
+
+name=xz
+version=5.4.3
+release=1
+source=(https://tukaani.org/$name/$name-$version.tar.$name)

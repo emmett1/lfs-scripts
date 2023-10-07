@@ -1,0 +1,10 @@
+dbus
+glib
+libusb
+libsecret
+gcr
+libgudev
+libsoup
+polkit
+udisks
+fuse

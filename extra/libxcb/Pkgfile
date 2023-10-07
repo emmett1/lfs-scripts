@@ -1,0 +1,6 @@
+# Pkgfile for libxcb
+
+name=libxcb
+version=1.15
+release=1
+source=(https://xorg.freedesktop.org/archive/individual/lib/$name-$version.tar.xz)

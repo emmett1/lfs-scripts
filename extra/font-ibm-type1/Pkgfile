@@ -1,0 +1,6 @@
+# Pkgfile for font-ibm-type1
+
+name=font-ibm-type1
+version=1.0.4
+release=1
+source=(https://www.x.org/pub/individual/font/$name-$version.tar.xz)

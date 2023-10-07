@@ -1,0 +1,6 @@
+# Pkgfile for lxmenu-data
+
+name=lxmenu-data
+version=0.1.5
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

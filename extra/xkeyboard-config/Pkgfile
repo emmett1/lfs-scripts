@@ -1,0 +1,6 @@
+# Pkgfile for xkeyboard-config
+
+name=xkeyboard-config
+version=2.39
+release=1
+source=(https://www.x.org/pub/individual/data/$name/$name-$version.tar.xz)

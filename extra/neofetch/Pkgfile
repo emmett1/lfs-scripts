@@ -1,0 +1,6 @@
+# Pkgfile for neofetch
+
+name=neofetch
+version=7.1.0
+release=1
+source=(https://github.com/dylanaraps/$name/archive/$version/$name-$version.tar.gz)

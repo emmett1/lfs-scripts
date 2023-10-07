@@ -1,0 +1,6 @@
+# Pkgfile for gtkmm
+
+name=gtkmm
+version=3.24.8
+release=1
+source=(https://download.gnome.org/sources/$name/3.24/$name-$version.tar.xz)

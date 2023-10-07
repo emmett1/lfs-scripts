@@ -1,0 +1,6 @@
+# Pkgfile for swig
+
+name=swig
+version=4.1.1
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.gz)

@@ -1,0 +1,7 @@
+# Pkgfile for libxslt
+
+name=libxslt
+version=1.1.38
+release=1
+source=(https://download.gnome.org/sources/$name/1.1/$name-$version.tar.xz)
+export PYTHON=/usr/bin/python3

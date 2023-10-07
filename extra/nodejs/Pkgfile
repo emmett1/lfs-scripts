@@ -1,0 +1,18 @@
+# Pkgfile for nodejs
+
+name=nodejs
+version=18.17.1
+release=1
+source=(https://$name.org/dist/v$version/node-v$version.tar.xz)
+
+pkg_build() {
+	./configure --prefix=/usr          \
+	            --shared-cares         \
+	            --shared-libuv         \
+	            --shared-openssl       \
+	            --shared-nghttp2       \
+	            --shared-zlib          \
+	            --with-intl=system-icu
+	make
+	make install
+}

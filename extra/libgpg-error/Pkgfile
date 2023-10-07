@@ -1,0 +1,6 @@
+# Pkgfile for libgpg-error
+
+name=libgpg-error
+version=1.47
+release=1
+source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)

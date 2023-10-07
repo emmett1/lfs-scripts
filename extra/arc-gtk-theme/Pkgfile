@@ -1,0 +1,7 @@
+# Pkgfile for arc-gtk-theme
+
+name=arc-gtk-theme
+version=20221218
+release=1
+source=(https://github.com/jnsh/arc-theme/archive/$version/$name-$version.tar.gz)
+build_opt="-Dthemes=gtk2,gtk3,metacity,xfwm"

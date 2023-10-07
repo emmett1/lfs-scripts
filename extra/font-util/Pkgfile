@@ -1,0 +1,10 @@
+# Pkgfile for font-util
+
+name=font-util
+version=1.4.0
+release=1
+source=(https://www.x.org/pub/individual/font/$name-$version.tar.xz)
+build_opt="
+	--with-mapdir=/usr/share/fonts/util
+	--with-fontrootdir=/usr/share/fonts
+"

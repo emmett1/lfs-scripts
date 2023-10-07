@@ -1,0 +1,13 @@
+# Pkgfile for libglvnd
+
+name=libglvnd
+version=1.6.0
+release=1
+source=(https://github.com/NVIDIA/$name/archive/v$version/$name-$version.tar.gz)
+build_opt="
+        -Dx11=enabled
+        -Dglx=enabled
+        -Dgles1=false
+        -Degl=true
+        -Dtls=false
+"

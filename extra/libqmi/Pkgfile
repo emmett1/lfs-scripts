@@ -1,0 +1,6 @@
+# Pkgfile for libqmi
+
+name=libqmi
+version=1.30.8
+release=1
+source=(https://www.freedesktop.org/software/$name/$name-$version.tar.xz)

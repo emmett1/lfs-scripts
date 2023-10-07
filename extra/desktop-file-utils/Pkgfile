@@ -1,0 +1,6 @@
+# Pkgfile for desktop-file-utils
+
+name=desktop-file-utils
+version=0.26
+release=1
+source=(https://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)

@@ -1,0 +1,6 @@
+# Pkgfile for tiff
+
+name=tiff
+version=4.5.1
+release=1
+source=(http://download.osgeo.org/lib$name/$name-$version.tar.gz)

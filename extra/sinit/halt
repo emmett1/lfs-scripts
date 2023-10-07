@@ -1,0 +1,10 @@
+#!/bin/sh
+# halt/shutdown/poweroff/reboot script for sinit
+
+case ${0##*/} in
+	halt|poweroff) opt=USR1;;
+	shutdown) [ "$1" = "-r" ] && opt=INT || opt=USR1;;
+	reboot) opt=INT;;
+esac
+
+exec kill -s $opt 1

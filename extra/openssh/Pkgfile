@@ -1,0 +1,7 @@
+# Pkgfile for openssh
+
+name=openssh
+version=9.4p1
+release=1
+source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz)
+build_opt="--without-zlib-version-check"

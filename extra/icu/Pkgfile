@@ -1,0 +1,10 @@
+# Pkgfile for icu
+
+name=icu
+version=73.1
+release=1
+source=(https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz)
+
+pre_build() {
+	cd source
+}

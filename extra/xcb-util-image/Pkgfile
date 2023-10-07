@@ -1,0 +1,6 @@
+# Pkgfile for xcb-util-image
+
+name=xcb-util-image
+version=0.4.1
+release=1
+source=(https://xcb.freedesktop.org/dist/$name-$version.tar.xz)

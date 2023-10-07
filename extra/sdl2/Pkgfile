@@ -1,0 +1,6 @@
+# Pkgfile for sdl2
+
+name=sdl2
+version=2.28.3
+release=1
+source=(https://www.libsdl.org/release/SDL2-$version.tar.gz)

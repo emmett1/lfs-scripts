@@ -1,0 +1,9 @@
+fontconfig
+fribidi
+glib
+cairo
+gobject-introspection
+libx11
+libxft
+libxrender
+harfbuzz

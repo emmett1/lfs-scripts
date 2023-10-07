@@ -1,0 +1,7 @@
+# Pkgfile for libxkbcommon
+
+name=libxkbcommon
+version=1.5.0
+release=1
+source=(https://xkbcommon.org/download/$name-$version.tar.xz)
+build_opt="-Denable-docs=false"

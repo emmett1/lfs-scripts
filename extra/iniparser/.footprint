@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/iniparser/
+-rw-r--r--	root/root	usr/include/iniparser/dictionary.h
+-rw-r--r--	root/root	usr/include/iniparser/iniparser.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libiniparser.so -> libiniparser.so.1
+-rw-r--r--	root/root	usr/lib/libiniparser.so.1

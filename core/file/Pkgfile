@@ -1,0 +1,6 @@
+# Pkgfile for file
+
+name=file
+version=5.45
+release=1
+source=(https://astron.com/pub/$name/$name-$version.tar.gz)

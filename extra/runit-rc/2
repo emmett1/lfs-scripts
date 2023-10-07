@@ -1,0 +1,18 @@
+#!/bin/sh
+
+PATH=/command:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin
+
+runlevel=default
+for arg in $(cat /proc/cmdline); do
+    if [ -d /etc/runit/runsvdir/"$arg" ]; then
+        echo "Runlevel detected: '$arg' (via kernel cmdline)"
+        runlevel="$arg"
+    fi
+done
+
+runsvchdir "$runlevel"
+
+[ -x /etc/runit/rc.startup.local ] && /etc/runit/rc.startup.local
+
+exec env - PATH=$PATH \
+runsvdir -P /var/service 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'

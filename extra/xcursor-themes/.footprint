@@ -1,0 +1,165 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/icons/
+drwxr-xr-x	root/root	usr/share/icons/handhelds/
+drwxr-xr-x	root/root	usr/share/icons/handhelds/cursors/
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/08e8e1c95fe2fc01f976f1e063a24ccd -> left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/X_cursor
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/arrow -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/based_arrow_down
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/based_arrow_up
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/bottom_left_corner
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/bottom_right_corner
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/bottom_side
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/bottom_tee
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/center_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/circle
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/cross
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/cross_reverse -> cross
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/crosshair -> cross
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/dot
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/dotbox
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/double_arrow
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/draft_large -> right_ptr
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/draft_small -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/draped_box
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/fleur
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/gumby
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/hand2
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/left_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/left_side
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/left_tee
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/ll_angle
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/pencil
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/plus -> cross
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/right_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/right_side
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/right_tee
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/sb_h_double_arrow
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/sb_right_arrow
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/sb_up_arrow
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/sb_v_double_arrow
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/shuttle
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/tcross -> cross
+lrwxrwxrwx	root/root	usr/share/icons/handhelds/cursors/top_left_arrow -> left_ptr
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/top_left_corner
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/top_right_corner
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/top_side
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/top_tee
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/watch
+-rw-r--r--	root/root	usr/share/icons/handhelds/cursors/xterm
+drwxr-xr-x	root/root	usr/share/icons/redglass/
+drwxr-xr-x	root/root	usr/share/icons/redglass/cursors/
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/08e8e1c95fe2fc01f976f1e063a24ccd -> left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/X_cursor
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/arrow -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/based_arrow_down
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/based_arrow_up
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/bottom_left_corner
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/bottom_right_corner
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/bottom_side
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/bottom_tee
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/center_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/circle
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/cross
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/cross_reverse -> cross
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/crosshair -> cross
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/dot
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/dotbox
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/double_arrow
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/draft_large -> right_ptr
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/draft_small -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/draped_box
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/fleur
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/gumby
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/hand2
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/left_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/left_side
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/left_tee
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/ll_angle
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/pencil
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/plus -> cross
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/right_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/right_side
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/right_tee
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/sb_h_double_arrow
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/sb_right_arrow
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/sb_up_arrow
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/sb_v_double_arrow
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/shuttle
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/tcross -> cross
+lrwxrwxrwx	root/root	usr/share/icons/redglass/cursors/top_left_arrow -> left_ptr
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/top_left_corner
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/top_right_corner
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/top_side
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/top_tee
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/watch
+-rw-r--r--	root/root	usr/share/icons/redglass/cursors/xterm
+drwxr-xr-x	root/root	usr/share/icons/whiteglass/
+drwxr-xr-x	root/root	usr/share/icons/whiteglass/cursors/
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/08e8e1c95fe2fc01f976f1e063a24ccd -> left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/X_cursor
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/arrow -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/base_arrow_down
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/base_arrow_up
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/boat
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/bottom_left_corner
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/bottom_right_corner
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/bottom_side
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/bottom_tee
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/center_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/circle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/cross
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/cross_reverse -> cross
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/crosshair -> cross
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/dnd-none -> fleur
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/dot
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/dot_box_mask
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/double_arrow
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/draft_large -> right_ptr
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/draft_small -> right_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/draped_box
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/exchange
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/fleur
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/grab -> hand1
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/gumby
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/hand -> hand2
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/hand1
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/hand2
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/left_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/left_ptr_watch
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/left_side
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/left_tee
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/ll_angle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/lr_angle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/pencil
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/pirate
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/plus -> cross
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/pointer -> hand
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/question_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/right_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/right_side
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/right_tee
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sailboat
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_down_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_h_double_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_left_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_right_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_up_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sb_v_double_arrow
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/shuttle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/sizing
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/target
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/tcross -> cross
+lrwxrwxrwx	root/root	usr/share/icons/whiteglass/cursors/top_left_arrow -> left_ptr
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/top_left_corner
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/top_right_corner
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/top_side
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/top_tee
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/trek
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/ul_angle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/ur_angle
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/watch
+-rw-r--r--	root/root	usr/share/icons/whiteglass/cursors/xterm

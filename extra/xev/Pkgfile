@@ -1,0 +1,6 @@
+# Pkgfile for xev
+
+name=xev
+version=1.2.5
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

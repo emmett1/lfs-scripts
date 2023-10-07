@@ -1,0 +1,6 @@
+# Pkgfile for vim
+
+name=vim
+version=v9.0.1558
+release=1
+source=(https://github.com/$name/$name/archive/v9.0.1677/$name-$version.tar.gz)

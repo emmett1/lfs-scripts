@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/utarray.h
+-rw-r--r--	root/root	usr/include/uthash.h
+-rw-r--r--	root/root	usr/include/utlist.h
+-rw-r--r--	root/root	usr/include/utringbuffer.h
+-rw-r--r--	root/root	usr/include/utstack.h
+-rw-r--r--	root/root	usr/include/utstring.h

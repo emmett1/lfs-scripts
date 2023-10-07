@@ -1,0 +1,8 @@
+imlib2
+librsvg
+startup-notification
+libxcomposite
+libxdamage
+libxinerama
+libxrandr
+gtk3

@@ -1,0 +1,6 @@
+# Pkgfile for libnvme
+
+name=libnvme
+version=1.5
+release=1
+source=(https://github.com/linux-nvme/$name/archive/refs/tags/v$version/$name-$version.tar.gz)

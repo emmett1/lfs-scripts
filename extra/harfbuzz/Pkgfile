@@ -1,0 +1,7 @@
+# Pkgfile for harfbuzz
+
+name=harfbuzz
+version=8.0.1
+release=1
+source=(https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz)
+build_opt=-Dgraphite2=enabled

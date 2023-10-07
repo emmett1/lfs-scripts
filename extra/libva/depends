@@ -1,0 +1,7 @@
+libdrm
+mesa
+libx11
+libxcb
+libxext
+libxfixes
+libglvnd

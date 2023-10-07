@@ -1,5 +1,0 @@
-getver_squashfs-tools() {
-	fetch \
-	| grep -Eo squashfs[-_]?[0-9a-z.]+.tar.[bgx]z2? \
-	| sed 's/squashfs//;s/\.tar.*//'
-}

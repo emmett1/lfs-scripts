@@ -1,0 +1,6 @@
+# Pkgfile for tint2
+
+name=tint2
+version=17.1.3
+release=1
+source=(https://gitlab.com/nick87720z/$name/-/archive/$version/$name-$version.tar.bz2)

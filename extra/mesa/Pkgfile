@@ -1,0 +1,17 @@
+# Pkgfile for mesa
+
+name=mesa
+version=23.1.6
+release=1
+source=(https://archive.mesa3d.org/$name-$version.tar.xz)
+
+[ -f /usr/lib/pkgconfig/wayland-client.pc ] && wayland=",wayland"
+
+build_opt="
+	-Dplatforms=x11$wayland
+	-Dgallium-drivers=auto
+	-Dvulkan-drivers=""
+	-Dvalgrind=disabled
+	-Dlibunwind=disabled
+	-Dglvnd=true
+"

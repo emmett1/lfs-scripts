@@ -1,0 +1,11 @@
+libconfig
+uthash
+libev
+libx11
+xcb-util-renderutil
+xcb-util-image
+libxext
+pixman
+pcre
+libglvnd
+dbus

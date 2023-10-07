@@ -1,0 +1,6 @@
+dbus
+glib
+libx11
+libxi
+libxtst
+gobject-introspection

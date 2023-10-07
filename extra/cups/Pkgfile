@@ -1,0 +1,7 @@
+# Pkgfile for cups
+
+name=cups
+version=2.4.6
+release=1
+source=(https://github.com/OpenPrinting/$name/releases/download/v$version/$name-$version-source.tar.gz)
+build_opt="--disable-systemd --with-system-groups=lpadmin"

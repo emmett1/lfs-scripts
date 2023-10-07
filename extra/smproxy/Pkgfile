@@ -1,0 +1,6 @@
+# Pkgfile for smproxy
+
+name=smproxy
+version=1.0.7
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

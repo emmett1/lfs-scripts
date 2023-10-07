@@ -1,0 +1,6 @@
+# Pkgfile for xhost
+
+name=xhost
+version=1.0.9
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

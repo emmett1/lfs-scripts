@@ -1,0 +1,7 @@
+# Pkgfile for glib-networking
+
+name=glib-networking
+version=2.76.1
+release=1
+source=(https://download.gnome.org/sources/$name/2.76/$name-$version.tar.xz)
+build_opt="-Dlibproxy=disabled"

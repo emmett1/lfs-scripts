@@ -1,0 +1,5 @@
+libassuan
+libgcrypt
+libksba
+npth
+gnutls

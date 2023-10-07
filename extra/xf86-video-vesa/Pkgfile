@@ -1,0 +1,6 @@
+# Pkgfile for xf86-video-vesa
+
+name=xf86-video-vesa
+version=2.3.3
+release=1
+source=(http://xorg.freedesktop.org/archive/individual/driver/$name-$version.tar.bz2)

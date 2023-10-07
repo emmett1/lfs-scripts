@@ -1,0 +1,6 @@
+# Pkgfile for alsa-lib
+
+name=alsa-lib
+version=1.2.9
+release=1
+source=(https://www.alsa-project.org/files/pub/lib/$name-$version.tar.bz2)

@@ -1,0 +1,6 @@
+# Pkgfile for c-ares
+
+name=c-ares
+version=1.19.1
+release=1
+source=(https://$name.haxx.se/download/$name-$version.tar.gz)

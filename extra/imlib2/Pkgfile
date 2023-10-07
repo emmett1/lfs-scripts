@@ -1,0 +1,6 @@
+# Pkgfile for imlib2
+
+name=imlib2
+version=1.12.0
+release=1
+source=(https://downloads.sourceforge.net/enlightenment/$name-$version.tar.xz)

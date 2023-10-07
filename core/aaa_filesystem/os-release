@@ -1,0 +1,5 @@
+NAME="Linux From Scratch"
+PRETTY_NAME="Linux From Scratch"
+VERSION="rolling"
+ID="lfs"
+VERSION_ID="rolling"

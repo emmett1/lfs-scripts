@@ -1,0 +1,11 @@
+# Pkgfile for xtrans
+
+name=xtrans-32
+version=1.5.0
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/xtrans-$version.tar.xz)
+
+pre_build() {
+	sed 's/datarootdir/libdir/' -i Makefile.am
+	sed -i -e 's,$(datadir)/pkgconfig,$(libdir)/pkgconfig,' Makefile.in
+}

@@ -1,0 +1,6 @@
+5274297b9638eab610c664a9b6b35355  0001-bootstrap-Change-libexec-dir.patch
+30b5a3782f21bac3cdb0c1c164070caa  0001-cargo-Change-libexec-dir.patch
+b208debb640360059b98948b0aa939fb  cargo-1.69.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+d9649027934eeb364f3b9ac4f2c1d1ff  rust-std-1.69.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+115ced745660c1659c54e69c44f4dd47  rustc-1.69.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+165792a4266021589b2d6061f208755f  rustc-1.70.0-src.tar.xz

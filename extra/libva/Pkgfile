@@ -1,0 +1,6 @@
+# Pkgfile for libva
+
+name=libva
+version=2.19.0
+release=1
+source=(https://github.com/intel/$name/releases/download/$version/$name-$version.tar.bz2)

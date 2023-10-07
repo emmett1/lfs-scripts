@@ -1,0 +1,6 @@
+# Pkgfile for which
+
+name=which
+version=2.21
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)

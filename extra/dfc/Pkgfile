@@ -1,0 +1,6 @@
+# Pkgfile for dfc
+
+name=dfc
+version=3.1.1
+release=1
+source=(https://github.com/rolinh/$name/releases/download/v$version/$name-$version.tar.gz)

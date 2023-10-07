@@ -1,0 +1,13 @@
+# Pkgfile for glib
+
+name=glib
+version=2.76.4
+release=1
+source=(https://download.gnome.org/sources/$name/2.76/$name-$version.tar.xz
+	0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch)
+build_opt="
+	-Dman=true
+	-Dgtk_doc=false
+	-Dselinux=disabled
+	-Dtests=false
+"

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Firefox
+Name[en_US]=Firefox
+GenericName=Web Browser
+GenericName[en_US]=Web Browser
+Comment=Free web browser from Mozilla
+Exec=firefox %U
+Terminal=false
+Type=Application
+Icon=firefox
+Categories=Network;
+

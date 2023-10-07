@@ -1,0 +1,6 @@
+cryptsetup
+glib
+gnupg
+gpgme
+nss
+swig

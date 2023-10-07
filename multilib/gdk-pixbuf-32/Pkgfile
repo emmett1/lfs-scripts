@@ -1,0 +1,8 @@
+# Pkgfile for gdk-pixbuf
+
+name=gdk-pixbuf-32
+version=2.42.10
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/${version%.*}/gdk-pixbuf-$version.tar.xz)
+build_opt="-Dman=false -Dtests=false -Dintrospection=disabled"
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig"

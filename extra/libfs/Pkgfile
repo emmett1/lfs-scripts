@@ -1,0 +1,6 @@
+# Pkgfile for libfs
+
+name=libfs
+version=1.0.9
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libFS-$version.tar.xz)

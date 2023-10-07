@@ -1,0 +1,14 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/sinit/
+-rwxr-xr-x	root/root	etc/sinit/rc.init
+-rwxr-xr-x	root/root	etc/sinit/rc.init.local
+-rwxr-xr-x	root/root	etc/sinit/rc.modules
+-rwxr-xr-x	root/root	etc/sinit/rc.shutdown
+-rwxr-xr-x	root/root	etc/sinit/rc.shutdown.local
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/sinit-init
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/sinit.8.gz

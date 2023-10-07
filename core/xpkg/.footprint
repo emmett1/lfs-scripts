@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/xpkg.conf
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/finddeps
+-rwxr-xr-x	root/root	usr/bin/revdep
+-rwxr-xr-x	root/root	usr/bin/xchroot
+-rwxr-xr-x	root/root	usr/bin/xpkg

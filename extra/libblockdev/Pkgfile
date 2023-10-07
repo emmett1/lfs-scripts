@@ -1,0 +1,6 @@
+# Pkgfile for libblockdev
+
+name=libblockdev
+version=3.0.2
+release=1
+source=(https://github.com/storaged-project/$name/releases/download/$version-1/$name-$version.tar.gz)

@@ -1,0 +1,12 @@
+libdrm
+libx11
+libxcb
+libxext
+libxfixes
+libxshmfence
+libxxf86vm
+llvm
+python3-mako
+python3-markupsafe
+libglvnd
+libxrandr

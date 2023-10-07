@@ -1,0 +1,6 @@
+# Pkgfile for lcms2
+
+name=lcms2
+version=2.14
+release=1
+source=(https://github.com/mm2/Little-CMS/releases/download/$name.14/$name-$version.tar.gz)

@@ -1,0 +1,7 @@
+# Pkgfile for xorgproto
+
+name=xorgproto-32
+version=2023.2
+release=1
+source=(https://xorg.freedesktop.org/archive/individual/proto/xorgproto-$version.tar.xz)
+build_opt="--datadir=/usr/lib32"

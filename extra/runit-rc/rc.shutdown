@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# system shutdown script
+
+if [ -x /etc/runit/rc.shutdown.local ]; then
+	/etc/runit/rc.shutdown.local
+fi
+
+echo "Stopping udev..."
+udevadm control --exit
+
+echo "Saving random seed..."
+dd if=/dev/urandom of=/var/lib/random-seed count=1 bs=512 2>/dev/null
+
+echo "Saving system time to hardware clock..."
+hwclock --systohc
+
+echo "Sending TERM signal to processes..."
+pkill --inverse -s0,1 -TERM
+sleep 1
+echo "Sending KILL signal to processes..."
+pkill --inverse -s0,1 -KILL
+
+echo "Deactivating all swap files/partitions..."
+swapoff -a
+
+echo "Bringing down the loopback interface..."
+ip link set lo down
+      
+echo "Unmounting all other currently mounted file systems..."
+umount -a -d -r -t notmpfs,nosysfs,nodevtmpfs,noproc,nodevpts
+
+echo "Remount root filesystem in read-only mode..."
+mount --options remount,ro /
+
+echo "Bringing down the loopback interface..."
+ip link set lo down
+
+echo "Flushing filesystem buffers..."
+sync
+
+sleep 1

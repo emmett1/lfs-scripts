@@ -1,0 +1,7 @@
+# Pkgfile for geany
+
+name=geany
+version=1.38
+release=1
+source=(http://download.$name.org/$name-$version.tar.bz2)
+build_opt="--enable-plugins --enable-gtk3"

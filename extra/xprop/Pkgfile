@@ -1,0 +1,6 @@
+# Pkgfile for xprop
+
+name=xprop
+version=1.2.6
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

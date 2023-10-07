@@ -1,0 +1,22 @@
+build() {
+	# detect extracted source directory name
+	for s in ${source[@]}; do
+		case $s in
+			*.tar.*|*.tgz) srcdir=$(tar -tf $PKGMK_SOURCE_DIR/${s##*/} | cut -d / -f1 | head -n1);;
+		esac
+		break
+	done
+	# cd into extracted source directory
+	if [ "$srcdir" ] && [ -d "$srcdir" ]; then
+		cd $srcdir
+	fi
+
+	if [ "$(command -v bootstrap_build)" ]; then
+		bootstrap_build
+	else
+		./configure --prefix=$TOOLS $bootstrap_opt $@ || return $?
+		make || return $?
+		make install || return $?
+	fi
+	touch $PKG/dummyfile
+}

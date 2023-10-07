@@ -1,0 +1,397 @@
+#!/bin/bash
+
+xpkg_depends() {
+	# check port existence
+	checkportexistence $@ || exit $?
+	allinstalled=$(pkginfo -i | awk '{print $1}')
+	for i in $(port_deps $1); do
+		echo $allinstalled | tr ' ' '\n' | grep -qx $i && echo -n "[i] " || echo -n "[-] "
+		echo $i
+	done
+}
+
+xpkg_deplist() {
+	# check port existence
+	checkportexistence $@ || exit $?
+	run_checkdep $@
+	for i in $DEPS; do
+		echo $i
+	done
+}
+
+checkdep() {
+	# track processed pkg to avoid cycle deps
+	process="$process $1"
+	for ii in $(port_deps $1); do
+		# if deps already in process list, skip, circular deps detected
+		echo $process | tr ' ' '\n' | grep -qx $ii && continue
+		# skip if itself in depends list
+		[ "$ii" = "$1" ] && continue
+		# skip if pkg already in deps list
+		echo $DEPS | tr ' ' '\n' | grep -x $ii && continue
+		# checko for port existence
+		[ "$(port_path $ii)" ] || continue
+		# check deps
+		checkdep $ii
+	done
+	# will go here if no deps anymore to check, add it to list deps
+	DEPS="$DEPS $1"
+}
+
+run_checkdep() {
+	for i in $@; do
+		# if already have in list deps, dont check again
+		if [ ! $(echo $DEPS | tr ' ' '\n' | grep -x $i) ]; then
+			checkdep $i
+		fi
+	done
+}
+
+port_deps() {
+	ppath=$(port_path $1)
+	[ -f $ppath/depends ] || return 0
+	deps=$(awk '{print $1}' $ppath/depends)
+	echo $deps
+}
+
+port_path() {
+	for i in $repo; do
+		if [ -f $i/$1/Pkgfile ]; then
+			echo $i/$1
+			break
+		fi
+	done
+}
+
+printandrun() {
+	echo "xpkg: $@"
+	$@
+}
+
+run_runscript() {
+	[ -f $1 ] || return 0
+	if [ "$ROOT" ]; then
+		[ -d $ROOT/tmp ] || return 0
+		cp $1 $ROOT/tmp
+		chmod +x $ROOT/tmp/$1
+		chroot $ROOT /tmp/$1
+		rm -f $ROOT/tmp/$1
+	else
+		./$1
+	fi
+}
+
+run_trigger() {
+	pkginfo $root_opt -l $1 | grep -q ^usr/share/mime/$ && {
+		echo "Updating the MIME type database..."
+		chroot ${ROOT:-/} update-mime-database /usr/share/mime
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/share/applications/$ && {
+		echo "Updating desktop file MIME type cache..."
+		chroot ${ROOT:-/} update-desktop-database --quiet
+	}
+	pkginfo $root_opt -l $1 | grep -q ^etc/udev/hwdb.d/$ && {
+		echo "Updating hardware database..."
+		chroot ${ROOT:-/} udevadm hwdb --update
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/lib/gtk-3.0/3.0.0/immodules/.*.so && {
+		echo "Probing GTK3 input method modules..."
+		chroot ${ROOT:-/} gtk-query-immodules-3.0 --update-cache
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/lib/gtk-2.0/2.10.0/immodules/.*.so && {
+		echo "Probing GTK2 input method modules..."
+		chroot ${ROOT:-/} gtk-query-immodules-2.0 --update-cache
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/share/glib-2.0/schemas/$ && {
+		echo "Compiling GSettings XML schema files..."
+		chroot ${ROOT:-/} glib-compile-schemas /usr/share/glib-2.0/schemas
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/lib/gio/modules/.*.so && {
+		echo "Updating GIO module cache..."
+		chroot ${ROOT:-/} gio-querymodules /usr/lib/gio/modules
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/.*.so && {
+		echo "Probing GDK-Pixbuf loader modules..."
+		chroot ${ROOT:-/} gdk-pixbuf-query-loaders --update-cache
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/share/fonts/$ && {
+		echo "Updating X fontdir indices..."
+		for dir in $(find ${ROOT:-/}/usr/share/fonts -maxdepth 1 -type d \( ! -path ${ROOT:-/}/usr/share/fonts \)); do
+			dir=$(echo $dir | sed "s,${ROOT:-/},,")
+			rm -f ${ROOT:-/}$dir/fonts.scale ${ROOT:-/}$dir/fonts.dir ${ROOT:-/}$dir/.uuid
+			rmdir --ignore-fail-on-non-empty ${ROOT:-/}$dir
+			[ -d "${ROOT:-/}$dir" ] || continue
+			chroot ${ROOT:-/} mkfontdir $dir
+			chroot ${ROOT:-/} mkfontscale $dir
+		done
+		echo "Updating fontconfig cache..."
+		chroot ${ROOT:-/} fc-cache -s
+	}
+	pkginfo $root_opt -l $1 | grep -q ^usr/share/icons/$ && {
+		echo "Updating icon theme caches..."
+		for dir in ${ROOT:-/}/usr/share/icons/* ; do
+			if [ -e $dir/index.theme ]; then
+				chroot ${ROOT:-/} gtk-update-icon-cache -q $dir 2>/dev/null
+			else
+				rm -f $dir/icon-theme.cache
+				rmdir --ignore-fail-on-non-empty $dir
+			fi
+		done
+	}
+}
+
+xpkg_pkgmk() {
+	while [ "$1" ]; do
+		case $1 in
+			-*) pkgmk_opt="$pkgmk_opt $1";;
+			*) p="$p $1";;
+		esac
+		shift
+	done
+	# check port existence
+	checkportexistence $p || exit $?
+	for i in $p; do
+		cd $(port_path $i)
+		printandrun pkgmk $pkgmk_opt || exit $?
+		cd - >/dev/null 2>&1
+	done	
+}
+
+xpkg_add() {
+	needroot
+	while [ "$1" ]; do
+		case $1 in
+			-i|-u|-d) shift; continue;; # reserved for 'install' and 'upgrade' mode
+			-if|-in|-im|-is|-ns) pkgmk_opt="$pkgmk_opt $1";; # pass this opts to pkgmk
+			-cf) pkgmkconf=$2; pkgmk_opt="$pkgmk_opt $1 $2"; shift;;
+			-r) ROOT=$2; root_opt="-r $2"; shift;;
+			-f) pkgadd_opt="$1";;
+			-y) yes=1;;
+			-nd) nodeps=1;;
+			-nr) norunscript=1;;
+			-nt) notrigger=1;;
+			-*) echo " '$1': forbidden opts, use 'xpkg pkgmk $1' instead.";; # avoid to use this opts in install mode
+			*) p="$p $1";;
+		esac
+		shift
+	done
+	# check port existence
+	checkportexistence $p || exit $?
+	allinstalled=$(pkginfo -i $root_opt | awk '{print $1}')
+	# only proceed with non-installed pkg
+	for i in $p; do
+		echo $allinstalled | tr ' ' '\n' | grep -qx $i && { echo "port '$i' is installed"; continue; }
+		pkg="$pkg $i"
+	done
+	[ "$pkg" ] || exit 0
+	if [ "$nodeps" ]; then
+		p="$pkg"
+	else
+		# get deplist
+		echo "solving dependencies..."
+		deps=$(xpkg_deplist $pkg)
+		unset p
+		for i in $deps; do
+			echo $allinstalled | tr ' ' '\n' | grep -qx $i && continue
+			[ "$(port_path $i)" ] || continue
+			p="$p $i"
+		done
+		echo
+	fi
+	if [ ! "$yes" ]; then
+		# prompt user
+		echo "$(echo $p | tr ' ' '\n' | wc -l) packages will be installed:"
+		echo -n ' '
+		echo $p | tr '\n' ' '
+		echo; echo
+		echo -n "press enter to continue"
+		read -r enter
+	fi
+	# pkgadd.conf
+	pkgaddconf=/etc/pkgadd.conf
+	if [ "$ROOT" ]; then
+		[ -f $ROOT/etc/pkgadd.conf ] && pkgaddconf=$ROOT/etc/pkgadd.conf
+	fi
+	# install ports
+	. ${pkgmkconf:-/etc/pkgmk.conf}
+	for i in $p; do
+		cd $(port_path $i)
+		if [ -f pre-install.sh ]; then
+			[ "$norunscript" ] || printandrun run_runscript pre-install.sh
+		fi
+		. ./Pkgfile
+		if [ ! -f ${PKGMK_PACKAGE_DIR:-$PWD}/$name#$version-$release.pkg.tar.${PKGMK_COMPRESSION_MODE:-gz} ]; then
+			printandrun pkgmk -d $pkgmk_opt || exit $?
+		fi
+		printandrun pkgadd -c $pkgaddconf $root_opt $pkgadd_opt ${PKGMK_PACKAGE_DIR:-$PWD}/$name#$version-$release.pkg.tar.${PKGMK_COMPRESSION_MODE:-gz} || exit $?
+		if [ -f post-install.sh ]; then
+			[ "$norunscript" ] || printandrun run_runscript post-install.sh
+		fi
+		[ "$notrigger" ] || run_trigger $p
+		cd - >/dev/null 2>&1
+	done
+}
+
+xpkg_rm() {
+	needroot
+	while [ "$1" ]; do
+		case $1 in
+			-y) yes=1;;
+			-r) ROOT=$2; root_opt="-r $2"; shift;;
+			*) p="$p $1";;
+		esac
+		shift
+	done
+	# check if pkg is installed
+	for i in $p; do
+		pkginfo -i $root_opt | awk '{print $1}' | grep -qx $i || {
+			echo "port '$i' not installed"
+			error=1
+		}
+	done
+	[ "$error" ] && exit 1
+	if [ ! "$yes" ]; then
+		# prompt user
+		echo "$(echo $p | tr ' ' '\n' | wc -l) packages will be removed:"
+		echo -n ' '
+		echo $p | tr '\n' ' '
+		echo; echo
+		echo -n "press enter to continue"
+		read -r enter
+	fi
+	for i in $p; do
+		printandrun pkgrm $root_opt $i || exit $?
+	done
+}
+
+checkportexistence() {
+	for i in $@; do
+		if [ ! "$(port_path $i)" ]; then
+			echo "port '$i' not exist"
+			error=1
+		fi
+	done
+	[ "$error" ] && return 2
+	return 0
+}
+
+needroot() {
+	if [ "$(id -u)" != 0 ]; then
+		echo "root required for this operation"
+		exit 1
+	fi
+}
+
+xpkg_upgrade() {
+	needroot
+	while [ "$1" ]; do
+		case $1 in
+			-i|-u|-d) shift; continue;; # reserved for 'install' and 'upgrade' mode
+			-if|-in|-im|-is|-ns) pkgmk_opt="$pkgmk_opt $1";; # pass this opts to pkgmk
+			-fr) pkgmk_opt="$pkgmk_opt -f"; forcerebuild=1;;
+			-cf) pkgmkconf=$2; pkgmk_opt="$pkgmk_opt $1 $2"; shift;;
+			-r) ROOT=$2; root_opt="-r $2"; shift;;
+			-f) pkgadd_opt="$f";;
+			-y) yes=1;;
+			-nd) nodeps=1;;
+			-nr) norunscript=1;;
+			-nt) notrigger=1;;
+			-*) echo " '$1': forbidden opts, use 'xpkg pkgmk $1' instead.";; # avoid to use this opts in install mode
+			*) p="$p $1";;
+		esac
+		shift
+	done
+	if [ ! "$p" ]; then
+		echo "checking for outdated packages..."
+		p=$(xpkg_diff | awk '{print $1}' | sed 's/://')
+	fi
+	if [ ! "$p" ]; then
+		echo "nothing to upgrade, exiting..."
+		exit 0
+	fi
+	# check port existence
+	checkportexistence $p || exit $?
+	if [ ! "$yes" ]; then
+		# prompt user
+		echo
+		echo "$(echo $p | tr ' ' '\n' | wc -l) packages will be upgraded:"
+		echo -n ' '
+		echo $p | tr '\n' ' '
+		echo; echo
+		echo -n "press enter to continue"
+		read -r enter
+	fi
+	# pkgadd.conf
+	pkgaddconf=/etc/pkgadd.conf
+	if [ "$ROOT" ]; then
+		[ -f $ROOT/etc/pkgadd.conf ] && pkgaddconf=$ROOT/etc/pkgadd.conf
+	fi
+	# upgrade ports
+	. ${pkgmkconf:-/etc/pkgmk.conf}
+	for i in $p; do
+		cd $(port_path $i)
+		if [ -f pre-install.sh ]; then
+			[ "$norunscript" ] || printandrun run_runscript pre-install.sh
+		fi
+		. ./Pkgfile
+		if [ "$forcerebuild" ] || [ ! -f ${PKGMK_PACKAGE_DIR:-$PWD}/$name#$version-$release.pkg.tar.${PKGMK_COMPRESSION_MODE:-gz} ]; then
+			printandrun pkgmk -d $pkgmk_opt || exit $?
+		fi
+		printandrun pkgadd -c $pkgaddconf -u $root_opt $pkgadd_opt ${PKGMK_PACKAGE_DIR:-$PWD}/$name#$version-$release.pkg.tar.${PKGMK_COMPRESSION_MODE:-gz} || exit $?
+		if [ -f post-install.sh ]; then
+			[ "$norunscript" ] || printandrun run_runscript post-install.sh
+		fi
+		[ "$notrigger" ] || run_trigger $p
+		cd - >/dev/null 2>&1
+	done
+}
+
+xpkg_diff() {
+	for installedpkg in $(pkginfo -i $root_opt | tr ' ' '#'); do
+		iname=${installedpkg%#*}
+		iversion=${installedpkg#*#}
+		ppath=$(port_path $iname)
+		[ "$ppath" ] || continue
+		. $ppath/Pkgfile
+		if [ "$installedpkg" != "$name#$version-$release" ]; then
+			echo " $name: $iversion => $version-$release"
+		fi
+	done
+}
+
+xpkg_path() {
+	ppath=$(port_path $1)
+	[ "$ppath" ] && echo $ppath || echo "port '$1' not found"
+}
+
+xpkg_search() {
+	for r in $repo; do
+		if [ -d $r ]; then
+			erepo="$erepo $r"
+		else
+			echo "repo '$r' not exist"
+		fi
+	done
+	[ "$erepo" ] || return 1
+	find $erepo -type f -name Pkgfile | grep -i $1 | rev | awk -F / '{print $2,$3}' | rev | column -t
+}
+
+mode=$1
+shift
+
+if [ ! "$mode" ] || [ ! "$(command -v xpkg_$mode)" ]; then
+	echo "run '$0 help' to see available options"
+	exit 0
+fi
+
+repo="$(grep ^repodir /etc/xpkg.conf | awk '{print $2}')"
+
+if [ ! "repo" ]; then
+	echo "not repo is configured"
+	echo "echo please add 'repodir <repo path>' in /etc/xpkg.conf"
+	exit 1
+fi
+
+xpkg_$mode $@
+
+exit 0

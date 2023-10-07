@@ -1,0 +1,7 @@
+# Pkgfile for libinput
+
+name=libinput
+version=1.22.1
+release=1
+source=(https://gitlab.freedesktop.org/$name/$name/-/archive/$version/$name-$version.tar.gz)
+build_opt="-Ddebug-gui=false -Dtests=false -Dlibwacom=false -Dudev-dir=/lib/udev"

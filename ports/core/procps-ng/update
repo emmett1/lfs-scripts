@@ -1,3 +1,0 @@
-getver_procps-ng() {
-	getver | grep ^3
-}

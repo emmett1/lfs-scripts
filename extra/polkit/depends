@@ -1,0 +1,5 @@
+glib
+duktape
+gobject-introspection
+libxslt
+linux-pam

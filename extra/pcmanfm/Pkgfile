@@ -1,0 +1,6 @@
+# Pkgfile for pcmanfm
+
+name=pcmanfm
+version=1.3.2
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.xz)

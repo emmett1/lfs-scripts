@@ -1,0 +1,7 @@
+at-spi2-core
+gdk-pixbuf
+libepoxy
+pango
+libxkbcommon
+libxslt
+wayland

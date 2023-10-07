@@ -1,0 +1,13 @@
+# Pkgfile for xterm
+
+name=xterm
+version=384
+release=1
+source=(https://invisible-mirror.net/archives/$name/$name-$version.tgz)
+export TERMINFO=/usr/share/terminfo
+build_opt="--with-app-defaults=/etc/X11/app-defaults"
+
+pre_build() {
+	sed -i '/v0/{n;s/new:/new:kb=^?:/}' termcap
+	printf '\tkbs=\\177,\n' >> terminfo
+}

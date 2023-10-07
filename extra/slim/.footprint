@@ -1,0 +1,26 @@
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/slim.conf
+drwxr-xr-x	root/root	etc/sv/
+drwxr-xr-x	root/root	etc/sv/slim/
+-rwxr-xr-x	root/root	etc/sv/slim/run
+lrwxrwxrwx	root/root	etc/sv/slim/supervise -> /run/runit/supervise.slim
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/slim
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libslim.so -> libslim.so.1.4.0
+-rwxr-xr-x	root/root	usr/lib/libslim.so.1.4.0
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/slim.1.gz
+drwxr-xr-x	root/root	usr/share/slim/
+drwxr-xr-x	root/root	usr/share/slim/themes/
+drwxr-xr-x	root/root	usr/share/slim/themes/default/
+-rw-r--r--	root/root	usr/share/slim/themes/default/background.jpg
+-rw-r--r--	root/root	usr/share/slim/themes/default/panel.png
+-rw-r--r--	root/root	usr/share/slim/themes/default/slim.theme
+drwxr-xr-x	root/root	usr/share/slim/themes/original/
+-rw-r--r--	root/root	usr/share/slim/themes/original/background.jpg
+-rw-r--r--	root/root	usr/share/slim/themes/original/panel.png
+-rw-r--r--	root/root	usr/share/slim/themes/original/slim.theme

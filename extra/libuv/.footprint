@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/uv.h
+drwxr-xr-x	root/root	usr/include/uv/
+-rw-r--r--	root/root	usr/include/uv/errno.h
+-rw-r--r--	root/root	usr/include/uv/linux.h
+-rw-r--r--	root/root	usr/include/uv/threadpool.h
+-rw-r--r--	root/root	usr/include/uv/unix.h
+-rw-r--r--	root/root	usr/include/uv/version.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libuv.a
+-rwxr-xr-x	root/root	usr/lib/libuv.la
+lrwxrwxrwx	root/root	usr/lib/libuv.so -> libuv.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libuv.so.1 -> libuv.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib/libuv.so.1.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libuv.pc

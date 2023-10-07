@@ -1,0 +1,8 @@
+# Pkgfile for qemu
+
+name=qemu
+version=8.1.0
+release=1
+source=(https://download.$name.org/$name-$version.tar.xz)
+buildtype=configure_build
+build_opt="--target-list=x86_64-softmmu --disable-gtk"
