@@ -227,7 +227,7 @@ export LC_ALL=C
 
 toolchainpkg="binutils-pass1 gmp mpfr mpc gcc-pass1 linux-headers glibc gcc-pass2 binutils-pass2 gcc-pass3 m4
 	ncurses bash bison bzip2 coreutils diffutils file findutils gawk gettext grep gzip make patch perl python
-	sed tar texinfo xz openssl ca-certificates curl libarchive"
+	sed tar texinfo xz openssl ca-certificates curl libarchive pkgutils"
 	
 basepkg="aaa_filesystem linux-headers man-pages glibc tzdata zlib bzip2 xz file ncurses readline m4 bc binutils
 	gmp mpfr mpc attr acl shadow gcc pkgconf libcap sed psmisc iana-etc bison flex pcre2 grep bash dash
