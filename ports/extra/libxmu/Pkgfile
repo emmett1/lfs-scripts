@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext libxt 
+
+name=libxmu
+version=1.1.4
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXmu-$version.tar.xz)

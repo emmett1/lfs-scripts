@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zImN9mtH2yXCdMxzNj6D1dnFeivEh/j8jC2qwJw/b7rEeb9Ab8esy33pw7JpAl8xTpNrCuFUPUp4wKV48R6dUgA=
+SHA256 (Pkgfile) = 25440afbc5193d76291f8d24a92d02da8ab9ef35959bcaafc494c1ee9825ea7d
+SHA256 (.footprint) = 4cb77d7bc7b40be34e644391f3d54380c00c185d15a0c8821f0632c93e76ec4b
+SHA256 (mesa-23.2.1.tar.xz) = 64de0616fc2d801f929ab1ac2a4f16b3e2783c4309a724c8a259b20df8bbc1cc

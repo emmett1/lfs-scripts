@@ -1,0 +1,18 @@
+# Depends on: mkfontscale 
+
+name=liberation-fonts-ttf
+version=2.00.1
+release=1
+source=(https://releases.pagure.org/liberation-fonts/$name-$version.tar.gz
+	30-0-liberation-mono.conf
+	30-0-liberation-sans.conf
+	30-0-liberation-serif.conf)
+
+pkg_build() {
+	install -d $PKG/usr/share/fonts/TTF
+	cp *.ttf $PKG/usr/share/fonts/TTF/
+	
+	install -Dm0644 $SRC/30-0-liberation-mono.conf $PKG/etc/fonts/conf.avail/30-$name-mono.conf
+	install -Dm0644 $SRC/30-0-liberation-sans.conf $PKG/etc/fonts/conf.avail/30-$name-sans.conf
+	install -Dm0644 $SRC/30-0-liberation-serif.conf $PKG/etc/fonts/conf.avail/30-$name-serif.conf
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+update-mime-database /usr/share/mime
+update-desktop-database --quiet
+glib-compile-schemas /usr/share/glib-2.0/schemas

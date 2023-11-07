@@ -24,7 +24,7 @@ PKGMK_PACKAGE_DIR=/tmp/lfs-pkg
 . $PWD/files/pkgmk.bootstrap
 " > /tmp/bootstrap.conf
 
-	if [ ! "$(command -v pkgmk)" ]; then
+	if [ ! "$(PATH=$TOOLS/bin command -v pkgmk)" ]; then
 		if [ ! -f $sourcedir/pkgutils-5.40.10.tar.xz ]; then
 			curl -o $sourcedir/pkgutils-5.40.10.tar.xz https://crux.nu/files/pkgutils-5.40.10.tar.xz
 		fi
@@ -33,6 +33,7 @@ PKGMK_PACKAGE_DIR=/tmp/lfs-pkg
 		sed -i -e 's/ --static//' -e 's/ -static//' /tmp/pkgutils-5.40.10/Makefile
 		make -C /tmp/pkgutils-5.40.10
 		make -C /tmp/pkgutils-5.40.10 BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
+		rm -rf /tmp/pkgutils-5.40.10
 	fi
 	
 	for i in $toolchainpkg; do
@@ -40,7 +41,7 @@ PKGMK_PACKAGE_DIR=/tmp/lfs-pkg
 		export tcpkg="$i"
 		cd core/${i%-pass*}
 		mkdir -p /tmp/lfs-pkg
-		pkgmk -d -if -cf /tmp/bootstrap.conf
+		pkgmk -d -is -if -cf /tmp/bootstrap.conf
 		rm -rf /tmp/lfs-pkg
 		cd - >/dev/null 2>&1
 		touch $TOOLS/$i
@@ -82,6 +83,7 @@ _buildbase() {
 		echo "base need to build as root"
 		exit 1
 	fi
+	export PATH=$TOOLS/bin:$PATH
 	if [ ! -f $LFS/var/lib/pkg/db ]; then
 		mkdir -pv $LFS/bin $LFS/usr/lib $LFS/usr/bin $LFS/etc $LFS/dev || true
 		for i in bash cat chmod dd echo ln mkdir pwd rm stty; do
@@ -95,8 +97,12 @@ _buildbase() {
 		ln -svf bash $LFS/bin/sh
 		ln -svf /proc/self/mounts $LFS/etc/mtab
 		
-		mknod -m 600 $LFS/dev/console c 5 1
-		mknod -m 666 $LFS/dev/null c 1 3
+		mknod -m 600 $LFS/dev/console c 5 1 || true
+		mknod -m 666 $LFS/dev/null c 1 3 || true
+		
+		#mkdir -p $LFS/lib
+		#ln -s lib $LFS/lib64
+		#ln -svf $TOOLS/lib/ld-linux-x86-64.so.2 $LFS/lib
 
 		cat core/aaa_filesystem/passwd > $LFS/etc/passwd
 		cat core/aaa_filesystem/group > $LFS/etc/group
@@ -108,6 +114,7 @@ _buildbase() {
 		# package and source
 		mkdir -p $LFS/tmp/src
 		mkdir -p $LFS/tmp/pkg
+		mkdir -p $packagedir
 	fi
 	
 	# core ports
@@ -116,9 +123,11 @@ _buildbase() {
 	cp -r core/* $LFS/usr/ports/core
 	
 	# xpkg
-	echo 'repodir /usr/ports/core' > $LFS/etc/xpkg.conf
-	cp core/xpkg/xpkg $TOOLS/bin
-	chmod +x $TOOLS/bin/xpkg
+	#echo 'repodir /usr/ports/core' > $LFS/etc/xpkg.conf
+	#cp core/xpkg/xpkg $TOOLS/bin
+	#chmod +x $TOOLS/bin/xpkg
+	cp files/pkgin $TOOLS/bin/pkgin
+	chmod +x $TOOLS/bin/pkgin
 	
 	# pkgmk
 	mkdir -p $LFS/var/lib/pkgmk
@@ -139,10 +148,12 @@ PKGMK_WORK_DIR="/tmp/pkgmk-$name"
 	
 	if [ "$1" = rebuild ]; then
 		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin
-		_xpkg_opt="upgrade -fr"
+		#_xpkg_opt="upgrade -fr"
+		pkgmkopt="-f"
+		pkgaddopt="-u"
 	else
 		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin:$TOOLS/bin
-		_xpkg_opt="add"
+		#_xpkg_opt="add"
 	fi
 	
 	mountfs
@@ -153,9 +164,8 @@ PKGMK_WORK_DIR="/tmp/pkgmk-$name"
 			case $i in
 				aaa_filesystem|gcc|bash|dash|perl|coreutils|pkgutils|xpkg) _force=-f;;
 			esac
-		fi
-		chroot $LFS env -i PATH=$LFSPATH xpkg $_xpkg_opt $i -y $_force -if -nd -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
-		if [ "$1" != rebuild ]; then
+			chroot $LFS env -i PATH=$LFSPATH pkgin $pkgmkopt -d $i -is -if -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
+			pkgadd -r $LFS $_force $pkgaddopt $(ls -1 $packagedir/$i#* | tail -n1) || exit 1
 			case $i in
 				glibc) cat << EOF > $LFS/tmp/glibc-postinstall
 #!/bin/sh
@@ -179,6 +189,8 @@ EOF
 				rm -f $LFS/tmp/glibc-postinstall
 				;;
 			esac
+		else
+			chroot $LFS env -i PATH=$LFSPATH prt-get update -fr $i || { umountfs; exit 1; }
 		fi
 	done
 	umountfs
@@ -225,16 +237,16 @@ export LFS=/tmp/lfs-rootfs
 export TOOLS=/tmp/lfs-tools
 export LC_ALL=C
 
-toolchainpkg="binutils-pass1 gmp mpfr mpc gcc-pass1 linux-headers glibc gcc-pass2 binutils-pass2 gcc-pass3 m4
+toolchainpkg="binutils-pass1 gmp mpfr mpc gcc-pass1 linux-headers glibc gcc-pass2 binutils-pass2 libxcrypt gcc-pass3 m4
 	ncurses bash bison bzip2 coreutils diffutils file findutils gawk gettext grep gzip make patch perl python
 	sed tar texinfo xz openssl ca-certificates curl libarchive pkgutils"
 	
-basepkg="aaa_filesystem linux-headers man-pages glibc tzdata zlib bzip2 xz file ncurses readline m4 bc binutils
+basepkg="aaa_filesystem linux-headers man-pages glibc tzdata zlib bzip2 xz file ncurses readline m4 bc binutils libxcrypt
 	gmp mpfr mpc attr acl shadow gcc pkgconf libcap sed psmisc iana-etc bison flex pcre2 grep bash dash
 	libtool gdbm gperf expat inetutils perl perl-xml-parser intltool autoconf automake openssl kmod gettext elfutils
 	libffi sqlite python coreutils check diffutils gawk findutils groff less gzip zstd iptables libtirpc iproute2 kbd
 	libpipeline make patch man-db tar texinfo vim procps-ng util-linux e2fsprogs sysklogd eudev which
-	libarchive ca-certificates curl pkgutils xpkg"
+	libarchive ca-certificates curl pkgutils prt-get"
 
 sourcedir="$PWD/sources"
 packagedir="$PWD/packages"

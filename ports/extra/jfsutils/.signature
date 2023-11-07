@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zONFWxuenIkguH/Ol6dRa29ComIbPjjwIW+8BZ+H1x7pT1sDqxZLGyC2FZJyVx34oiw2QiqBQnIGGtm7N9AGtA0=
+SHA256 (Pkgfile) = 98b968516c087aab66b3f8009cd555dbe81e056d85d341e2fbdae58a7fd556e2
+SHA256 (.footprint) = 6d31c26f3250a272f8c5f0aaf60b5107f1c0e4c2242e696bb0a8c50b53dc3828
+SHA256 (jfsutils-1.1.15.tar.gz) = 244a15f64015ce3ea17e49bdf6e1a0fb4f9af92b82fa9e05aa64cb30b5f07a4d
+SHA256 (jfsutils-1.1.15-gcc10_fix-1.patch) = 491c8e4b4d95cc296e4b87b730e252ce37dafbabaae48aa653ae002df26266f2

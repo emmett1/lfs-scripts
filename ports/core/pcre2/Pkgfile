@@ -1,0 +1,17 @@
+name=pcre2
+version=10.42
+release=1
+source=(https://github.com/PCRE2Project/$name/releases/download/$name-$version/$name-$version.tar.bz2)
+
+pkg_build() {
+	./configure --prefix=/usr                       \
+	            --enable-unicode                    \
+	            --enable-jit                        \
+	            --enable-pcre2-16                   \
+	            --enable-pcre2-32                   \
+	            --enable-pcre2grep-libz             \
+	            --enable-pcre2grep-libbz2           \
+	            --enable-pcre2test-libreadline
+	make
+	make install
+}

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zL/nU6vy3MwHg5uzGH+TVM2qs8x0VakcNxZTkkTqOaXby8gEZZTG3pFS5ZBLkG11oNYuVCDTDJ9ma9KW4yDd6gU=
+SHA256 (Pkgfile) = 6b9bba443fec0a1c676fc82a6de18f77f4afedad2589e8c0f81d4ed8caf18517
+SHA256 (.footprint) = cd1829624890d24527f43e1a3e61b312c9319f6c9ce5f979c537deb90b212d80
+SHA256 (xauth-1.1.2.tar.xz) = 78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200

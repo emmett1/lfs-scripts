@@ -1,0 +1,8 @@
+#
+# /etc/ports/extra.httpup: extra's port collection
+#
+
+ROOT_DIR=/usr/ports/extra
+URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/beta2/ports/extra
+
+# End of file

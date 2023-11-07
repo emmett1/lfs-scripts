@@ -1,0 +1,11 @@
+# Depends on: gzip lzo xz
+
+name=squashfs-tools
+version=4.6.1
+release=1
+source=(https://github.com/plougher/$name/archive/$version/$name-$version.tar.gz)
+
+pkg_build() {
+	make GZIP_SUPPORT=1 LZO_SUPPORT=1 XZ_SUPPORT=1 EXTRA_CFLAGS="-fcommon" -C $name
+	make install INSTALL_PREFIX= INSTALL_DIR=${PKG}/sbin INSTALL_MANPAGES_DIR=${PKG}/usr/share/man/man1 -C $name
+}

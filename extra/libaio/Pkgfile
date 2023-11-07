@@ -1,6 +1,0 @@
-# Pkgfile for libaio
-
-name=libaio
-version=0.3.113
-release=1
-source=(https://pagure.io/$name/archive/$name-$version/$name-$version.tar.gz)

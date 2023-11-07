@@ -1,0 +1,6 @@
+# Depends on: mkfontscale font-util 
+
+name=font-adobe-utopia-type1
+version=1.0.5
+release=1
+source=(https://www.x.org/pub/individual/font/$name-$version.tar.xz)

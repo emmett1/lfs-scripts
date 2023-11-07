@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAGGjeGM8wwWuktPGmZbqu8Xum07wZohyw3DCmgFK2p2fUEcCVIRl0e1zAVvo4Hx2HUks//Z+b/APw4rmRuJ/Qw=
+SHA256 (Pkgfile) = a827967e3ad1f286dcdcf1b6da5053a21c2fb81a2783befd1ad68e0728cf7c54
+SHA256 (.footprint) = 44f6e569ea7a86e5350b831830ce12847eed938fd4e5d206aec71d847f0e71f0
+SHA256 (setuptools-68.2.2.tar.gz) = 4ac1475276d2f1c48684874089fefcd83bd7162ddaafb81fac866ba0db282a87

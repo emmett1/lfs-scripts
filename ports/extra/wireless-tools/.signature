@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBVf7nszOk6BfPRB8v+qI+Bfr+0ObyM2i2YFysBAbfxjXVTfdIYCxp11Oz66H/inLI1GScfpOP+/NJK+afxjuw8=
+SHA256 (Pkgfile) = 4ccc5ce782cf7e98bd2a2b41d0139a74d15b5677394f1e4501e151e97afc9373
+SHA256 (.footprint) = 7a7a433633af474c340a1c93aaaba4f46c096bea5d73c95d12b9cdc5fcca0f41
+SHA256 (wireless_tools.30.pre9.tar.gz) = abd9c5c98abf1fdd11892ac2f8a56737544fe101e1be27c6241a564948f34c63

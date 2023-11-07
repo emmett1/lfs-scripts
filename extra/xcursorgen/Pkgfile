@@ -1,6 +1,0 @@
-# Pkgfile for xcursorgen
-
-name=xcursorgen
-version=1.0.8
-release=1
-source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

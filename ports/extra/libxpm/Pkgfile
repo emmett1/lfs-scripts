@@ -1,0 +1,7 @@
+# Depends on: libx11 libxext libxt 
+
+name=libxpm
+version=3.5.17
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXpm-$version.tar.xz)
+build_opt="--disable-open-zfile"

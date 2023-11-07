@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zDTWV6Kd5g9o3tBh2PBekUiwGYh1VA9tkqYoKAK/PP78b3e75/1qdTrrGbllFu9NQhrx16I2fb12IA7Fj0uz5AA=
+SHA256 (Pkgfile) = b6366b45da2056ecf979fbfabaf459d583a780ba5b68247d436fad1f505bd9cb
+SHA256 (.footprint) = 1fe48bfad0bb6d83f13c4192e97081e0c6f66d30f11350cf1d59e7b7866eca94
+SHA256 (libnatpmp-20230423.tar.gz) = 0684ed2c8406437e7519a1bd20ea83780db871b3a3a5d752311ba3e889dbfc70

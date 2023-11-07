@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zOec7LbDrC3MkyR/wYBviCnvpM1E+hz/L3MC09dIU5eQC4y9aso3b4dXToHT+8/Ap8zor8CMgheYz8OE0R2ZnQ4=
+SHA256 (Pkgfile) = 141f16792b48bcbd664203e2444ea5b583e721c514e31cba0ae6ad72f5f80e91
+SHA256 (.footprint) = 66a031fe4a57113cc33c1d7e5feb180d36a96ac5ea21f1610f1581384544f233
+SHA256 (xclock-1.1.1.tar.xz) = df7ceabf8f07044a2fde4924d794554996811640a45de40cb12c2cf1f90f742c

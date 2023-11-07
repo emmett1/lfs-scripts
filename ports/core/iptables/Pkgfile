@@ -1,0 +1,5 @@
+name=iptables
+version=1.8.10
+release=1
+source=(https://www.netfilter.org/projects/$name/files/$name-$version.tar.xz)
+build_opt="--disable-nftables --enable-libipq"

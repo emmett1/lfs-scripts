@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFM+iKDFWBxWVrq+5r4tXYwqr5Fg8VLBe6O/F+7yrzsTEIgtEHaAf34a9OFXaRP80eCk2Zr5+6QDCyusz2XA5wI=
+SHA256 (Pkgfile) = c71ee3107517adc89da9bd2bf5659fb97adb51ceaf1c23ef0aa61a4a749e5193
+SHA256 (.footprint) = a25df67c3919faee333a70973a659ad20a22f35b03334b4bba8929b5f6480531
+SHA256 (nghttp2-1.57.0.tar.xz) = 9210b0113109f43be526ac5835d58a701411821a4d39e155c40d67c40f47a958

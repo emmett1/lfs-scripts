@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zJSSbFfYdiWzEyR4hPWPxiFc/daHCjCVbGz1r+d9YehCf81c89C5jn94dLyGx1Tdsh/XcZ5JUAF2dPnCNwo63A4=
+SHA256 (Pkgfile) = 49a0df146c63e9c050cca04484f2cad4f7e39bb851a82bfcbba9c43597d98594
+SHA256 (.footprint) = e2332874a1a59222bfa8b4546639f8075abae38152f29d35a79e877b9b1d2393
+SHA256 (dht-0.27.tar.gz) = caba469a784a5c359c084099fdc025cfe09b1faec2ba9ba257b7384351c43c0a
+SHA256 (dht-cmake.patch) = 91fb75029bf04456bb7fd9c7cc14d544e906d35a309cc8de5be081049aeb7649

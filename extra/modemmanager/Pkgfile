@@ -1,6 +1,0 @@
-# Pkgfile for modemmanager
-
-name=modemmanager
-version=1.18.12
-release=1
-source=(https://www.freedesktop.org/software/ModemManager/ModemManager-$version.tar.xz)

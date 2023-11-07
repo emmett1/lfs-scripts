@@ -1,0 +1,7 @@
+# Depends on: gtk2
+
+name=keybinder
+version=0.3.1
+release=1
+source=(https://github.com/kupferlauncher/$name/releases/download/v$version/$name-$version.tar.gz)
+build_opt="--disable-python"

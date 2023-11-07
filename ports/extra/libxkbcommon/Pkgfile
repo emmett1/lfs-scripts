@@ -1,0 +1,7 @@
+# Depends on: libxcb wayland-protocols xkeyboard-config 
+
+name=libxkbcommon
+version=1.6.0
+release=1
+source=(https://xkbcommon.org/download/$name-$version.tar.xz)
+build_opt="-Denable-docs=false"

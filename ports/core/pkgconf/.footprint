@@ -1,0 +1,34 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/bomtool
+lrwxrwxrwx	root/root	usr/bin/pkg-config -> pkgconf
+-rwxr-xr-x	root/root	usr/bin/pkgconf
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/pkgconf/
+drwxr-xr-x	root/root	usr/include/pkgconf/libpkgconf/
+-rw-r--r--	root/root	usr/include/pkgconf/libpkgconf/bsdstubs.h
+-rw-r--r--	root/root	usr/include/pkgconf/libpkgconf/iter.h
+-rw-r--r--	root/root	usr/include/pkgconf/libpkgconf/libpkgconf-api.h
+-rw-r--r--	root/root	usr/include/pkgconf/libpkgconf/libpkgconf.h
+-rw-r--r--	root/root	usr/include/pkgconf/libpkgconf/stdinc.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libpkgconf.so -> libpkgconf.so.4.0.0
+lrwxrwxrwx	root/root	usr/lib/libpkgconf.so.4 -> libpkgconf.so.4.0.0
+-rwxr-xr-x	root/root	usr/lib/libpkgconf.so.4.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libpkgconf.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/aclocal/
+-rw-r--r--	root/root	usr/share/aclocal/pkg.m4
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/pkgconf/
+-rw-r--r--	root/root	usr/share/doc/pkgconf/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/pkgconf/README.md
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/pkgconf.1.gz
+drwxr-xr-x	root/root	usr/share/man/man5/
+-rw-r--r--	root/root	usr/share/man/man5/pc.5.gz
+-rw-r--r--	root/root	usr/share/man/man5/pkgconf-personality.5.gz
+drwxr-xr-x	root/root	usr/share/man/man7/
+-rw-r--r--	root/root	usr/share/man/man7/pkg.m4.7.gz

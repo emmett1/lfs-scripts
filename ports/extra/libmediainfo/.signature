@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zEoAy16H5JlGzZQgtXbwt2phM4QhV4lQJJgoQIF7fZMbfDvfTysLULbQxkBJ2mjVrkM/SqP3tm+4FpOGy7r0tg8=
+SHA256 (Pkgfile) = 701a062e3b987d23fa16244c8f2d960dcea212f5fb0b5ca6d121969eb2d17628
+SHA256 (.footprint) = 0c83624c0a41cf751640d34bf0ca6ac6a781b187f7ba2b6452bf896c1511a539
+SHA256 (MediaInfoLib-23.09.tar.gz) = 0357d66ceb1b96d4b0e94a69cb44e84c8edff7b09fe7255b3b56e08280af413c

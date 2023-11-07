@@ -1,0 +1,11 @@
+# Depends on: brotli inih
+
+name=exiv2
+version=0.28.0
+release=1
+source=(https://github.com/Exiv2/exiv2/archive/v$version/$name-$version.tar.gz)
+build_type=cmake_build
+
+pre_build() {
+	 export CXXFLAGS+=" -Wno-deprecated-declarations"
+}

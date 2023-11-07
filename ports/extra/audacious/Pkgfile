@@ -1,0 +1,7 @@
+# Depends on: glib gtk2 libxcomposite
+
+name=audacious
+version=4.3.1
+release=1
+source=(https://distfiles.$name-media-player.org/$name-$version.tar.bz2)
+build_opt="-Dqt=false -Dgtk=true"

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIZCgepesbKofzxH7FE6NLIsBXIEiowA6J63FUEd6gBsNlLpXDuI4iubVrqk5kLgqBuSkSMweeCGRoydaZTfVAg=
+SHA256 (Pkgfile) = 3b67c8d37ed542ac0ffc118bbc88c3ffdb0b1c5699d0f04541be1d9136e8f2f3
+SHA256 (.footprint) = f55eb7d98c86e8d305342297a974f9d282fbfa39cbee11b14f6f10be86023f80
+SHA256 (gsl-2.7.1.tar.gz) = dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b

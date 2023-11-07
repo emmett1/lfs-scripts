@@ -1,7 +1,0 @@
-# Pkgfile for harfbuzz
-
-name=harfbuzz-32
-version=8.0.1
-release=1
-source=(https://github.com/harfbuzz/harfbuzz/releases/download/$version/harfbuzz-$version.tar.xz)
-build_opt="-Dgraphite2=disabled -Dintrospection=disabled"

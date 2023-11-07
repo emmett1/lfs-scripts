@@ -1,8 +1,0 @@
-libpng
-glib
-libx11
-libxcb
-libxext
-libxrender
-pixman
-fontconfig

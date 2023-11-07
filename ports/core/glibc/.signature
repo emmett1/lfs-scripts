@@ -1,0 +1,9 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWQj+xHX75A5zGykPbGdY86XCZWWMzoz7PLymd9rEPdkqD/aPYM04LOuE8F2lI9+8K6Low0o6+6hpcYt4hW2PB+dWH6I9irXSgo=
+SHA256 (Pkgfile) = 89f8364a43b5d132214a40a0aeaa0bf3836ae5d686f044dd57a390c903555218
+SHA256 (.footprint) = 9c19d2bc7f9935912f7558abaa001bd09480f54d58a5679b570aae446dfdbaed
+SHA256 (glibc-2.38.tar.xz) = fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2
+SHA256 (genlocales) = ae2e3ebd982ed27c25af5c301f2452c1074f73c1434ba9f5298ecb28acf2960e
+SHA256 (ld.so.conf) = c12907a42aacd2b651a56e83b6fc92784b057624f9d6bfac1ba287328f103218
+SHA256 (nsswitch.conf) = a5bba0f90c9357a3144292f3cdf662c9fe3852671e00702e7a1249ed83449e06
+SHA256 (glibc-2.38-upstream_fixes-3.patch) = bf21557df0b0c522ed059a4b4d310f872758278c80a1228024e2d12065709b1a

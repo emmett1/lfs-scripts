@@ -1,0 +1,4 @@
+name=popt
+version=1.19
+release=1
+source=(http://ftp.rpm.org/$name/releases/$name-1.x/$name-$version.tar.gz)

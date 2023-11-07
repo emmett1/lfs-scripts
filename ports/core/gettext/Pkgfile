@@ -1,0 +1,35 @@
+name=gettext
+version=0.22
+release=1
+source=(https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+	gettext-0.22-disable-libtextstyle.patch)
+build_opt="
+	--disable-csharp
+	--disable-java
+	--with-included-glib
+	--with-included-libcroco
+	--with-included-libunistring
+	--with-included-libxml
+	--without-included-gettext
+"
+
+pkg_build() {
+	./configure \
+		--prefix=/usr \
+		--enable-{shared,static} \
+		--disable-{csharp,java,nls} \
+		--without-{emacs,git} \
+		--with-included-{glib,libcroco,libxml,libunistring}
+	make
+	make DESTDIR=$PKG install
+}
+
+
+bootstrap_build() {
+	./configure --disable-shared
+	make -j1
+	cp -v gettext-tools/src/msgfmt \
+	      gettext-tools/src/msgmerge \
+	      gettext-tools/src/xgettext \
+	      $TOOLS/bin
+}

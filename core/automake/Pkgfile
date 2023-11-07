@@ -1,6 +1,0 @@
-# Pkgfile for automake
-
-name=automake
-version=1.16.5
-release=1
-source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)

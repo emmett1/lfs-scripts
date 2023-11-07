@@ -1,0 +1,6 @@
+# Depends on: libpng imlib2 libxinerama libxt 
+
+name=feh
+version=3.10.1
+release=1
+source=(https://$name.finalrewind.org/$name-$version.tar.bz2)

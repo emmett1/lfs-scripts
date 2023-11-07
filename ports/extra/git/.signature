@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zDvS1WiRXyBXI4TXLgvgUi26gMfwAdvnfRrhxdmYlHPb2xnwGBwqq8vMbMmDyp2XXFTxwmoQFnfcvJtzKpem0QA=
+SHA256 (Pkgfile) = 5e8a3c92c113badc78098b4a53dceb5bbc44cd7f8eb6f92faebac007a7e24cf1
+SHA256 (.footprint) = abe72a454b570aca90164133f9c0bb04e29a09af07f7e300e95c552d8df78115
+SHA256 (git-2.42.0.tar.xz) = 3278210e9fd2994b8484dd7e3ddd9ea8b940ef52170cdb606daa94d887c93b0d

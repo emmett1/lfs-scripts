@@ -1,0 +1,6 @@
+# Depends on: gtk2 libwnck2 libfm keybinder wireless-tools
+
+name=lxpanel
+version=0.10.1
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

@@ -1,6 +1,0 @@
-# Pkgfile for yasm
-
-name=yasm
-version=1.2.0
-release=1
-source=(http://www.tortall.net/projects/$name/releases/$name-$version.tar.gz)

@@ -1,6 +1,0 @@
-# Pkgfile for x11perf
-
-name=x11perf
-version=1.6.1
-release=1
-source=(https://www.x.org/pub/individual/app/$name-$version.tar.bz2)

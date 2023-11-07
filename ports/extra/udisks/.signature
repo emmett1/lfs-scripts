@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zHCVfXN17nvjzZ5rhVG/sPfDIhylZJIw36moSRCR2dKY0U5ODZaCqcZs7TCvlUqGEXXARlACLnUhmZyi/PAy+wI=
+SHA256 (Pkgfile) = e39b4219c6836c5544fc54f6dc8396e451f5990e3692dd746f53f587b2f4111f
+SHA256 (.footprint) = 4f48b85462724ea10afdf2363b99795a24d15d2730928a2d3b6aa59b4990cd6e
+SHA256 (udisks-2.10.1.tar.bz2) = b75734ccf602540dedb4068bec206adcb508a4c003725e117ae8f994d92d8ece

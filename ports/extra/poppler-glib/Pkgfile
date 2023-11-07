@@ -1,0 +1,13 @@
+# Depends on: poppler glib 
+
+name=poppler-glib
+version=23.10.0
+release=1
+source=(https://poppler.freedesktop.org/poppler-$version.tar.xz)
+build_opt="-DENABLE_UNSTABLE_API_ABI_HEADERS=OFF -DENABLE_QT5=OFF -DENABLE_GLIB=ON
+	-DENABLE_UTILS=OFF -DENABLE_CPP=OFF -DENABLE_BOOST=OFF -DENABLE_QT6=OFF"
+
+post_build() {
+	rm $PKG/usr/lib/libpoppler.so*
+	rm $PKG/usr/lib/pkgconfig/poppler.pc
+}

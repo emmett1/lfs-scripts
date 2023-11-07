@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBVTglVz/GLuKDG3ll0SMVbDeLNKkYy1l7+WVRC4q1jfBFEUrctUbIhFrU6GxdBwUZLiKMh9PkFf8WLFT+mGfwI=
+SHA256 (Pkgfile) = 43a167b027ca02b62634ebdfc851d6fde1f51c3e3b7d85962b542096b030295f
+SHA256 (.footprint) = f0ab93126aaa2d5f2783ad87dbb9866b963b774f93a1971ccf4100792840effb
+SHA256 (libpciaccess-0.17.tar.xz) = 74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73

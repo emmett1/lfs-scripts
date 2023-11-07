@@ -1,0 +1,4 @@
+name=libexif
+version=0.6.24
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.bz2)

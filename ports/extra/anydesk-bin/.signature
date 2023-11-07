@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zMHQ09UtwVRky9IBzGtK/dtpmz2HHke9Pg8mgq4lfUGiYs6YF5gl4+ZpF8+Mp0zYe+3pFbsRs0fnH7r5e16V+gw=
+SHA256 (Pkgfile) = a85e9398f78a4b05672c8a77e6583ec0c20cd474e07feecfaeed3aaa92d0ab88
+SHA256 (.footprint) = f2cf43bb9dad919a1f85774bb54e3fa4a6fb236414827ba9d6bba4e9f65bcc53
+SHA256 (anydesk-6.3.0-1.el8.x86_64.rpm) = 9c52df6c9eb9742a78792a2b2230f085855f0d690c8fe948b85fde9d06b87b7b

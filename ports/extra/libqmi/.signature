@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBS0sb9N67Ki5H63x49I/W/wdazipD1xaNV/Bv8nowX7GvDJMdqKiZ/xZfuTd0BR9yW5EX7LwXZFyc6J9zLSZAo=
+SHA256 (Pkgfile) = be2608d89fd034d808118eb870098e4f95f7ed89a081df5884633289086f1b3b
+SHA256 (.footprint) = df946b4ac1a3262ef18746b0c9d87fc0a0d53232b069e9405820f3da286faf02
+SHA256 (libqmi-1.30.8.tar.xz) = 862482ce9e3ad0bd65d264334ee311cdb94b9df2863b5b7136309b41b8ac1990

@@ -1,0 +1,6 @@
+# Depends on: libxres libxt gtk2 glib
+
+name=libwnck2
+version=2.30.7
+release=1
+source=(https://download.gnome.org/sources/libwnck/2.30/libwnck-$version.tar.xz)

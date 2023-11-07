@@ -1,0 +1,6 @@
+# Depends on: libnl 
+
+name=htop
+version=3.2.2
+release=1
+source=(https://github.com/$name-dev/$name/releases/download/$version/$name-$version.tar.xz)

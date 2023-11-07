@@ -1,0 +1,3 @@
+port_getver() {
+	getver_github | sed 's/^\.//'
+}

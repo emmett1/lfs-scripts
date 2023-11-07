@@ -1,0 +1,7 @@
+# Depends on: poppler-data fontconfig gobject-introspection boost cairo lcms2 libjpeg-turbo libpng nss openjpeg gpgme
+
+name=poppler
+version=23.10.0
+release=1
+source=(https://$name.freedesktop.org/$name-$version.tar.xz)
+build_opt="-DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_QT5=OFF -DENABLE_GLIB=OFF -DENABLE_QT6=OFF"

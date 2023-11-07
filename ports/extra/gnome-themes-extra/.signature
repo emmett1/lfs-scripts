@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zH4olwy1OSPRD8VG3c1krlLKb4995TM404YN0wWa6KzgNdTnHjOV+3FO8IwIjGF2cF1K+1ckN1/UXfj0T3LWZAo=
+SHA256 (Pkgfile) = 602b2c830ffccdc3dee5c2b850d4a418a57d8cba6402092b532d789ddd81c304
+SHA256 (.footprint) = e599b29c50e535e4ca8143d4edd8c2d07c9ded89d24f7a3ed0a557dc63493159
+SHA256 (gnome-themes-extra-3.28.tar.xz) = 7c4ba0bff001f06d8983cfc105adaac42df1d1267a2591798a780bac557a5819

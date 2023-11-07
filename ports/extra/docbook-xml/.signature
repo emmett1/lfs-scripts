@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zMTRTS19UFoHa/7THpp+hinlGaU7+0BJy+Oct1p3/qhNy6vvSblwGThc7DmOTu93m/xj5bE466Kl2Vq2Bme35A8=
+SHA256 (Pkgfile) = 760f28e0df92d2c04c35034cf79bf5a53185e47bb33b7c9a68f7b4d311fbc706
+SHA256 (.footprint) = 0584ac3bc24bb23a9213219ba043fb3d597c042aa9b4922e7e28a76474a7c5e2
+SHA256 (docbook-xml-4.5.zyp) = 4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4
+SHA256 (docbook-xml-4.4.zyp) = 02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090
+SHA256 (docbook-xml-4.3.zyp) = 23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464
+SHA256 (docbook-xml-4.2.zyp) = acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2

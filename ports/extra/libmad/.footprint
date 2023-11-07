@@ -1,0 +1,15 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/mad.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/mad/
+-rw-r--r--	root/root	usr/lib/cmake/mad/madConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/mad/madConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib/cmake/mad/madTargets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/mad/madTargets.cmake
+lrwxrwxrwx	root/root	usr/lib/libmad.so -> libmad.so.0
+lrwxrwxrwx	root/root	usr/lib/libmad.so.0 -> libmad.so.0.16.4
+-rwxr-xr-x	root/root	usr/lib/libmad.so.0.16.4
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/mad.pc

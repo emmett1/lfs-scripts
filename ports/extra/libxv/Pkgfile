@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext 
+
+name=libxv
+version=1.0.12
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXv-$version.tar.xz)

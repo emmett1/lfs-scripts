@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zE6yr+zfkfGMqR6bZFcjOjAFeo5azUyY1P236jc3kYrXoRkS5HE8jSiAYImz+vndRQRQv1mBLbagxEGUgECfKg0=
+SHA256 (Pkgfile) = 918dec1c62690953cb8c90ecfcd9a9acbb3841de4249a24cbb043ffeb7180277
+SHA256 (.footprint) = 1a1b9621faf06950b1a60d486466a11e474176a3b7a945dddbd06638cdb4ad8d
+SHA256 (ntfs-3g_ntfsprogs-2022.10.3.tgz) = f20e36ee68074b845e3629e6bced4706ad053804cbaf062fbae60738f854170c

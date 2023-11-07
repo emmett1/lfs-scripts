@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWQj+xHX75A5zJ8UQPB71G9U13/xedQFZyg0Q6/gbJbN3HFZcdVZRdTtD74Yslpxjx8V6TDr8WkUbfATSz4U25NbvW5dJVUMNAU=
+SHA256 (Pkgfile) = b78d7d873f4b981b2b51dace224ce398d983ac232ef2ca324c94efa89710e7e6
+SHA256 (.footprint) = d8b2e50938f3e0db9746d5b6460ec2ff07b486057f6c6b0dcc0190c90af34879
+SHA256 (ncurses-6.4.tar.gz) = 6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159

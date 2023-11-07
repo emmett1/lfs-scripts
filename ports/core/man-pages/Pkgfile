@@ -1,0 +1,14 @@
+name=man-pages
+version=6.05.01
+release=1
+source=(https://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz)
+
+pkg_build() {
+	make prefix=/usr DESTDIR=$PKG install
+	
+	# ship with tzdata
+	rm $PKG/usr/share/man/man5/tzfile.5 \
+	   $PKG/usr/share/man/man8/zic.8 \
+	   $PKG/usr/share/man/man8/tzselect.8 \
+	   $PKG/usr/share/man/man8/zdump.8
+}

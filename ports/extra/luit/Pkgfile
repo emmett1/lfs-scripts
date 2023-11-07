@@ -1,0 +1,10 @@
+# Depends on: libfontenc 
+
+name=luit
+version=1.1.1
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.bz2)
+
+pre_build() {
+	sed -i -e "/D_XOPEN/s/5/6/" configure
+}

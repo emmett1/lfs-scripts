@@ -1,0 +1,7 @@
+# Depends on: gdk-pixbuf libnotify libxinerama libxscrnsaver
+
+name=dunst
+version=1.9.2
+release=1
+source=(https://github.com/$name-project/$name/archive/v$version/$name-$version.tar.gz)
+export WAYLAND=0

@@ -1,0 +1,8 @@
+name=libevent
+version=2.1.12
+release=1
+source=(https://github.com/$name/$name/releases/download/release-$version-stable/$name-$version-stable.tar.gz)
+
+pre_build() {
+	sed -i 's/python/&3/' event_rpcgen.py
+}

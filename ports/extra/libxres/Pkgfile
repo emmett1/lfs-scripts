@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext 
+
+name=libxres
+version=1.2.2
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXres-$version.tar.xz)

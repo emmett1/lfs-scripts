@@ -1,0 +1,11 @@
+name=man-db
+version=2.12.0
+release=1
+source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+build_opt="--disable-setuid
+	--enable-cache-owner=bin
+	--with-browser=/usr/bin/lynx
+	--with-vgrind=/usr/bin/vgrind
+	--with-grap=/usr/bin/grap
+	--with-systemdtmpfilesdir=
+	--with-systemdsystemunitdir="

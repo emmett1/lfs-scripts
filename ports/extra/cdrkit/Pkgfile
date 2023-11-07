@@ -1,0 +1,9 @@
+name=cdrkit
+version=1.1.11
+release=1
+source=(http://pkgs.fedoraproject.org/repo/pkgs/cdrkit/cdrkit-$version.tar.gz/efe08e2f3ca478486037b053acd512e9/cdrkit-$version.tar.gz
+	cdrkit-1.1.9-efi-boot.patch)
+
+pre_build() {
+	export CFLAGS="$CFLAGS -fcommon"
+}

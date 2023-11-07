@@ -1,0 +1,30 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/mpf2mpfr.h
+-rw-r--r--	root/root	usr/include/mpfr.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libmpfr.so -> libmpfr.so.6.2.1
+lrwxrwxrwx	root/root	usr/lib/libmpfr.so.6 -> libmpfr.so.6.2.1
+-rwxr-xr-x	root/root	usr/lib/libmpfr.so.6.2.1
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/mpfr.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/mpfr/
+-rw-r--r--	root/root	usr/share/doc/mpfr/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/mpfr/BUGS
+-rw-r--r--	root/root	usr/share/doc/mpfr/COPYING
+-rw-r--r--	root/root	usr/share/doc/mpfr/COPYING.LESSER
+-rw-r--r--	root/root	usr/share/doc/mpfr/FAQ.html
+-rw-r--r--	root/root	usr/share/doc/mpfr/NEWS
+-rw-r--r--	root/root	usr/share/doc/mpfr/TODO
+drwxr-xr-x	root/root	usr/share/doc/mpfr/examples/
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/ReadMe
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/can_round.c
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/divworst.c
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/rndo-add.c
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/sample.c
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/threads.c
+-rw-r--r--	root/root	usr/share/doc/mpfr/examples/version.c
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/mpfr.info.gz

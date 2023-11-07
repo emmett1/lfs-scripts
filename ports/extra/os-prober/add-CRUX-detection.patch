@@ -1,0 +1,15 @@
+diff -Naur os-prober-1.80.orig/os-probes/mounted/common/90linux-distro os-prober-1.80/os-probes/mounted/common/90linux-distro
+--- os-prober-1.80.orig/os-probes/mounted/common/90linux-distro	2022-05-28 11:49:43.439329688 +0200
++++ os-prober-1.80/os-probes/mounted/common/90linux-distro	2022-05-28 12:05:30.890279156 +0200
+@@ -27,6 +27,11 @@
+ 	elif [ -e "$dir/etc/debian_version" ]; then
+ 		short="Debian"
+ 		long="$(printf "Debian GNU/Linux (%s)\n" "$(cat "$dir/etc/debian_version")")"
++	# CRUX traditionally only supplies /usr/bin/crux with only newer versions
++	# supporting /etc/os-release, we only need name and version anyway
++	elif [ -e "$dir/usr/bin/crux" ]; then
++		short="$(awk '/echo / {gsub(/"|,/, "", $2); print $2}' $dir/usr/bin/crux)"
++		long="$(awk '/echo / {gsub(/"|,/, "", $2);gsub(/"|,/, "", $4); print $2 " " $4}' $dir/usr/bin/crux)"
+ 	# RPM derived distributions may also have a redhat-release or
+ 	# mandrake-release, so check their files first.
+ 	elif [ -e "$dir/etc/altlinux-release" ]; then

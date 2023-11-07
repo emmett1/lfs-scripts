@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBMO3rb/5T2E2t4KwZWjCcrzYkogOL+gCXlr/Kxyt7MWLdcVY7O2A86gBsC2TvEh1uJiWvTpvL5NYf1NHSq/HAc=
+SHA256 (Pkgfile) = 8c077243ee7243e0796e13b54621b5317d0ab855f3276a3bf88179b20ce86d21
+SHA256 (.footprint) = 251ff9200f7790b2cff181dec1f3a6ad57a2b816c371ccdd92408b85e304dfa3
+SHA256 (libsecret-0.21.0.tar.xz) = 2735b29d1cc0e5b12ba90bee88bd21774ac8db4ae1a4b716f46c409c19a14613

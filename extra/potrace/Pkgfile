@@ -1,7 +1,0 @@
-# Pkgfile for potrace
-
-name=potrace
-version=1.16
-release=1
-source=(https://downloads.sourceforge.net/$name/$name-$version.tar.gz)
-build_opt="--enable-a4 --enable-metric --with-libpotrace"

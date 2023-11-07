@@ -1,6 +1,0 @@
-# Pkgfile for zstd
-
-name=zstd
-version=1.5.5
-release=1
-source=(https://github.com/facebook/$name/releases/download/v$version/$name-$version.tar.gz)

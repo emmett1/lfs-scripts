@@ -1,0 +1,32 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/lame
+-rwxr-xr-x	root/root	usr/bin/mp3rtp
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/lame/
+-rw-r--r--	root/root	usr/include/lame/lame.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libmp3lame.so -> libmp3lame.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libmp3lame.so.0 -> libmp3lame.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libmp3lame.so.0.0.0
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/lame/
+drwxr-xr-x	root/root	usr/share/doc/lame/html/
+-rw-r--r--	root/root	usr/share/doc/lame/html/about.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/abr.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/cbr.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/contact.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/contributors.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/detailed.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/history.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/index.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/introduction.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/links.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/list.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/ms_stereo.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/usage.html
+-rw-r--r--	root/root	usr/share/doc/lame/html/vbr.html
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/lame.1.gz

@@ -1,0 +1,21 @@
+# Depends on: openjpeg libraw openexr libpng tiff libwebp jxrlib
+
+name=freeimage
+version=3.18.0
+release=1
+source=(http://downloads.sourceforge.net/freeimage/FreeImage3180.zip
+	freeimage-libraw-0.20.patch
+	freeimage-libraw-0.21.patch
+	freeimage-unbundle.patch)
+
+pkg_build() {
+	rm -r Source/Lib* Source/ZLib Source/OpenEXR
+	> Source/FreeImage/PluginG3.cpp
+	> Source/FreeImageToolkit/JPEGTransform.cpp
+	sh gensrclist.sh
+	sh genfipsrclist.sh
+	make -f Makefile.gnu
+	make -f Makefile.fip
+	make -f Makefile.gnu install
+	make -f Makefile.fip install
+}

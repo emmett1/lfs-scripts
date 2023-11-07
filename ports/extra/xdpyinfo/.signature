@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFOL5tpQ+cJ1qSh30Jz8YWMoNEwi7ou96qgbkrXH8iInRYkk8hyC7FuerYpsAMwHDSXpkvBBQHuhXDV92uM29w8=
+SHA256 (Pkgfile) = b1aefb9e926f5da76124c7df4ba0bab2b11b538c997f68f1492a969972c7efb7
+SHA256 (.footprint) = aaabe16e46a2db1dd72629e8512b80b266030b60ede32beb5cbb775886ca2db2
+SHA256 (xdpyinfo-1.3.4.tar.xz) = a8ada581dbd7266440d7c3794fa89edf6b99b8857fc2e8c31042684f3af4822b

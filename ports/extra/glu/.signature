@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zClDB7Fa/1YQ+qbprK/ISe4bdZKaMsHHgHCfzFP8v0w2cRbTztnVaYNJlXFX9Lush6ZzrWf1TXxNtSLRGdtDIQA=
+SHA256 (Pkgfile) = 0465fd17ca7f6b12b7f9fdde923cf36c0605d8c00d91773daa8e65240cc109d5
+SHA256 (.footprint) = 090ca3c79aa179b390fec955d15c592849c5cb59dc72f5df16bf82284f6b19c2
+SHA256 (glu-9.0.3.tar.xz) = bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f

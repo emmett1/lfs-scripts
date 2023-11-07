@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWQj+xHX75A5zFaWKFg4gdjOXu3p8Ky3RwybyCXPhbEImSHM0ul1zizFqjjVFsHvDbh+y8/s0tldXeR1/u9ODYzO/jabHlPy4AA=
+SHA256 (Pkgfile) = 5cfeef994109e8451f6d25de88ccf884b08ebe86546376ca2d3240c26443d236
+SHA256 (.footprint) = 8974cd3e46ae9bf4d4751ba979abb9d464e2bd254734b24e6eab89e16cce72a9
+SHA256 (gmp-6.3.0.tar.xz) = a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898

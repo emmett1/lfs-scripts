@@ -1,0 +1,11 @@
+name=sysklogd
+version=2.5.2
+release=1
+source=(https://github.com/troglobit/$name/releases/download/v$version/$name-$version.tar.gz
+	$name.run)
+sv=($name.run)
+build_opt="--without-logger"
+
+post_build() {
+	install -Dm644 syslog.conf $PKG/etc/syslog.conf
+}

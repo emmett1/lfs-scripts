@@ -1,0 +1,13 @@
+# Depends on: tango-icon-theme 
+
+name=tango-icon-theme-extras
+version=0.1.0
+release=1
+source=(http://tango.freedesktop.org/releases/$name-$version.tar.gz
+	rsvg.patch)
+patch_opt="-Np0"
+build_opt="--enable-png-creation"
+
+pre_build() {
+	autoreconf -fi
+}

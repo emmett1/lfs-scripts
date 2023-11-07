@@ -1,0 +1,7 @@
+# Depends on: libxml2 
+
+name=wayland
+version=1.21.0
+release=1
+source=(https://gitlab.freedesktop.org/$name/$name/-/releases/$version/downloads/$name-$version.tar.xz)
+build_opt="-Ddocumentation=false"

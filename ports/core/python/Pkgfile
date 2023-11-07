@@ -1,0 +1,24 @@
+name=python
+version=3.11.6
+release=1
+source=(https://www.$name.org/ftp/$name/$version/Python-$version.tar.xz
+	pyconfig.h)
+build_opt="--without-ensurepip
+	--enable-shared
+	--with-system-expat
+	--with-system-ffi
+	--enable-optimizations"
+
+bootstrap_opt="--without-ensurepip"
+
+pre_build() {
+	# Remove tests
+	rm -rvf Lib/test Lib/*/test Lib/*/tests Lib/*/idle_test
+}
+
+post_build() {
+	mv $PKG/usr/include/python${version%.*}/pyconfig.h \
+	   $PKG/usr/include/python${version%.*}/pyconfig-64.h
+	install -m 0644 $SRC/pyconfig.h $PKG/usr/include/python${version%.*}/
+	ln -s python3 $PKG/usr/bin/python
+}

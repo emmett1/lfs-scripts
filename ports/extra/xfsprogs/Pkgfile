@@ -1,0 +1,6 @@
+# Depends on: inih liburcu
+
+name=xfsprogs
+version=6.5.0
+release=1
+source=(https://www.kernel.org/pub/linux/utils/fs/xfs/$name/$name-$version.tar.xz)

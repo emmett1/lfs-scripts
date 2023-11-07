@@ -1,7 +1,0 @@
-# Pkgfile for python3-setuptools
-
-name=python3-setuptools
-version=68.0.0
-release=1
-source=(https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-$version.tar.gz)
-export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLuut5nA6QdpNqL7YD7QlXLX+ujM7fgEw3o5daICQqlbW2b6KKml8kTB2R5DGmgmMDR1a4bo+Rjz52JfiAy3sgs=
+SHA256 (Pkgfile) = ba96145d89e99ec7f7e009ed3da4360b91894eeddc68d6ad5d13a483705f09d5
+SHA256 (.footprint) = cda9d6ab770146a9c51bce46990b62127bd4e3b324390852e2bc0236acfa0502
+SHA256 (xkill-1.0.6.tar.xz) = e5a8aa78c475677b11504646da8d93dacc30744258076a2ca418a24438aeb907

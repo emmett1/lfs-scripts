@@ -1,0 +1,11 @@
+name=libzen
+version=0.4.41
+release=1
+source=https://github.com/MediaArea/ZenLib/archive/v$version/$name-$version.tar.gz
+build_opt="--enable-shared"
+build_type=configure_build
+
+pre_build() {
+	cd Project/GNU/Library
+	./autogen.sh
+}

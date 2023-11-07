@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGDSaIUEg59tqCD0fu3xNCk7/E9nDYVbeAx2dBUgYDdm98oCh1N7vXP43fIL9CJ93lbJNLz7IGZx38UJY9g+iww=
+SHA256 (Pkgfile) = 976d4a18dbaa2e9c8271293a3e7a15e82015b8dc78c0a58378fc736fcc799b3f
+SHA256 (.footprint) = ed674999cbe5916230b3bd9d3393f2da0e726f45d98c36ee83eab9fb2ec5c97f
+SHA256 (lxtask-0.1.10.tar.xz) = 2216df9bc4bb2d80733e788966512ac58c421e0a0a1ff85210f34a29d1eb4e2c

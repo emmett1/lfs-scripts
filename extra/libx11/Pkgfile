@@ -1,6 +1,0 @@
-# Pkgfile for libx11
-
-name=libx11
-version=1.8.6
-release=1
-source=(ftp://ftp.x.org/pub/individual/lib/libX11-$version.tar.xz)

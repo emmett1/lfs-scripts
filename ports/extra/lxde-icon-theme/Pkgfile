@@ -1,0 +1,4 @@
+name=lxde-icon-theme
+version=0.5.1
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

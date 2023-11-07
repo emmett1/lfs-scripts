@@ -1,0 +1,6 @@
+# Depends on: glib gtk3 
+
+name=gmrun
+version=1.4w
+release=1
+source=(https://github.com/wdlkmpx/$name/archive/$version/$name-$version.tar.gz)

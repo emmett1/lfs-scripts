@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAapmoYnifiAfm1GtXCjHAwSCOkHob7YCvlnBDs91aRyc80cUXD/e0X+QcSmo7eNqE60QyLw5Nrdj/m9EwwImAQ=
+SHA256 (Pkgfile) = 2e302d83d1591dfe5311134d8f4138e6395d32ee5bf078be5d0e061947e931ca
+SHA256 (.footprint) = 92d6b0747a33f926385775eaa9ebc8187f99939fbf7a8d514eeb27037ac9f3c9
+SHA256 (libXrender-0.9.11.tar.xz) = bc53759a3a83d1ff702fb59641b3d2f7c56e05051fa0cfa93501166fa782dc24

@@ -1,0 +1,7 @@
+# Depends on: libevdev mtdev 
+
+name=libinput
+version=1.24.0
+release=1
+source=(https://gitlab.freedesktop.org/$name/$name/-/archive/$version/$name-$version.tar.gz)
+build_opt="-Ddebug-gui=false -Dtests=false -Dlibwacom=false -Dudev-dir=/lib/udev"

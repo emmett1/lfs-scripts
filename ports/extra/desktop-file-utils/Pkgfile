@@ -1,0 +1,6 @@
+# Depends on: glib 
+
+name=desktop-file-utils
+version=0.27
+release=1
+source=(https://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)

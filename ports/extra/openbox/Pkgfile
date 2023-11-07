@@ -1,0 +1,11 @@
+# Depends on: pango libxml2 libxinerama libxrandr imlib2 libxcursor startup-notification xcb-util
+
+name=openbox
+version=3.6.1
+release=1
+source=(http://$name.org/dist/$name/$name-$version.tar.gz)
+
+pre_build() {
+	2to3-3.11 -w data/autostart/openbox-xdg-autostart
+	sed 's/python/python3/' -i data/autostart/openbox-xdg-autostart
+}

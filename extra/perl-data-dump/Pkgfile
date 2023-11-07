@@ -1,6 +1,0 @@
-# Pkgfile for perl-data-dump
-
-name=perl-data-dump
-version=1.23
-release=1
-source=(https://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Data-Dump-$version.tar.gz)

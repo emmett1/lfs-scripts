@@ -1,0 +1,5 @@
+name=procps-ng
+version=4.0.4
+release=1
+source=(https://sourceforge.net/projects/$name/files/Production/$name-$version.tar.xz)
+build_opt="--disable-kill"

@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNADDbdIy+hlCeSDea6PuEKHzavliZxiq8GjUKSF1UC9SlWzj231y12AZJlUm10g2R8KDcn212DIR9IyQXdj9wY=
+SHA256 (Pkgfile) = b9287e42cb74bcc80eca0adcd30bf26395c238ef1ef871a660de6a7ccd013403
+SHA256 (.footprint) = ebc21d4838130196b5b7d74ab1a7530bca461e09b649d77e2307b98a1cb79a4c
+SHA256 (smartmontools-7.4.tar.gz) = e9a61f641ff96ca95319edfb17948cd297d0cd3342736b2c49c99d4716fb993d
+SHA256 (smartd.run) = ea64e20bff38304e14897757614fc2901e20c929dddac4ca6fa8b9abad5933a6
+SHA256 (smartd.finish) = 3f56d8741c06f3918d5018fdd3afd96b2500586b7f4b1f6c40bc9707cdc3df3d

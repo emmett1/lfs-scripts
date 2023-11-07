@@ -1,7 +1,0 @@
-# Pkgfile for libnma
-
-name=libnma
-version=1.10.6
-release=1
-source=(https://download.gnome.org/sources/$name/1.10/$name-$version.tar.xz)
-build_opt="-Dmobile_broadband_provider_info=false -Dgtk_doc=false"

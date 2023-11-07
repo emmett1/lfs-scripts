@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext 
+
+name=libxinerama
+version=1.1.5
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXinerama-$version.tar.xz)

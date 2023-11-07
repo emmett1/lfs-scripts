@@ -1,0 +1,7 @@
+name=libarchive
+version=3.7.2
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.xz)
+keep_static=1
+build_opt="--without-xml2"
+bootstrap_opt=$build_opt

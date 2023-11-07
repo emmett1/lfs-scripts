@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIduXtVo13hPIOJ3wpWSyCPf4zUoRC1Yjtw/K3xD9+UL++NJUQh6xupchxxj43bp6P+i6z5wVSVmeML4RbXVvAg=
+SHA256 (Pkgfile) = a26d5254a97325aa4abc5f9f9da68ddab795db2a544f73a104874700b5869e49
+SHA256 (.footprint) = e637ba243613ba95c579c88fa47fb932fe74ad4c7884491c2f637609c0cc3222
+SHA256 (gmrun-1.4w.tar.gz) = 7715eca337877abe180b435494a12d3ec3383a6677fe638724bcd23d84a5841b

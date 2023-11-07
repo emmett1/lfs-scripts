@@ -1,0 +1,16 @@
+name=shadow
+version=4.14.2
+release=1
+source=(https://github.com/$name-maint/$name/releases/download/$version/$name-$version.tar.xz)
+build_opt="--without-libpam
+	--with-group-name-max-length=32
+	--without-libbsd"
+
+pre_build() {
+	sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+	find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
+	find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
+	find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+	
+	sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' etc/login.defs
+}

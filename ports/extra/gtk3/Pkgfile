@@ -1,0 +1,6 @@
+# Depends on: at-spi2-core gdk-pixbuf libepoxy pango libxkbcommon libxslt wayland 
+
+name=gtk3
+version=3.24.38
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${version%.*}/gtk+-$version.tar.xz)

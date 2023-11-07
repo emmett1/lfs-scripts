@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBnxG6npwS3PZevJPhvXdze8IIA4Dlofv+7hRF8W3bcES8dwRcPKCFdMDIS7dr3oT1kXPQrHQQEM8ApN23pvjgA=
+SHA256 (Pkgfile) = e87c676d36bbbfe5986bc37ae16bd1257110ecf7cd869d02d3c5d73e4d9ddac9
+SHA256 (.footprint) = d1e33ed05553337c6c5418a627e6a8db2a46cdaa0e33d3e23c72853b884a69c2
+SHA256 (MarkupSafe-2.1.3.tar.gz) = af598ed32d6ae86f1b747b82783958b1a4ab8f617b06fe68795c7f026abbdcad

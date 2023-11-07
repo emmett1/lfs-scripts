@@ -1,0 +1,5 @@
+name=expat
+version=2.5.0
+release=1
+source=(https://prdownloads.sourceforge.net/$name/$name-$version.tar.xz)
+keep_static=1

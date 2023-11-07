@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGVjXumySuLsEFY5G8NwDxmmntczwkb/KTqo9Q41/jOkwEFJ4LEculScOcIoVFgrOmP2+cpDjf8uOL6kAb18twc=
+SHA256 (Pkgfile) = 4aca267ad3c51169c584c11a36944a5dade96c0ee862f8a8e2f3bdd9c9f07e4a
+SHA256 (.footprint) = 4fe83f6ff029e3794ba5b80e99a6c2a5f043e7ebbb24d19196a544c2d9d8ee77
+SHA256 (VirtualBox-7.0.12.tar.bz2) = d76634c6ccf62503726a5aeae6c78a3462474c51a0ebe4942591ccc2d939890a
+SHA256 (LocalConfig.kmk) = 0e327d6222c03b64eab3076fe4430615faa778e6999d148b39d316ac3662b65f
+SHA256 (virtualbox.60-vboxdrv.rules) = 9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e

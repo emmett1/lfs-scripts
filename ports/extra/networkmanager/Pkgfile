@@ -1,0 +1,42 @@
+# Depends on: jansson libndp gobject-introspection newt nss polkit vala wpa_supplicant libpsl 
+
+name=networkmanager
+version=1.42.8
+release=1
+source=(https://download.gnome.org/sources/NetworkManager/${version%.*}/NetworkManager-$version.tar.xz
+	$name.run)
+sv=($name.run)
+build_opt="
+	-Dlibaudit=no
+	-Dnmtui=true
+	-Dovs=false
+	-Dppp=false
+	-Dselinux=false
+	-Dudev_dir=/lib/udev
+	-Dsession_tracking=no
+	-Dmodem_manager=false
+	-Dsystemdsystemunitdir=no
+	-Dsystemd_journal=false
+	-Dqt=false
+	-Dtests=no
+"
+
+pre_build() {
+	export CXXFLAGS="$CXXFLAGS -fPIC"
+	grep -rl '^#!.*python$' | xargs sed -i '1s/python/&3/'
+}
+
+post_build() {
+echo "[main]
+plugins=keyfile" >> $PKG/etc/NetworkManager/NetworkManager.conf
+
+echo "[main]
+auth-polkit=true" > $PKG/etc/NetworkManager/conf.d/polkit.conf
+
+mkdir -p $PKG/etc/polkit-1/rules.d
+echo "polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});" > $PKG/etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules
+}

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zHm+8Z8vPeVCxT2AW2tx4oac5fe7IIanc13IaZ/3V2O+n85HunZ7YK73F0/1Sl5+2yVhxIzH8vumYJ7CRtNjSgE=
+SHA256 (Pkgfile) = 5a565427f85ecb20ca23ec7a810ef2524b37649a7b8d993c95aec81a90d276c4
+SHA256 (.footprint) = 103e94b9a75fb6883c283fcee27040e1f7676adbfdf8bb6c57f3e0692c6305a8
+SHA256 (dunst-1.9.2.tar.gz) = fa6ce45c0af4bae188b0d679a5ba92f8f9b7e4301bb1bb476e82df26bce9e71a

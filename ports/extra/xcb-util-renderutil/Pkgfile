@@ -1,0 +1,6 @@
+# Depends on: libxcb 
+
+name=xcb-util-renderutil
+version=0.3.10
+release=1
+source=(https://xcb.freedesktop.org/dist/$name-$version.tar.xz)

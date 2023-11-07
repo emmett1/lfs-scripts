@@ -1,0 +1,11 @@
+name=unrar
+version=6.2.12
+release=1
+source=(https://www.rarlab.com/rar/${name}src-$version.tar.gz)
+
+pkg_build() {
+  sed -e '/CXXFLAGS=/d' -e '/LDFLAGS=/d' -i makefile
+  export LDFLAGS+=' -pthread'
+  make -j1 STRIP=:
+  make install DESTDIR=$PKG/usr
+}

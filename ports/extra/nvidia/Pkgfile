@@ -1,0 +1,180 @@
+# Depends on: gtk2 gtk3 libglvnd 
+
+name=nvidia
+version=535.129.03
+release=1
+source=(https://us.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version.run \
+	90-nvidia-uvm.rules 10-nvidia-drm-outputclass.conf)
+
+pkg_build() {
+	sh NVIDIA-Linux-x86_64-$version.run --extract-only
+	cd NVIDIA-Linux-x86_64-$version
+
+	# X driver and GLX extension
+	install -d $PKG/usr/lib/xorg/modules/{drivers,extensions}
+	install -m 0755 nvidia_drv.so $PKG/usr/lib/xorg/modules/drivers/
+	install -d -m 0755 $PKG/usr/lib/nvidia/xorg
+	install -m 0755 libglxserver_nvidia.so.$version $PKG/usr/lib/nvidia/xorg/
+	ln -s libglxserver_nvidia.so.$version $PKG/usr/lib/nvidia/xorg/libglxserver_nvidia.so
+	ln -s libglxserver_nvidia.so.$version $PKG/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1
+
+	install -d $PKG/usr/lib
+
+	# EGL and OpenGL ES libraries and config
+	install -m 0755 libGLESv1_CM_nvidia.so.$version $PKG/usr/lib/
+	ln -s libGLESv1_CM_nvidia.so.$version $PKG/usr/lib/libGLESv1_CM_nvidia.so.1
+	install -m 0755 libGLESv2_nvidia.so.$version $PKG/usr/lib/
+	ln -s libGLESv2_nvidia.so.$version $PKG/usr/lib/libGLESv2_nvidia.so.2
+	install -D -m 0644 10_nvidia.json $PKG/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
+	# GBM libraries and config
+	install -m 0755 libnvidia-egl-gbm.so.1.1.0 $PKG/usr/lib/
+	ln -s libnvidia-egl-gbm.so.1.1.0 $PKG/usr/lib/libnvidia-egl-gbm.so.1
+	ln -s libnvidia-egl-gbm.so.1.1.0 $PKG/usr/lib/libnvidia-egl-gbm.so
+	install -D -m 0644 15_nvidia_gbm.json $PKG/usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json
+	install -d -m 0755 $PKG/usr/lib/gbm
+	ln -s libnvidia-allocator.so.$version $PKG/usr/lib/gbm/nvidia-drm_gbm.so
+
+	# wayland config
+	if prt-get isinst wayland > /dev/null; then
+		# let egl-wayland handle the library
+		echo -e "\n\nINFO: wayland is installed; if nvidia eglstream support is desired/needed, install 'egl-wayland'!\n\n"
+		sleep 5
+		install -d $PKG/usr/share/egl/egl_external_platform.d
+		install -m 0644 10_nvidia_wayland.json $PKG/usr/share/egl/egl_external_platform.d/
+	fi
+
+	# GLVND vendor implementation libraries
+	install -m 0755 libGLX_nvidia.so.$version $PKG/usr/lib/
+	ln -s libGLX_nvidia.so.$version $PKG/usr/lib/libGLX_nvidia.so.0
+	install -m 0755 libEGL_nvidia.so.$version $PKG/usr/lib/
+	ln -s libEGL_nvidia.so.$version $PKG/usr/lib/libEGL_nvidia.so.0
+
+	# vulkan ICD config
+	install -D -m 0644 nvidia_icd.json $PKG/usr/share/vulkan/icd.d/nvidia_icd.json
+
+	# vulkan layer config
+	install -D -m 0644 nvidia_layers.json $PKG/usr/share/vulkan/implicit_layer.d/nvidia_layers.json
+
+	# driver component libraries
+	for C in cfg {e,}glcore gl{si,vkspirv} rtcore allocator; do
+		install -m 0755 libnvidia-${C}.so.$version $PKG/usr/lib/
+		ln -s libnvidia-${C}.so.$version $PKG/usr/lib/libnvidia-${C}.so.1
+		ln -s libnvidia-${C}.so.$version $PKG/usr/lib/libnvidia-${C}.so
+	done
+
+	# vendor VDPAU library
+	install -D -m 0755 libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so.$version
+	ln -s libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so.1
+	ln -s libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so
+
+	# CUDA libraries
+	install -m 0755 libcuda.so.$version $PKG/usr/lib/
+	ln -s libcuda.so.$version $PKG/usr/lib/libcuda.so.1
+	ln -s libcuda.so.$version $PKG/usr/lib/libcuda.so
+	install -m 0755 libcudadebugger.so.$version $PKG/usr/lib/
+	ln -s libcudadebugger.so.$version $PKG/usr/lib/libcudadebugger.so.1
+	ln -s libcudadebugger.so.$version $PKG/usr/lib/libcudadebugger.so
+	install -m 0755 libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib/
+	ln -s libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib/libnvidia-ptxjitcompiler.so.1
+	ln -s libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib/libnvidia-ptxjitcompiler.so
+
+	# OpenCL libraries and config
+	install -m 0755 libOpenCL.so.1.0.0 $PKG/usr/lib/
+	install -m 0755 libnvidia-opencl.so.$version $PKG/usr/lib/
+	ln -s libnvidia-opencl.so.$version $PKG/usr/lib/libnvidia-opencl.so.1
+	ln -s libnvidia-opencl.so.$version $PKG/usr/lib/libnvidia-opencl.so
+	install -D -m 0644 nvidia.icd $PKG/etc/OpenCL/vendors/nvidia.icd
+
+	# CUDA MPI applications
+	install -d $PKG/usr/bin
+	install -m 0755 nvidia-cuda-mps-control $PKG/usr/bin/
+	install -m 0755 nvidia-cuda-mps-server $PKG/usr/bin/
+
+	# TLS libraries
+	install -m 0755 libnvidia-tls.so.$version $PKG/usr/lib/
+
+	# monitoring and management API library
+	install -m 0755 libnvidia-ml.so.$version $PKG/usr/lib/
+	ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so.1
+	ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so
+
+	# applications
+	install -m 4755 nvidia-modprobe $PKG/usr/bin/
+	install -m 0755 nvidia-{xconfig,settings,smi,debugdump,persistenced,powerd} \
+		$PKG/usr/bin/
+
+	# nvidia-settings UI libraries
+	install -m 0755 libnvidia-gtk{2,3}.so.$version $PKG/usr/lib/
+
+	# encoding/decoding libraries
+	install -m 0755 libnvcuvid.so.$version $PKG/usr/lib/
+	ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so.1
+	ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so
+	install -m 0755 libnvidia-encode.so.$version $PKG/usr/lib/
+	ln -s libnvidia-encode.so.$version $PKG/usr/lib/libnvidia-encode.so.1
+	ln -s libnvidia-encode.so.$version $PKG/usr/lib/libnvidia-encode.so
+	install -m 0755 libnvidia-fbc.so.$version $PKG/usr/lib/
+	ln -s libnvidia-fbc.so.$version $PKG/usr/lib/libnvidia-fbc.so.1
+	ln -s libnvidia-fbc.so.$version $PKG/usr/lib/libnvidia-fbc.so
+
+	# OptiX ray tracing engine
+	install -m 0755 libnvoptix.so.$version $PKG/usr/lib/
+	ln -s libnvoptix.so.$version $PKG/usr/lib/libnvoptix.so.1
+	ln -s libnvoptix.so.$version $PKG/usr/lib/libnvoptix.so
+	install -D -m 0644 nvoptix.bin $PKG/usr/share/nvidia/nvoptix.bin
+
+	# Optical Flow library
+	install -m 0755 libnvidia-opticalflow.so.$version $PKG/usr/lib/
+	ln -s libnvidia-opticalflow.so.$version $PKG/usr/lib/libnvidia-opticalflow.so.1
+	ln -s libnvidia-opticalflow.so.$version $PKG/usr/lib/libnvidia-opticalflow.so
+
+	# NGX library and updater
+	install -m 0755 libnvidia-ngx.so.$version $PKG/usr/lib/
+	ln -s libnvidia-ngx.so.$version $PKG/usr/lib/libnvidia-ngx.so.1
+	ln -s libnvidia-ngx.so.$version $PKG/usr/lib/libnvidia-ngx.so
+	install -m 0755 nvidia-ngx-updater $PKG/usr/bin/
+
+	# NGX for wine/proton
+	if prt-get listinst --regex '^wine' >/dev/null 2>&1; then
+		install -d $PKG/usr/lib/nvidia/wine
+		install -m 0755 nvngx.dll $PKG/usr/lib/nvidia/wine/
+		install -m 0755 _nvngx.dll $PKG/usr/lib/nvidia/wine/
+	fi
+
+	# GSP firmware
+	install -d $PKG/lib/firmware/$name/$version
+	install -m 0644 firmware/gsp_*.bin $PKG/lib/firmware/$name/$version/
+
+	# X driver config
+	install -D -m 0644 $SRC/10-nvidia-drm-outputclass.conf \
+		$PKG/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+	# application profile keys and documentation
+	install -d -m 0755 $PKG/usr/share/nvidia
+	install -m 0644 nvidia-application-profiles-$version-rc $PKG/usr/share/nvidia/
+	install -m 0644 nvidia-application-profiles-$version-key-documentation $PKG/usr/share/nvidia/
+
+	# desktop file and icon
+	install -d $PKG/usr/share/{applications,pixmaps}
+	sed -i -e 's,__UTILS_PATH__,/usr/bin,' -e 's,__PIXMAP_PATH__,/usr/share/pixmaps,' nvidia-settings.desktop
+	install -m 0644 nvidia-settings.desktop $PKG/usr/share/applications/
+	install -m 0644 nvidia-settings.png $PKG/usr/share/pixmaps/
+
+	# nvidia-uvm udev rules file
+	install -D -m 0644 $SRC/90-nvidia-uvm.rules $PKG/lib/udev/rules.d/90-nvidia-uvm.rules
+
+	# kernel modules
+	cd kernel
+	for k in $(ls -1 /lib/modules); do
+		[ -d /lib/modules/$k/build ] || continue
+		export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+		CC=gcc IGNORE_CC_MISMATCH=1 SYSSRC=/lib/modules/$k/source make module
+		install -d $PKG/lib/modules/$k/extra
+		install -m 0644 *.ko $PKG/lib/modules/$k/extra/
+	done
+
+	# blacklist nouveau
+	mkdir -p $PKG/etc/modprobe.d
+	echo 'blacklist nouveau' > $PKG/etc/modprobe.d/$name.conf
+}

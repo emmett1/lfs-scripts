@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLgrrZU6YkQjtrN2kKYQ/cRz7d+gjykmqVRr/AZdPa4cGKUmJleSIZw92oLZvN922xwrg9YfG5Eg/ZEqI88Y+Qg=
+SHA256 (Pkgfile) = 7ade490515677fed23727d570bc2d291235fe9c0342cf80214824d3171f57684
+SHA256 (.footprint) = 6d8b35bb5ca912d8803519d25f6cfbc103dab69741e13f6e9a3b04dd54bac5cd
+SHA256 (gobject-introspection-1.78.1.tar.xz) = bd7babd99af7258e76819e45ba4a6bc399608fe762d83fde3cac033c50841bb4

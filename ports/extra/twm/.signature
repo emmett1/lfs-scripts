@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGJcbfjf+g6j9L2BzM6Hioa0j1BvmWtI8Lg2DM+1iGy4ivAJcpM7FNCSY9sIFwPhLwyJcUowBbCOfbApGudYWQM=
+SHA256 (Pkgfile) = 73b21f17dd448ca8f68b8ee4706e0cf4a6d240050c7a5fa2ae053d6d6cb547db
+SHA256 (.footprint) = b596e4b136bc175008e8dffa1be32b38541c92097b3b924ba0526fcb0d6e8a5a
+SHA256 (twm-1.0.12.tar.xz) = aaf201d4de04c1bb11eed93de4bee0147217b7bdf61b7b761a56b2fdc276afe4

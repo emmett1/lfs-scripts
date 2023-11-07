@@ -1,0 +1,7 @@
+# Depends on: glib graphite2 freetype gobject-introspection icu cairo
+
+name=harfbuzz
+version=8.2.1
+release=1
+source=(https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz)
+build_opt=-Dgraphite2=enabled

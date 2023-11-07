@@ -1,0 +1,7 @@
+url=https://curl.se/docs/caextract.html
+
+port_getver() {
+	fetch \
+	| grep -Eo cacert-[0-9.]+-[0-9.]+-[0-9.]+.pem \
+	| sed "s/cacert-//;s/\.pem//;s/-//g"
+}

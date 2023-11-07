@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zC65qSs97c6xvowt5UzMszsaME88FIEI6/iT0BFNNLZ8Y87VVuVgrwOaN4+wwLXzv5sXVl610K2TnkXbrM97Qg4=
+SHA256 (Pkgfile) = 0763495857ff59f0d9c998e716742a6e1e504db4122e5652348fcc5fe7103902
+SHA256 (.footprint) = 8fb03221f5413e4dd432da5fba0d8e640273d79c63165dc97b2b65f29591aecd
+SHA256 (gnupg-2.4.3.tar.bz2) = a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d
+SHA256 (ldap.patch) = 20d57800b23b9f678ce5be1793df1183287bbca92995b36f14e1d95c4ff0ec04

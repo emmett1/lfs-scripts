@@ -1,0 +1,11 @@
+name=readline
+version=8.2
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+	readline-8.2-upstream_fix-1.patch)
+
+pkg_build() {
+	./configure --prefix=/usr --disable-static --with-curses
+	make SHLIB_LIBS="-lncursesw"
+	make SHLIB_LIBS="-lncursesw" DESTDIR=$PKG install
+}

@@ -1,0 +1,6 @@
+# Depends on: libgudev libmbim libqmi polkit vala 
+
+name=modemmanager
+version=1.18.12
+release=1
+source=(https://www.freedesktop.org/software/ModemManager/ModemManager-$version.tar.xz)

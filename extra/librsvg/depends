@@ -1,6 +1,0 @@
-cairo
-gdk-pixbuf
-pango
-rust
-gobject-introspection
-vala

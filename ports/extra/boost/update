@@ -1,0 +1,8 @@
+url=https://www.boost.org/users/download/
+
+port_getver() {
+	fetch \
+	| tr '_' '.' \
+	| grep -Eo boost\.[0-9.]+.tar.bz2 \
+	| sed 's/boost\.//;s/\.tar.*//'
+}

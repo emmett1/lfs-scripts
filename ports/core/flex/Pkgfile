@@ -1,0 +1,8 @@
+name=flex
+version=2.6.4
+release=1
+source=(https://github.com/westes/$name/releases/download/v$version/$name-$version.tar.gz)
+
+post_build() {
+	ln -s flex $PKG/usr/bin/lex
+}

@@ -1,0 +1,8 @@
+url=$(dirname $url)
+url=$url/$(fetch \
+| grep folder \
+| sed 's,.*href=",,;s,\/.*,,' \
+| grep ^[[:digit:]] \
+| sort -V \
+| uniq \
+| tail -n1)

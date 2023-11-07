@@ -1,0 +1,5 @@
+name=mtools
+version=4.0.43
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+build_opt="--disable-floppyd"

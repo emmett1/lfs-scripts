@@ -1,0 +1,117 @@
+name=glibc
+version=2.38
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+	genlocales
+	ld.so.conf
+	nsswitch.conf
+	glibc-2.38-upstream_fixes-3.patch)
+#	reenable_DT_HASH.patch)
+keep_static=1
+
+bootstrap_build() {
+	mkdir -v build32
+	cd       build32
+		
+	echo slibdir=$TOOLS/lib32 > configparms
+	../configure \
+		  --prefix=$TOOLS \
+		  --host=$LFS_TGT32 \
+		  --build=$(../scripts/config.guess) \
+		  --libdir=$TOOLS/lib32 \
+		  --enable-kernel=3.2 \
+		  --with-headers=$TOOLS/include \
+		  CC="$LFS_TGT-gcc -m32" \
+		  CXX="$LFS_TGT-g++ -m32"
+	make
+	make install
+	cd -
+
+	mkdir -v build
+	cd       build
+	
+	../configure \
+		  --prefix=$TOOLS \
+		  --host=$LFS_TGT \
+		  --build=$(../scripts/config.guess) \
+		  --enable-kernel=3.2 \
+		  --with-headers=$TOOLS/include
+	make
+	make install
+}
+
+pkg_build() {
+	_configure_flag="
+		--prefix=/usr \
+		--with-headers=/usr/include \
+		--disable-profile \
+		--disable-werror \
+		--enable-kernel=3.2 \
+		--enable-stack-protector=strong \
+		--enable-multi-arch \
+		--disable-nscd \
+		libc_cv_include_x86_isa_level=no"
+	ln -sv lib $PKG/lib64
+	
+	# 64bit
+	mkdir -v build
+	cd       build
+	
+	../configure \
+		--libexecdir=/usr/lib \
+		libc_cv_slibdir=/lib \
+		${_configure_flag}
+	make
+	sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
+	make install_root=$PKG install
+	
+	install -d $PKG/usr/lib/locale
+	install -d $PKG/etc/ld.so.conf.d
+	
+	install -m644 $SRC/ld.so.conf $PKG/etc
+	install -m644 $SRC/nsswitch.conf $PKG/etc
+	
+	# supported locales
+	sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
+		$SRC/glibc-$version/localedata/SUPPORTED >> $PKG/etc/locales
+	
+	# locales generator
+	install -Dm755 $SRC/genlocales $PKG/usr/bin/genlocales
+
+	LC_ALL=C ./elf/ld.so --library-path . $PKG/usr/bin/localedef \
+	--force --quiet \
+	--inputfile=$SRC/$name-$version/localedata/locales/C \
+	--charmap=$SRC/$name-$version/localedata/charmaps/UTF-8 \
+	$PKG/usr/lib/locale/C.UTF-8 || true
+	
+	sed -i '/#C\.UTF-8 /d' $PKG/etc/locales
+	
+	# shipped with tzdata
+	rm $PKG/usr/bin/zdump
+	rm $PKG/usr/sbin/zic
+	rm $PKG/usr/bin/tzselect
+	
+	# 32bit
+	mkdir -v ../build32
+	cd ../build32
+	export CC="gcc -m32 -mstackrealign"
+	export CXX="g++ -m32 -mstackrealign"
+	export CFLAGS="$CFLAGS -Wno-error=parentheses"
+	../configure \
+		--libdir=/usr/lib32 \
+		--libexecdir=/usr/lib32 \
+		libc_cv_slibdir=/usr/lib32 \
+		i686-pc-linux-gnu \
+		${_configure_flag}
+	make
+	make install_root=$PWD/DESTDIR install
+	install -dm755 $PKG/usr/lib32
+	install -dm755 $PKG/usr/include/gnu/
+	cp -Rv DESTDIR/usr/lib32/* $PKG/usr/lib32/
+	install -m644 DESTDIR/usr/include/gnu/lib-names-32.h \
+		DESTDIR/usr/include/gnu/stubs-32.h \
+		$PKG/usr/include/gnu/
+	ln -sv ../usr/lib32/ld-linux.so.2 $PKG/lib/ld-linux.so.2
+	ln -sv ../lib/locale $PKG/usr/lib32/locale
+		echo "/usr/lib32" > $PKG/etc/ld.so.conf.d/lib32.conf
+}

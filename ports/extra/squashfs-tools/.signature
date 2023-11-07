@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zMiQLxrm4Rj8LJZLARksAWLVJW7qdcYzZFl+plJyfXsYF2Zcln0PTo2wOY/SKF+Xr5yuUXAV3VZgvNCgxOh25A8=
+SHA256 (Pkgfile) = be6434b99cd0c1bdc8b9f66109fa8e34ee69ba1fd6ba5735fd178c5ae6f7edde
+SHA256 (.footprint) = 49a61b0c5de34abb6c232c1cf923f562998b97d0d503c124cabf948b62a03b28
+SHA256 (squashfs-tools-4.6.1.tar.gz) = 94201754b36121a9f022a190c75f718441df15402df32c2b520ca331a107511c

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAHq4xhAW5izDBKLQKFCX5TsInznsuAk1Z4IKKT1bA+sANqoY0QiQRCj0zx5E+ZZyWKPjEgvi3v6f+t2qTRy9QU=
+SHA256 (Pkgfile) = db8d2f1e3317130bc521bcebae419b4d45a04b7d624a84d4b9d164a6f601d278
+SHA256 (.footprint) = dd2d864946ca924cd82bc9f2616b6d070d75745e50caaa11224f3c9da7849616
+SHA256 (duktape-2.7.0.tar.xz) = 90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890

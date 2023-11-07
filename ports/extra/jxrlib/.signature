@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zMKU7ExgIgFNosnlpy39uJmAgyjra5y/QCGzsYI9ONF2a9tJp3iQbLnK/WJMu4Q/qSwtZGsx49Mr7Pu0795z0As=
+SHA256 (Pkgfile) = 0e57f463cb80e5d4b1fc8f3405404b93df0cd6a6044aec43fb9c558e406ac43a
+SHA256 (.footprint) = 549afaf4522d974736bdd35c02eafddcf5592e21edd7b137756213bc523d591c
+SHA256 (jxrlib-0.2.4.tar.gz) = 324af02e341bcb9e3b31a6d6892f47231f95f9f87ab4fe7645be619dcaf965a7
+SHA256 (CMakeLists.txt) = e02f51d006ef06eee36602ed0458807d5b1862db6e7fee7e2f877dd28f53c7f9

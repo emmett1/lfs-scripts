@@ -1,6 +1,0 @@
-# Pkgfile for libatomic_ops
-
-name=libatomic_ops
-version=7.8.0
-release=1
-source=(https://github.com/ivmai/$name/releases/download/v$version/$name-$version.tar.gz)

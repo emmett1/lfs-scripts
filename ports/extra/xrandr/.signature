@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAV9mw6XajgUtmEGbUXJOyOxSW0uXFww4bLxrceK1E31DJb09hjz9JtUcfguEPhi+05DcabhKhS/+wONzQ5Y4A8=
+SHA256 (Pkgfile) = a9f643bf21d7f565f33f30849f3ec8fb5a7a09f4f15115ac4dbf53a0ea8679cc
+SHA256 (.footprint) = fff8c4c108bec7f4cd709e1b842459389d5ec3d7e1411b72acbfa058f9c2573b
+SHA256 (xrandr-1.5.2.tar.xz) = c8bee4790d9058bacc4b6246456c58021db58a87ddda1a9d0139bf5f18f1f240

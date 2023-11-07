@@ -1,0 +1,25 @@
+name=coreutils
+version=9.4
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+export FORCE_UNSAFE_CONFIGURE=1
+build_opt="--enable-no-install-program=kill,uptime"
+
+bootstrap_build() {
+	FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=$TOOLS --enable-install-program=hostname
+	make
+	make install
+}
+
+post_build() {
+	mkdir -p $PKG/bin
+	for i in cat chgrp chmod chown cp date dd df echo \
+		false ln ls mkdir mknod mv pwd rm rmdir stty sync true uname; do
+		mv $PKG/usr/bin/$i $PKG/bin
+	done
+	mkdir -p $PKG/usr/sbin
+	mv $PKG/usr/bin/chroot $PKG/usr/sbin
+	mkdir -p $PKG/usr/share/man/man8/
+	mv -v $PKG/usr/share/man/man1/chroot.1 $PKG/usr/share/man/man8/chroot.8
+	sed -i s/\"1\"/\"8\"/1 $PKG/usr/share/man/man8/chroot.8
+}

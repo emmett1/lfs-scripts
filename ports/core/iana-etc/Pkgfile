@@ -1,0 +1,10 @@
+name=iana-etc
+version=20230913
+release=1
+source=(services protocols)
+
+pkg_build() {
+	install -d -m 755 $PKG/etc
+	install -m 644 services $PKG/etc
+	install -m 644 protocols $PKG/etc
+}

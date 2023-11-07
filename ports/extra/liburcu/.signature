@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zP0vxrmECOZlYC3JY2ZLIMQ4V1vvp7kd05FsXur0yyMYOP3LaEJ1b8+aPfqKOR0HrIlCeRCNM691ZiVjGYgO5wk=
+SHA256 (Pkgfile) = 7b8af827f3234d0309c81aa44f6948a5bd08e6adc6fca6d7f9c02b66b903910d
+SHA256 (.footprint) = 40b2e9bf459918c359d40863f048c6c146e0b8d4919f9bcb4f37459d0f6014de
+SHA256 (userspace-rcu-0.14.0.tar.bz2) = ca43bf261d4d392cff20dfae440836603bf009fce24fdc9b2697d837a2239d4f

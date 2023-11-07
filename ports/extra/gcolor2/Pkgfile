@@ -1,0 +1,26 @@
+# Depends on: glib gtk2
+
+name=gcolor2
+version=0.4
+release=1
+source=(https://sourceforge.net/projects/$name/files/$name/$version/$name-$version.tar.gz)
+
+pre_build() {
+	export CFLAGS="$CFLAGS -fcommon"
+	export CXXFLAGS="$CXXFLAGS -fcommon"
+	autoreconf -fi
+}
+
+post_build() {
+	mkdir -p $PKG/usr/share/applications
+	echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=gcolor2
+GenericName=Color Chooser
+Comment=Pick colors via numeric input, color wheel, or named colors
+Icon=gcolor2
+Exec=gcolor2
+Terminal=false
+Categories=Graphics;GTK;" > $PKG/usr/share/applications/$name.desktop
+}

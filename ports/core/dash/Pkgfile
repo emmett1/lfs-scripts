@@ -1,0 +1,9 @@
+name=dash
+version=0.5.12
+release=1
+source=(http://gondor.apana.org.au/~herbert/$name/files/$name-$version.tar.gz)
+build_opt="--bindir=/bin"
+
+post_build() {
+	ln -sv dash $PKG/bin/sh
+}

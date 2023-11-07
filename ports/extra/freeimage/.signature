@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zA+lVCMorAiYUHqhLg67O90D3KKZyofjumZwKwQMEMBLwBkEUrICup0U9QFntzvc/Jv2foOq6ajXNHPHN7zSbAQ=
+SHA256 (Pkgfile) = acfc1e8061641a6539b4dca1673386cc42ef6c41f8a66ff2b12db7a17e01f7ed
+SHA256 (.footprint) = 907b20cf2ab7a4d45dc7daac94bed073c8db7887557dc9fa7c28d52553f5534d
+SHA256 (FreeImage3180.zip) = f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd
+SHA256 (freeimage-libraw-0.20.patch) = 71c25974c25dfced11b08206aae6e759675b53bae061be5f34fa1107beec9233
+SHA256 (freeimage-libraw-0.21.patch) = cacb6ae3a2cebf8208d34ea01423a5309ee88ff649afbbb371e49cfeb57d8331
+SHA256 (freeimage-unbundle.patch) = b42e799f7e97c2c71a00a7f352c23ecff56ebb36077b7fd5a8866f46b5d01094

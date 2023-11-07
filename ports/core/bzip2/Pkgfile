@@ -1,0 +1,39 @@
+name=bzip2
+version=1.0.8
+release=1
+source=(https://www.sourceware.org/pub/$name/$name-$version.tar.gz)
+keep_static=1
+
+bootstrap_build() {
+	make -f Makefile-libbz2_so
+	make clean
+	make
+	make PREFIX=$TOOLS install
+	cp -v bzip2-shared $TOOLS/bin/bzip2
+	cp -v libbz2.so* $TOOLS/lib
+	ln -sv libbz2.so.1.0 $TOOLS/lib/libbz2.so
+}
+
+pkg_build() {
+	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+	sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
+	
+	[ "${CFLAGS}" ] && sed -i "s|-O2|${CFLAGS}|g" Makefile
+	[ "${CFLAGS}" ] && sed -i "s|-O2|${CFLAGS}|g" Makefile-libbz2_so
+	
+	make -f Makefile-libbz2_so
+	mkdir -p $PKG/usr/lib
+	install libbz2.so.$version $PKG/usr/lib
+	ln -s libbz2.so.$version $PKG/usr/lib/libbz2.so
+	ln -s libbz2.so.$version $PKG/usr/lib/libbz2.so.1.0
+	
+	make clean
+	make
+	make PREFIX=$PKG/usr install
+	
+	cp -v bzip2-shared $PKG/usr/bin/bzip2
+	ln -sf bzip2 $PKG/usr/bin/bzcat
+	ln -sf bzip2 $PKG/usr/bin/bunzip2
+	
+	install -Dm 0644 bzlib.h $PKG/usr/include/bzlib.h
+}

@@ -1,6 +1,0 @@
-# Pkgfile for libksba
-
-name=libksba
-version=1.6.4
-release=1
-source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)

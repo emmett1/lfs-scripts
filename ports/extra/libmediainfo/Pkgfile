@@ -1,0 +1,12 @@
+# Depends on: libzen
+
+name=libmediainfo
+version=23.09
+release=1
+source=(https://github.com/MediaArea/MediaInfoLib/archive/v$version/MediaInfoLib-$version.tar.gz)
+build_type=configure_build
+
+pre_build() {
+	cd Project/GNU/Library
+	./autogen.sh
+}

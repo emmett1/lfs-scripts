@@ -1,0 +1,12 @@
+name=pkgconf
+version=2.0.3
+release=1
+source=(http://distfiles.dereferenced.org/$name/$name-$version.tar.gz)
+build_type=configure_build
+build_opt="--with-pkg-config-dir=/usr/lib/pkgconfig:/usr/share/pkgconfig
+	--with-system-libdir=/lib:/usr/lib
+	--with-system-includedir=/usr/include"
+
+post_build() {
+	ln -sf pkgconf $PKG/usr/bin/pkg-config
+}

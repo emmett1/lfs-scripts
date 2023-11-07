@@ -1,0 +1,9 @@
+name=arcbox
+version=0.1.2
+release=1
+source=(https://github.com/gcavallo/Arcbox/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	mkdir -p $PKG/usr/share/themes/Arcbox
+	cp -Ra openbox-3 $PKG/usr/share/themes/Arcbox
+}

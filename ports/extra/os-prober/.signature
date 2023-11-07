@@ -1,0 +1,11 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIhf/bpvGRUP3d2kvt7099QCtuQC5GMc13Oo3nvH06auNs/F7iRIGObgnnGAv55ECTEB7DAuu+IrL3nF1trpCQo=
+SHA256 (Pkgfile) = c588a20e35fae4f3f9f7a63df422276d1a9f971d5c8ffdc48d74ea71edca7308
+SHA256 (.footprint) = 304a8bff621cd9e72899712ff96855b3a777f9f233dcb4820f32fba094becae7
+SHA256 (os-prober_1.81.tar.xz) = 2fd928ec86538227711e2adf49cfd6a1ef74f6bb3555c5dad4e0425ccd978883
+SHA256 (os-prober-1.79-btrfs-subvolume-detection.patch) = 15bb651eec5a0ae9bd08fc70f1cc23246cf31e7054838d162020d4806dc67810
+SHA256 (os-prober-1.79-use-fstab-name.patch) = efb22d59db0c60fa1545ae8e18ac5585fda44a8a95ef8c46bca8499f79c7ad27
+SHA256 (os-prober-1.79-mounted-boot-partition-fix.patch) = fc46f47cb10d25387244888780733abfc4c45a7be44e8a49935d054aa5b82749
+SHA256 (os-prober-1.79-fix-busy-umount-message.patch) = 14164906bb62415769efa76f874cf236cd1c73e8e9c87e0fc8f3f5674bc85424
+SHA256 (os-prober-1.79-efi-chroot-blkid-fallback.patch) = 3b6f28d91dcc0389039a14992aa197eba18c083cb9762157e32414a5e5f026ef
+SHA256 (add-CRUX-detection.patch) = 7da0c45bbde226b92cf2ea7116bf084806a066ca29ff1d52bb4a7ab90f03a5f5

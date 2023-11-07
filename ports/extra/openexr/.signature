@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zJKVOj+rDJkqFxfM8y3XxGExXbf9d2qs9pQtH26WDbk5MnDNS2mvlvxCdQ/u02KxTO70IvCB1WZAkpDqhQ0ZAw0=
+SHA256 (Pkgfile) = aa58e2eacb6d51a97894d5bcf33f5273d53548de148f5cecf41f66d4707f172a
+SHA256 (.footprint) = f91745a2f489e4b6a9759d0422571ceb672ef37f1b2044f5fcb3791d1ff867f9
+SHA256 (openexr-3.2.1.tar.gz) = 61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b

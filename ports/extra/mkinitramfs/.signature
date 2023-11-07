@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zE5wKiW5iK9aVS+z+L7wc9s8sdEzfrLKNGzxBfRGoN8NcvmQrsMBNsv/GD/RFSYNe0N1IKUwudOzemurYT8p1gc=
+SHA256 (Pkgfile) = 0a358cda849693144d7871d889971e3c3c2e82ba5a0618c7224f0ffaeb494d69
+SHA256 (.footprint) = c9906369b7a8337aa87fdfc7043c2b34beb56d15ef70ce92cb2d13531de58a27
+SHA256 (63c0bb3acaf3c9e0146007e08c13be448e1814c9.tar.gz) = ed6c0c4c16ca9053f944d4cf8ed297250e849194bcb7fdd0917d3c68cdfa9b8b
+SHA256 (base.hook) = 4a464d3496bace7b882bba6f73d67f553dde61fc5832b837266058aaf1acdf11
+SHA256 (mkinitramfs.conf) = 32f3dacc8e905a42f6dad0ad2ce5f76a6c9810f5f568dd8e9e30d77cc7528dc9

@@ -1,0 +1,6 @@
+# Depends on: lxappearance openbox 
+
+name=lxappearance-obconf
+version=0.2.3
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

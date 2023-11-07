@@ -1,0 +1,4 @@
+name=perl-parse-yapp
+version=1.21
+release=1
+source=(https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-$version.tar.gz)

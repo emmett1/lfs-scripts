@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zOXSL1Hxj2IBZm1Hc5Hf92Oge603Qi4vj0KcbsFJdsgdOPo10sPo8x36e8f2UlQZOL6WUnNe1pXx9ybLvuDETg0=
+SHA256 (Pkgfile) = b3b73a47692daaa6dc4c1c286a5fd1f576f10f2a7bb73513bcbbc50266cc6e1f
+SHA256 (.footprint) = e373a2e8d524b90cdf0e53ba23fedcf9bd221c8c5e173138a9af551af15a08fc
+SHA256 (unzip60.tar.gz) = 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+SHA256 (unzip-6.0-consolidated_fixes-1.patch) = 02cfd942875ca492c8fd27dff773e633a4f0b9bb47af2c3ad2697e8df8aa79f8

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFBsT32ptv8Cogki6Q+caZ5zeBqdLo0KgzntVSZvsB4BZvwsdAuFDKhV+pfGbH1Ouw2jePc3NCbGxh89YoKTmAo=
+SHA256 (Pkgfile) = 1afae2b1ad255ecd5d22739897998d0aee2ed83106536ef0fd01412f457e0130
+SHA256 (.footprint) = 1b35c0ecda86cd1c63c8093a511de6ffde1bb45b42e89ab2b65f44b0984def7d
+SHA256 (libxshmfence-1.3.2.tar.xz) = 870df257bc40b126d91b5a8f1da6ca8a524555268c50b59c0acd1a27f361606f

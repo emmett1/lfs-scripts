@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/mksquashfs
+lrwxrwxrwx	root/root	sbin/sqfscat -> unsquashfs
+lrwxrwxrwx	root/root	sbin/sqfstar -> mksquashfs
+-rwxr-xr-x	root/root	sbin/unsquashfs
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/mksquashfs.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/sqfscat.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/sqfstar.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/unsquashfs.1.gz

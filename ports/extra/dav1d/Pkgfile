@@ -1,0 +1,6 @@
+# Depends on: nasm
+
+name=dav1d
+version=1.3.0
+release=1
+source=(https://code.videolan.org/videolan/$name/-/archive/$version/$name-$version.tar.gz)

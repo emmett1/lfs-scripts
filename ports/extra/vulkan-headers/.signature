@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zJNGOC8OFvPS2aGNOTP+lICydk0G40vYPbP5o74BeFirZCKWVZsr2OgwXbCRn3EnNWTjlL4tPFEU04nGRd+RkAA=
+SHA256 (Pkgfile) = 0c943e0553b20e9afd62c73f6ad096ecf5d83741d6085a04ae9f252bccab081a
+SHA256 (.footprint) = fd4855a88e8067bd48ae493031bb5fc1b3d8b6a123a7680d3a74c4e77135aa49
+SHA256 (vulkan-headers-v1.3.269.tar.gz) = 1637f36a023bd148315f66efb7974861adf22cd1f6d690bdf00ee15ce91d5367

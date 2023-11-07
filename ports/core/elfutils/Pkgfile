@@ -1,0 +1,6 @@
+name=elfutils
+version=0.189
+release=1
+source=(https://sourceware.org/ftp/$name/$version/$name-$version.tar.bz2)
+build_opt="--disable-debuginfod --enable-libdebuginfod=dummy"
+keep_static=1

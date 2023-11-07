@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zOga5gfDsmqhbfG4Fw/23H+zGEQJmnbXoZ6wjsGTYEewcnH4tLo8hR+3Al5i4ZDFxKa55IzKocihNuvTgOEJ9gY=
+SHA256 (Pkgfile) = b1cbc97840f174bdc7f8636b76c2b016d4028553224d985b80ee78d1dab030a9
+SHA256 (.footprint) = 15cac93d3ee964cf4a45971fe6259a12c0dfb73caab217be65ddfd89562d40ad
+SHA256 (libaom-3.7.0.tar.gz) = d1773bb6f050b430af47741306ac37a6aa2fec7364cb0dc27e3b1454a138934f

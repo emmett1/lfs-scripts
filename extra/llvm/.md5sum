@@ -1,6 +1,0 @@
-81e61bba36d0b732ed529ba36a2c5d92  clang-16.0.3-enable_default_ssp-1.patch
-70053a666251fdcabc466ea4a0275972  clang-16.0.6.src.tar.xz
-b7830bb90e376c90a43c2c190a0a5ffa  cmake-16.0.6.src.tar.xz
-7d986cda69719a35bd5ecb266fcf1f65  llvm-16.0.6.src.tar.xz
-295c343dcd457dc534662f011d7cff1a  llvm-config.h
-93f5eae2f0012c7b5abdddda216d6ac0  third-party-16.0.6.src.tar.xz

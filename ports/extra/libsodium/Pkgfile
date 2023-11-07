@@ -1,0 +1,4 @@
+name=libsodium
+version=1.0.19
+release=1
+source=(https://github.com/jedisct1/libsodium/archive/$version-RELEASE/$name-$version.tar.gz)

@@ -1,0 +1,31 @@
+name=runit
+version=2.1.2
+release=1
+source=(http://smarden.org/$name/$name-$version.tar.gz
+	halt
+	shutdown
+	shutdown.8
+	chpst.patch
+	sigcont.patch)
+patch_opt="-Np0"
+
+pkg_build() {
+	cd $name-$version
+	# set default service path to /var/service
+	sed -i -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' src/sv.c
+	
+	./package/compile
+	./package/check
+	
+	install -d $PKG/sbin
+	install -m 755 command/* $PKG/sbin
+	
+	install -d $PKG/usr/share/man/man8
+	install -m 644 man/* $PKG/usr/share/man/man8
+	
+	ln -s /sbin/runit-init $PKG/sbin/init
+	install -m755 $SRC/halt $SRC/shutdown $PKG/sbin
+	ln -s halt $PKG/sbin/reboot
+	ln -s halt $PKG/sbin/poweroff
+	install -D $SRC/shutdown.8 $PKG/usr/share/man/man8/shutdown.8
+}

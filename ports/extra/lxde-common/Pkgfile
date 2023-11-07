@@ -1,0 +1,4 @@
+name=lxde-common
+version=0.99.2
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

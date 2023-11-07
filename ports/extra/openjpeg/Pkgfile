@@ -1,0 +1,5 @@
+name=openjpeg
+version=2.5.0
+release=1
+source=(https://github.com/uclouvain/$name/archive/v$version/$name-$version.tar.gz)
+keep_static=1 # required by poppler

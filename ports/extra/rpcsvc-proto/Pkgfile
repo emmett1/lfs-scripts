@@ -1,0 +1,4 @@
+name=rpcsvc-proto
+version=1.4.4
+release=1
+source=(https://github.com/thkukuk/$name/releases/download/v$version/$name-$version.tar.xz)

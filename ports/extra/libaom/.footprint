@@ -1,0 +1,22 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/aomdec
+-rwxr-xr-x	root/root	usr/bin/aomenc
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/aom/
+-rw-r--r--	root/root	usr/include/aom/aom.h
+-rw-r--r--	root/root	usr/include/aom/aom_codec.h
+-rw-r--r--	root/root	usr/include/aom/aom_decoder.h
+-rw-r--r--	root/root	usr/include/aom/aom_encoder.h
+-rw-r--r--	root/root	usr/include/aom/aom_external_partition.h
+-rw-r--r--	root/root	usr/include/aom/aom_frame_buffer.h
+-rw-r--r--	root/root	usr/include/aom/aom_image.h
+-rw-r--r--	root/root	usr/include/aom/aom_integer.h
+-rw-r--r--	root/root	usr/include/aom/aomcx.h
+-rw-r--r--	root/root	usr/include/aom/aomdx.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libaom.so -> libaom.so.3
+lrwxrwxrwx	root/root	usr/lib/libaom.so.3 -> libaom.so.3.7.0
+-rwxr-xr-x	root/root	usr/lib/libaom.so.3.7.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/aom.pc

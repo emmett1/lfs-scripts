@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIY6MGyZpGVkyPe6L/QXgDRMf+4zOPk2Q8uSvj8Pbp370/NqTTsfSprklGrXV3JTDSc4xXMMu+lbWymMbV0F9wk=
+SHA256 (Pkgfile) = d805203418452162f21deb2e495467854c72c8ea2ec0cc0e677b0dba1c7b16ab
+SHA256 (.footprint) = d619d7c80e4a2f6ee557930ff49ef5e1d7380b7ebd27aabedfb4f1be638b30cc
+SHA256 (lxmenu-data-0.1.5.tar.xz) = 9fe3218d2ef50b91190162f4f923d6524c364849f87bcda8b4ed8eb59b80bab8

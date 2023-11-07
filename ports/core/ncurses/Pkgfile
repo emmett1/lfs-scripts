@@ -1,0 +1,52 @@
+name=ncurses
+version=6.4
+release=1
+source=(https://invisible-mirror.net/archives/$name/$name-$version.tar.gz)
+build_opt="--without-debug
+	--with-shared
+	--without-normal
+	--with-cxx-shared
+	--enable-pc-files
+	--enable-widec
+	--with-pkg-config-libdir=/usr/lib/pkgconfig"
+
+bootstrap_pkg() {
+	sed -i s/mawk// configure
+	
+	./configure \
+		--prefix=$TOOLS \
+		--with-shared   \
+		--without-debug \
+		--without-ada   \
+		--enable-widec  \
+		--enable-overwrite
+	make
+	make install
+	ln -s libncursesw.so $TOOLS/lib/libncurses.so
+}
+
+post_build() {
+	mkdir -p $PKG/lib
+	mv $PKG/usr/lib/libncursesw.so.* $PKG/lib
+	ln -sf ../../lib/libncursesw.so.$version $PKG/usr/lib/libncursesw.so
+	ln -s libncursesw.so.$version $PKG/lib/libncurses.so.${version%%.*}
+	
+	# Create libtinfo symlinks.
+	ln -sfr $PKG/usr/lib/libncursesw.so \
+		$PKG/usr/lib/libtinfo.so
+	ln -sfr $PKG/lib/libncursesw.so.${version} \
+		$PKG/usr/lib/libtinfo.so.${version}
+	ln -sfr $PKG/usr/lib/libtinfo.so.${version} \
+		$PKG/usr/lib/libtinfo.so.6
+	ln -sfr $PKG/usr/lib/pkgconfig/ncursesw.pc \
+		$PKG/usr/lib/pkgconfig/tinfo.pc
+	for lib in ncurses form panel menu ; do
+	    rm -vf                    $PKG/usr/lib/lib${lib}.so
+	    echo "INPUT(-l${lib}w)" > $PKG/usr/lib/lib${lib}.so
+	    ln -sfv ${lib}w.pc        $PKG/usr/lib/pkgconfig/${lib}.pc
+	done
+	
+	rm -vf                     $PKG/usr/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > $PKG/usr/lib/libcursesw.so
+	ln -sfv libncurses.so      $PKG/usr/lib/libcurses.so
+}

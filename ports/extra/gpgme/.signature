@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIRV5IW0bKA2GpyXjrB9OS8A3J/HSYxDKERJWFhLVnsTVlhl4IoM2lwWdvxRR/wUaMHbiIJ0gJXZO+I34r3qHgI=
+SHA256 (Pkgfile) = a4cf7bb555847a0be7f9a5a0e27bf6e9b9ad7ea3553874157e6106ce8cdb57a8
+SHA256 (.footprint) = c5e94c3e24b2a42d1886d6bcecdf492f16e74fb1688eb8ce3590d87bb8ffc1e9
+SHA256 (gpgme-1.22.0.tar.bz2) = 9551e37081ad3bde81018a0d24f245c3f8206990549598fb31a97a68380a7b71

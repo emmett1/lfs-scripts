@@ -1,0 +1,6 @@
+# Depends on: libx11 libxmu 
+
+name=xkill
+version=1.0.6
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

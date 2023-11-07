@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zO3XWQ6VQffSiNdqIdLivyy80pK5l9gv0sCJ2rKYHlONvUxvPsXo7W1H+VC6sizof0YQ6YqAX0SJq+EBXTEVhgQ=
+SHA256 (Pkgfile) = 409043a741d9ddc456ecc4e91e34189270d9f0a23edc335740f07fd4bf90130e
+SHA256 (.footprint) = d563e12a964a6df28578d18d70cefb9d56eb7a4e75010b1d866458323501d29d
+SHA256 (cups-2.4.7-source.tar.gz) = dd54228dd903526428ce7e37961afaed230ad310788141da75cebaa08362cf6c
+SHA256 (cupsd.run) = b631fe5fda914b3142a0dc0b450a913a36de5124f9433eefc01e2655661881aa

@@ -1,0 +1,6 @@
+# depends on: gtk2
+
+name=lxrandr
+version=0.3.2
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)

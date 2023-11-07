@@ -1,0 +1,7 @@
+# Depends on: gtk3
+
+name=xarchiver
+version=0.5.4.21
+release=1
+source=(https://github.com/ib/$name/archive/$version/$name-$version.tar.gz)
+

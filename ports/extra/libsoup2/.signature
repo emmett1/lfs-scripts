@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNFtbC6xcR5MUcRW2gE1zv6Aeyv7vkE+3ce3QA10WYdMy7cLSaPX9Ge49qKyiaKV0Chh/gSYvaj/eZXMR0HuUQQ=
+SHA256 (Pkgfile) = 13e52274f56f3a06aaf92cb7d3dad861ca81b1140b0598a713ef6b87ac6f7714
+SHA256 (.footprint) = f63cbfccd8a88656c7eb18c3ed2c6daf3738e87753c3c92089e7075752b4a843
+SHA256 (libsoup-2.74.3.tar.xz) = e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13

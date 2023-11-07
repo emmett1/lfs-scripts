@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zPjApmmF8bAg3GZ1xuM/jYEPHEyazOt1a/GYmbc4gZXXvFXT2kHni/BeyJ4q53GmrmCVW7t4FqbosA54lSHDuQM=
+SHA256 (Pkgfile) = ade4608f87598f7db0504f223f73c47aa46723713a227ec7ded342b387f1ce80
+SHA256 (.footprint) = 15c543462dcd4be07b19649f10787aa7d2220e9a1a5e4de087b150ab10610498
+SHA256 (vulkan-icd-loader-v1.3.269.tar.gz) = 7b2f7a478c459107772d3eb0cee8c8bdbd265c026f67f813778499e9641fd365

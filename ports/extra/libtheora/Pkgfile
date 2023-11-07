@@ -1,0 +1,10 @@
+# Depends on: libvorbis
+
+name=libtheora
+version=1.1.1
+release=1
+source=(https://downloads.xiph.org/releases/theora/$name-$version.tar.xz)
+
+pre_build() {
+	sed -i 's/png_\(sizeof\)/\1/g' examples/png2theora.c
+}

@@ -1,6 +1,0 @@
-# Pkgfile for perl-xml-parser
-
-name=perl-xml-parser
-version=2.46
-release=1
-source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)

@@ -1,0 +1,19 @@
+name=curl
+version=8.4.0
+release=1
+source=(https://$name.se/download/$name-$version.tar.xz)
+build_opt="
+	--with-openssl
+	--enable-threaded-resolver
+	--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+	--without-brotli
+	--without-libidn2
+	--without-libpsl
+	--without-librtmp
+	--without-nghttp2"
+
+bootstrap_opt="
+	--disable-static \
+	--enable-threaded-resolver \
+	--with-openssl \
+	--with-ca-bundle=$TOOLS/etc/ssl/cert.pem"
