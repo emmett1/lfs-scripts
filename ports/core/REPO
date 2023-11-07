@@ -327,10 +327,12 @@ f:209fc6bbdd1d66a873fca517aaf21eb9:expat/Pkgfile
 f:438920f052f75641200915d378b83885:expat/.signature
 f:52d05469640f05c494f94305f1fc5743:expat/update
 f:8011b152ff249a1f1175072c112a856c:expat/.footprint
-f:30ca1b1c280025ceaf51ca5379510370:ports/Pkgfile
-f:fcd23cfb7c7c1e238dda882d54142ffb:ports/.signature
+f:6483e3510b4f5f9c8a29739d87892c89:ports/Pkgfile
+f:778e48cb5d35815fb6116eb40579bca6:ports/.signature
 f:0de7bd216b8233739cb7b96163837c03:ports/repokey.pub
-f:169d79bb441572a450f2c91ca572165f:ports/.footprint
+f:d66834182e762d8a7018c55c77d17efd:ports/extra.httpup
+f:43a88bfca746c0552925f137a7c1e485:ports/.footprint
+f:3271bf6f73d7f04285c919e8675b1e7f:ports/core.httpup
 f:4d3fbc6371dc910a35e4ab4fe891e3cd:sysklogd/Pkgfile
 f:a66c39e5f864447c68dd4a3a64139801:sysklogd/.signature
 f:6394ad7343ee2bccb1bb268c9f66bc81:sysklogd/sysklogd.run
