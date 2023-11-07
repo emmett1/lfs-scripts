@@ -1,0 +1,15 @@
+# Depends on: libx11 glib gtk2
+
+name=lxdm
+version=0.5.3
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.xz
+	lxdm.run)
+sv=(lxdm.run)
+
+pre_build() {
+	sed -i 's:sysconfig/i18n:profile.d/locale.sh:g' data/lxdm.in
+	sed -i 's:/etc/xprofile:/etc/profile:g' data/Xsession
+	sed -i 's/^bg/#&/' data/lxdm.conf.in
+	sed -i '/reset=1/ s/# //' data/lxdm.conf.in
+}

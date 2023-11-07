@@ -1,0 +1,7 @@
+# Depends on: gtk2 libfm libx11
+
+name=lxhotkey
+version=0.1.1
+release=1
+source=(https://sourceforge.net/projects/lxde/files/LXHotkey/$name-$version.tar.xz)
+build_opt="--with-gtk=2"

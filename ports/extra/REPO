@@ -64,6 +64,7 @@ d:xf86-video-vesa
 d:libxext
 d:network-manager-applet
 d:acpica-unix
+d:libglade
 d:libksba
 d:libbytesize
 d:viewnior
@@ -227,6 +228,7 @@ d:xorg
 d:xmlto
 d:iceauth
 d:poppler-glib
+d:obconf
 d:libinput
 d:libzen
 d:dht
@@ -287,7 +289,9 @@ d:libpsl
 d:miniupnpc
 d:xcb-util-wm
 d:nvidia
+d:lxhotkey
 d:xdriinfo
+d:audacious-plugins
 d:duktape
 d:twm
 d:gsmartcontrol
@@ -312,6 +316,7 @@ d:gnupg
 d:xcursorgen
 d:yasm
 d:pcmanfm
+d:audacious
 d:cbindgen
 d:parted
 d:alsa-lib
@@ -376,6 +381,7 @@ d:hicolor-icon-theme
 d:glslang
 d:cryptsetup
 d:docbook-xsl
+d:lxdm
 d:htop
 d:libvdpau
 d:os-prober
@@ -621,7 +627,8 @@ f:661e9636dfcf876717fa4ac12aa0d735:gcr/post-install
 f:e994223561f601b4a2171289ef10affd:gcr/.signature
 f:85a2ff613027a118f75967e33ee058ed:gcr/.footprint
 f:c4eeb680b5a3214e3858e2b026ba255f:arc-gtk-theme/Pkgfile
-f:67aeabfda804d0bbdd4469bccfb6e113:arc-gtk-theme/.signature
+f:349febd4a9ffb8c0acff4b7c83990f5c:arc-gtk-theme/.signature
+f:6757f38695c63331f79088c4613d0549:arc-gtk-theme/.footprint
 f:b41567ad24185be960829cff0841ccac:libatomic_ops/Pkgfile
 f:7af83d88c8f0e1db760f941670dfbf6d:libatomic_ops/.signature
 f:2cccab6d9c322208aa894d401e172fa9:libatomic_ops/.footprint
@@ -639,6 +646,9 @@ f:ef61ede635a4c97264dfb1febeafa489:acpica-unix/Pkgfile
 f:7a11bfadb9a037c76829164cd7fb9ebf:acpica-unix/.signature
 f:ec84c54d031bbd16e5f34ef7e66fae5f:acpica-unix/.pkgfiles
 f:7ae657a7112a1134caea8d3ee9c730b2:acpica-unix/.footprint
+f:06e0c176d49cfe459d595440f0f3bdf7:libglade/Pkgfile
+f:4ecfaf60fc0f56165148fbf0f4b41e64:libglade/.signature
+f:40575a9495f68b771231057db22c0e5f:libglade/.footprint
 f:114d3b90c5d767bd20bfe4fe180857f5:libksba/Pkgfile
 f:db7d5782d3973f4cc4e2b2a383c47bb1:libksba/.signature
 f:8aaf33442a5689bda911b3c2a6769722:libksba/update
@@ -1191,6 +1201,9 @@ f:5b4113dd81f8d31293af565ae1540391:iceauth/.footprint
 f:7391c25ef4d9bbd3bd7077fcd781aad5:poppler-glib/Pkgfile
 f:263e566acdf7fc166f13d8cb41a128a3:poppler-glib/.signature
 f:a437b516d85a4115257280180b84c115:poppler-glib/.footprint
+f:281875a878aa0f26edac7281e7c1d8fa:obconf/Pkgfile
+f:a2875c21d6e00f96087d39b2e3b4baa6:obconf/.signature
+f:7fd9158a36d838bf62aea841a1016aff:obconf/.footprint
 f:f321c7df30d8c4f240bab13103f1feef:libinput/Pkgfile
 f:7784a0618e598564bb8c033540a4714f:libinput/.signature
 f:0be5340bde7dd5c5c76723163fbc6af8:libinput/update
@@ -1403,9 +1416,15 @@ f:23eae4c2d709a389d85f76d66fd9b7e3:nvidia/.signature
 f:583dd697b445e72568d7f33c90f0cb9c:nvidia/update
 f:5e6a47610fdeb9ba4ab975ae6af780cb:nvidia/.footprint
 f:2097834b5b5f1fca0b82dd5518e11cb6:nvidia/10-nvidia-drm-outputclass.conf
+f:5a06031f2dfda01e3a118f4a1a71324a:lxhotkey/Pkgfile
+f:9e632e0aa40fb9ecc2f146e22c1ed88f:lxhotkey/.signature
+f:8b0f1e9bc6b50b64df19202f07086300:lxhotkey/.footprint
 f:edcddffcc9833b38449868229a24085d:xdriinfo/Pkgfile
 f:0e0ee53d8a1bff5d8c3755206be4643c:xdriinfo/.signature
 f:1d8ca10a22bfa81759a716f824306fa2:xdriinfo/.footprint
+f:36f941cba7be563409d23e32f1fc9345:audacious-plugins/Pkgfile
+f:07fb810de1705c0342054850820da8f3:audacious-plugins/.signature
+f:6d1136110e5e3f524e4e9373a0214de3:audacious-plugins/.footprint
 f:1f25d3312a7eba26bcd84f9fd944acb2:duktape/Pkgfile
 f:bd1eb275a17ea85c4f1b838d69c70cf6:duktape/.signature
 f:975a9a4929860b4b5968d1d8dc63705e:duktape/update
@@ -1446,7 +1465,7 @@ f:91894413148cfacff52f3fd769c9f4c4:scrot/.signature
 f:4178bc05d1cc584f5cd7128500175ccf:scrot/update
 f:ba7acf512bd0e05a1f6b04b7f50a1012:scrot/.footprint
 f:f1874ddfc2836434a057c8240b93b346:vulkan-icd-loader/Pkgfile
-f:55d4d34cde9b64020b3b459164e01168:vulkan-icd-loader/.signature
+f:7f39372e2ea91e78d653726c3fbfe95d:vulkan-icd-loader/.signature
 f:8a3b3085f4c15a220aa8aa6ac3827331:vulkan-icd-loader/.footprint
 f:9654702de7dd00f235b907e8fb25b07c:smproxy/Pkgfile
 f:b4f7aba6492796a443450a1ba17bd7c1:smproxy/.signature
@@ -1486,6 +1505,9 @@ f:d3a6034ec8e86f4667892eeaccc00e00:pcmanfm/Pkgfile
 f:2b23300f3e388995a86d89970ec0114a:pcmanfm/post-install
 f:764b449f8d8db61a464624eda99a3a58:pcmanfm/.signature
 f:08e314a001c02442cc31c01e44dc8256:pcmanfm/.footprint
+f:1e152bacfe3df02352cab910cd98d26e:audacious/Pkgfile
+f:e9a506f1ff30b282a7688d99fee42ad5:audacious/.signature
+f:fb8c09adc8fb83b61c114cfdb5e96133:audacious/.footprint
 f:f2d9be0eac9303b8dd0fa489b1f5cd29:cbindgen/Pkgfile
 f:4b3eb70b08fb986bc34505b588e0a42f:cbindgen/.signature
 f:0038a6c01b767a02e176a3cf00fbd244:cbindgen/.footprint
@@ -1685,8 +1707,6 @@ f:4fd75e406052efffdf68efd0518db711:dbus/.signature
 f:338adb31cb3aaf2b1d7c2bee13916d5f:dbus/update
 f:f33cc21f86964338b6fdba5c356b0089:dbus/.footprint
 f:cb2f5898a5495cc9fd5c7adbb9af8bdf:libnl/Pkgfile
-f:b381405afd14e466e35d29a112480333:libnl/libnl-3.7.0.tar.gz
-f:ebbb2e134435ef86ff5a60eb5d249cd5:libnl/libnl#3.7.0-1.pkg.tar.gz
 f:eeb9ee819f9688a40f4718efe66a01b1:libnl/.signature
 f:93b93b75f0541cdf36097dac42a440f8:libnl/update
 f:4f34f7e86fb25646f3ea9f36c709ffce:libnl/.footprint
@@ -1706,6 +1726,10 @@ f:aacaa7f67776a49c0332fe691dfffbae:docbook-xsl/.signature
 f:0969c7e2061681e520ac820cca7615c5:docbook-xsl/update
 f:f77800752a4815cbcf138a3578032628:docbook-xsl/non-recursive-string-subst.patch
 f:d9795a0ed5d14d009bf9f133bf91b0ef:docbook-xsl/.footprint
+f:45d0a980e7d5c6f19e178ea64b7b59ec:lxdm/Pkgfile
+f:5d6bd6a7b3d3b07f17b41b2f5be7db47:lxdm/.signature
+f:7d5c15a65408cf01afc468b2b62f4b1e:lxdm/lxdm.run
+f:f4dc54f257edf9b812375306a7025b5e:lxdm/.footprint
 f:1dd465c3de78521e3fbd856986c520d8:htop/Pkgfile
 f:2b23300f3e388995a86d89970ec0114a:htop/post-install
 f:2f334a24fbc243187a0a0bd0b55f00fa:htop/.signature
