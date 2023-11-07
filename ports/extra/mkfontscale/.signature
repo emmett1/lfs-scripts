@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAbd2S5uF61Pvel9WGRlX78hXEVvGJpDyFoGV/9JsIeYlVmjTnmEB3sUV6hR56d8uTg1rWgL3PacGGI43rWnDwY=
+SHA256 (Pkgfile) = 9ed53f535b67e6c1f64a0ec03f8118b521ca037deb2bd320f71da49958f8e2e2
+SHA256 (.footprint) = caa405f8b3e584211bcf167fc0eae6ce94900b6482ad46aad202095474449136
+SHA256 (mkfontscale-1.2.2.tar.xz) = 8ae3fb5b1fe7436e1f565060acaa3e2918fe745b0e4979b5593968914fe2d5c4

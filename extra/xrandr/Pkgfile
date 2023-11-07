@@ -1,6 +1,0 @@
-# Pkgfile for xrandr
-
-name=xrandr
-version=1.5.2
-release=1
-source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

@@ -1,0 +1,5 @@
+name=slang
+version=2.3.3
+release=1
+source=(https://www.jedsoft.org/releases/$name/$name-$version.tar.bz2)
+build_opt="--with-readline=gnu"

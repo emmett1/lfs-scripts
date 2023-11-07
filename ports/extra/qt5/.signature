@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBirO9enpk4koA+53KFx3TKa1amwAi2orMVr8Cf848grHQgGzJFlyJspvL8judF4CTTTRM/4T9Z25cnm6fVp0g0=
+SHA256 (Pkgfile) = b2dd57b377c6ddd579a85dfa9e9d198459417a9a24517588531ccebc974d5ac9
+SHA256 (.footprint) = afe3c51449c4523284b07fcd361d42fbbe4020cdcd0cd2f5679b8d8c4bf0ff09
+SHA256 (qt-everywhere-opensource-src-5.15.11.tar.xz) = 7426b1eaab52ed169ce53804bdd05dfe364f761468f888a0f15a308dc1dc2951
+SHA256 (qt-everywhere-opensource-src-5.15.11-kf5-1.patch) = 613a339712a37f583e575a9855fb203960639ac144f9f48516c8cf1dbdd797d1
+SHA256 (qt-5.15.11-xkbcommon160.patch) = ec3a75466a2c0f99b397103a8f0ff278c5b73c38c26460fc0943b91e89655d80

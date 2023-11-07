@@ -1,6 +1,0 @@
-# Pkgfile for libndp
-
-name=libndp
-version=1.8
-release=1
-source=(http://$name.org/files/$name-$version.tar.gz)

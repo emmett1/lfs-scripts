@@ -1,0 +1,9 @@
+filename=fakeroot
+
+port_getver() {
+	fetch \
+	| grep -Eo $filename[_-][0-9a-z.]+.tar.[bgx]z2? \
+	| sed "s/$filename[-_]//;s/\.tar.*//;s/\.orig//" \
+	| grep -Evi '(alpha|beta|rc|pre)' \
+	| grep [[:digit:]]
+}

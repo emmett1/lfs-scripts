@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGbZRB2eyUJNffE9Ofc43NLGQ7OCq2OzT0/YnmswhBeRxYaLqHbFGrk/CxlfWuwtS5OeCWPh5bLNPbOYztISTgo=
+SHA256 (Pkgfile) = fe77cd35345e3b39da5d6bf0a4059bb73eafea524932e7c6b7285b6312da6ca7
+SHA256 (.footprint) = 645ed417c712989b6024b06ef3d1dcd4eecf1e12621a236787cd2f97404d96f6
+SHA256 (fontconfig-2.14.2.tar.xz) = dba695b57bce15023d2ceedef82062c2b925e51f5d4cc4aef736cf13f60a468b

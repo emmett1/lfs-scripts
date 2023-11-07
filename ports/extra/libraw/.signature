@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zG0FBFB02qywqMftFzXIhrR241WWeSzaujJT/ayRyH6uW0E9RPd9UY5pie1Ju97m5yhEIjLNXWsHXocFRRG85ww=
+SHA256 (Pkgfile) = 52b860f80d076bd8cf5897b0c2e163aac79bd17a2360c131cf6d5004887971cb
+SHA256 (.footprint) = 1368001011a31fde7f8c2a03e56e24b7ed7906d7953aef23d861195b96d4e595
+SHA256 (LibRaw-0.21.1.tar.gz) = 630a6bcf5e65d1b1b40cdb8608bdb922316759bfb981c65091fec8682d1543cd

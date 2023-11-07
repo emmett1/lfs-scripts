@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNAz0HMbbBbOr8KUKYteZXhINkLFThUeW9ajWBNh4whDJdviBMu4CwjODPHm9q+E1PDiiR7a8XDkXfOpgoTsjQg=
+SHA256 (Pkgfile) = 7124171e48bd2701cb89f25ee888d67a11a4740e0fdc547e1c1c987b4301072b
+SHA256 (.footprint) = 8d2cb34e30a6f47911e177025df3f20996d9b04df4f270a3c507bf5fd8e6d7ec
+SHA256 (icu4c-73_1-src.tgz) = a457431de164b4aa7eca00ed134d00dfbf88a77c6986a10ae7774fc076bb8c45

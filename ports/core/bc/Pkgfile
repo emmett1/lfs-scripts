@@ -1,0 +1,11 @@
+name=bc
+version=6.7.0
+release=1
+source=(https://github.com/gavinhoward/$name/releases/download/$version/$name-$version.tar.xz)
+
+pkg_build() {
+	PREFIX=/usr CC=gcc CFLAGS="-std=c99" ./configure.sh -G -O3
+	#./configure --prefix=/usr -r
+	make
+	make install
+}

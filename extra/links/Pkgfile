@@ -1,6 +1,0 @@
-# Pkgfile for links
-
-name=links
-version=2.29
-release=1
-source=(http://$name.twibright.com/download/$name-$version.tar.bz2)

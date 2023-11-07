@@ -1,0 +1,14 @@
+name=pciutils
+version=3.10.0
+release=1
+source=(https://mj.ucw.cz/download/linux/pci/$name-$version.tar.gz)
+
+pkg_build() {
+	make PREFIX=/usr                \
+	     SHAREDIR=/usr/share/hwdata \
+	     SHARED=yes
+	make PREFIX=/usr                \
+	     SHAREDIR=/usr/share/hwdata \
+	     SHARED=yes                 \
+	     install install-lib
+}

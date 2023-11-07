@@ -1,6 +1,0 @@
-# Pkgfile for paper-icon-theme
-
-name=paper-icon-theme
-version=1.5.0
-release=1
-source=(https://github.com/snwh/$name/archive/v.$version/$name-$version.tar.gz)

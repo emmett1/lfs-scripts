@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zIEQ5kUHo5W4y3KNbVO6zHSuWQ9PeUrmeGEnG+33AgbsYu1sFcelGbXxeViDeMpLZrTSiRup14QJINheyb8L0g8=
+SHA256 (Pkgfile) = 9547a8520918c8305baeff05d4f5abc569dac883aa9c6a681d9dc64640036ffd
+SHA256 (.footprint) = 59ad89fef37043120db968728e9cfbee17b6c671985275e215f688e47a223a5c
+SHA256 (grub-2.06.tar.xz) = b79ea44af91b93d17cd3fe80bdae6ed43770678a9a5ae192ccea803ebb657ee1
+SHA256 (unifont-15.0.01.pcf.noextract) = efbae4714d186a3015ba05879c6b1c685bdc1538169bed563cb927419bd38cdd
+SHA256 (grub-2.06-upstream_fixes-1.patch) = 5312f7a53a5e417b72f8de92321e81b1db277affdb459406ac4f8a8850132f5a

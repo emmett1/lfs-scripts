@@ -1,0 +1,22 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/crypt.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libcrypt.so -> libcrypt.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libcrypt.so.2 -> libcrypt.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib/libcrypt.so.2.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+lrwxrwxrwx	root/root	usr/lib/pkgconfig/libcrypt.pc -> libxcrypt.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libxcrypt.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man3/
+-rw-r--r--	root/root	usr/share/man/man3/crypt_checksalt.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_gensalt.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_gensalt_ra.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_gensalt_rn.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_preferred_method.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_ra.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/crypt_rn.3.gz
+drwxr-xr-x	root/root	usr/share/man/man5/
+-rw-r--r--	root/root	usr/share/man/man5/crypt.5.gz

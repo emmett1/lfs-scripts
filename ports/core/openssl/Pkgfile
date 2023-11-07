@@ -1,0 +1,27 @@
+name=openssl
+version=3.1.4
+release=1
+source=(https://www.$name.org/source/$name-$version.tar.gz)
+keep_static=1
+
+bootstrap_build() {
+	./config \
+		--prefix=$TOOLS \
+		--openssldir=$TOOLS/etc/ssl \
+		--libdir=lib \
+		shared \
+		no-ssl3-method
+	make
+	make -j1 MANDIR=$TOOLS/share/man MANSUFFIX=ssl install
+}
+
+pkg_build() {
+	./config \
+		--prefix=/usr \
+		--openssldir=/etc/ssl \
+		--libdir=lib \
+		shared \
+		zlib-dynamic
+	make
+	make MANSUFFIX=ssl DESTDIR=$PKG install
+}

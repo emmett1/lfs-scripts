@@ -1,0 +1,23 @@
+# Depends on: mtools perl
+
+name=syslinux
+version=6.03
+release=1
+source=(http://www.kernel.org/pub/linux/utils/boot/$name/$name-$version.tar.xz
+        $name-Makefile.patch $name-sysmacros.patch)
+skip_patch=yes
+
+pkg_build() {	
+	patch -p0 -i $SRC/$name-Makefile.patch
+	patch -p1 -i $SRC/$name-sysmacros.patch
+
+	export LDFLAGS+=--no-dynamic-linker
+	
+	make OPTFLAGS="$CFLAGS -fcommon" installer
+	make -j1 OPTFLAGS="$CFLAGS -fcommon" INSTALLROOT=$PKG MANDIR=/usr/share/man install
+	
+	# revdep
+	install -d $PKG/etc/revdep.d
+	echo '/usr/share/syslinux'       > $PKG/etc/revdep.d/syslinux
+	echo '/usr/share/syslinux/efi64' >> $PKG/etc/revdep.d/syslinux
+}

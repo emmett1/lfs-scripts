@@ -1,0 +1,39 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/4channels
+-rwxr-xr-x	root/root	usr/bin/dcraw_emu
+-rwxr-xr-x	root/root	usr/bin/dcraw_half
+-rwxr-xr-x	root/root	usr/bin/half_mt
+-rwxr-xr-x	root/root	usr/bin/mem_image
+-rwxr-xr-x	root/root	usr/bin/multirender_test
+-rwxr-xr-x	root/root	usr/bin/postprocessing_benchmark
+-rwxr-xr-x	root/root	usr/bin/raw-identify
+-rwxr-xr-x	root/root	usr/bin/rawtextdump
+-rwxr-xr-x	root/root	usr/bin/simple_dcraw
+-rwxr-xr-x	root/root	usr/bin/unprocessed_raw
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/libraw/
+-rw-r--r--	root/root	usr/include/libraw/libraw.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_alloc.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_const.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_datastream.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_internal.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_types.h
+-rw-r--r--	root/root	usr/include/libraw/libraw_version.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libraw.so -> libraw.so.23.0.0
+lrwxrwxrwx	root/root	usr/lib/libraw.so.23 -> libraw.so.23.0.0
+-rwxr-xr-x	root/root	usr/lib/libraw.so.23.0.0
+lrwxrwxrwx	root/root	usr/lib/libraw_r.so -> libraw_r.so.23.0.0
+lrwxrwxrwx	root/root	usr/lib/libraw_r.so.23 -> libraw_r.so.23.0.0
+-rwxr-xr-x	root/root	usr/lib/libraw_r.so.23.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libraw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libraw_r.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/libraw/
+-rw-r--r--	root/root	usr/share/doc/libraw/COPYRIGHT
+-rw-r--r--	root/root	usr/share/doc/libraw/Changelog.txt
+-rw-r--r--	root/root	usr/share/doc/libraw/LICENSE.CDDL
+-rw-r--r--	root/root	usr/share/doc/libraw/LICENSE.LGPL

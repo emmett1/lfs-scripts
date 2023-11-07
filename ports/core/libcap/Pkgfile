@@ -1,0 +1,10 @@
+name=libcap
+version=2.69
+release=1
+source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/${name}2/$name-$version.tar.xz)
+
+pkg_build() {
+	sed -i '/install -m.*STA/d' libcap/Makefile
+	make prefix=/usr lib=lib
+	make prefix=/usr lib=lib install
+}

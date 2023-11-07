@@ -1,6 +1,0 @@
-# Pkgfile for libpciaccess
-
-name=libpciaccess-32
-version=0.17
-release=1
-source=(ftp://ftp.x.org/pub/individual/lib/libpciaccess-$version.tar.xz)

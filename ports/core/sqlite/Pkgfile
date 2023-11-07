@@ -1,0 +1,19 @@
+name=sqlite
+version=3420000
+release=1
+source=(https://sqlite.org/2023/$name-autoconf-$version.tar.gz)
+
+pkg_build() {
+	./configure \
+		--prefix=/usr     \
+		--disable-static  \
+		--enable-fts4 \
+		--enable-fts5 \
+		CPPFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1 \
+		-DSQLITE_ENABLE_UNLOCK_NOTIFY=1   \
+		-DSQLITE_ENABLE_DBSTAT_VTAB=1     \
+		-DSQLITE_SECURE_DELETE=1          \
+		-DSQLITE_ENABLE_FTS3_TOKENIZER=1"
+	make
+	make install
+}

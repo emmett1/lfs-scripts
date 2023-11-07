@@ -1,0 +1,5 @@
+name=libmad
+version=0.16.4
+release=1
+source=(https://codeberg.org/tenacityteam/$name/archive/$version.tar.gz)
+renames=($name-$version.tar.gz)

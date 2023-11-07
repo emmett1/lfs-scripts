@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBqEMU7ZEMkiaiKnQ/tUbZbWLD7cAvhrx7GgTi1YlkGPpyLjgkmhdMBbugOpskryDKU5lwuURD3ELXR+fzVYqws=
+SHA256 (Pkgfile) = facf96cf1e92dd136eb4d4005d36db1661e5bb3747efe3996e83b0bf94a2cdff
+SHA256 (.footprint) = 54d6fb5de779b9f1d35460d8dd6b5bc259ff1e0d02a1465b14830b3b15284f1f
+SHA256 (startup-notification-0.12.tar.gz) = 3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a

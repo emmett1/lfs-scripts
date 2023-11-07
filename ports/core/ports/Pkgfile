@@ -1,0 +1,10 @@
+name=ports
+version=1.6
+release=1
+source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz
+	repokey.pub)
+
+post_build() {
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/core.pub
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/extra.pub
+}

@@ -1,0 +1,15 @@
+name=uthash
+version=2.3.0
+release=1
+source=(https://github.com/troydhanson/$name/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	cd src
+	# create directory for header files 
+	install -dm755 $PKG/usr/include/
+	
+	# install header files in /usr/include
+	for h in *.h; do
+	        install -m 644 ${h} $PKG/usr/include/
+	done
+}

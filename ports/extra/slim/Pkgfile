@@ -1,0 +1,16 @@
+# Depends on: libx11 freetype libjpeg-turbo fontconfig libxft libxrandr libxmu consolekit2 
+
+name=slim
+version=1.4.0
+release=1
+source=(https://sourceforge.net/projects/$name-fork/files/$name-$version.tar.gz
+	slim.pam slim.run)
+sv=(slim.run)
+build_opt="
+	-DUSE_CONSOLEKIT=no \
+	-DUSE_PAM=no
+"
+
+#post_build() {
+#	install -Dm644 $SRC/$name.pam $PKG/etc/pam.d/$name
+#}

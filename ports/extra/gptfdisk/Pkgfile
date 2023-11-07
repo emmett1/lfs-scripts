@@ -1,0 +1,14 @@
+# Depends on: popt
+
+name=gptfdisk
+version=1.0.9
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.gz
+	gptfdisk-1.0.9-convenience-1.patch)
+
+pre_build() {
+	sed -i 's|ncursesw/||' gptcurses.cc
+	sed -i 's|sbin|usr/sbin|' Makefile
+	sed -i '/UUID_H/s/^.*$/#if defined (_UUID_UUID_H) || defined (_UL_LIBUUID_UUID_H)/' guid.cc
+	sed -i "/device =/s/= \(.*\);/= strdup(\1);/" gptcl.cc
+}

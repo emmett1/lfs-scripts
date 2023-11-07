@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zC4ZrQU/gHIEKKOfiRXA2bDR2BlB53W004EOm37Ht3K7WRL9RbR8CxVWeXEYowD7GWRsrIjRd3cqj3M73bg4gQ0=
+SHA256 (Pkgfile) = 8df90a78d97449d6b0c84a64098f70f1bd8e3e568229eab5fc92d07e0dfdc360
+SHA256 (.footprint) = 380973f56207f69b7ee560222303fafee3a7a8ebbd78b780eec61c2b22f59a25
+SHA256 (lsof_4.95.0.linux.tar.bz2) = e9faa0fbcc48638c1d1f143e93573ac43b65e76646150f83e24bd8c18786303c

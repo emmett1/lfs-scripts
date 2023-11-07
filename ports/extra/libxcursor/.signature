@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLSh6LceqRihO7pbYx5SAlOiXyCJQzHrHR7VFtbstX9xApDXiDMFCkwOj7LFVDQveSO56SgjKYtkr6cO5pe9ewo=
+SHA256 (Pkgfile) = ddf1aa0dbe6b994968528729c36cf3a5deac4315a2d56f703b883b39552cf07a
+SHA256 (.footprint) = 707c95bbc820fe367c5ba1661ea1197fcaa353a81acbdbb5ddd944bbdc1f2f8f
+SHA256 (libXcursor-1.2.1.tar.xz) = 46c143731610bafd2070159a844571b287ac26192537d047a39df06155492104

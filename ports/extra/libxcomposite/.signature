@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zCJ5dyeIHIz3ys7mHP63TaVZt+X2zoWXO9sCBUYL/La+DJRHshqUtSFNeXXKFha7xd0+hDb1HWsjnmxGEQEDFQU=
+SHA256 (Pkgfile) = 9c14b7a8bfa574727e93be2f4a2f71752473c6b143f981827eb3185ee942041a
+SHA256 (.footprint) = 465765c3603db3b7b0d782eaddc1558150b4c3bece9bdb4e3fdabf41e7659daa
+SHA256 (libXcomposite-0.4.6.tar.xz) = fe40bcf0ae1a09070eba24088a5eb9810efe57453779ec1e20a55080c6dc2c87

@@ -1,0 +1,6 @@
+name=lm-sensors
+version=3.6.0
+release=1
+source=(https://github.com/$name/$name/archive/V${version//./-}/$name-${version//./-}.tar.gz
+	fancontrol.run)
+sv=(fancontrol.run)

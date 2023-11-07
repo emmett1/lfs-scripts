@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zF5FTgi1cCXTXShOqQLPhffPLCycv9wBJtE/IPgWTsaqtec46YDj2YcNC+W326QLhqxjewF2O8uLJJHZYH7ezww=
+SHA256 (Pkgfile) = 17ebaddd07d63cc8756d5573af35f425c92ed1fdac3650d0ef0c7054b0405d50
+SHA256 (.footprint) = 091e1dbb2ab73a3fb242739f080271535dc0a1ac629dd903d2eabbb8f351d13c
+SHA256 (libvorbis-1.3.7.tar.xz) = b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b

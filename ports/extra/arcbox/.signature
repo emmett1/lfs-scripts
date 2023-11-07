@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zOCBDBo0Km5AivENkcViTz6b9ppN7S7An/godxf+/fkNS22fvogBJYHUqY7JM7MJOkCBfCF5SpCOxfyG5G/ujgk=
+SHA256 (Pkgfile) = b024107e0f21ccae41df06eb9a688598ffd96dc24d4d6a3b94a181356f973c37
+SHA256 (.footprint) = 9ca3aab30f40630e60641ed892bf56a30f3b64a9d772db0d6ea68f87e0e38b3b
+SHA256 (arcbox-0.1.2.tar.gz) = f4e803e2457b68fd54f1d37a961e160fec39073efdcbf6f7af00619a17ddbe0a

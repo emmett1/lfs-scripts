@@ -1,0 +1,75 @@
+name=aaa_filesystem
+version=1
+release=1
+source=(fstab
+	group
+	hostname
+	hosts
+	issue
+	locale.conf
+	locale.sh
+	os-release
+	passwd
+	Pkgfile
+	resolv.conf
+	shells)
+
+pkg_build() {
+	cd $SRC
+	
+	#  root dirs
+	for d in proc sys run dev bin boot etc/opt home lib mnt \
+		opt sbin srv var; do
+		mkdir -p $PKG/$d
+	done
+	install -d -m 0750 $PKG/root
+	install -d -m 1777 $PKG/tmp $PKG/var/tmp
+	
+	# /usr and /usr/local dirs
+	for d in bin include lib sbin src; do
+		mkdir -p $PKG/usr/$d
+		mkdir -p $PKG/usr/local/$d
+	done
+	
+	# man page dirs
+	for d in 1 2 3 4 5 6 7 8; do
+		mkdir -p $PKG/usr/share/man/man$d
+		mkdir -p $PKG/usr/local/share/man/man$d
+	done
+	
+	# /var dirs
+	for d in log spool/mail opt cache lib/misc local; do
+		mkdir -p $PKG/var/$d
+	done
+	
+	ln -s ../run $PKG/var/run
+	ln -s ../run/lock $PKG/var/lock
+	
+	ln -s /proc/self/mounts $PKG/etc/mtab
+	
+	# log files
+	for f in btmp lastlog faillog wtmp; do
+		touch $PKG/var/log/$f
+	done
+	chgrp utmp $PKG/var/log/lastlog
+	chmod 664  $PKG/var/log/lastlog
+	chmod 600  $PKG/var/log/btmp
+		
+	install -m644 passwd $PKG/etc
+	install -m644 group $PKG/etc
+	install -m644 resolv.conf $PKG/etc
+	install -m644 locale.conf $PKG/etc
+	install -m644 hosts $PKG/etc
+	install -m644 hostname $PKG/etc
+	install -m644 shells $PKG/etc
+	install -m644 fstab $PKG/etc
+	
+	install -dm0755 $PKG/etc/profile.d
+	install -m644 locale.sh $PKG/etc/profile.d
+	
+	install -d $PKG/etc/skel
+	install -m644 issue $PKG/etc
+	
+	echo rolling > $PKG/etc/lfs-release
+	cat os-release > $PKG/etc/os-release
+}

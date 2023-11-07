@@ -1,0 +1,13 @@
+url=https://download.qt.io/archive/qt/
+url=$url$(fetch \
+| grep folder \
+| cut -d '"' -f 12 \
+| sort -V \
+| uniq \
+| tail -n1)
+url=$url$(fetch \
+| grep folder \
+| cut -d '"' -f 12 \
+| sort -V \
+| uniq \
+| tail -n1)single/

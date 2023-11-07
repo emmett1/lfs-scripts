@@ -1,0 +1,18 @@
+name=util-linux
+version=2.39.2
+release=1
+source=(https://www.kernel.org/pub/linux/utils/$name/v2.39/$name-$version.tar.xz)
+build_opt="
+	--disable-chfn-chsh
+	--disable-login
+	--disable-nologin
+	--disable-su
+	--disable-setpriv
+	--disable-runuser
+	--disable-pylibmount
+	--disable-static
+	--without-python
+	--without-systemd
+	--without-systemdsystemunitdir
+"
+build_type=configure_build

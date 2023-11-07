@@ -1,0 +1,4 @@
+name=opus
+version=1.4
+release=1
+source=(https://downloads.xiph.org/releases/$name/$name-$version.tar.gz)

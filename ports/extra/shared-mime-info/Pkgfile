@@ -1,0 +1,6 @@
+# Depends on: glib libxml2 
+
+name=shared-mime-info
+version=2.2
+release=1
+source=(https://gitlab.freedesktop.org/xdg/$name/-/archive/$version/$name-$version.tar.gz)

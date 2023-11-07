@@ -1,0 +1,7 @@
+port_getver() {
+	fetch \
+	| grep archive \
+	| grep -Eo release-[0-9.]+-stable.tar.gz \
+	| sed 's/release-//;s/-stable.*//'
+}
+

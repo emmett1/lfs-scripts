@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLFzXlDEdlMCSxakE51e+TuFrE6Ksc6RnO3FTLUBs4VukowohK+QOSeryovPrDfFzzYiZGg266UXBYEfcU5rYQE=
+SHA256 (Pkgfile) = 8ca575a96e28bdd01e9d63a27e6c401a504d9430e39163846e0bf5b93e789275
+SHA256 (.footprint) = 60b4b06f8961c9c3be6094c22f6ac3379f94a37e91aa3ae38f812cebc4e3609e
+SHA256 (xtrans-1.5.0.tar.xz) = 1ba4b703696bfddbf40bacf25bce4e3efb2a0088878f017a50e9884b0c8fb1bd

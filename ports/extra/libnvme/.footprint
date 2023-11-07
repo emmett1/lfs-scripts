@@ -1,0 +1,35 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/libnvme-mi.h
+-rw-r--r--	root/root	usr/include/libnvme.h
+drwxr-xr-x	root/root	usr/include/nvme/
+-rw-r--r--	root/root	usr/include/nvme/api-types.h
+-rw-r--r--	root/root	usr/include/nvme/fabrics.h
+-rw-r--r--	root/root	usr/include/nvme/filters.h
+-rw-r--r--	root/root	usr/include/nvme/ioctl.h
+-rw-r--r--	root/root	usr/include/nvme/linux.h
+-rw-r--r--	root/root	usr/include/nvme/log.h
+-rw-r--r--	root/root	usr/include/nvme/mi.h
+-rw-r--r--	root/root	usr/include/nvme/nbft.h
+-rw-r--r--	root/root	usr/include/nvme/tree.h
+-rw-r--r--	root/root	usr/include/nvme/types.h
+-rw-r--r--	root/root	usr/include/nvme/util.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libnvme-mi.so -> libnvme-mi.so.1
+lrwxrwxrwx	root/root	usr/lib/libnvme-mi.so.1 -> libnvme-mi.so.1.6.0
+-rwxr-xr-x	root/root	usr/lib/libnvme-mi.so.1.6.0
+lrwxrwxrwx	root/root	usr/lib/libnvme.so -> libnvme.so.1
+lrwxrwxrwx	root/root	usr/lib/libnvme.so.1 -> libnvme.so.1.6.0
+-rwxr-xr-x	root/root	usr/lib/libnvme.so.1.6.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libnvme-mi.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libnvme.pc
+drwxr-xr-x	root/root	usr/lib/python3.11/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/libnvme/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/libnvme/__init__.py
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/libnvme/__pycache__/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/libnvme/__pycache__/__init__.cpython-311.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/libnvme/__pycache__/nvme.cpython-311.pyc
+-rwxr-xr-x	root/root	usr/lib/python3.11/site-packages/libnvme/_nvme.cpython-311-x86_64-linux-gnu.so
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/libnvme/nvme.py

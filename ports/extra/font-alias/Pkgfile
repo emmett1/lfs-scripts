@@ -1,0 +1,6 @@
+# Depends on: font-util
+
+name=font-alias
+version=1.0.5
+release=1
+source=(https://www.x.org/pub/individual/font/$name-$version.tar.xz)

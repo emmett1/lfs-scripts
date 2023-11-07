@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBtLiZeNoT0MMghH99SLAiAYYmq+Q0niLOnF7r3F9DRDzG3exCXsIKjg6adtdkpE2VHbo+SIfau2TT85JPzyAA4=
+SHA256 (Pkgfile) = 9c80690fe5171e07433f146cb9aeb25e657fb44dbe6994187f1a31680c08d925
+SHA256 (.footprint) = 2421fe92512ee56bd0e7e965a18736c61e0633b2ab64fd01bb3f03d01e9e5488
+SHA256 (libmbim-1.26.4.tar.xz) = f688cec4c4586a17575f5e327448ce62f2000ef6a07c9e4589873d4a68568ad9

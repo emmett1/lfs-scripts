@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zK0vMmviApDR/e9WNbA2PsejvAU/oWkhDYaT5XbbJor5amO+3Rf9vzBj2Vc8WoEbI9x85nb2ELewCBqc2fmiHQM=
+SHA256 (Pkgfile) = 4a4506c9913a3a4542bd6fa02884717e63bf95e924c76204727a63fd8c75c547
+SHA256 (.footprint) = f83bd5e4d97313848b55d13eade7f666c866f6d57e2b7bd10d1e0522f5fd9cf1
+SHA256 (ndctl-78.tar.gz) = 80596932920a3eb42551fc0d978f22bfa6a620f57af60c898dc0d0e303c086a5

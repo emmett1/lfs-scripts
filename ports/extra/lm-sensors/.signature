@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zG5HHNHgDBkpY1PJl/FfzdnusQ+IPcBnYebTRvohtg0BHF3gPCAfGbWvg1pemgHwjf/y3QsJ19RbLFEJwAwcLgc=
+SHA256 (Pkgfile) = 7a21ca0d07bc4844f69b7868f4068680489787914b717c32cc48b7e2c5e2d7b6
+SHA256 (.footprint) = 71124aa3aa4053be23d41ec9d62f4dd2bc92de6b1a04207ef7bd519fb457ce43
+SHA256 (lm-sensors-3-6-0.tar.gz) = 0591f9fa0339f0d15e75326d0365871c2d4e2ed8aa1ff759b3a55d3734b7d197
+SHA256 (fancontrol.run) = d60b56dcbee5f9007c77361c14032d060572546061ee4102861e041317abef4b

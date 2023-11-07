@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNt78c8cP3Nwik5dk5fScVDDOdVGu2wcibsvj86v9cA0qSX1k+VCTWoT1/RoOeGtWXtDGaC4j+SnIzo5hZ0PXQM=
+SHA256 (Pkgfile) = 5531e9afa66ab6f10a2cff3e29795e7fc248b917db2cbc4700849919da13f7e9
+SHA256 (.footprint) = 5cb41dfab2e787ba847c2012a8904804446d6f0bc41ebec66de9414a0d253a6a
+SHA256 (libXdmcp-1.1.4.tar.xz) = 2dce5cc317f8f0b484ec347d87d81d552cdbebb178bd13c5d8193b6b7cd6ad00

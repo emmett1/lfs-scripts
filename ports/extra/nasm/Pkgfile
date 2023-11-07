@@ -1,0 +1,4 @@
+name=nasm
+version=2.16.01
+release=1
+source=(https://www.$name.us/pub/$name/releasebuilds/$version/$name-$version.tar.xz)

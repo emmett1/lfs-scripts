@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAGyHn1aeygE0SnGlg7BOJDLC+ufQb9nH5sL8/o+01zO7/SOx0GCNqu/YbDo0u8ajiobJY3eYEU6Mglo7xCmSw4=
+SHA256 (Pkgfile) = 46b4f2ef5f7a44ee6f680b2e3600b08c841ed51eefbb42d8c935df51e0ea68d1
+SHA256 (.footprint) = 407b75fc769e3595991f3d454f480d00a638effd35b827a5e84e24b2662447ff
+SHA256 (obmenu-generator-0.93.tar.gz) = 305d02042cc860752140e05bb8dd37241f7d2b528cc5ebbf91620947d6b28f16

@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFumvk+6+n0X8izgw4CISKRKz0jNU5ruB7WpW0Ec6Gxu++HSIqF7TRFXgfMCNn15TDR3FY4fz8IQWY/GBgImZwY=
+SHA256 (Pkgfile) = d73110d8902e831328aee79e3d0b236f3a244070b87311662fec943087c593ca
+SHA256 (.footprint) = 22b9f63d85e9eb12edac06e401531a1358d7e7dbeb35edbb1095b5be7cd37a54
+SHA256 (glib-2.78.0.tar.xz) = 44eaab8b720877ce303c5540b657b126f12dc94972d9880b52959f43fb537b30
+SHA256 (0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch) = 7f8ee5db60987f0d0feba84643e1cf988c98a294a681fb8d4fce1a5b2c25d1d3

@@ -1,0 +1,9 @@
+name=ninja
+version=1.11.1
+release=1
+source=(https://github.com/$name-build/$name/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	python3 ./configure.py --bootstrap
+	install -Dm755 ninja $PKG/usr/bin/ninja
+}

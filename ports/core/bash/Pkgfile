@@ -1,0 +1,23 @@
+name=bash
+version=5.2.15
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+	bashrc
+	profile)
+build_opt="--without-bash-malloc --with-installed-readline"
+
+bootstrap_build() {
+	./configure --prefix=$TOOLS --without-bash-malloc
+	make -j1
+	make install
+	ln -sv bash $TOOLS/bin/sh
+}
+
+post_build() {
+	mkdir -p $PKG/bin
+	mv $PKG/usr/bin/bash $PKG/bin
+	
+	install -d $PKG/etc
+	install -m644 $SRC/bashrc $PKG/etc
+	install -m644 $SRC/profile $PKG/etc
+}

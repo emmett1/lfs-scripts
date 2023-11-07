@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zOJJaD3DYa8ZUlDhjBTngUOq/rcfzUDK9bdxIumhYKxfS2IQ8v1LELKpbebNtbRMsQkPZSLce4ucbdq3YI6UKQo=
+SHA256 (Pkgfile) = 944f21560ea4ddeeb477227adbbaf96c8c4c13c5658f6aab13bc0ec1d2e88dc2
+SHA256 (.footprint) = e48ad372b0d9df509d943742e32e016df6487c9b0ae7adb25d6b453ae420dd46
+SHA256 (libXvMC-1.0.13.tar.xz) = 0a9ebe6dea7888a747e5aca1b891d53cd7d3a5f141a9645f77d9b6a12cee657c

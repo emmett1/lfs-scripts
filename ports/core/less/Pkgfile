@@ -1,0 +1,4 @@
+name=less
+version=643
+release=1
+source=(https://www.greenwoodsoftware.com/$name/$name-$version.tar.gz)

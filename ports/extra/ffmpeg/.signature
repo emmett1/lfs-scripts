@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zES0/JK5BY6wh4fRsPdgmzPpz06XCoZc+zPqzXxzDs52bmVxBmDVZYL3R9qlE94bQrJXi8BvuiYkmQyK4UdWFQY=
+SHA256 (Pkgfile) = d92f913e6c90996d45fafe5bf8618edf647414e1bef1732a742a257a151d922f
+SHA256 (.footprint) = 166baf80affc34bb7a49c150ffab590f7b165cb87681d9492f18629c5bb4ab20
+SHA256 (ffmpeg-6.0.tar.xz) = 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+SHA256 (ffmpeg-6.0-binutils_2.41-1.patch) = cf4e1644af090ba41b357f2ae24937de95feba59508d184bfd4c7cfbb3e6daa6
+SHA256 (ffmpeg-6.0-chromium_method-1.patch) = ba75bed1121425b15b485c0af10673900ab9df48d86e64a706aff3ef94f2e139

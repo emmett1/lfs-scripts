@@ -1,0 +1,7 @@
+# Depends on: cmake ninja 
+
+name=double-conversion
+version=3.3.0
+release=1
+source=(https://github.com/google/$name/archive/v$version/$name-$version.tar.gz)
+build_opt="-DBUILD_SHARED_LIBS=ON"

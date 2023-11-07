@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zC35te2caP4nir2uXcpoX6cMdkFFuolUrAiwYTgLlpFib5K35GLzPs6kboNFBeCAV1oXeSpnC3k0Z0q9fOXqbgo=
+SHA256 (Pkgfile) = bde8692b574eca93428249613a35ce46f60a7bde30dfb14cee1a57f70c1a4411
+SHA256 (.footprint) = 8831cb71431b4676b1e7f006b0c38dc11c40cf802bdacdb8960a5d9eed6f527e
+SHA256 (libXdamage-1.1.6.tar.xz) = 52733c1f5262fca35f64e7d5060c6fcd81a880ba8e1e65c9621cf0727afb5d11

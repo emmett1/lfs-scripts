@@ -1,0 +1,177 @@
+name=gcc
+version=13.2.0
+release=1
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
+	c89
+	c99)
+keep_static=1
+keep_libtool=1
+
+bootstrap_build() {
+	if [ "$tcpkg" = gcc-pass1 ]; then
+		for file in gcc/config/linux.h gcc/config/i386/linux.h gcc/config/i386/linux64.h
+		do
+		  cp -uv $file $file.orig
+		  sed -e "s@/lib\(64\)\?\(32\)\?/ld@$TOOLS&@g" \
+			  -e "s@/usr@$TOOLS@g" $file.orig > $file
+		echo "#undef STANDARD_STARTFILE_PREFIX_1" >> $file
+		echo "#undef STANDARD_STARTFILE_PREFIX_2" >> $file
+		echo "#define STANDARD_STARTFILE_PREFIX_1 \"$TOOLS/lib/\"" >> $file
+		echo "#define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
+		  touch $file.orig
+		done
+		
+		sed -i -e 's@/lib/ld-linux.so.2@/lib32/ld-linux.so.2@g' gcc/config/i386/linux64.h
+		sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
+		echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
+		
+		mkdir -v build
+		cd       build
+	
+		../configure \
+			--with-gmp=$TOOLS \
+			--with-mpc=$TOOLS \
+			--with-mpfr=$TOOLS \
+			--target=$LFS_TGT \
+			--prefix=$TOOLS \
+			--with-glibc-version=2.11 \
+			--with-sysroot=$LFS \
+			--with-newlib \
+			--without-headers \
+			--with-local-prefix=$TOOLS \
+			--with-native-system-header-dir=$TOOLS/include \
+			--disable-nls \
+			--disable-shared \
+			--disable-decimal-float \
+			--disable-threads \
+			--disable-libatomic \
+			--disable-libgomp \
+			--disable-libmpx \
+			--disable-libquadmath \
+			--disable-libssp \
+			--disable-libvtv \
+			--disable-libstdcxx \
+			--enable-languages=c,c++ \
+			--with-multilib-list=m32,m64
+		make
+		make install
+	elif [ "$tcpkg" = gcc-pass2 ]; then
+		mkdir -v build32
+		cd       build32
+			
+		../libstdc++-v3/configure \
+			--host=i686-lfs-linux-gnu \
+			--prefix=$TOOLS \
+			--libdir=$TOOLS/lib32 \
+			--disable-multilib \
+			--disable-nls \
+			--disable-libstdcxx-threads \
+			--disable-libstdcxx-pch \
+			--with-gxx-include-dir=$TOOLS/$LFS_TGT/include/c++/$version \
+			CC="$LFS_TGT-gcc -m32" \
+			CXX="$LFS_TGT-g++ -m32"
+		make
+		make install
+		cd -
+	
+		mkdir -v build
+		cd       build
+		
+		../libstdc++-v3/configure \
+			--host=$LFS_TGT \
+			--prefix=$TOOLS \
+			--disable-multilib \
+			--disable-nls \
+			--disable-libstdcxx-threads \
+			--disable-libstdcxx-pch \
+			--with-gxx-include-dir=$TOOLS/$LFS_TGT/include/c++/$version
+		make
+		make install
+	elif [ "$tcpkg" = gcc-pass3 ]; then
+		cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+			`dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+			
+		for file in gcc/config/linux.h gcc/config/i386/linux.h gcc/config/i386/linux64.h
+		do
+		  cp -uv $file $file.orig
+		  sed -e "s@/lib\(64\)\?\(32\)\?/ld@$TOOLS&@g" \
+			  -e "s@/usr@$TOOLS@g" $file.orig > $file
+		echo "#undef STANDARD_STARTFILE_PREFIX_1" >> $file
+		echo "#undef STANDARD_STARTFILE_PREFIX_2" >> $file
+		echo "#define STANDARD_STARTFILE_PREFIX_1 \"$TOOLS/lib/\"" >> $file
+		echo "#define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
+		  touch $file.orig
+		done
+		
+		sed -i -e 's@/lib/ld-linux.so.2@/lib32/ld-linux.so.2@g' gcc/config/i386/linux64.h
+		sed -i -e '/MULTILIB_OSDIRNAMES/d' gcc/config/i386/t-linux64
+		echo "MULTILIB_OSDIRNAMES = m64=../lib m32=../lib32 mx32=../libx32" >> gcc/config/i386/t-linux64
+		
+		mkdir -v build
+		cd       build
+		
+		CC=$LFS_TGT-gcc \
+		CXX=$LFS_TGT-g++ \
+		AR=$LFS_TGT-ar \
+		RANLIB=$LFS_TGT-ranlib \
+		../configure \
+			--with-gmp=$TOOLS \
+			--with-mpc=$TOOLS \
+			--with-mpfr=$TOOLS \
+			--prefix=$TOOLS \
+			--with-local-prefix=$TOOLS \
+			--with-native-system-header-dir=$TOOLS/include \
+			--enable-languages=c,c++ \
+			--disable-libstdcxx-pch \
+			--disable-bootstrap \
+			--disable-libgomp \
+			--with-multilib-list=m32,m64
+		make
+		make install
+		ln -sv gcc $TOOLS/bin/cc
+	fi
+}
+
+pkg_build() {
+	# /lib is 64bit libraries directory
+	sed -e '/m64=/s/lib64/lib/' \
+	    -i.orig gcc/config/i386/t-linux64
+	
+	mkdir -v build
+	cd       build
+
+	SED=sed \
+	../configure \
+		--prefix=/usr \
+		--libexecdir=/usr/lib \
+		--enable-languages=c,c++,objc,obj-c++,lto \
+		--enable-lto \
+		--disable-bootstrap \
+		--disable-libmpx \
+		--with-system-zlib \
+		--with-pkgversion="Linux From Scratch" \
+		--disable-fixincludes \
+		--enable-threads=posix \
+		--enable-__cxa_atexit \
+		--enable-default-pie \
+		--enable-default-ssp \
+		--enable-multilib
+	make
+	make DESTDIR=$PKG -j1 install
+	
+	mkdir $PKG/lib
+	ln -sv ../usr/bin/cpp $PKG/lib/cpp
+	ln -sv gcc $PKG/usr/bin/cc
+	
+	install -v -dm755 $PKG/usr/lib/bfd-plugins
+	ln -sfv ../../lib/gcc/$(gcc -dumpmachine)/$version/liblto_plugin.so \
+	        $PKG/usr/lib/bfd-plugins/
+	
+	mkdir -pv $PKG/usr/share/gdb/auto-load/usr/lib
+	mv -v $PKG/usr/lib/*gdb.py $PKG/usr/share/gdb/auto-load/usr/lib
+	
+	install -Dm755 $SRC/c89 $PKG/usr/bin/c89
+	install -Dm755 $SRC/c99 $PKG/usr/bin/c99
+	
+	rm -r $PKG/usr/share/$name-$version
+}

@@ -1,0 +1,4 @@
+name=dhcpcd
+version=10.0.3
+release=1
+source=(https://github.com/NetworkConfiguration/$name/releases/download/v$version/$name-$version.tar.xz)

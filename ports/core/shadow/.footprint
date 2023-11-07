@@ -1,0 +1,51 @@
+drwxr-xr-x	root/root	bin/
+-rwxr-xr-x	root/root	bin/getsubids
+-rwxr-xr-x	root/root	bin/login
+-rwsr-xr-x	root/root	bin/su
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/limits
+-rw-r--r--	root/root	etc/login.access
+-rw-r--r--	root/root	etc/login.defs
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/nologin
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwsr-xr-x	root/root	usr/bin/chage
+-rwsr-xr-x	root/root	usr/bin/chfn
+-rwsr-xr-x	root/root	usr/bin/chsh
+-rwsr-xr-x	root/root	usr/bin/expiry
+-rwxr-xr-x	root/root	usr/bin/faillog
+-rwsr-xr-x	root/root	usr/bin/gpasswd
+-rwsr-xr-x	root/root	usr/bin/newgidmap
+-rwsr-xr-x	root/root	usr/bin/newgrp
+-rwsr-xr-x	root/root	usr/bin/newuidmap
+-rwsr-xr-x	root/root	usr/bin/passwd
+lrwxrwxrwx	root/root	usr/bin/sg -> newgrp
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/shadow/
+-rw-r--r--	root/root	usr/include/shadow/subid.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libsubid.so -> libsubid.so.4.0.0
+lrwxrwxrwx	root/root	usr/lib/libsubid.so.4 -> libsubid.so.4.0.0
+-rwxr-xr-x	root/root	usr/lib/libsubid.so.4.0.0
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/chgpasswd
+-rwxr-xr-x	root/root	usr/sbin/chpasswd
+-rwxr-xr-x	root/root	usr/sbin/groupadd
+-rwxr-xr-x	root/root	usr/sbin/groupdel
+-rwxr-xr-x	root/root	usr/sbin/groupmems
+-rwxr-xr-x	root/root	usr/sbin/groupmod
+-rwxr-xr-x	root/root	usr/sbin/grpck
+-rwxr-xr-x	root/root	usr/sbin/grpconv
+-rwxr-xr-x	root/root	usr/sbin/grpunconv
+-rwxr-xr-x	root/root	usr/sbin/logoutd
+-rwxr-xr-x	root/root	usr/sbin/newusers
+-rwxr-xr-x	root/root	usr/sbin/pwck
+-rwxr-xr-x	root/root	usr/sbin/pwconv
+-rwxr-xr-x	root/root	usr/sbin/pwunconv
+-rwxr-xr-x	root/root	usr/sbin/useradd
+-rwxr-xr-x	root/root	usr/sbin/userdel
+-rwxr-xr-x	root/root	usr/sbin/usermod
+lrwxrwxrwx	root/root	usr/sbin/vigr -> vipw
+-rwxr-xr-x	root/root	usr/sbin/vipw
+drwxr-xr-x	root/root	usr/share/

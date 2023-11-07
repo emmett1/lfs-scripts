@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zM83K/0qsl6q+E3Xm68xVli02Nx7k6EyRcynRT8eeIzp3HKtuU29VxFA8BZbTfdajmUhKcsJbukZDTzhPFvvFw4=
+SHA256 (Pkgfile) = 2219a27f734787684b48102bb122e22d22bfda23c502d734d98d8215a5ab5aa3
+SHA256 (.footprint) = 8f5750606171308e22729708e2ccc2855890a606baa2c57d5f136735b1ac938d
+SHA256 (nspr-4.35.tar.gz) = 7ea3297ea5969b5d25a5dd8d47f2443cda88e9ee746301f6e1e1426f8a6abc8f

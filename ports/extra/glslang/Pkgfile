@@ -1,0 +1,4 @@
+name=glslang
+version=13.0.0
+release=1
+source=(https://github.com/KhronosGroup/glslang/archive/$version/$name-sdk-$version.tar.gz)

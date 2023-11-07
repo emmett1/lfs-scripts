@@ -1,0 +1,12 @@
+# Depends on: popt
+
+name=efivar
+version=38
+release=1
+source=(https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
+
+pkg_build() {
+	sed 's/docs//' -i Makefile
+	make -j1
+	make libdir=/usr/lib DESTDIR=$PKG install
+}

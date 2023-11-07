@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLYLgKFao3gKrDb3pBWg1bb+oVtepN2nQiQbdhV3Fi3bf+FAVXpUU/RR4jZA3D2OYQwlXUnAgyjjq1kmFySkSgs=
+SHA256 (Pkgfile) = 3ba0e8cb8447820506237f880162af6fdfa8d1a1c1ae61e419c429e77a850049
+SHA256 (.footprint) = 5f1ce1586f59280e010d3ec86d1d40d5abf73d9d906ff120d171b279f6e6355e
+SHA256 (libblockdev-3.0.4.tar.gz) = 49841ff92db0ab032931e6f2b5eab63e5969b0ddc14b067b60e46a6eb6c60e47

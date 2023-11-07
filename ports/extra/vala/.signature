@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNSTu0RSyYKNGPZz67uNYOqgonUGCJbXLqL3sCcsvYv28TYDPmqPQn8N4Zw9nPD4WBMRPmZkM8qSh1qquVCaUgQ=
+SHA256 (Pkgfile) = dd5cbd85c44afcc9a24e5b7634f6ce741e0563b13b0ddbdb4d4b13cac0d359ee
+SHA256 (.footprint) = 48e557bb248d24b6d0fadba89a9eb300062040d61ffcd749729e19baed48951c
+SHA256 (vala-0.56.11.tar.xz) = 0cf3baf19f278fbeaf78bab2ee1dd18ce53e0d65bf9c57d5aa000c1832b1de64

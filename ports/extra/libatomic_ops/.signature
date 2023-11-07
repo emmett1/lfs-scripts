@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLFuTlP3ofN+S2vuWZnANl6xN122O/npik5SKpvoUiSfXiGc30w2rZgcTyf5x8xo2Tz48mrcEtrS+rMFDp8fCAM=
+SHA256 (Pkgfile) = 31b24f6735f3d9f54b1fb90be49689e06f46ad461b68ed407db314b227c1d4f5
+SHA256 (.footprint) = 49c06842c7241528237e65c7b5d5650759963a0c414bdc26b4c699415b54f572
+SHA256 (libatomic_ops-7.8.0.tar.gz) = 15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31

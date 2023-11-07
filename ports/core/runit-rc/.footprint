@@ -1,0 +1,58 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/runit/
+-rwxr-xr-x	root/root	etc/runit/1
+-rwxr-xr-x	root/root	etc/runit/2
+-rwxr-xr-x	root/root	etc/runit/3
+-rwxr-xr-x	root/root	etc/runit/ctrlaltdel
+-rwxr-xr-x	root/root	etc/runit/rc.shutdown
+-rwxr-xr-x	root/root	etc/runit/rc.shutdown.local
+-rwxr-xr-x	root/root	etc/runit/rc.startup
+-rwxr-xr-x	root/root	etc/runit/rc.startup.local
+----------	root/root	etc/runit/reboot (EMPTY)
+drwxr-xr-x	root/root	etc/runit/runsvdir/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/current -> default
+drwxr-xr-x	root/root	etc/runit/runsvdir/default/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty1 -> /etc/sv/agetty-tty1
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty2 -> /etc/sv/agetty-tty2
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty3 -> /etc/sv/agetty-tty3
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty4 -> /etc/sv/agetty-tty4
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty5 -> /etc/sv/agetty-tty5
+lrwxrwxrwx	root/root	etc/runit/runsvdir/default/agetty-tty6 -> /etc/sv/agetty-tty6
+drwxr-xr-x	root/root	etc/runit/runsvdir/single/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/sulogin -> /etc/sv/sulogin
+----------	root/root	etc/runit/stopit (EMPTY)
+drwxr-xr-x	root/root	etc/sv/
+drwxr-xr-x	root/root	etc/sv/agetty-tty1/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty1/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty1/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty1/supervise -> /run/runit/supervise.agetty-tty1
+drwxr-xr-x	root/root	etc/sv/agetty-tty2/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty2/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty2/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty2/supervise -> /run/runit/supervise.agetty-tty2
+drwxr-xr-x	root/root	etc/sv/agetty-tty3/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty3/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty3/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty3/supervise -> /run/runit/supervise.agetty-tty3
+drwxr-xr-x	root/root	etc/sv/agetty-tty4/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty4/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty4/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty4/supervise -> /run/runit/supervise.agetty-tty4
+drwxr-xr-x	root/root	etc/sv/agetty-tty5/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty5/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty5/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty5/supervise -> /run/runit/supervise.agetty-tty5
+drwxr-xr-x	root/root	etc/sv/agetty-tty6/
+-rwxr-xr-x	root/root	etc/sv/agetty-tty6/finish
+-rwxr-xr-x	root/root	etc/sv/agetty-tty6/run
+lrwxrwxrwx	root/root	etc/sv/agetty-tty6/supervise -> /run/runit/supervise.agetty-tty6
+drwxr-xr-x	root/root	etc/sv/sulogin/
+-rwxr-xr-x	root/root	etc/sv/sulogin/run
+lrwxrwxrwx	root/root	etc/sv/sulogin/supervise -> /run/runit/supervise.sulogin
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/pause
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/modules-load
+drwxr-xr-x	root/root	var/
+lrwxrwxrwx	root/root	var/service -> /etc/runit/runsvdir/current

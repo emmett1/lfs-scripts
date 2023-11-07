@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/dav1d
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/dav1d/
+-rw-r--r--	root/root	usr/include/dav1d/common.h
+-rw-r--r--	root/root	usr/include/dav1d/data.h
+-rw-r--r--	root/root	usr/include/dav1d/dav1d.h
+-rw-r--r--	root/root	usr/include/dav1d/headers.h
+-rw-r--r--	root/root	usr/include/dav1d/picture.h
+-rw-r--r--	root/root	usr/include/dav1d/version.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libdav1d.so -> libdav1d.so.7
+lrwxrwxrwx	root/root	usr/lib/libdav1d.so.7 -> libdav1d.so.7.0.0
+-rwxr-xr-x	root/root	usr/lib/libdav1d.so.7.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/dav1d.pc

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zO+jHFvK42WYlP6dLGeHNmBTE6YLUOS8Bk0nIiSlkgKlUsF+990NGsXrk9Ng0OAKPRcCQHVbFDxyot7Hft3NDQM=
+SHA256 (Pkgfile) = e5da2d54303be4e75fdfed5dee9c025d3545fa586b8ba5adec36a1549e21a699
+SHA256 (.footprint) = 686561729aa636e50dd79acf2f6d11cb40b9a96edeaa5f008bcf4d5de736881f
+SHA256 (libgpg-error-1.47.tar.bz2) = 9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb

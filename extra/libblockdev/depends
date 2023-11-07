@@ -1,9 +1,0 @@
-glib
-cryptsetup
-keyutils
-libbytesize
-libnvme
-lvm2
-volume_key
-parted
-ndctl

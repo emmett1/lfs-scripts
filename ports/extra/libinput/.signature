@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGhX1NE+Fx1nijzA/vGNKDlphrEmzdIzvC6oS2EzkXD3e91aL1qaUSdB+9t7U6FM63pODCW/fu7Q+xIB8lKsMg8=
+SHA256 (Pkgfile) = d8492c2c0a03a80da24f8b787fcfcb1b399a2817280541b5c42814abc15708c9
+SHA256 (.footprint) = b044829c8e5f90692f09bea34fb29a3ba35452c4b54eff929dbdceac73e3423b
+SHA256 (libinput-1.24.0.tar.gz) = 7413c3733b8c39dc38b8687950e0e0d9d38a73394539f9efa2a7c84a412cb505

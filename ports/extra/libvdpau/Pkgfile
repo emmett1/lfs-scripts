@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext 
+
+name=libvdpau
+version=1.5
+release=1
+source=(https://gitlab.freedesktop.org/vdpau/$name/-/archive/$version/$name-$version.tar.bz2)

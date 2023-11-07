@@ -1,0 +1,4 @@
+name=gawk
+version=5.3.0
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)

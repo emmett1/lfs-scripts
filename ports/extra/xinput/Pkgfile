@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext libxi libxinerama libxrandr 
+
+name=xinput
+version=1.6.4
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

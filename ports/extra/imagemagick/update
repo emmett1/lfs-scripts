@@ -1,0 +1,11 @@
+filename=ImageMagick
+
+port_getver() {
+	fetch \
+	| grep -Eo $filename[_-][0-9a-z.]+-[0-9.]+.tar.[bgx]z2? \
+	| sed "s/$filename[-_]//;s/\.tar.*//" \
+	| grep -Evi '(alpha|beta|rc)' \
+	| grep ^7 \
+	| grep [[:digit:]] \
+	| tr '-' '.'
+}

@@ -1,0 +1,5 @@
+name=lzo
+version=2.10
+release=1
+source=(https://www.oberhumer.com/opensource/$name/download/$name-$version.tar.gz)
+build_opt="--enable-shared"

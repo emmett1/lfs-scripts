@@ -1,0 +1,29 @@
+name=perl
+version=5.38.0
+release=1
+source=(https://www.cpan.org/src/5.0/perl-$version.tar.xz)
+
+bootstrap_build() {
+	sh Configure -des -Dprefix=$TOOLS -Dlibs=-lm
+	make
+	cp -v perl cpan/podlators/scripts/pod2man $TOOLS/bin
+	mkdir -pv $TOOLS/lib/perl5/$version
+	cp -Rv lib/* $TOOLS/lib/perl5/$version
+}
+
+pkg_build() {
+	BUILD_ZLIB=False \
+	BUILD_BZIP2=0 \
+	sh Configure -des -Dprefix=/usr                 \
+	                  -Dvendorprefix=/usr           \
+	                  -Dprivlib=/usr/lib/perl5/${version%.*} \
+	                  -Dsitelib=/usr/lib/perl5/site_perl/${version%.*} \
+	                  -Dvendorlib=/usr/lib/perl5/site_perl/${version%.*} \
+	                  -Dman1dir=/usr/share/man/man1 \
+	                  -Dman3dir=/usr/share/man/man3 \
+	                  -Dpager="/usr/bin/less -isR"  \
+	                  -Duseshrplib                  \
+	          	  -Dusethreads
+	make
+	make DESTDIR=$PKG install
+}

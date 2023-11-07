@@ -1,0 +1,4 @@
+name=intltool
+version=0.51.0
+release=1
+source=(https://launchpad.net/$name/trunk/$version/+download/$name-$version.tar.gz)

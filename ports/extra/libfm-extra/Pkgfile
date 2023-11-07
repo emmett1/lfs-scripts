@@ -1,0 +1,7 @@
+# Depends on: glib 
+
+name=libfm-extra
+version=1.3.2
+release=1
+source=(https://downloads.sourceforge.net/pcmanfm/libfm-$version.tar.xz)
+build_opt="--with-extra-only --with-gtk=no"

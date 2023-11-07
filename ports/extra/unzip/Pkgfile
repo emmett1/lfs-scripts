@@ -1,0 +1,11 @@
+name=unzip
+version=60
+release=1
+source=(https://downloads.sourceforge.net/infozip/${name}${version}.tar.gz
+	unzip-6.0-consolidated_fixes-1.patch)
+
+pkg_build() {
+	make -f unix/Makefile generic
+	make prefix=$PKG/usr MANDIR=$PKG/usr/share/man/man1 \
+	 -f unix/Makefile install
+}

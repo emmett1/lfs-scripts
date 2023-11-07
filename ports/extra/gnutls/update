@@ -1,0 +1,7 @@
+url=$(dirname $url)
+url=$url/$(fetch \
+| grep folder \
+| grep -Eo v[0-9.]+ \
+| sort -V \
+| uniq \
+| tail -n1)

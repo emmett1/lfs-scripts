@@ -1,0 +1,17 @@
+name=nspr
+version=4.35
+release=1
+source=(https://archive.mozilla.org/pub/$name/releases/v$version/src/$name-$version.tar.gz)
+
+pkg_build() {
+	cd nspr
+	sed -ri '/^RELEASE/s/^/#/' pr/src/misc/Makefile.in
+	sed -i 's#$(LIBRARY) ##'   config/rules.mk
+	
+	./configure --prefix=/usr \
+	            --with-mozilla \
+	            --with-pthreads \
+	            --enable-64bit
+	make
+	make install
+}

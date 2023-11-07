@@ -1,0 +1,5 @@
+url=https://wayland.freedesktop.org/releases.html
+
+port_getver() {
+	getver_default | grep -Ev .9[0-9]
+}

@@ -1,0 +1,14 @@
+# Depends on: perl-parse-yapp perl-json gnutls jansson dbus
+
+name=samba
+version=4.19.1
+release=1
+source=(https://download.$name.org/pub/$name/stable/$name-$version.tar.gz
+	smbd.run nmbd.run)
+sv=(smbd.run nmbd.run)
+build_opt="--with-piddir=/run/samba --with-pammodulesdir=/lib/security
+	--enable-fhs --without-ad-dc --without-systemd --without-ldap --without-ads"
+
+post_build() {
+	install -m644 examples/smb.conf.default $PKG/etc/samba
+}

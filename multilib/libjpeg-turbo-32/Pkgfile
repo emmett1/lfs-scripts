@@ -1,7 +1,0 @@
-# Pkgfile for libjpeg-turbo
-
-name=libjpeg-turbo-32
-version=2.1.5.1
-release=1
-source=(http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$version.tar.gz)
-build_opt="-DWITH_JPEG8=ON -DCMAKE_INSTALL_LIBDIR=/usr/lib32"

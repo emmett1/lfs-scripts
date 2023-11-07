@@ -1,0 +1,12 @@
+# Depends on: fuse2
+
+name=ntfs-3g
+version=2022.10.3
+release=1
+source=(https://tuxera.com/opensource/${name}_ntfsprogs-$version.tgz)
+build_opt="--with-fuse=external --disable-ldconfig"
+
+pre_build() {
+	export CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=64"
+	mkdir -p $PKG/lib
+}

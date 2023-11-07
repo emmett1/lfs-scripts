@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zEV/tawit8EenB9m2VaujWN+FhXUmW/yl3NraHPa0t2ztnI1pbH2sDw/TmMLWB7blbgEl0GyBXvvZexjmMqfswY=
+SHA256 (Pkgfile) = 46356b9fe30411d2b9e95f6d5a576cc48e284e5d52172bb8974dd38e1b2c30ae
+SHA256 (.footprint) = 9c34397a9d89ba2cce5de09a4c7e00c8729b84120058b3a84b5b00e329ed8833
+SHA256 (libdrm-2.4.116.tar.xz) = 46c53f40735ea3d26d614297f155f6131a510624a24274f654f6469ca905339a

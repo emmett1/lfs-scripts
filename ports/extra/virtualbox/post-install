@@ -1,0 +1,4 @@
+#!/bin/sh
+update-mime-database /usr/share/mime
+update-desktop-database --quiet
+getent group vboxusers >/dev/null || groupadd vboxusers

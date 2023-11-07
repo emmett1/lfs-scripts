@@ -1,6 +1,0 @@
-# Pkgfile for at-spi2-core
-
-name=at-spi2-core-32
-version=2.46.0
-release=1
-source=(http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/${version%.*}/at-spi2-core-$version.tar.xz)

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zHuiOpgtSD75gldz1anxECXjW8QSgTNSDAUUPhoIeYnzBXnQOcrnXi4X3cDuAqxYitw1ZRjCBv7J/toVqq3NywE=
+SHA256 (Pkgfile) = 78747da8bccf397583df8c1588e6b7d456f93b843e6fb0b980e81100549e8de4
+SHA256 (.footprint) = 2e5d4a1aae68a4ecfad783be05bd32a7c6d1a5e59466651d483436ac83e6f036
+SHA256 (cryptopp880.zip) = ace1c7b010a409eba5e86c4fd5a8845c43a6ac39bb6110e64ca5d7fea08583f4

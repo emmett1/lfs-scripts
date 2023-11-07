@@ -1,0 +1,7 @@
+# Depends on: libxml2 
+
+name=nghttp2
+version=1.57.0
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.xz)
+build_opt="--enable-lib-only"

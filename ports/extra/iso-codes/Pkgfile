@@ -1,0 +1,4 @@
+name=iso-codes
+version=4.15.0
+release=1
+source=(https://ftp.debian.org/debian/pool/main/i/$name/${name}_${version}.orig.tar.xz)

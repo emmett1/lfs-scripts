@@ -1,0 +1,4 @@
+name=patch
+version=2.7.6
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)

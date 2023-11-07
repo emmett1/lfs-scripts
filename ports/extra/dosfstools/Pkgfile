@@ -1,0 +1,5 @@
+name=dosfstools
+version=4.2
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.gz)
+build_opt="--enable-compat-symlinks"

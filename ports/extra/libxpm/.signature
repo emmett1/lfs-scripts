@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zP8JE3XjtOUOXigXJAznkLS5u0dtLJ5Ktj3xZR2veh3RSpRBSHWC/pjyEPLyrk+ceIPWZySSkf8JYErXEZDTYgM=
+SHA256 (Pkgfile) = 1ab1dd612b0ac3f08754441ddaf0b2d4e296cc05acf54afd7972d3a8069afe60
+SHA256 (.footprint) = 6ffcfb84052c4ccb4f25e18afac2f02e1ed4f4724249cd9444f6d8bb14a85165
+SHA256 (libXpm-3.5.17.tar.xz) = 64b31f81019e7d388c822b0b28af8d51c4622b83f1f0cb6fa3fc95e271226e43

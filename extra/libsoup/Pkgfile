@@ -1,6 +1,0 @@
-# Pkgfile for libsoup
-
-name=libsoup
-version=3.4.2
-release=1
-source=(https://download.gnome.org/sources/$name/3.4/$name-$version.tar.xz)

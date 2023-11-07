@@ -1,0 +1,13 @@
+# Depends on: gnutls dbus libusb linux-pam 
+
+name=cups
+version=2.4.7
+release=1
+source=(https://github.com/OpenPrinting/$name/releases/download/v$version/$name-$version-source.tar.gz
+	cupsd.run)
+sv=(cupsd.run)
+build_opt="--disable-systemd --with-system-groups=lpadmin"
+
+post_build() {
+	rm -rf $PKG/etc/rc*
+}

@@ -1,0 +1,18 @@
+# Depends on: c-ares icu libuv nghttp2 
+
+name=nodejs
+version=20.8.0
+release=1
+source=(https://$name.org/dist/v$version/node-v$version.tar.xz)
+
+pkg_build() {
+	./configure --prefix=/usr          \
+	            --shared-cares         \
+	            --shared-libuv         \
+	            --shared-openssl       \
+	            --shared-nghttp2       \
+	            --shared-zlib          \
+	            --with-intl=system-icu
+	make
+	make install
+}

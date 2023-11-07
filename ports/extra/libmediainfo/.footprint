@@ -1,0 +1,16 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/MediaInfo/
+-rw-r--r--	root/root	usr/include/MediaInfo/MediaInfo.h
+-rw-r--r--	root/root	usr/include/MediaInfo/MediaInfoList.h
+-rw-r--r--	root/root	usr/include/MediaInfo/MediaInfo_Const.h
+-rw-r--r--	root/root	usr/include/MediaInfo/MediaInfo_Events.h
+drwxr-xr-x	root/root	usr/include/MediaInfoDLL/
+-rw-r--r--	root/root	usr/include/MediaInfoDLL/MediaInfoDLL.h
+-rw-r--r--	root/root	usr/include/MediaInfoDLL/MediaInfoDLL_Static.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libmediainfo.so -> libmediainfo.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libmediainfo.so.0 -> libmediainfo.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libmediainfo.so.0.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libmediainfo.pc

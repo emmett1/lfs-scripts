@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNMoERk4Z6jN2DTPTdme+7/B1BkR+kCkHDAtLtc8FYbCBTsoqjLnAXLA0Bg2wNK3wwrlZf/epdytcW+k/GGoLwI=
+SHA256 (Pkgfile) = bf92713fd9457c31415a70dd2d90dc99237dba367515d7759f55de269efe89c2
+SHA256 (.footprint) = b5ec543e9c588cc8a3ce8207bcaad8938a7a698813af4f7f7a18c5d6ce380573
+SHA256 (keybinder-0.3.1.tar.gz) = 879f07130ac64792ddb9fd758e6673119283bda37d75573787ae22af8684a240

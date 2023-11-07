@@ -1,0 +1,5 @@
+name=lame
+version=3.100
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+build_opt="--enable-mp3rtp"

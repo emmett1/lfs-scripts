@@ -1,0 +1,11 @@
+# Depends on: perl-data-dump perl-linux-desktopfiles 
+
+name=obmenu-generator
+version=0.93
+release=1
+source=(https://github.com/trizen/$name/archive/$version/$name-$version.tar.gz)
+
+pkg_build() {
+	install -Dm755 $name $PKG/usr/bin/$name
+	install -Dm644 schema.pl $PKG/etc/xdg/$name/schema.pl
+}

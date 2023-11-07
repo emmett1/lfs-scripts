@@ -1,0 +1,8 @@
+name=libev
+version=4.33
+release=1
+source=(http://dist.schmorp.de/$name/$name-$version.tar.gz)
+
+post_build() {
+	rm $PKG/usr/include/event.h
+}

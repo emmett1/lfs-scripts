@@ -1,6 +1,0 @@
-# Pkgfile for acl
-
-name=acl
-version=2.3.1
-release=1
-source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)

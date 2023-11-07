@@ -1,0 +1,5 @@
+name=libffi
+version=3.4.4
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.gz)
+build_opt="--with-gcc-arch=x86-64"

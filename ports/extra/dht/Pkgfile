@@ -1,0 +1,8 @@
+name=dht
+version=0.27
+release=1
+source=(https://github.com/jech/$name/archive/$name-$version.tar.gz
+	https://github.com/transmission/dht/commit/b02da598.patch)
+renames=(SKIP dht-cmake.patch)
+build_opt="-DCMAKE_INSTALL_INCLUDEDIR=include/dht"
+keep_static=1

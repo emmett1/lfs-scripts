@@ -1,0 +1,7 @@
+# Depends on: iniparser json-c keyutils 
+
+name=ndctl
+version=78
+release=1
+source=(https://github.com/pmem/$name/archive/v$version/$name-$version.tar.gz)
+build_opt="-Dlibtracefs=disabled -Dasciidoctor=disabled -Ddocs=disabled -Dsystemd=disabled"

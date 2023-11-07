@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zLXGx8hePg+AXN5eDS7i85DwEy9NpEJX7NHg5NTGoGEeUbG9djojjZQfkM8Xz/ExW4uyFQ9fgrNpwkeq/gyW/A0=
+SHA256 (Pkgfile) = 42f99bdba675e7bffe4be76ce0c39ddba1c67f6c3ec13d1cfc7973b9c61e6bfe
+SHA256 (.footprint) = 999537a9a7d73c5878338d13c481d357afc96bd2676730ecc159fa9ccd825e98
+SHA256 (volume_key-0.3.12.tar.gz) = b2e3448f66c7f86023ddd5d7e022c4d3a9d33945e2722602642b099d51e7ee0b

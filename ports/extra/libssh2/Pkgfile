@@ -1,0 +1,4 @@
+name=libssh2
+version=1.11.0
+release=1
+source=(https://www.$name.org/download/$name-$version.tar.gz)

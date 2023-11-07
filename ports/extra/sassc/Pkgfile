@@ -1,0 +1,10 @@
+# Depends on: libsass 
+
+name=sassc
+version=3.6.2
+release=1
+source=(https://github.com/sass/$name/archive/$version/$name-$version.tar.gz)
+
+pre_build() {
+	autoreconf -fi
+}

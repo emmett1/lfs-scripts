@@ -1,0 +1,12 @@
+# Depends on: rust 
+
+name=cbindgen
+version=0.26.0
+release=1
+source=(https://github.com/eqrion/$name/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	cargo build --release
+	install -d $PKG/usr/bin/
+	install -Dm755 target/release/cbindgen $PKG/usr/bin/
+}

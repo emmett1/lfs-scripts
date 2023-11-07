@@ -1,0 +1,20 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/a52dec
+-rwxr-xr-x	root/root	usr/bin/extract_a52
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/a52dec/
+-rw-r--r--	root/root	usr/include/a52dec/a52.h
+-rw-r--r--	root/root	usr/include/a52dec/a52_internal.h
+-rw-r--r--	root/root	usr/include/a52dec/attributes.h
+-rw-r--r--	root/root	usr/include/a52dec/audio_out.h
+-rw-r--r--	root/root	usr/include/a52dec/mm_accel.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/liba52.so -> liba52.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/liba52.so.0 -> liba52.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/liba52.so.0.0.0
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/a52dec.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/extract_a52.1.gz

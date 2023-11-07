@@ -1,0 +1,4 @@
+name=fribidi
+version=1.0.13
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.xz)

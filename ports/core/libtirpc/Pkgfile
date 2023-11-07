@@ -1,0 +1,5 @@
+name=libtirpc
+version=1.3.4
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.bz2)
+build_opt="--disable-gssapi"

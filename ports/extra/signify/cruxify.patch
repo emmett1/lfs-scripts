@@ -1,0 +1,47 @@
+diff -Napru pfefferminzbonbon
+--- src.orig/usr.bin/signify/signify.c	2020-08-22 20:11:21.055823405 +0200
++++ src/usr.bin/signify/signify.c	2020-08-22 20:15:28.105818708 +0200
+@@ -49,6 +49,10 @@
+ #define COMMENTMAXLEN 1024
+ #define VERIFYWITH "verify with "
+ 
++#ifndef SIGNIFYROOT
++# define SIGNIFYROOT "/etc/signify"
++#endif
++
+ struct enckey {
+ 	uint8_t pkalg[2];
+ 	uint8_t kdfalg[2];
+@@ -411,7 +415,7 @@ createsig(const char *seckeyfile, const
+ 		else
+ 			keyname++;
+ 		nr = snprintf(sigcomment, sizeof(sigcomment),
+-		    VERIFYWITH "%.*s.pub", (int)strlen(keyname) - 4, keyname);
++		    VERIFYWITH "%s/%.*s.pub", SIGNIFYROOT, (int)strlen(keyname) - 4, keyname);
+ 		if (nr == -1 || nr >= sizeof(sigcomment))
+ 			errx(1, "comment too long");
+ 	} else {
+@@ -518,13 +522,20 @@ static void
+ readpubkey(const char *pubkeyfile, struct pubkey *pubkey,
+     const char *sigcomment, const char *keytype)
+ {
+-	const char *safepath = "/etc/signify";
++	const char *safepath = SIGNIFYROOT "/";
+ 	char keypath[PATH_MAX];
+ 
+ 	if (!pubkeyfile) {
++		size_t spl;
++
+ 		pubkeyfile = strstr(sigcomment, VERIFYWITH);
+-		if (pubkeyfile && strchr(pubkeyfile, '/') == NULL) {
+-			pubkeyfile += strlen(VERIFYWITH);
++		if (!pubkeyfile)
++			usage("must specify pubkey");
++		pubkeyfile += strlen(VERIFYWITH);
++		spl = strlen(safepath);
++		if (strncmp(pubkeyfile, safepath, spl) == 0)
++			pubkeyfile += spl;
++		if (*pubkeyfile != '\0' && strchr(pubkeyfile, '/') == NULL) {
+ 			if (keytype)
+ 				check_keytype(pubkeyfile, keytype);
+ 			if (snprintf(keypath, sizeof(keypath), "%s/%s",

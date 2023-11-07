@@ -1,0 +1,9 @@
+name=libxcrypt
+version=4.4.36
+release=1
+source=(https://github.com/besser82/$name/releases/download/v$version/$name-$version.tar.xz)
+build_opt="--enable-hashes=strong,glibc --enable-obsolete-api=no --disable-failure-tokens"
+
+post_build() {
+	rm -f $PKG/usr/share/man/man3/crypt.3 $PKG/usr/share/man/man3/crypt_r.3
+}

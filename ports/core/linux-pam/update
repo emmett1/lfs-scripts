@@ -1,0 +1,5 @@
+url=https://github.com/linux-pam/linux-pam/tags
+
+port_getver() {
+	getver_github | grep '[1,9].*'
+}

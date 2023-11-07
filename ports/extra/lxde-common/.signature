@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGdOyAwijVu94bRuYYTx+uZEKVIzC07clP0Rvu8QlRrOtTB/SrtxQkC6f3FDpTgRIKnV6AYu2fvSFikXU4wOQgc=
+SHA256 (Pkgfile) = 71c9bf4b375b40da95612a194f99687c0677389b9068845a80f09f338394f3d5
+SHA256 (.footprint) = 063836c8c984c7535c37a591e9dab335a5c69385dce923d77b16a70e3f7e3463
+SHA256 (lxde-common-0.99.2.tar.xz) = 1cd9bc900960c995d48ffbbdc86ecffda7c806168c67aaa50c53113794234856

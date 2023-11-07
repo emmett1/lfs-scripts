@@ -1,0 +1,60 @@
+name=binutils
+version=2.41
+release=1
+source=(https://sourceware.org/pub/$name/releases/$name-$version.tar.xz)
+
+bootstrap_build() {
+	mkdir -v build
+	cd       build
+	
+	if [ "$tcpkg" = binutils-pass1 ]; then
+		../configure  \
+			--prefix=$TOOLS \
+			--with-sysroot=$LFS \
+			--target=$LFS_TGT \
+			--disable-nls \
+			--disable-werror \
+			--enable-gprofng=no \
+			--with-lib-path=$TOOLS/lib:$TOOLS/lib32
+		make
+		mkdir -v $TOOLS/lib && ln -sv lib $TOOLS/lib64
+		mkdir -p $TOOLS/lib32
+		make install
+	elif [ "$tcpkg" = binutils-pass2 ]; then
+		CC=$LFS_TGT-gcc \
+		AR=$LFS_TGT-ar \
+		RANLIB=$LFS_TGT-ranlib \
+		../configure \
+			--prefix=$TOOLS \
+			--disable-nls \
+			--disable-werror \
+			--with-lib-path=$TOOLS/lib \
+			--enable-gprofng=no \
+			--with-sysroot
+		make || make -j1
+		make install
+		make -C ld clean
+		make -C ld LIB_PATH=/usr/lib:/lib:/usr/lib32
+		cp -v ld/ld-new $TOOLS/bin
+	fi
+}
+
+pkg_build() {
+	mkdir -v build
+	cd       build
+
+	../configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--enable-gold \
+		--enable-ld=default \
+		--enable-lto \
+		--enable-plugins \
+		--enable-shared \
+		--disable-werror \
+		--with-system-zlib \
+		--enable-multilib \
+		--with-lib-path=/usr/lib:/lib:/usr/lib32
+	make DESTDIR=$PKG tooldir=/usr
+	make DESTDIR=$PKG tooldir=/usr install
+}

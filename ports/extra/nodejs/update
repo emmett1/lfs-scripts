@@ -1,0 +1,13 @@
+url=$(dirname $url)
+url=$url/$(fetch $url \
+| grep -Eo v[0-9.]+/ \
+| sort -V \
+| tail -n1)
+
+filename=node
+
+port_getver() {
+	fetch \
+	| grep -Eo $filename-v[0-9.]+.tar.[bgx]z2? \
+	| sed "s/$filename-v//;s/\.tar.*//"
+}

@@ -1,0 +1,11 @@
+name=zlib
+version=1.3
+release=1
+source=(https://$name.net/$name-$version.tar.xz)
+keep_static=1
+
+pkg_build() {
+	./configure --prefix=/usr --localstatedir=/var
+	make
+	make DESTDIR=$PKG install
+}

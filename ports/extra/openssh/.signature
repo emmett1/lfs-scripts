@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNQkr2fmc7il5uNp1FDWHrJzXV4wzb1qeSh49I/x3Td3CjFTACNLEfh/HHY3LxqKtD2tZPq+6ldsOwjF2YpIXw8=
+SHA256 (Pkgfile) = 8f925d6e82408860eabca175849b043fc2fd2a7f26218fbee776ed13bce3d705
+SHA256 (.footprint) = 9d124947fbf94e1bada60f475759b3200a7cd95b62064f190f0e73a7b1505f48
+SHA256 (openssh-9.5p1.tar.gz) = f026e7b79ba7fb540f75182af96dc8a8f1db395f922bbc9f6ca603672686086b
+SHA256 (sshd.run) = ba71e292fb6fffc3add1254ce1b4f2c10b50cab139e5d93376fc33f4d5731394

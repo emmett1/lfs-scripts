@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFYxMew1/j+DyQJyZyVZvkGQk0rE/4PLXloVbwlyMdPk67E3u3qIEjdYAgwAInyeUyZWGDKEk31+CJvYWnxuswQ=
+SHA256 (Pkgfile) = 554dd42fd5c629d100942aea7edb0f29bfa10dccaf4cbf2847ec1add8e04fec5
+SHA256 (.footprint) = 41a3f8d7debe45b23d2aa796e12243665097cbc8aa16b845715efe0f5912065e
+SHA256 (wayland-protocols-1.31.tar.xz) = a07fa722ed87676ec020d867714bc9a2f24c464da73912f39706eeef5219e238

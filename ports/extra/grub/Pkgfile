@@ -1,0 +1,14 @@
+# Depends on: freetype fuse2 
+
+name=grub
+version=2.06
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
+	grub-2.06-upstream_fixes-1.patch)
+build_opt="--enable-efiemu --enable-grub-mount --enable-grub-mkfont --enable-device-mapper
+	--with-platform=pc --target=i386 --disable-werror"
+
+pre_build() {
+	unset CFLAGS
+	unset CXXFLAGS
+}

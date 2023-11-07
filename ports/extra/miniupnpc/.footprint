@@ -1,0 +1,36 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rw-r--r--	root/root	usr/bin/external-ip.sh
+-rwxr-xr-x	root/root	usr/bin/listdevices
+-rwxr-xr-x	root/root	usr/bin/upnpc-shared
+-rwxr-xr-x	root/root	usr/bin/upnpc-static
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/miniupnpc/
+-rw-r--r--	root/root	usr/include/miniupnpc/igd_desc_parse.h
+-rw-r--r--	root/root	usr/include/miniupnpc/miniupnpc.h
+-rw-r--r--	root/root	usr/include/miniupnpc/miniupnpc_declspec.h
+-rw-r--r--	root/root	usr/include/miniupnpc/miniupnpctypes.h
+-rw-r--r--	root/root	usr/include/miniupnpc/miniwget.h
+-rw-r--r--	root/root	usr/include/miniupnpc/portlistingparse.h
+-rw-r--r--	root/root	usr/include/miniupnpc/upnpcommands.h
+-rw-r--r--	root/root	usr/include/miniupnpc/upnpdev.h
+-rw-r--r--	root/root	usr/include/miniupnpc/upnperrors.h
+-rw-r--r--	root/root	usr/include/miniupnpc/upnpreplyparse.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/miniupnpc/
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/libminiupnpc-shared-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/libminiupnpc-shared.cmake
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/libminiupnpc-static-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/libminiupnpc-static.cmake
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/miniupnpc-config.cmake
+-rw-r--r--	root/root	usr/lib/cmake/miniupnpc/miniupnpc-private.cmake
+lrwxrwxrwx	root/root	usr/lib/libminiupnpc.so -> libminiupnpc.so.17
+lrwxrwxrwx	root/root	usr/lib/libminiupnpc.so.17 -> libminiupnpc.so.2.2.5
+-rwxr-xr-x	root/root	usr/lib/libminiupnpc.so.2.2.5
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/miniupnpc.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man3/
+-rw-r--r--	root/root	usr/share/man/man3/miniupnpc.3.gz

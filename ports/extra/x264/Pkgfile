@@ -1,0 +1,7 @@
+# Depends on: nasm
+
+name=x264
+version=20230215
+release=1
+source=(https://anduin.linuxfromscratch.org/BLFS/$name/$name-$version.tar.xz)
+build_opt="--enable-shared"

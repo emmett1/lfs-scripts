@@ -1,6 +1,0 @@
-# Pkgfile for tiff
-
-name=tiff-32
-version=4.5.1
-release=1
-source=(http://download.osgeo.org/libtiff/tiff-$version.tar.gz)

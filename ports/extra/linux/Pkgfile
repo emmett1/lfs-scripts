@@ -1,0 +1,76 @@
+# Depends on: mkinitramfs
+
+name=linux
+version=6.1.57
+release=1
+source=(https://cdn.kernel.org/pub/$name/kernel/v6.x/$name-$version.tar.xz
+	dotconfig)
+
+pkg_build() {
+	make mrproper
+	
+	cp $SRC/dotconfig .config
+
+	sed '/^CONFIG_LOGO=/d' -i .config
+	echo '# CONFIG_LOGO is not set' >> .config
+	sed '/^CONFIG_LOGO_LINUX_CLUT224=/d' -i .config
+	echo '# CONFIG_LOGO_LINUX_CLUT224 is not set' >> .config
+	sed '/^CONFIG_LOCALVERSION=/d' -i .config
+	echo 'CONFIG_LOCALVERSION="-LFS"' >> .config
+	
+	make olddefconfig
+	
+	kernver=${version}$(grep CONFIG_LOCALVERSION= .config | cut -d '"' -f2)
+	
+	#make menuconfig
+
+	# replace cpio with bsdcpio
+	sed 's/cpio/bsdcpio/g' -i kernel/gen_kheaders.sh
+
+	make bzImage modules
+	make INSTALL_MOD_PATH=$PKG modules_install
+	
+	mkdir -p $PKG/boot
+	
+	cp  arch/x86/boot/bzImage $PKG/boot/vmlinuz-linux
+	
+	make clean
+	make prepare
+	
+	rm -rf $PKG/lib/firmware
+	
+	for file in $(ls arch); do
+		case $file in
+			x86|Kconfig) continue ;;
+			*) rm -fr arch/$file ;;
+		esac
+	done
+	
+	# strip down sources
+	# don't package the kernel in the sources directory
+	find . -name "*Image" -exec rm "{}" \;
+	find . -name "*.cmd" -exec rm -f "{}" \; 
+	rm -f .*.d
+	
+	rm -fr firmware ipc .config.old .version .cocciconfig \
+		.get_maintainer.ignore .gitattributes .gitignore .mailmap \
+		COPYING CREDITS MAINTAINERS README Documentation
+	find . -name ".gitignore" -exec rm "{}" \;
+	for dir in block certs crypto drivers fs init kernel lib mm net samples security sound usr virt; do
+		find $dir -type f \( -name "*.c" -o -name "*.h" \) -exec rm "{}" \;
+	done
+	for i in $(ls tools); do
+		[ "$i" = "objtool" ] || rm -fr tools/$i
+	done
+	for i in $(ls tools/objtool); do
+		[ "$i" = "objtool" ] || rm -fr tools/objtool/$i
+	done
+	
+	rm $PKG/lib/modules/$kernver/build \
+	   $PKG/lib/modules/$kernver/source
+	mv $SRC/linux-${version%.0} $PKG/lib/modules/$kernver/build
+	ln -sv build $PKG/lib/modules/$kernver/source
+	
+	# remove now broken symlinks
+	find -L $PKG/lib/modules/$kernver/build -type l -exec rm -f "{}" \;
+}

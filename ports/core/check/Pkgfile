@@ -1,0 +1,4 @@
+name=check
+version=0.15.2
+release=1
+source=(https://github.com/lib$name/$name/releases/download/$version/$name-$version.tar.gz)

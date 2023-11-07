@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zCH1UikN4KEg7412LfHVr3yldRfgVwR4k/GDcq8feJPkn/QdAxlr9cNI6TSY1Ii4gXR7Hx8V3vkNO23wxC9Q7QA=
+SHA256 (Pkgfile) = 8deb93387ec9647752875677c09833029646e5973cb745d34300403a43c288fe
+SHA256 (.footprint) = 7bcc909b626f35ff9943df59be72ca56a5e4fd27d6a77fed7ba7cd6fd26b4af9
+SHA256 (libnvme-1.6.tar.gz) = 0dd8ba8b655abe78c09833edb66632aa6bee82aebf117dd252ded968deaaeec7

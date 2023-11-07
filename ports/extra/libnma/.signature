@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zASkLrA/BsRN4GjPbBzy+mxNiRXYrMFp2jZ2oZ5wwaGFWxrLlR0xuGwW2NM2m/avx7V0GV1uuzqbwOjj+Q+J3A4=
+SHA256 (Pkgfile) = cf0bb1c913dd4ebbb8bc19975a350a93c11e410a676f6441fe74fae51c90f9da
+SHA256 (.footprint) = 9f2e652941d7707d0c68219dc70904845670c27931865b7e2b271a951b81033d
+SHA256 (libnma-1.10.6.tar.xz) = 53a6fb2b190ad37c5986caed3e98bede7c3c602399ee4f93c8fc054303d76dab

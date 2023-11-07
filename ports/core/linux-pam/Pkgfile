@@ -1,0 +1,21 @@
+name=linux-pam
+version=1.5.3
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/Linux-PAM-$version.tar.xz
+	other
+	system-account
+	system-auth
+	system-password
+	system-session)
+build_opt="--libdir=/usr/lib
+	--disable-regenerate-docu
+	--enable-securedir=/lib/security"
+
+post_build() {
+	chmod -v 4755 $PKG/sbin/unix_chkpwd
+	
+	install -v -m755 -d $PKG/etc/pam.d
+	for i in other system-account system-auth system-password system-session; do
+		install -m644 $SRC/$i $PKG/etc/pam.d/$i
+	done
+}

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zBG8FmwfoZv3MXnuTCOkzyJ0oeVqEKbhQi7068Ivgz2K4x7JcQi9IINBlhB/O+Vw+aj0+XOJS0ky920Y0aQLFwI=
+SHA256 (Pkgfile) = 4a8b5eff4bdedfda075e8ca34f7b89a00a911fd5f43b9535eada9f384f05923c
+SHA256 (.footprint) = 6d48d88ec31490272f46149d24debf20cf78bce95eb0ad8e21832033e2af81b1
+SHA256 (libXau-1.0.11.tar.xz) = f3fa3282f5570c3f6bd620244438dbfbdd580fc80f02f549587a0f8ab329bbeb

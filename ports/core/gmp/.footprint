@@ -1,0 +1,19 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/gmp.h
+-rw-r--r--	root/root	usr/include/gmpxx.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libgmp.so -> libgmp.so.10.5.0
+lrwxrwxrwx	root/root	usr/lib/libgmp.so.10 -> libgmp.so.10.5.0
+-rwxr-xr-x	root/root	usr/lib/libgmp.so.10.5.0
+lrwxrwxrwx	root/root	usr/lib/libgmpxx.so -> libgmpxx.so.4.7.0
+lrwxrwxrwx	root/root	usr/lib/libgmpxx.so.4 -> libgmpxx.so.4.7.0
+-rwxr-xr-x	root/root	usr/lib/libgmpxx.so.4.7.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/gmp.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/gmpxx.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/gmp.info-1.gz
+-rw-r--r--	root/root	usr/share/info/gmp.info-2.gz
+-rw-r--r--	root/root	usr/share/info/gmp.info.gz

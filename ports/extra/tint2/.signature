@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zEQ2HafcHbBiUKMjbPNOpWtAE5dAhmGjpFY4jbe2gTycOQLFg3+a5kbOEK+9l0RY3eTQxVr2hkD54YM3rD0EfAM=
+SHA256 (Pkgfile) = 56d3a1c871882d95df3cc752db28c0cecfac9c18c66cb55c965ac499726b3b24
+SHA256 (.footprint) = acdb2c5ade49614999b0d7aaf956a076d8cbe14aed357bd18d1fedc4951f6ec1
+SHA256 (tint2-17.1.3.tar.bz2) = d49103d60a8753fa5e808e57f4cc028f677009a3594eb0f64dcfdc6d2b96e33c
+SHA256 (glib.patch) = 7e1b68ae24efd0c394270d55dd0237c2777b526e10b37198991b483b634b8424

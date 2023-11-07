@@ -1,0 +1,9 @@
+name=jxrlib
+version=0.2.4
+release=1
+source=(https://github.com/glencoesoftware/jxrlib/archive/v$version/$name-$version.tar.gz
+	CMakeLists.txt)
+
+pre_build() {
+	cp $SRC/CMakeLists.txt .
+}

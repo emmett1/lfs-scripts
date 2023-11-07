@@ -1,0 +1,6 @@
+# Depends on: glib
+
+name=libslirp
+version=v4.7.0
+release=1
+source=(https://gitlab.freedesktop.org/slirp/$name/-/archive/$version/$name-$version.tar.bz2)

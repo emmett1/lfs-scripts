@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zPvuBGDvJRzeVDHty/a8Kmcc4SbZdfekvt1OOwpSj/jBeTvKu6Gdpk1bCl9pZFNxe1arKPrGLGXNQYqcHRtH1Qk=
+SHA256 (Pkgfile) = ad4e380c8ec4b08104761b95bf4afcc5bd26e5ebb6bd812558fda22f063e74bb
+SHA256 (.footprint) = 48f54a95cb59850ade02d60465e54930e14ad8137d451d97310c3057fcabcc81
+SHA256 (megasync-4.9.0.0.tar.gz) = 8c98f68ad09421c84f581de336bf10e61609417f0ec1d75e2951f6f4405bb011
+SHA256 (megasdk-4.16.0.tar.gz) = 19bdde880464cb549fc7e6988530d2394a02a50ab7390e0415627b7dca5c2034
+SHA256 (pdfium.patch) = bdad237f67d772789bf6e6835108827201296fc5cf793d28d94af8a1b04e56c9
+SHA256 (ffmpeg.patch) = d5fcd4018a665e7a591ab796569777cf0a74fadc7c953f6879f37c949f82e7ae

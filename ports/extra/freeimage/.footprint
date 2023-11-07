@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/FreeImage.h
+-rw-r--r--	root/root	usr/include/FreeImagePlus.h
+drwxr-xr-x	root/root	usr/lib/
+-rwxr-xr-x	root/root	usr/lib/libfreeimage-3.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libfreeimage.so -> libfreeimage.so.3
+lrwxrwxrwx	root/root	usr/lib/libfreeimage.so.3 -> libfreeimage-3.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libfreeimageplus-3.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libfreeimageplus.so -> libfreeimageplus.so.3
+lrwxrwxrwx	root/root	usr/lib/libfreeimageplus.so.3 -> libfreeimageplus-3.18.0.so

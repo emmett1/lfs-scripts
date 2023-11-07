@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAFQRz2Cu6wOT7ZiodcSFXff6iGbIq+C/fr0OtoVqsVKBnt8ukjcv5Da1OcIA/c89lPAUdUXgCafTEqvjv1/BQs=
+SHA256 (Pkgfile) = 7ab31d9e9f70d5fe9c460f38af0562fa7f1d037ba1cade0c5985bb4473d167f2
+SHA256 (.footprint) = 94e18c7a155a426fc7e5eed8f0bac40d0d6c1cd44b95fab1159254bdb5cea4b2
+SHA256 (glib-networking-2.78.0.tar.xz) = 52fe4ce93f7dc51334b102894599858d23c8a65ac4a1110b30920565d68d3aba

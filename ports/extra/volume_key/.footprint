@@ -1,0 +1,21 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/volume_key
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/volume_key/
+-rw-r--r--	root/root	usr/include/volume_key/libvolume_key.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libvolume_key.so -> libvolume_key.so.1.2.3
+lrwxrwxrwx	root/root	usr/lib/libvolume_key.so.1 -> libvolume_key.so.1.2.3
+-rwxr-xr-x	root/root	usr/lib/libvolume_key.so.1.2.3
+drwxr-xr-x	root/root	usr/lib/python3.11/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/__pycache__/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/__pycache__/volume_key.cpython-311.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/__pycache__/volume_key.cpython-311.pyc
+-rwxr-xr-x	root/root	usr/lib/python3.11/site-packages/_volume_key.so
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/volume_key.py
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/volume_key.8.gz

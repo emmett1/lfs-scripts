@@ -1,0 +1,10 @@
+name=keyutils
+version=1.6.1
+release=1
+source=(https://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2)
+export USRLIBDIR=/usr/lib
+export LIBDIR=/lib
+
+pre_build() {
+	sed -i 's:$(LIBDIR)/$(PKGCONFIG_DIR):/usr/lib/pkgconfig:' Makefile
+}

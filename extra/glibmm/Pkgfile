@@ -1,6 +1,0 @@
-# Pkgfile for glibmm
-
-name=glibmm
-version=2.66.5
-release=1
-source=(https://download.gnome.org/sources/$name/2.66/$name-$version.tar.xz)

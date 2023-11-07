@@ -1,0 +1,10 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-r-xr-xr-x	root/root	usr/bin/acpiexamples
+-r-xr-xr-x	root/root	usr/bin/acpixtract
+-r-xr-xr-x	root/root	usr/bin/acpidump
+-r-xr-xr-x	root/root	usr/bin/acpihelp
+-r-xr-xr-x	root/root	usr/bin/acpibin
+-r-xr-xr-x	root/root	usr/bin/iasl
+-r-xr-xr-x	root/root	usr/bin/acpisrc
+-r-xr-xr-x	root/root	usr/bin/acpiexec

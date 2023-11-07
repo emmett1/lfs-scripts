@@ -1,0 +1,16 @@
+# Depends on: chrpath 
+
+name=iniparser
+version=4.1
+release=1
+source=(https://github.com/ndevilla/$name/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	make
+	install -Dm0644 src/iniparser.h $PKG/usr/include/$name/iniparser.h
+	install -Dm0644 src/dictionary.h $PKG/usr/include/$name/dictionary.h
+	install -Dm0644 libiniparser.so.1 $PKG/usr/lib/libiniparser.so.1
+
+	ln -sf libiniparser.so.1 $PKG/usr/lib/libiniparser.so
+	chrpath -d $PKG/usr/lib/libiniparser.so
+}

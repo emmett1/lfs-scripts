@@ -1,0 +1,7 @@
+# Depends on: lzo
+
+name=btrfs-progs
+version=6.3.3
+release=1
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz)
+build_opt="--disable-documentation"

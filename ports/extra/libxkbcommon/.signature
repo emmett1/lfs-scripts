@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zFcFymfCcZmjHPp+4tWxo8U0EEMQ9xD7/bQu2vTEAbjlgbE+CuS2RHARFAN+cpcOd4hLzkZjRIwR5cMdiFtuzQ0=
+SHA256 (Pkgfile) = 4906932e47640f9e72a59bed7c3ac997bd826238945da8d9df3bf20cd3e61ef4
+SHA256 (.footprint) = bf9c18e7e317c7a08176c5852b5b4c0898fea8dc5040e8ab0955a25714a870e8
+SHA256 (libxkbcommon-1.6.0.tar.xz) = 0edc14eccdd391514458bc5f5a4b99863ed2d651e4dd761a90abf4f46ef99c2b

@@ -1,0 +1,5 @@
+name=acpica-unix
+version=20230628
+release=1
+source="https://downloadmirror.intel.com/783534/$name-$version.tar.gz"
+export NOWERROR=TRUE

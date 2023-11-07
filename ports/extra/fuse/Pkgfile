@@ -1,0 +1,8 @@
+name=fuse
+version=3.16.2
+release=1
+source=(https://github.com/lib$name/lib$name/releases/download/$name-$version/$name-$version.tar.gz)
+
+post_build() {
+	rm $PKG/dev/fuse
+}

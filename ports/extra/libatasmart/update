@@ -1,0 +1,8 @@
+url=http://git.0pointer.net/libatasmart.git/refs/
+
+port_getver() {
+	fetch \
+	| grep tag \
+	| grep -Eo v[0-9.]+ \
+	| sed 's/^v//'
+}

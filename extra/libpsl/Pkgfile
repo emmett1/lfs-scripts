@@ -1,6 +1,0 @@
-# Pkgfile for libpsl
-
-name=libpsl
-version=0.21.2
-release=1
-source=(https://github.com/rockdaboot/$name/releases/download/$version/$name-$version.tar.gz)

@@ -1,0 +1,7 @@
+# Depends on: yasm
+
+name=libaom
+version=3.7.0
+release=1
+source=(https://storage.googleapis.com/aom-releases/$name-$version.tar.gz)
+build_opt="-DBUILD_SHARED_LIBS=1"

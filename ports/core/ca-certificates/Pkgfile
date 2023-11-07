@@ -1,0 +1,15 @@
+name=ca-certificates
+version=20230822
+release=1
+source=(https://curl.se/ca/cacert-2023-05-30.pem)
+
+bootstrap_build() {
+	install -Dm644 $SRC/cacert-2023-05-30.pem $TOOLS/etc/ssl/cert.pem
+}
+
+pkg_build() {
+	install -Dm644 $SRC/cacert-2023-05-30.pem $PKG/etc/ssl/cert.pem
+	install -d $PKG/etc/ssl/certs
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/certs/ca-certificates.crt
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/ca-bundle.crt
+}

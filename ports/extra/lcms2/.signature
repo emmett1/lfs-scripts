@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zNRuJqFJR7ECwIeQvft3OCpKgl4MjDJq2I7m41sLWuzizzFTwAizvlHb1eU+HalKGQrV/d2bIZphsU21chZ5JA4=
+SHA256 (Pkgfile) = 290d937cdc2fe188b2c192d49b5a43915f931eae92f3d497c6c626bc33b4f3d6
+SHA256 (.footprint) = be149afadad63a17fa04d96b0501035776f6f823ccdf65d4267d039dcf4bbfdf
+SHA256 (lcms2-2.15.tar.gz) = b20cbcbd0f503433be2a4e81462106fa61050a35074dc24a4e356792d971ab39

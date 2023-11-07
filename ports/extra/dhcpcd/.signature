@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zAj0m2DIt4Nms8Y8NQ2mrScBwBT/Fl5VaCPadtZ2+2KXhPWXCuvD3z5eaaG8mO/ysah5vWuyhj2KuKfT2F6/qwo=
+SHA256 (Pkgfile) = 46ab76f895a560373b148dc9da82f38a569430c69e973c22b29e0ba4abf448ad
+SHA256 (.footprint) = 048a70a9ea978cf431614f2e4de7833f16f7c344e6bec74d0a6614c0e9b0ed0f
+SHA256 (dhcpcd-10.0.3.tar.xz) = 232a3f7ee41f026e644ee8c8468d4baf2d5f37ca91ade442c5a7b4bc81b3cb0f

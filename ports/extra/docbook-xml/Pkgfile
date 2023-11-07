@@ -1,0 +1,66 @@
+# Depends on: libxml2
+
+name=docbook-xml
+version=4.5
+release=1
+source=(https://docbook.org/xml/$version/$name-$version.zip
+        https://docbook.org/xml/4.4/$name-4.4.zip
+        https://docbook.org/xml/4.3/$name-4.3.zip
+        https://docbook.org/xml/4.2/$name-4.2.zip)
+renames=($name-$version.zyp
+         $name-4.4.zyp
+         $name-4.3.zyp
+         $name-4.2.zyp)
+
+pkg_build() {
+	# map module filenames to their descriptions
+	declare -A DB_DESC
+	DB_DESC["docbookx.dtd"]="DTD DocBook\$xml V 4.\$vminor"
+	DB_DESC["calstblx.dtd"]="DTD DocBook\$xml CALS Table Model V 4.\$vminor"
+	DB_DESC["soextblx.dtd"]="DTD XML Exchange Table Model 1990315"
+	DB_DESC["dbpoolx.mod"]="ELEMENTS DocBook\$xml Information Pool V 4.\$vminor"
+	DB_DESC["dbhierx.mod"]="ELEMENTS DocBook\$xml Document Hierarchy V 4.\$vminor"
+	DB_DESC["htmltblx.mod"]="ELEMENTS DocBook XML HTML Tables V 4.\$vminor"
+	DB_DESC["dbnotnx.mod"]="ENTITIES DocBook\$xml Notations V 4.\$vminor"
+	DB_DESC["dbcentx.mod"]="ENTITIES DocBook\$xml Character Entities V 4.\$vminor"
+	DB_DESC["dbgenent.mod"]="ENTITIES DocBook\$xml Additional General Entities V 4.\$vminor"
+
+	# create initial docbook-xml catalog
+	CATALOG="$PKG/etc/xml/$name"
+	install -d "$PKG/etc/xml"
+	xmlcatalog --noout --create "$CATALOG"
+
+	# add each version to the initial catalog
+	for vminor in 5 4 3 2; do
+		dest="/usr/share/xml/docbook/xml-dtd-4.$vminor"
+		install -d -m755 "$PKG$dest"
+		bsdtar xf "$SRC/$name-4.$vminor.zyp" --uid 0 --gid 0 -C "$PKG$dest" \
+			&& mv "$PKG$dest/catalog.xml" "$PKG$dest/catalog"
+
+		[ "$vminor" -lt 4 ] && xml="" || xml=" XML"
+		cd "$PKG$dest"
+		for DB_MOD in *.dtd *.mod; do
+			xmlcatalog --noout --add "public" \
+				"-//OASIS//$(eval echo "${DB_DESC[$DB_MOD]}")//EN" \
+				"http://www.oasis-open.org/docbook/xml/4.$vminor/$DB_MOD" \
+				"$CATALOG"
+		done
+		xmlcatalog --noout --add "rewriteSystem" \
+			"http://www.oasis-open.org/docbook/xml/4.$vminor" \
+			"file://$dest" "$CATALOG"
+		xmlcatalog --noout --add "rewriteURI" \
+			"http://www.oasis-open.org/docbook/xml/4.$vminor" \
+			"file://$dest" "$CATALOG"
+	done
+
+	# special treatment for version 4.1.2
+	dir412=$PKG/usr/share/xml/docbook/xml-dtd-4.2
+	sed -e 's|V4.2|V4.1.2|g' "${dir412}/catalog" > "${dir412}/catalog-4.1.2"
+	xmlcatalog --noout --add "rewriteSystem" \
+	  "http://www.oasis-open.org/docbook/xml/4.1.2" \
+	  "file:///usr/share/xml/docbook/xml-dtd-4.2" "$CATALOG"
+
+	# fix permissions and delete junk files
+	find $PKG -type f  \( -perm -g=r -o -perm -g=w \) -exec chmod -g=rw '{}' +
+	find $PKG \( -name "README" -o -name "ChangeLog" \) -delete
+}

@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWQj+xHX75A5zMCFrSiCW7jlQpctNy6MZKo2PRoGAv9FHEfqrxcEC5RMD/w7NaRCopIRiQ8GUQYBlav5K2vo2/I1r4vGoEn7EwA=
+SHA256 (Pkgfile) = 6919cb9f38ef47c709206d74b21331955a8aa79d0fd879aa7723984e496b9a7a
+SHA256 (.footprint) = 82123448767b8649cd45ba7638d8048d70b5dd8f12072cbd66f53f91aea88dfb
+SHA256 (gettext-0.22.tar.xz) = 0e60393a47061567b46875b249b7d2788b092d6457d656145bb0e7e6a3e26d93
+SHA256 (gettext-0.22-disable-libtextstyle.patch) = d751adc12a1f1d0b7556b1045f0f427b11345242f2a245542d8baade74177f97

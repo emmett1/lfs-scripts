@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zM/dwsAPEH/TdEsQxz7ytrrcmidPYSxbHn3k2Cw+twKkNBgAECfQdzNsvILLrECGiPZlslqWZjH5t2+iDtL0yQM=
+SHA256 (Pkgfile) = 139ea0273b7c1c4a45d3aa229101be74c29799ca227df7436b50da2b859809e8
+SHA256 (.footprint) = c310353b8a47297050a5554ad711538f6f95b74eadc9d0940c9f74acf63ebb7a
+SHA256 (gcr-3.41.1.tar.xz) = bb7128a3c2febbfee9c03b90d77d498d0ceb237b0789802d60185c71c4bea24f

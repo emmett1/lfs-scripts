@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWQj+xHX75A5zLL5PNaKXdsUQ7aAtfE6xv40BCl+uDnR+RjouOtMqiewsUfYZgUYV7X76BOJw1Tp7Jh+ZhTaJmZxbFwuedx+7gM=
+SHA256 (Pkgfile) = eca2be551869a4e5fac8d69a7af9a1abbcc49bffcf20e705a0c52bf9940ba4c3
+SHA256 (.footprint) = a72b56cdb87d79d27fe88e0464b9faf3fb4eb085225d4964c92e497f035e95a6
+SHA256 (tzdata2023c.tar.gz) = 3f510b5d1b4ae9bb38e485aa302a776b317fb3637bdb6404c4adf7b6cadd965c
+SHA256 (tzcode2023c.tar.gz) = 46d17f2bb19ad73290f03a203006152e0fa0d7b11e5b71467c4a823811b214e7

@@ -1,0 +1,7 @@
+# Depends on: libatasmart libblockdev libgudev polkit libxslt 
+
+name=udisks
+version=2.10.1
+release=1
+source=(https://github.com/storaged-project/$name/releases/download/$name-$version/$name-$version.tar.bz2)
+build_opt="--enable-available-modules"

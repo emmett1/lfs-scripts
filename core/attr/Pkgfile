@@ -1,6 +1,0 @@
-# Pkgfile for attr
-
-name=attr
-version=2.5.1
-release=1
-source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)

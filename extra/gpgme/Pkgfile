@@ -1,6 +1,0 @@
-# Pkgfile for gpgme
-
-name=gpgme
-version=1.21.0
-release=1
-source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)

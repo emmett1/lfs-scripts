@@ -1,7 +1,0 @@
-# Pkgfile for xinit
-
-name=xinit
-version=1.4.2
-release=1
-source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)
-build_opt=--with-xinitdir=/etc/X11/app-defaults

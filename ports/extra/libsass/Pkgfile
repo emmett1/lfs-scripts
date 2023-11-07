@@ -1,0 +1,8 @@
+name=libsass
+version=3.6.5
+release=1
+source=(https://github.com/sass/$name/archive/$version/$name-$version.tar.gz)
+
+pre_build() {
+	autoreconf -fi
+}

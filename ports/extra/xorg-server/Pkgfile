@@ -1,0 +1,17 @@
+# Depends on: libxcvt pixman font-util xkeyboard-config libepoxy libdrm libxkbfile libxfont2 
+
+name=xorg-server
+version=21.1.8
+release=1
+source=(https://www.x.org/pub/individual/xserver/$name-$version.tar.xz)
+build_opt="
+	-Dsuid_wrapper=true   \
+	-Dxkb_output_dir=/var/lib/xkb \
+	-Dxkb_dir=/usr/share/X11/xkb \
+	-Dxorg=true
+"
+
+post_build() {
+	install -m 755 -d $PKG/etc/X11/xorg.conf.d
+	echo "needs_root_rights = yes" >> $PKG/etc/X11/Xwrapper.config
+}

@@ -1,0 +1,19 @@
+diff -Naur qt-everywhere-src-5.15.11.orig/qtbase/src/platformsupport/input/xkbcommon/qxkbcommon.cpp qt-everywhere-src-5.15.11/qtbase/src/platformsupport/input/xkbcommon/qxkbcommon.cpp
+--- qt-everywhere-src-5.15.11.orig/qtbase/src/platformsupport/input/xkbcommon/qxkbcommon.cpp	2023-10-12 17:55:18.450758031 +0200
++++ qt-everywhere-src-5.15.11/qtbase/src/platformsupport/input/xkbcommon/qxkbcommon.cpp	2023-10-12 17:56:18.261570820 +0200
+@@ -273,11 +273,10 @@
+         Xkb2Qt<XKB_KEY_dead_small_schwa,        Qt::Key_Dead_Small_Schwa>,
+         Xkb2Qt<XKB_KEY_dead_capital_schwa,      Qt::Key_Dead_Capital_Schwa>,
+         Xkb2Qt<XKB_KEY_dead_greek,              Qt::Key_Dead_Greek>,
+-        Xkb2Qt<XKB_KEY_dead_lowline,            Qt::Key_Dead_Lowline>,
+-        Xkb2Qt<XKB_KEY_dead_aboveverticalline,  Qt::Key_Dead_Aboveverticalline>,
+-        Xkb2Qt<XKB_KEY_dead_belowverticalline,  Qt::Key_Dead_Belowverticalline>,
+-        Xkb2Qt<XKB_KEY_dead_longsolidusoverlay, Qt::Key_Dead_Longsolidusoverlay>,
+-
++        Xkb2Qt<0xfe90,                          Qt::Key_Dead_Lowline>,
++        Xkb2Qt<0xfe91,                          Qt::Key_Dead_Aboveverticalline>,
++        Xkb2Qt<0xfe92,                          Qt::Key_Dead_Belowverticalline>,
++        Xkb2Qt<0xfe93,                          Qt::Key_Dead_Longsolidusoverlay>,
+         // Special keys from X.org - This include multimedia keys,
+         // wireless/bluetooth/uwb keys, special launcher keys, etc.
+         Xkb2Qt<XKB_KEY_XF86Back,                Qt::Key_Back>,

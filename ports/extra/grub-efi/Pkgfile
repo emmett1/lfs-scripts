@@ -1,0 +1,33 @@
+# Depends on: grub 
+
+name=grub-efi
+version=2.06
+release=1
+source=(https://ftp.gnu.org/gnu/$name/grub-$version.tar.xz
+	https://unifoundry.com/pub/unifont/unifont-15.0.01/font-builds/unifont-15.0.01.pcf.gz
+	grub-2.06-upstream_fixes-1.patch)
+renames=(SKIP unifont-15.0.01.pcf.noextract SKIP)
+build_opt="--disable-efiemu
+	--enable-grub-mount
+	--enable-grub-mkfont
+	--enable-device-mapper
+	--with-platform=efi
+	--target=x86_64
+	--disable-werror"
+
+pre_build() {
+	unset CFLAGS
+	unset CXXFLAGS
+	mkdir -pv $PKG/usr/share/fonts/unifont
+	gunzip -c ../unifont-15.0.01.pcf.noextract > $PKG/usr/share/fonts/unifont/unifont.pcf
+}
+
+post_build() {
+	rm -rf \
+	$PKG/etc \
+	$PKG/usr/sbin \
+	$PKG/usr/bin \
+	$PKG/usr/share/info \
+	$PKG/usr/share/locale \
+	$PKG/usr/share/grub
+}

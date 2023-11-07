@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGAdbckmepHoZpsnS77rFPQD93hIK5mbppDTErpd4CPZUWYRwj1MDGSNkKwTPvWRPYbzyp96wTVn0E9dH6qgTw8=
+SHA256 (Pkgfile) = 58bea36939aafb6ce460a3a8ed5b38620a6cff831e36b5e03c25d167bf63cb56
+SHA256 (.footprint) = 7bcaa9ffb62407532fa1f82fb309bf36340c8f4a8b58edef97656dd8474866df
+SHA256 (harfbuzz-8.2.1.tar.xz) = 0fec78f98c9c8faf228957a201c8846f809452c20f8445eb092a1ba6f22dbea5

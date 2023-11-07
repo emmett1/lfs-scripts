@@ -1,0 +1,6 @@
+# Depends on: libjpeg-turbo libpng tiff 
+
+name=libwebp
+version=1.3.2
+release=1
+source=(http://downloads.webmproject.org/releases/webp/$name-$version.tar.gz)

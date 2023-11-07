@@ -1,0 +1,7 @@
+# Depends on: popt 
+
+name=rsync
+version=3.2.7
+release=1
+source=(https://www.samba.org/ftp/$name/src/$name-$version.tar.gz)
+build_opt="--disable-xxhash --without-included-zlib --disable-lz4"

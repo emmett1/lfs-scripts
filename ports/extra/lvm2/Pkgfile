@@ -1,0 +1,17 @@
+# Depends on: libaio 
+
+name=lvm2
+version=2.03.22
+release=1
+source=(https://sourceware.org/ftp/$name/LVM2.${version}.tgz)
+build_opt="
+	--libdir=/usr/lib
+	--exec-prefix=
+	--enable-cmdlib
+	--enable-pkgconfig
+	--enable-udev_sync
+"
+
+post_build() {
+	rm -fr $PKG/usr/libexec/
+}

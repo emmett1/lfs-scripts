@@ -1,0 +1,10 @@
+name=duktape
+version=2.7.0
+release=1
+source=(https://$name.org/$name-$version.tar.xz)
+
+pkg_build() {
+	sed -i 's/-Os/-O2/' Makefile.sharedlibrary
+	make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr
+	make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr install
+}

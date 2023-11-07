@@ -1,0 +1,8 @@
+# Depends on: libdrm pixman xcb-util xorg-server libxvmc 
+
+name=xf86-video-intel
+version=2.99.917-923
+release=1
+source=(https://crux.nu/files/distfiles/xf86-video-intel-$version.tar.xz)
+#source=(http://xorg.freedesktop.org/archive/individual/driver/$name-$version.tar.bz2)
+build_opt="--enable-kms-only --with-default-accel=sna --with-default-dri=3"
