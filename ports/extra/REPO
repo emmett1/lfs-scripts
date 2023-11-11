@@ -117,6 +117,7 @@ d:murrine
 d:libxshmfence
 d:dav1d
 d:yaml
+d:xf86-input-synaptics
 d:xrefresh
 d:libmediainfo
 d:pango
@@ -253,7 +254,6 @@ d:inkscape
 d:graphite2
 d:pcre
 d:nodejs
-d:signify
 d:wayland-protocols
 d:sessreg
 d:openssh
@@ -669,7 +669,7 @@ f:5bf49138d72bb845c5be82ed7f876ba0:itstool/Pkgfile
 f:29b7330d0ebe2b85e08291bf9ff6b86c:itstool/.signature
 f:650b86fe587074ef5a2b3869d9bc4c18:itstool/update
 f:3fcccef151712aa244e8f2462e604fe6:itstool/.footprint
-f:2fe083ad0014ea23781674c20cd90a9d:ffmpeg/Pkgfile
+f:5a2825da92fa9e96dd784546c317fc00:ffmpeg/Pkgfile
 f:e1972cc809fe72a8b8a711c8896ffa41:ffmpeg/ffmpeg-6.0-chromium_method-1.patch
 f:ff2716aad4adde40ea3bb39f93171a85:ffmpeg/.signature
 f:a6822b9dfe4fd09184c61035158587fb:ffmpeg/update
@@ -813,9 +813,10 @@ f:15a5d01dfde6419a2dcdafe4a38521cc:libxtst/.signature
 f:a3ed9bad9712c4593aff01ee6bb6dee3:libxtst/.footprint
 f:092065198db545b3dc1d200fddcef263:xlsclients/Pkgfile
 f:93ca99e05c7a55fb216c74cf2ae11b46:xlsclients/.signature
-f:b9029ddb1893eeef93a772447396414e:gpicview/Pkgfile
-f:82669c7f9004080606c1d6a863be3c63:gpicview/.signature
-f:5a3b00fd72b211837563e27e412239c8:gpicview/.footprint
+f:d3958dc43e5d1e9c439f96937d4c879b:gpicview/Pkgfile
+f:52c2306809efd68d7fbed4dfd94a7000:gpicview/.signature
+f:2762dc6d7b4f39f6c4009aebd0ce0355:gpicview/gpicview.appdata.xml
+f:2432d9b41caf80500e0968133faa6e30:gpicview/.footprint
 f:a610ee6f1a164d03f4e0b3d0d1abfbf9:rsync/Pkgfile
 f:cd56fc0201fa06ff8d3da97cf452ba8c:rsync/.signature
 f:19b6e2c20c26deadafb5f39b33945bc8:rsync/.footprint
@@ -830,6 +831,10 @@ f:698ca2635e3cb3c91370bf3ffc571bb3:dav1d/.signature
 f:811492fb9ad3f215497e33933ea0aa07:dav1d/.footprint
 f:536435141694766ca7df7a95d5ca4fe6:yaml/Pkgfile
 f:314f7bac435d645163fe55b48d9d86c6:yaml/.signature
+f:e730e205c6e1b669bcbe12c2fdc92680:xf86-input-synaptics/Pkgfile
+f:390a67daf04910da0c3b216c7fe3a060:xf86-input-synaptics/.signature
+f:3f7c08db10d73e2311faa439b4b0c90c:xf86-input-synaptics/50-synaptics.conf
+f:dcbbfc1beef65e336842d4694288342b:xf86-input-synaptics/.footprint
 f:a28c549df40b3ad81749c261c9a0c963:xrefresh/Pkgfile
 f:259e9c510d8239353277f47a2fdc83ca:xrefresh/.signature
 f:232ebc96c177033e1c2c5e45df0e205f:libmediainfo/Pkgfile
@@ -1291,10 +1296,6 @@ f:d23c3b454b391c95e014248554368a2a:nodejs/Pkgfile
 f:7465a02d5aad9828c5c44721cfc61142:nodejs/.signature
 f:57c0d7e4214ed4e5e07ad744239a0b3d:nodejs/update
 f:cdcf0e8e57d3f91638d68c93a5f774a7:nodejs/.footprint
-f:56052da3f97f35e7bef318f4216ed888:signify/Pkgfile
-f:1ec6188cd775f3198e8716a4b40a1230:signify/cruxify.patch
-f:9fff9d41462d842db7853ecc18416c29:signify/.signature
-f:a98cb3bec29ec19898280d032258b09a:signify/.footprint
 f:42b4ac839616e8c2c200b652a4f8bad6:wayland-protocols/Pkgfile
 f:14bff77da95b2443748878d7b8768e5b:wayland-protocols/.signature
 f:60f59c4215812123ec1149de1ebf5671:wayland-protocols/update
