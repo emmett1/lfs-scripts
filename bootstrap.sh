@@ -7,7 +7,6 @@ _buildtoolchain() {
 	fi
 
 	export BOOTSTRAP=1
-	export PATH=$TOOLS/bin:$PATH
 	export LFS_TGT=x86_64-lfs-linux-gnu
 	export LFS_TGT32=i686-lfs-linux-gnu
 	
@@ -107,8 +106,8 @@ _buildbase() {
 		touch $LFS/var/lib/pkg/db
 		
 		# package and source
-		mkdir -p $LFS/tmp/src
-		mkdir -p $LFS/tmp/pkg
+		mkdir -p $LFS/$pkgmkpkg
+		mkdir -p $LFS/$pkgmksrc
 		mkdir -p $packagedir
 	fi
 	
@@ -123,31 +122,23 @@ _buildbase() {
 	# pkgmk
 	mkdir -p $LFS/var/lib/pkgmk
 	cp ports/core/pkgutils/extension $LFS/var/lib/pkgmk
-	echo '
-export CFLAGS="-O2 -march=x86-64 -pipe"
-export CXXFLAGS="${CFLAGS}"
+	echo "
+export CFLAGS=\"-O2 -march=x86-64 -pipe\"
+export CXXFLAGS=\"${CFLAGS}\"
 
 export JOBS=$(nproc)
-export MAKEFLAGS="-j $JOBS"
+export MAKEFLAGS=\"-j \$JOBS\"
 
-PKGMK_SOURCE_DIR="/tmp/src"
-PKGMK_PACKAGE_DIR="/tmp/pkg"
-PKGMK_WORK_DIR="/tmp/pkgmk-$name"
+PKGMK_SOURCE_DIR=\"/$pkgmksrc\"
+PKGMK_PACKAGE_DIR=\"/$pkgmkpkg\"
+PKGMK_WORK_DIR=\"/tmp/pkgmk-$name\"
 
-. /var/lib/pkgmk/extension' > $LFS/tmp/pkgmk.conf
+. /var/lib/pkgmk/extension" > $LFS/tmp/pkgmk.conf
 	
-	if [ "$1" = rebuild ]; then
-		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin
-		#_xpkg_opt="upgrade -fr"
-		pkgmkopt="-f"
-		pkgaddopt="-u"
-	else
-		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin:$TOOLS/bin
-		#_xpkg_opt="add"
+	LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin	
+	if [ "$1" != rebuild ]; then
+		LFSPATH=$LFSPATH:$TOOLS/bin
 	fi
-	
-	# host PATH
-	export PATH=$TOOLS/bin:$PATH
 	
 	mountfs
 	for i in $basepkg; do
@@ -157,8 +148,8 @@ PKGMK_WORK_DIR="/tmp/pkgmk-$name"
 			case $i in
 				aaa_filesystem|gcc|bash|dash|perl|coreutils|pkgutils) _force=-f;;
 			esac
-			chroot $LFS env -i PATH=$LFSPATH pkgin $pkgmkopt -d $i -is -if -im -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
-			pkgadd -r $LFS $_force $pkgaddopt $(ls -1 $packagedir/$i#* | tail -n1) || exit 1
+			chroot $LFS env -i PATH=$LFSPATH pkgin -d $i -is -if -im -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
+			pkgadd -r $LFS $_force $(ls -1 $packagedir/$i#* | tail -n1) || { umountfs; exit 1; }
 			case $i in
 				glibc) cat << EOF > $LFS/tmp/glibc-postinstall
 #!/bin/sh
@@ -204,9 +195,9 @@ mountfs() {
 	if [ -h $LFS/dev/shm ]; then
 	  mkdir -p $LFS/$(readlink $LFS/dev/shm)
 	fi
-	mkdir -p $LFS/tmp/src $LFS/tmp/pkg
-	mount --bind $sourcedir $LFS/tmp/src
-	mount --bind $packagedir $LFS/tmp/pkg
+	mkdir -p $LFS/$pkgmksrc $LFS/$pkgmkpkg
+	mount --bind $sourcedir $LFS/$pkgmksrc
+	mount --bind $packagedir $LFS/$pkgmkpkg
 }
 
 umountfs() {
@@ -215,8 +206,8 @@ umountfs() {
 	unmount $LFS/run
 	unmount $LFS/proc
 	unmount $LFS/sys
-	unmount $LFS/tmp/pkg
-	unmount $LFS/tmp/src
+	unmount $LFS/$pkgmkpkg
+	unmount $LFS/$pkgmksrc
 }
 
 unmount() {
@@ -229,6 +220,7 @@ unmount() {
 export LFS=/tmp/lfs-rootfs
 export TOOLS=/tmp/lfs-tools
 export LC_ALL=C
+export PATH=$TOOLS/bin:$PATH
 
 toolchainpkg="binutils-pass1 gmp mpfr mpc gcc-pass1 linux-headers glibc gcc-pass2 binutils-pass2 libxcrypt gcc-pass3 m4
 	ncurses bash bison bzip2 coreutils diffutils file findutils gawk gettext grep gzip make patch perl python
@@ -243,6 +235,8 @@ basepkg="aaa_filesystem linux-headers man-pages glibc tzdata zlib bzip2 xz file 
 
 sourcedir="$PWD/sources"
 packagedir="$PWD/packages"
+pkgmkpkg="var/cache/pkg/packages"
+pkgmksrc="var/cache/pkg/sources"
 
 if [ ! "$1" ]; then	
 	cat << EOF
