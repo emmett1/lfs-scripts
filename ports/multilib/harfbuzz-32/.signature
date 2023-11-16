@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zCUzPGB6BlkG2ThOyVCFmYv7txijzQjk+qfIbZTNd+Plt3v0sDYVSlCMfJmIBQ9AwzzIH+KqKVeEFG/6usJ+Tgo=
+SHA256 (Pkgfile) = a17e8e1ca79c6f73ef051fbeed23f8d9ae810b3f3b09452b4f2d632be7229dc5
+SHA256 (.footprint) = f8eb421fd2f763a87a7d8ce2f5a8219767f8e0e826fd45f839d0a2347e0a4109
+SHA256 (harfbuzz-8.2.1.tar.xz) = 0fec78f98c9c8faf228957a201c8846f809452c20f8445eb092a1ba6f22dbea5

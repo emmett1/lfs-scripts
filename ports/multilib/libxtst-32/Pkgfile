@@ -1,0 +1,6 @@
+# Depends on: libxtst libx11-32 libxext-32 libxi-32
+
+name=libxtst-32
+version=1.2.4
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXtst-$version.tar.xz)

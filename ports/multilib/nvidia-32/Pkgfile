@@ -1,0 +1,64 @@
+name=nvidia-32
+version=535.129.03
+release=1
+source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version.run)
+
+pkg_build() {
+	sh NVIDIA-Linux-x86_64-$version.run --extract-only
+	cd NVIDIA-Linux-x86_64-$version/32
+
+	install -d -m 0755 $PKG/usr/lib32
+
+	# EGL and OpenGL ES libraries and config
+	install -m 0755 libGLESv1_CM_nvidia.so.$version $PKG/usr/lib32/
+	ln -s libGLESv1_CM_nvidia.so.$version $PKG/usr/lib32/libGLESv1_CM_nvidia.so.1
+	install -m 0755 libGLESv2_nvidia.so.$version $PKG/usr/lib32/
+	ln -s libGLESv2_nvidia.so.$version $PKG/usr/lib32/libGLESv2_nvidia.so.2
+
+	# GLVND vendor implementation libraries
+	install -m 0755 libGLX_nvidia.so.$version $PKG/usr/lib32/
+	ln -s libGLX_nvidia.so.$version $PKG/usr/lib32/libGLX_nvidia.so.0
+	install -m 0755 libEGL_nvidia.so.$version $PKG/usr/lib32/
+	ln -s libEGL_nvidia.so.$version $PKG/usr/lib32/libEGL_nvidia.so.0
+
+	# driver component libraries
+	install -m 0755 libnvidia-eglcore.so.$version $PKG/usr/lib32/
+	install -m 0755 libnvidia-glcore.so.$version $PKG/usr/lib32/
+	install -m 0755 libnvidia-glsi.so.$version $PKG/usr/lib32/
+	install -m 0755 libnvidia-glvkspirv.so.$version $PKG/usr/lib32/
+
+	# vendor VDPAU library
+	install -D -m 0755 libvdpau_nvidia.so.$version $PKG/usr/lib32/vdpau/libvdpau_nvidia.so.$version
+	ln -s libvdpau_nvidia.so.$version $PKG/usr/lib32/vdpau/libvdpau_nvidia.so.1
+	ln -s libvdpau_nvidia.so.$version $PKG/usr/lib32/vdpau/libvdpau_nvidia.so
+
+	# CUDA libraries
+	install -m 0755 libcuda.so.$version $PKG/usr/lib32/
+	ln -s libcuda.so.$version $PKG/usr/lib32/libcuda.so.1
+	ln -s libcuda.so.$version $PKG/usr/lib32/libcuda.so
+	install -m 0755 libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib32/
+	ln -s libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib32/libnvidia-ptxjitcompiler.so.1
+	ln -s libnvidia-ptxjitcompiler.so.$version $PKG/usr/lib32/libnvidia-ptxjitcompiler.so
+
+	# OpenCL libraries and config
+	install -m 0755 libOpenCL.so.1.0.0 $PKG/usr/lib32/
+	install -m 0755 libnvidia-opencl.so.$version $PKG/usr/lib32/
+	ln -s libnvidia-opencl.so.$version $PKG/usr/lib32/libnvidia-opencl.so.1
+	ln -s libnvidia-opencl.so.$version $PKG/usr/lib32/libnvidia-opencl.so
+
+	# TLS libraries
+	install -m 0755 libnvidia-tls.so.$version $PKG/usr/lib32/
+
+	# monitoring and management API library
+	install -m 0755 libnvidia-ml.so.$version $PKG/usr/lib32/
+
+	# encoding/decoding libraries
+	install -m 0755 libnvcuvid.so.$version $PKG/usr/lib32/
+	install -m 0755 libnvidia-encode.so.$version $PKG/usr/lib32/
+	install -m 0755 libnvidia-fbc.so.$version $PKG/usr/lib32/
+
+	# Optical Flow library
+	install -m 0755 libnvidia-opticalflow.so.$version $PKG/usr/lib32/
+	ln -s libnvidia-opticalflow.so.$version $PKG/usr/lib32/libnvidia-opticalflow.so.1
+	ln -s libnvidia-opticalflow.so.$version $PKG/usr/lib32/libnvidia-opticalflow.so
+}

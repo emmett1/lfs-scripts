@@ -6706,6 +6706,16 @@ drwxr-xr-x	root/root	usr/include/qt5/QtVirtualKeyboard/5.15.11/QtVirtualKeyboard
 -rw-r--r--	root/root	usr/include/qt5/QtVirtualKeyboard/qvirtualkeyboardinputengine.h
 -rw-r--r--	root/root	usr/include/qt5/QtVirtualKeyboard/qvirtualkeyboardselectionlistmodel.h
 -rw-r--r--	root/root	usr/include/qt5/QtVirtualKeyboard/qvirtualkeyboardtrace.h
+drwxr-xr-x	root/root	usr/include/qt5/QtVulkanSupport/
+drwxr-xr-x	root/root	usr/include/qt5/QtVulkanSupport/5.15.11/
+drwxr-xr-x	root/root	usr/include/qt5/QtVulkanSupport/5.15.11/QtVulkanSupport/
+drwxr-xr-x	root/root	usr/include/qt5/QtVulkanSupport/5.15.11/QtVulkanSupport/private/
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/5.15.11/QtVulkanSupport/private/qbasicvulkanplatforminstance_p.h
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/5.15.11/QtVulkanSupport/private/qvkconvenience_p.h
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/QtVulkanSupport
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/QtVulkanSupportDepends
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/QtVulkanSupportVersion
+-rw-r--r--	root/root	usr/include/qt5/QtVulkanSupport/qtvulkansupportversion.h
 drwxr-xr-x	root/root	usr/include/qt5/QtWaylandClient/
 drwxr-xr-x	root/root	usr/include/qt5/QtWaylandClient/5.15.11/
 drwxr-xr-x	root/root	usr/include/qt5/QtWaylandClient/5.15.11/QtWaylandClient/
@@ -8406,6 +8416,9 @@ drwxr-xr-x	root/root	usr/lib/cmake/Qt5VirtualKeyboard/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5VirtualKeyboard/Qt5VirtualKeyboard_QtVirtualKeyboardPinyinPlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5VirtualKeyboard/Qt5VirtualKeyboard_QtVirtualKeyboardTCImePlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5VirtualKeyboard/Qt5VirtualKeyboard_QtVirtualKeyboardThaiPlugin.cmake
+drwxr-xr-x	root/root	usr/lib/cmake/Qt5VulkanSupport/
+-rw-r--r--	root/root	usr/lib/cmake/Qt5VulkanSupport/Qt5VulkanSupportConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/Qt5VulkanSupport/Qt5VulkanSupportConfigVersion.cmake
 drwxr-xr-x	root/root	usr/lib/cmake/Qt5WaylandClient/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClientConfig.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClientConfigVersion.cmake
@@ -8422,6 +8435,7 @@ drwxr-xr-x	root/root	usr/lib/cmake/Qt5WaylandClient/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClient_QWaylandXdgShellV5IntegrationPlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClient_QWaylandXdgShellV6IntegrationPlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClient_ShmServerBufferPlugin.cmake
+-rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandClient/Qt5WaylandClient_VulkanServerBufferPlugin.cmake
 drwxr-xr-x	root/root	usr/lib/cmake/Qt5WaylandCompositor/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositorConfig.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositorConfigVersion.cmake
@@ -8433,6 +8447,7 @@ drwxr-xr-x	root/root	usr/lib/cmake/Qt5WaylandCompositor/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositor_QWaylandXCompositeEglClientBufferIntegrationPlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositor_QWaylandXCompositeGlxClientBufferIntegrationPlugin.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositor_ShmServerBufferIntegrationPlugin.cmake
+-rw-r--r--	root/root	usr/lib/cmake/Qt5WaylandCompositor/Qt5WaylandCompositor_VulkanServerBufferIntegrationPlugin.cmake
 drwxr-xr-x	root/root	usr/lib/cmake/Qt5WebChannel/
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WebChannel/Qt5WebChannelConfig.cmake
 -rw-r--r--	root/root	usr/lib/cmake/Qt5WebChannel/Qt5WebChannelConfigVersion.cmake
@@ -8522,6 +8537,7 @@ lrwxrwxrwx	root/root	usr/lib/libQt53DRender.so -> libQt53DRender.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt53DRender.so.5 -> libQt53DRender.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt53DRender.so.5.15 -> libQt53DRender.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt53DRender.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5AccessibilitySupport.a
 -rw-r--r--	root/root	usr/lib/libQt5AccessibilitySupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Bluetooth.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Bluetooth.so -> libQt5Bluetooth.so.5.15.11
@@ -8533,6 +8549,7 @@ lrwxrwxrwx	root/root	usr/lib/libQt5Bodymovin.so -> libQt5Bodymovin.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Bodymovin.so.5 -> libQt5Bodymovin.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Bodymovin.so.5.15 -> libQt5Bodymovin.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5Bodymovin.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5Bootstrap.a
 -rw-r--r--	root/root	usr/lib/libQt5Bootstrap.prl
 -rw-r--r--	root/root	usr/lib/libQt5Charts.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Charts.so -> libQt5Charts.so.5.15.11
@@ -8569,7 +8586,9 @@ lrwxrwxrwx	root/root	usr/lib/libQt5DesignerComponents.so -> libQt5DesignerCompon
 lrwxrwxrwx	root/root	usr/lib/libQt5DesignerComponents.so.5 -> libQt5DesignerComponents.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5DesignerComponents.so.5.15 -> libQt5DesignerComponents.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5DesignerComponents.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5DeviceDiscoverySupport.a
 -rw-r--r--	root/root	usr/lib/libQt5DeviceDiscoverySupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5EdidSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5EdidSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5EglFSDeviceIntegration.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5EglFSDeviceIntegration.so -> libQt5EglFSDeviceIntegration.so.5.15.11
@@ -8581,15 +8600,20 @@ lrwxrwxrwx	root/root	usr/lib/libQt5EglFsKmsSupport.so -> libQt5EglFsKmsSupport.s
 lrwxrwxrwx	root/root	usr/lib/libQt5EglFsKmsSupport.so.5 -> libQt5EglFsKmsSupport.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5EglFsKmsSupport.so.5.15 -> libQt5EglFsKmsSupport.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5EglFsKmsSupport.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5EglSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5EglSupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5EventDispatcherSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5EventDispatcherSupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5FbSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5FbSupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5FontDatabaseSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5FontDatabaseSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Gamepad.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Gamepad.so -> libQt5Gamepad.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Gamepad.so.5 -> libQt5Gamepad.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Gamepad.so.5.15 -> libQt5Gamepad.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5Gamepad.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5GlxSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5GlxSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Gui.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Gui.so -> libQt5Gui.so.5.15.11
@@ -8601,8 +8625,11 @@ lrwxrwxrwx	root/root	usr/lib/libQt5Help.so -> libQt5Help.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Help.so.5 -> libQt5Help.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Help.so.5.15 -> libQt5Help.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5Help.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5InputSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5InputSupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5KmsSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5KmsSupport.prl
+-rw-r--r--	root/root	usr/lib/libQt5LinuxAccessibilitySupport.a
 -rw-r--r--	root/root	usr/lib/libQt5LinuxAccessibilitySupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Location.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Location.so -> libQt5Location.so.5.15.11
@@ -8644,8 +8671,11 @@ lrwxrwxrwx	root/root	usr/lib/libQt5OpenGL.so -> libQt5OpenGL.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5OpenGL.so.5 -> libQt5OpenGL.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5OpenGL.so.5.15 -> libQt5OpenGL.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5OpenGL.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5OpenGLExtensions.a
 -rw-r--r--	root/root	usr/lib/libQt5OpenGLExtensions.prl
+-rw-r--r--	root/root	usr/lib/libQt5PacketProtocol.a
 -rw-r--r--	root/root	usr/lib/libQt5PacketProtocol.prl
+-rw-r--r--	root/root	usr/lib/libQt5PlatformCompositorSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5PlatformCompositorSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Positioning.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Positioning.so -> libQt5Positioning.so.5.15.11
@@ -8672,7 +8702,9 @@ lrwxrwxrwx	root/root	usr/lib/libQt5Qml.so -> libQt5Qml.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Qml.so.5 -> libQt5Qml.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5Qml.so.5.15 -> libQt5Qml.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5Qml.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5QmlDebug.a
 -rw-r--r--	root/root	usr/lib/libQt5QmlDebug.prl
+-rw-r--r--	root/root	usr/lib/libQt5QmlDevTools.a
 -rw-r--r--	root/root	usr/lib/libQt5QmlDevTools.prl
 -rw-r--r--	root/root	usr/lib/libQt5QmlModels.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5QmlModels.so -> libQt5QmlModels.so.5.15.11
@@ -8780,6 +8812,7 @@ lrwxrwxrwx	root/root	usr/lib/libQt5SerialPort.so -> libQt5SerialPort.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5SerialPort.so.5 -> libQt5SerialPort.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5SerialPort.so.5.15 -> libQt5SerialPort.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5SerialPort.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5ServiceSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5ServiceSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Sql.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Sql.so -> libQt5Sql.so.5.15.11
@@ -8801,14 +8834,18 @@ lrwxrwxrwx	root/root	usr/lib/libQt5TextToSpeech.so -> libQt5TextToSpeech.so.5.15
 lrwxrwxrwx	root/root	usr/lib/libQt5TextToSpeech.so.5 -> libQt5TextToSpeech.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5TextToSpeech.so.5.15 -> libQt5TextToSpeech.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5TextToSpeech.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5ThemeSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5ThemeSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5UiPlugin.prl
+-rw-r--r--	root/root	usr/lib/libQt5UiTools.a
 -rw-r--r--	root/root	usr/lib/libQt5UiTools.prl
 -rw-r--r--	root/root	usr/lib/libQt5VirtualKeyboard.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5VirtualKeyboard.so -> libQt5VirtualKeyboard.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5VirtualKeyboard.so.5 -> libQt5VirtualKeyboard.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5VirtualKeyboard.so.5.15 -> libQt5VirtualKeyboard.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5VirtualKeyboard.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5VulkanSupport.a
+-rw-r--r--	root/root	usr/lib/libQt5VulkanSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5WaylandClient.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5WaylandClient.so -> libQt5WaylandClient.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5WaylandClient.so.5 -> libQt5WaylandClient.so.5.15.11
@@ -8849,6 +8886,7 @@ lrwxrwxrwx	root/root	usr/lib/libQt5XcbQpa.so -> libQt5XcbQpa.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5XcbQpa.so.5 -> libQt5XcbQpa.so.5.15.11
 lrwxrwxrwx	root/root	usr/lib/libQt5XcbQpa.so.5.15 -> libQt5XcbQpa.so.5.15.11
 -rwxr-xr-x	root/root	usr/lib/libQt5XcbQpa.so.5.15.11
+-rw-r--r--	root/root	usr/lib/libQt5XkbCommonSupport.a
 -rw-r--r--	root/root	usr/lib/libQt5XkbCommonSupport.prl
 -rw-r--r--	root/root	usr/lib/libQt5Xml.prl
 lrwxrwxrwx	root/root	usr/lib/libQt5Xml.so -> libQt5Xml.so.5.15.11
@@ -9643,6 +9681,7 @@ drwxr-xr-x	root/root	usr/lib/qt5/mkspecs/modules/
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_virtualkeyboard.pri
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_virtualkeyboard_private.pri
+-rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_waylandclient.pri
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_waylandclient_private.pri
 -rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_lib_waylandcompositor.pri
@@ -9915,6 +9954,7 @@ drwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libdrm-egl-server.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libqt-plugin-wayland-egl.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libshm-emulation-server.so
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libvulkan-server.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libxcomposite-egl.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-client/libxcomposite-glx.so
 drwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/
@@ -9922,6 +9962,7 @@ drwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-drm-egl-server-buffer.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-linux-dmabuf-unstable-v1.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-shm-emulation-server.so
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-vulkan-server.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-wayland-egl.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-wayland-eglstream-controller.so
 -rwxr-xr-x	root/root	usr/lib/qt5/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-xcomposite-egl.so

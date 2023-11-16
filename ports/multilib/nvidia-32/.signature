@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zLTqWAgfUBd0hdfS5qIeQmmiy6hlki8/WV3d87NwJJNIfVBqYikx4szQHYZdtGNBD4qjZTOlldpCMQt/S4cWRA8=
+SHA256 (Pkgfile) = d0b57190f33e94e13e777a58dfe58af2c3a4fa781dafbe596e628c8c3c475fa2
+SHA256 (.footprint) = ec30fb7e59fa12d02e40bb0f0ba498dd2e01e3702f4e1812b4524a87fee8986f
+SHA256 (NVIDIA-Linux-x86_64-535.129.03.run) = e6dca5626a2608c6bb2a046cfcb7c1af338b9e961a7dd90ac09bb8a126ff002e

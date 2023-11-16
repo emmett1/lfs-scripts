@@ -1,0 +1,31 @@
+name=python-32
+version=3.11.6
+release=1
+source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz)
+build_opt="--without-ensurepip --enable-shared --with-system-expat
+	--with-system-ffi --enable-optimizations"
+
+pkg_build() {
+	# Remove tests
+	rm -rv Lib/test Lib/*/test Lib/*/tests Lib/*/idle_test
+
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--mandir=/usr/share/man \
+		--libdir=/usr/lib32 \
+		$build_opt
+	make
+	make DESTDIR=$PWD/DESTDIR install
+	mkdir -p $PKG/usr/lib32
+	rm -f $PKG/usr/lib32/python${version%.*}
+	cp -r $PWD/DESTDIR/usr/lib32/* $PKG/usr/lib32/
+	
+	chmod -v 755 $PKG/usr/lib32/libpython${version%.*}.so
+	chmod -v 755 $PKG/usr/lib32/libpython3.so
+	
+	mkdir -p $PKG/usr/include/python${version%.*}
+	cp $PWD/DESTDIR/usr/include/python${version%.*}/pyconfig.h $PKG/usr/include/python${version%.*}/pyconfig-32.h
+}

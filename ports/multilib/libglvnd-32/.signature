@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zFfMiJCBTIrCzW3PnW3TmtZKCXbrpBhi4ja4wT+9+Icw/MFHfsAp0YKbZQH12KFAPWFOnFhBBi/LLuGFyhD/vgk=
+SHA256 (Pkgfile) = a68083692065901ab1636bfbe3083f2006d354670c0421ae98ae35df2055ace8
+SHA256 (.footprint) = e22c471544e0eaa89e8aa4a9575b88b9a7a5a44b964bf07aa98f2174b2996dbd
+SHA256 (libglvnd-1.7.0.tar.gz) = 073e7292788d4d3eeb45ea6c7bdcce9bfdb3b3eef8d7dbd47f2f30dce046ef98

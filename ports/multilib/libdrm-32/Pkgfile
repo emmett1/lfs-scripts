@@ -1,0 +1,10 @@
+# Depends on: libdrm libpciaccess-32
+
+name=libdrm-32
+version=2.4.116
+release=1
+source=(https://dri.freedesktop.org/libdrm/libdrm-$version.tar.xz)
+build_opt="
+        -Dudev=true
+        -Dvalgrind=disabled
+"

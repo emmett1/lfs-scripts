@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/cmake/
+drwxr-xr-x	root/root	usr/lib32/cmake/libjpeg-turbo/
+-rw-r--r--	root/root	usr/lib32/cmake/libjpeg-turbo/libjpeg-turboConfig.cmake
+-rw-r--r--	root/root	usr/lib32/cmake/libjpeg-turbo/libjpeg-turboConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib32/cmake/libjpeg-turbo/libjpeg-turboTargets-release.cmake
+-rw-r--r--	root/root	usr/lib32/cmake/libjpeg-turbo/libjpeg-turboTargets.cmake
+lrwxrwxrwx	root/root	usr/lib32/libjpeg.so -> libjpeg.so.8
+lrwxrwxrwx	root/root	usr/lib32/libjpeg.so.8 -> libjpeg.so.8.2.2
+-rwxr-xr-x	root/root	usr/lib32/libjpeg.so.8.2.2
+lrwxrwxrwx	root/root	usr/lib32/libturbojpeg.so -> libturbojpeg.so.0
+lrwxrwxrwx	root/root	usr/lib32/libturbojpeg.so.0 -> libturbojpeg.so.0.2.0
+-rwxr-xr-x	root/root	usr/lib32/libturbojpeg.so.0.2.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libjpeg.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libturbojpeg.pc

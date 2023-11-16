@@ -1,0 +1,7 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libXext.so -> libXext.so.6.4.0
+lrwxrwxrwx	root/root	usr/lib32/libXext.so.6 -> libXext.so.6.4.0
+-rwxr-xr-x	root/root	usr/lib32/libXext.so.6.4.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xext.pc

@@ -1,0 +1,31 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/icu/
+drwxr-xr-x	root/root	usr/lib32/icu/73.1/
+-rw-r--r--	root/root	usr/lib32/icu/73.1/Makefile.inc
+-rw-r--r--	root/root	usr/lib32/icu/73.1/pkgdata.inc
+lrwxrwxrwx	root/root	usr/lib32/icu/Makefile.inc -> current/Makefile.inc
+lrwxrwxrwx	root/root	usr/lib32/icu/current -> 73.1
+lrwxrwxrwx	root/root	usr/lib32/icu/pkgdata.inc -> current/pkgdata.inc
+lrwxrwxrwx	root/root	usr/lib32/libicudata.so -> libicudata.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicudata.so.73 -> libicudata.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicudata.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicui18n.so -> libicui18n.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicui18n.so.73 -> libicui18n.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicui18n.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicuio.so -> libicuio.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicuio.so.73 -> libicuio.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicuio.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicutest.so -> libicutest.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicutest.so.73 -> libicutest.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicutest.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicutu.so -> libicutu.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicutu.so.73 -> libicutu.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicutu.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicuuc.so -> libicuuc.so.73.1
+lrwxrwxrwx	root/root	usr/lib32/libicuuc.so.73 -> libicuuc.so.73.1
+-rwxr-xr-x	root/root	usr/lib32/libicuuc.so.73.1
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/icu-i18n.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/icu-io.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/icu-uc.pc

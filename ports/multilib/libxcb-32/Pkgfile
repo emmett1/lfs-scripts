@@ -1,0 +1,6 @@
+# Depends on: libxcb libxau-32
+
+name=libxcb-32
+version=1.16
+release=1
+source=(https://xorg.freedesktop.org/archive/individual/lib/libxcb-$version.tar.xz)

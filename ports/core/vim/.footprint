@@ -258,6 +258,8 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/autoload/dist/
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/ft.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/man.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/script.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/vim.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/vim9.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/dist/vimindent.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/freebasic.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/autoload/getscript.vim
@@ -659,6 +661,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/cvsrc.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/debchangelog.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/debcontrol.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/debsources.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/denyhosts.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/desktop.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/dictconf.vim
@@ -731,6 +734,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/javascriptreact.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/jproperties.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/json.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/json5.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/jsonc.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/jsonnet.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/jsp.vim
@@ -787,6 +791,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/nroff.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/nsis.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/objc.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/objdump.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/obse.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/ocaml.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/occam.vim
@@ -894,9 +899,10 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/vim.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/vroom.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/vue.vim
--rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/wast.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/wat.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/wget.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/wget2.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/xcompose.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/xdefaults.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/xf86conf.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/ftplugin/xhtml.vim
@@ -1066,7 +1072,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/indent/
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/vim.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/vroom.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/vue.vim
--rw-r--r--	root/root	usr/share/vim/vim90/indent/wast.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/indent/wat.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/xf86conf.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/xhtml.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/indent/xinetd.vim
@@ -1712,6 +1718,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/syntax/
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/datascript.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/dcd.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/dcl.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/syntax/deb822sources.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/debchangelog.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/debcontrol.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/debcopyright.vim
@@ -1873,6 +1880,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/syntax/
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/jovial.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/jproperties.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/json.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/syntax/json5.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/jsonc.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/jsp.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/julia.vim
@@ -2116,6 +2124,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/syntax/shared/
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/context-data-interfaces.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/context-data-metafun.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/context-data-tex.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/debversions.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/hgcommitDiff.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/shared/typescriptcommon.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/sicad.vim
@@ -2253,7 +2262,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/syntax/shared/
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/vroom.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/vsejcl.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/vue.vim
--rw-r--r--	root/root	usr/share/vim/vim90/syntax/wast.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/syntax/wat.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/wdiff.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/wdl.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/web.vim
@@ -2267,6 +2276,7 @@ drwxr-xr-x	root/root	usr/share/vim/vim90/syntax/shared/
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/wsml.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/wvdial.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/xbl.vim
+-rw-r--r--	root/root	usr/share/vim/vim90/syntax/xcompose.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/xdefaults.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/xf86conf.vim
 -rw-r--r--	root/root	usr/share/vim/vim90/syntax/xhtml.vim

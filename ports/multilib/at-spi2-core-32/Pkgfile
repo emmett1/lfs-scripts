@@ -1,0 +1,6 @@
+# Depends on: at-spi2-core dbus-32 glib-32 libxml2-32 libx11-32 libxtst-32
+
+name=at-spi2-core-32
+version=2.46.0
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/${version%.*}/at-spi2-core-$version.tar.xz)

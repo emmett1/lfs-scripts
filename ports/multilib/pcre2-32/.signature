@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zFQE1IUNAjCX0m4kvxJ2lWFeqRB7yHiTnmDWA6kvw1RRYV61gCJB4Kh6GnMDHgBDS7Kxcjd9ctJ2bkRNJJKVCg0=
+SHA256 (Pkgfile) = 67780743cb1cee76ef1ea9c7fc66f16601bdd1d19169b8b280956538fc2d9fde
+SHA256 (.footprint) = 96ccbae50e0f165c3d921f97a8646ccd36e90a51efbad1e7482ce4a59f5333c7
+SHA256 (pcre2-10.42.tar.bz2) = 8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840

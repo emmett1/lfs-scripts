@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zE62K0zlq9mSmkaVxtQbT58WAgCBOoKmuVffOis6XbUsBH+4Dr5tZmp+uvR8cZtQD8kW/4BZjoax9pr09PICWAw=
+SHA256 (Pkgfile) = be6b5d319db83f8f2e6814326a92a06138f5e0f3961526ca1c76e7f188e2ffb8
+SHA256 (.footprint) = 33c5203cc8a0eff617f7c271a52c9a92dc26c97c58aa37fe01a5ba5b0498d0d1
+SHA256 (gdk-pixbuf-2.42.10.tar.xz) = ee9b6c75d13ba096907a2e3c6b27b61bcd17f5c7ebeab5a5b439d2f2e39fe44b

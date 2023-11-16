@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zC23LRwmohb/kfoXlyzCSSuC0RNtH3hnnGfqNbQZ1NfBK0yKlrD7WbwimEHkbKczN1uNpZh4TQFsLI0dvjykogE=
+SHA256 (Pkgfile) = 187aa5264bcb75bc2344ded5437661d71ec1509033e4e480faa9cabe51654714
+SHA256 (.footprint) = 3f735cc5c7e867d3eae0390c7dff7e677e8276c965a46f9cdf7317acb3d140cb
+SHA256 (libxml2-2.10.4.tar.xz) = ed0c91c5845008f1936739e4eee2035531c1c94742c6541f44ee66d885948d45

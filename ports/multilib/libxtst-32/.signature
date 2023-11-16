@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zDOJVQD65xVAdZkY79xTzGaPnEOh9+Yb4c1JPPTaumFgI8dPMQOTy01YDrcxE1dZ/I5lERaB+Se8kfakzzlKoQI=
+SHA256 (Pkgfile) = fe41a4b73637fe0349d3aec5053ca8c52b98303ff169b4417aa9b6760c2814e8
+SHA256 (.footprint) = ef14d61364984a2f1db77883c78c314fe440cee39768ea4681ab729da565fc7a
+SHA256 (libXtst-1.2.4.tar.xz) = 84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8

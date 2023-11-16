@@ -1,0 +1,7 @@
+# Depends on: libxml2
+
+name=libxml2-32
+version=2.10.4
+release=1
+source=(https://download.gnome.org/sources/libxml2/${version%.*}/libxml2-$version.tar.xz)
+build_opt="--with-history PYTHON=/usr/bin/python3 --with-icu --without-python"

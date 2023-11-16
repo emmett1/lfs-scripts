@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zMq6SJLLPAdZFRigG14iQ31tT4Xc//yb6095nKi/qIzexWz4Adsexd7MA3B+HoFDlIbsR/yOmSPGnxSWn99c0w8=
+SHA256 (Pkgfile) = 2af3f8f9944a8138ad5d611d1780ed0c755bbad485cf49ef9cd477e9ec2258c8
+SHA256 (.footprint) = f11cdb347ea2609b70cbb00b4909c65bca424d6a73cc8efd12d538c5e96ef08b
+SHA256 (fribidi-1.0.13.tar.xz) = 7fa16c80c81bd622f7b198d31356da139cc318a63fc7761217af4130903f54a2

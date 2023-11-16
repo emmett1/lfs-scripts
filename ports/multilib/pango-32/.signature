@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zDs51PknKu+oZij7Pb3jUNHjhg1CEaBXWvt4BZdYmpSZPjTckjG86MazYaZzyYNGBCU8Zl6MfbGPpcp5jnoaoAA=
+SHA256 (Pkgfile) = 93ee583eb2b5ef7c4f74b4022364d83b0c00b0e18f259a1af254f02e50a0ac69
+SHA256 (.footprint) = f9de018e6025b6d7acab6ab2d32cff9f79d1f4810dc485cbea345e583cd39a61
+SHA256 (pango-1.50.14.tar.xz) = 1d67f205bfc318c27a29cfdfb6828568df566795df0cb51d2189cde7f2d581e8

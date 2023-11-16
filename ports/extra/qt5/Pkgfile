@@ -6,6 +6,7 @@ release=1
 source=(https://download.qt.io/archive/qt/5.15/$version/single/qt-everywhere-opensource-src-$version.tar.xz
 	qt-everywhere-opensource-src-5.15.11-kf5-1.patch
 	qt-5.15.11-xkbcommon160.patch)
+keep_static=1
 
 pkg_build() {
 	mkdir -pv qtbase/.git

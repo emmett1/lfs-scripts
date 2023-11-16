@@ -1,0 +1,6 @@
+# Depends on: libxcursor libxrender-32 libxfixes-32 libx11-32
+
+name=libxcursor-32
+version=1.2.1
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXcursor-$version.tar.xz)

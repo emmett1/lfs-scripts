@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zAt1clu2+cZu1v1vQv0Z5RmVkE2T1e4pVeCNWCDmHaH/DP+7pL8lzVUrQ2uRcWrwirlSoK73iYx/sbUhXdtUQA4=
+SHA256 (Pkgfile) = 08b266d0805c9879f94b3b3e7a88b9b2a62ae9f5ac9cd7aa8d9956c47fbfec0a
+SHA256 (.footprint) = da68346cffc40e6b3c67adf6608aea208c1013c7d13299303b2889d38acb1421
+SHA256 (libX11-1.8.6.tar.xz) = 59535b7cc6989ba806a022f7e8533b28c4397b9d86e9d07b6df0c0703fa25cc9

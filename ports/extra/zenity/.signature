@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/extra.pub
+RWQj+xHX75A5zGNpK0Isx9vIngLL2OuO1mo8XRNGJFIVRkB7MU0bjCptn+P7qDMu7FOrhdF6t4oQx5e5PUFlo7kTotzI9lwgTgg=
+SHA256 (Pkgfile) = f90e63bc74583a7a582ae6bfe4531014b5d9e036cc969ba7c6147e7ed5a2a552
+SHA256 (.footprint) = efc7284424168ecbefcb90648ccd380b2d24a145887ddd8340d289ec8f49d7b6
+SHA256 (zenity-3.44.2.tar.xz) = 3fb5b8b1044d3d129262d3c54cf220eb7f76bc21bd5ac6d96ec115cd3518300e

@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zC5ck2uliXA1G2arprgbNrJjaSRslXCJOv6weDE4paLvWfNwntJM3UA9Vv0B0FHbguKKBZuxFV6uWZYv9RsgUw4=
+SHA256 (Pkgfile) = 70337a982328390be699fc8051a6e845413fd1b959c18cf066f3bd8a6a820a8f
+SHA256 (.footprint) = 0de5e98f04b4c3e51a52b8de756c49a29c1754215b01929f6b8b07b2c74980e8
+SHA256 (libdrm-2.4.116.tar.xz) = 46c53f40735ea3d26d614297f155f6131a510624a24274f654f6469ca905339a

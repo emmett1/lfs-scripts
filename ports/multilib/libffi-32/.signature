@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zPf0Cq+J5ATqIiTkCkxvEgiSB2TNd31QWKmIQQ4FxgkxkE0BhGNgUy/KWYKM0eyisHqs4DViIkPM199XsYZmTgc=
+SHA256 (Pkgfile) = 937feb2866c4a3bbdaa042a69c92a769d4b20d07e4f3062d73a58f0bdd433fa9
+SHA256 (.footprint) = 4bcce887da1f7a2246635d31ac4be3588e72ec148b2c358dd64d6af983761948
+SHA256 (libffi-3.4.4.tar.gz) = d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676

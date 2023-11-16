@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zFUPwrmAp3e6JTw8VqtXr/PyrsKHoaNA0/fTM2SA39iYQV2Qu+2mcdP5bUi2Gvsd2S1vjFI0EydGOoCQO1Q+qwI=
+SHA256 (Pkgfile) = 8e72142054c785f5f7eae99123a4a2feac6e0d0109575d28f031d18c536c50d5
+SHA256 (.footprint) = a83f1e44e471f6d96d1d6382ecb463605d864c096a44d3dbd5cbbaf76551ee1e
+SHA256 (at-spi2-core-2.46.0.tar.xz) = aa0c86c79f7a8d67bae49a5b7a5ab08430c608cffe6e33bf47a72f41ab03c3d0

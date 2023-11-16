@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zC6a70SoDoyi3ADI2f/soYAM4kZhMY0GWVeQBLF0Kq3ZePUwczz2urM/9OFklqctCFFdv4FTEkzjS22jjf24xwA=
+SHA256 (Pkgfile) = 0647ad4138e8d727d8582a3a82e8c5b9131ecde2c371cff01c328fa4e632c536
+SHA256 (.footprint) = 40ecfbfbab4b87d2660391a9a3cc94c9a85da8ad46c88c669464a8fe221acaf6
+SHA256 (mesa-23.2.1.tar.xz) = 64de0616fc2d801f929ab1ac2a4f16b3e2783c4309a724c8a259b20df8bbc1cc
+SHA256 (crossfile) = b45b354b7022b94e6a7f923807528986ff636aaaba305be69f8ebbd766e97158
