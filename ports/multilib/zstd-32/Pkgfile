@@ -1,0 +1,4 @@
+name=zstd-32
+version=1.5.5
+release=1
+source=(https://github.com/facebook/zstd/releases/download/v$version/zstd-$version.tar.gz)

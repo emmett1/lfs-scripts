@@ -1,0 +1,19 @@
+name=pcre2-32
+version=10.42
+release=1
+source=(https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$version/pcre2-$version.tar.bz2)
+
+pkg_build() {
+	./configure \
+		--prefix=/usr \
+		--libdir=/usr/lib32 \
+		--enable-unicode \
+		--enable-jit \
+		--enable-pcre2-16 \
+		--enable-pcre2-32
+	make
+	make install
+	mv $PKG $PKG-old
+	mkdir -p $PKG/usr/lib32
+	mv $PKG-old/usr/lib32/* $PKG/usr/lib32
+}

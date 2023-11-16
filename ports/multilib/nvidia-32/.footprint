@@ -1,0 +1,36 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libEGL_nvidia.so.0 -> libEGL_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libEGL_nvidia.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libGLESv1_CM_nvidia.so.1 -> libGLESv1_CM_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libGLESv1_CM_nvidia.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libGLESv2_nvidia.so.2 -> libGLESv2_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libGLESv2_nvidia.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libGLX_nvidia.so.0 -> libGLX_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libGLX_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libOpenCL.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libcuda.so -> libcuda.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libcuda.so.1 -> libcuda.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libcuda.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvcuvid.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-eglcore.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-encode.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-fbc.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-glcore.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-glsi.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-glvkspirv.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-ml.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-opencl.so -> libnvidia-opencl.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-opencl.so.1 -> libnvidia-opencl.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-opencl.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-opticalflow.so -> libnvidia-opticalflow.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-opticalflow.so.1 -> libnvidia-opticalflow.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-opticalflow.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-ptxjitcompiler.so -> libnvidia-ptxjitcompiler.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/libnvidia-ptxjitcompiler.so.1 -> libnvidia-ptxjitcompiler.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-ptxjitcompiler.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/libnvidia-tls.so.535.129.03
+drwxr-xr-x	root/root	usr/lib32/vdpau/
+lrwxrwxrwx	root/root	usr/lib32/vdpau/libvdpau_nvidia.so -> libvdpau_nvidia.so.535.129.03
+lrwxrwxrwx	root/root	usr/lib32/vdpau/libvdpau_nvidia.so.1 -> libvdpau_nvidia.so.535.129.03
+-rwxr-xr-x	root/root	usr/lib32/vdpau/libvdpau_nvidia.so.535.129.03

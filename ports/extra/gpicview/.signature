@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zIos2O/vC7rs2LnuEAVGh1B/bob8HwNYytN4kgSjysN2Ab8II1js42vpRsr/wNfoUokLPVaXf6P5PeIi0NlMlwk=
+RWQj+xHX75A5zNBaTPiXkpOXPL6VJQQEeOjOclXqqTlfeSpBMvBimT2edClaOYECIn+vImHOnq0EknDtcXpTO90kxrg2i+YXxgU=
 SHA256 (Pkgfile) = d3a9e239685b9e9a88f45d48a0132b90bf5872c4184ed68a6ab88f48a026a7de
-SHA256 (.footprint) = 113c6cd0f5a98f815bdf748a94ddf4ce26563bce914f5258bd9bf6907709a86f
+SHA256 (.footprint) = f69d6ca7b7d649f709721a0e2e0902806b77d1f9a6564391c226064a4fe8d21b
 SHA256 (gpicview-0.2.5.tar.xz) = 38466058e53702450e5899193c4b264339959b563dd5cd81f6f690de32d82942
 SHA256 (gpicview.appdata.xml) = dab79b2be536005044cc5edcc4f47e9f407a5fcf3126110a1ef2ab65c873dbf7

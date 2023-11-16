@@ -1,0 +1,6 @@
+# Depends on: freetype zlib-32 libpng-32
+
+name=freetype-32
+version=2.13.2
+release=1
+source=(https://downloads.sourceforge.net/freetype/freetype-$version.tar.xz)

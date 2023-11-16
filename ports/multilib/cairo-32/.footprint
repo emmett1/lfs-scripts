@@ -1,0 +1,30 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/cairo/
+-rwxr-xr-x	root/root	usr/lib32/cairo/libcairo-fdr.so
+-rwxr-xr-x	root/root	usr/lib32/cairo/libcairo-trace.so
+lrwxrwxrwx	root/root	usr/lib32/libcairo-gobject.so -> libcairo-gobject.so.2
+lrwxrwxrwx	root/root	usr/lib32/libcairo-gobject.so.2 -> libcairo-gobject.so.2.11800.0
+-rwxr-xr-x	root/root	usr/lib32/libcairo-gobject.so.2.11800.0
+lrwxrwxrwx	root/root	usr/lib32/libcairo-script-interpreter.so -> libcairo-script-interpreter.so.2
+lrwxrwxrwx	root/root	usr/lib32/libcairo-script-interpreter.so.2 -> libcairo-script-interpreter.so.2.11800.0
+-rwxr-xr-x	root/root	usr/lib32/libcairo-script-interpreter.so.2.11800.0
+lrwxrwxrwx	root/root	usr/lib32/libcairo.so -> libcairo.so.2
+lrwxrwxrwx	root/root	usr/lib32/libcairo.so.2 -> libcairo.so.2.11800.0
+-rwxr-xr-x	root/root	usr/lib32/libcairo.so.2.11800.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-fc.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-ft.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-gobject.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-pdf.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-png.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-ps.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-script-interpreter.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-script.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-svg.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-tee.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-xcb-shm.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-xcb.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-xlib-xrender.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo-xlib.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/cairo.pc

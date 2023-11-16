@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zJ6Vm6OsZEFIbwdvQpmS4OOFcCmrE3yJFEfwfQl/CKL7hFxJ4qqnQdRiLfvCWZAxnFvVQvXEnV/SiVFpN7/HVgE=
+SHA256 (Pkgfile) = fad4ef797071ff8a1cd90bc1a0ad68e20ff9e1e771527756d847e1ba534c0a2e
+SHA256 (.footprint) = e683db0c838e96d90baa59c20007ce4676af9963d2210a3c91c7983e5ece1938
+SHA256 (llvm-17.0.4.src.tar.xz) = 4f5907fb547947d10df35230a0fc73cf2f81aa12e09fc8de96c023425412c9f6
+SHA256 (cmake-17.0.4.src.tar.xz) = 1a5cbe4a1fcda56ecdd80f42c3437060a28c97ec31de1748f6ba6aa84948fb0f
+SHA256 (third-party-17.0.4.src.tar.xz) = 49358a7da2f49149a3028bf3aa6389052d4ebc15c548699cf19694141fdea847

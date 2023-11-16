@@ -1,0 +1,20 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/
+drwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/
+drwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.so
+-rwxr-xr-x	root/root	usr/lib32/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.so
+lrwxrwxrwx	root/root	usr/lib32/libgdk_pixbuf-2.0.so -> libgdk_pixbuf-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libgdk_pixbuf-2.0.so.0 -> libgdk_pixbuf-2.0.so.0.4200.10
+-rwxr-xr-x	root/root	usr/lib32/libgdk_pixbuf-2.0.so.0.4200.10
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gdk-pixbuf-2.0.pc

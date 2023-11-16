@@ -1,0 +1,16 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/cmake/
+drwxr-xr-x	root/root	usr/lib32/cmake/DBus1/
+-rw-r--r--	root/root	usr/lib32/cmake/DBus1/DBus1Config.cmake
+-rw-r--r--	root/root	usr/lib32/cmake/DBus1/DBus1ConfigVersion.cmake
+drwxr-xr-x	root/root	usr/lib32/dbus-1.0/
+drwxr-xr-x	root/root	usr/lib32/dbus-1.0/include/
+drwxr-xr-x	root/root	usr/lib32/dbus-1.0/include/dbus/
+-rw-r--r--	root/root	usr/lib32/dbus-1.0/include/dbus/dbus-arch-deps.h
+-rwsr-x---	root/messagebus	usr/lib32/dbus-daemon-launch-helper
+lrwxrwxrwx	root/root	usr/lib32/libdbus-1.so -> libdbus-1.so.3.32.4
+lrwxrwxrwx	root/root	usr/lib32/libdbus-1.so.3 -> libdbus-1.so.3.32.4
+-rwxr-xr-x	root/root	usr/lib32/libdbus-1.so.3.32.4
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/dbus-1.pc

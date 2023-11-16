@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zMJZdg3xgKEl4jp79Y/k/RLUM8nnTtNFrkx3avIg089d3A8zuh655V4XhwEWj7nGrd7TRQ0J5cNsjA9d+KLzqAM=
+SHA256 (Pkgfile) = 6cdb40e71e7b5bd9a89be453203caba75cd4f0370f31f22d1680d6ffc979317d
+SHA256 (.footprint) = 2dad4f64d941072f964da50c2ee75400ee23d7e3ea929ef7d79b867f2137216c
+SHA256 (cairo-1.18.0.tar.xz) = 243a0736b978a33dee29f9cca7521733b78a65b5418206fef7bd1c3d4cf10b64

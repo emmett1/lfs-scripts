@@ -1,0 +1,6 @@
+# Depends on: libxcomposite libx11-32 libxfixes-32
+
+name=libxcomposite-32
+version=0.4.6
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXcomposite-$version.tar.xz)

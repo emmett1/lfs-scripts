@@ -1,0 +1,6 @@
+# Depends on: pixman glib
+
+name=pixman-32
+version=0.42.2
+release=1
+source=(https://www.cairographics.org/releases/pixman-$version.tar.gz)

@@ -1,0 +1,18 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+-rwxr-xr-x	root/root	usr/lib32/libasm-0.189.so
+lrwxrwxrwx	root/root	usr/lib32/libasm.so -> libasm.so.1
+lrwxrwxrwx	root/root	usr/lib32/libasm.so.1 -> libasm-0.189.so
+-rwxr-xr-x	root/root	usr/lib32/libdebuginfod-0.189.so
+lrwxrwxrwx	root/root	usr/lib32/libdebuginfod.so -> libdebuginfod-0.189.so
+lrwxrwxrwx	root/root	usr/lib32/libdebuginfod.so.1 -> libdebuginfod-0.189.so
+-rwxr-xr-x	root/root	usr/lib32/libdw-0.189.so
+lrwxrwxrwx	root/root	usr/lib32/libdw.so -> libdw.so.1
+lrwxrwxrwx	root/root	usr/lib32/libdw.so.1 -> libdw-0.189.so
+-rwxr-xr-x	root/root	usr/lib32/libelf-0.189.so
+lrwxrwxrwx	root/root	usr/lib32/libelf.so -> libelf.so.1
+lrwxrwxrwx	root/root	usr/lib32/libelf.so.1 -> libelf-0.189.so
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libdebuginfod.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libdw.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libelf.pc

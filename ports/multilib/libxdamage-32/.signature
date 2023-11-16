@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zBh17z4ywZssypci0+Vz4cNZ9THwHRUWNZLhxPPOl2qsug6NlPRX92g/pat7wvIYBMs4kk8wQDvpZ8oXMh51Xgg=
+SHA256 (Pkgfile) = d5424a12a61abd2f8aa538a1d595a73e42c2777c65d0e468c5ee6bb08d70dfca
+SHA256 (.footprint) = 89e973383139a3e0d80c684755bec058f720203ef88ed3cf5a1eb399c0f9b8c5
+SHA256 (libXdamage-1.1.6.tar.xz) = 52733c1f5262fca35f64e7d5060c6fcd81a880ba8e1e65c9621cf0727afb5d11

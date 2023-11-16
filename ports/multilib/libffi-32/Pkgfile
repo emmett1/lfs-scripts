@@ -1,0 +1,7 @@
+# Depends on: libffi
+
+name=libffi-32
+version=3.4.4
+release=1
+source=(https://github.com/libffi/libffi/releases/download/v$version/libffi-$version.tar.gz)
+build_opt="--with-gcc-arch=x86-64"

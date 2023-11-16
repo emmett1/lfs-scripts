@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/multilib.pub
+RWQj+xHX75A5zOA08HqFWkDAOf9quHFIkZn2Js72yxAFvAG50qwSg96bWn/p89RO2cAf0V2/XjJ1DIvQZpaC7T1snuUJqdnvVAI=
+SHA256 (Pkgfile) = bdfe422561c429f1d11c593279792062277029c2e1f4616f0f8d1ea7a6d2bde0
+SHA256 (.footprint) = 55bb5425fc4a985815c231800c50b5ea563dd24261da0a2cad9d2e5e366c7ee3
+SHA256 (libXrender-0.9.11.tar.xz) = bc53759a3a83d1ff702fb59641b3d2f7c56e05051fa0cfa93501166fa782dc24
