@@ -4,14 +4,17 @@ release=1
 source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz
 	repokey.pub
 	core.httpup
-	extra.httpup)
+	extra.httpup
+	multilib.httpup)
 
 post_build() {
 	# pubkey
 	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/core.pub
 	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/extra.pub
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/multilib.pub
 
 	# httpup sync file
 	install -m 0644 $SRC/core.httpup $PKG/etc/ports/
 	install -m 0644 $SRC/extra.httpup $PKG/etc/ports/
+	install -m 0644 $SRC/multilib.httpup $PKG/etc/ports/
 }
