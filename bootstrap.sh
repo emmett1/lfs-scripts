@@ -7,7 +7,6 @@ _buildtoolchain() {
 	fi
 
 	export BOOTSTRAP=1
-	export PATH=$TOOLS/bin:$PATH
 	export LFS_TGT=x86_64-lfs-linux-gnu
 	export LFS_TGT32=i686-lfs-linux-gnu
 	
@@ -31,15 +30,15 @@ PKGMK_PACKAGE_DIR=/tmp/lfs-pkg
 		rm -rf /tmp/pkgutils-5.40.10
 		tar -xf $sourcedir/pkgutils-5.40.10.tar.xz -C /tmp
 		sed -i -e 's/ --static//' -e 's/ -static//' /tmp/pkgutils-5.40.10/Makefile
-		make -C /tmp/pkgutils-5.40.10
-		make -C /tmp/pkgutils-5.40.10 BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
+		make -j$(nproc) -C /tmp/pkgutils-5.40.10
+		make -j$(nproc) -C /tmp/pkgutils-5.40.10 BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
 		rm -rf /tmp/pkgutils-5.40.10
 	fi
 	
 	for i in $toolchainpkg; do
 		[ -f $TOOLS/$i ] && continue
 		export tcpkg="$i"
-		cd core/${i%-pass*}
+		cd ports/core/${i%-pass*}
 		mkdir -p /tmp/lfs-pkg
 		pkgmk -d -is -if -cf /tmp/bootstrap.conf
 		rm -rf /tmp/lfs-pkg
@@ -83,9 +82,8 @@ _buildbase() {
 		echo "base need to build as root"
 		exit 1
 	fi
-	export PATH=$TOOLS/bin:$PATH
 	if [ ! -f $LFS/var/lib/pkg/db ]; then
-		mkdir -pv $LFS/bin $LFS/usr/lib $LFS/usr/bin $LFS/etc $LFS/dev || true
+		mkdir -pv $LFS/bin $LFS/usr/lib $LFS/usr/bin $LFS/etc $LFS/dev
 		for i in bash cat chmod dd echo ln mkdir pwd rm stty; do
 			ln -svf $TOOLS/bin/$i $LFS/bin
 		done
@@ -97,63 +95,49 @@ _buildbase() {
 		ln -svf bash $LFS/bin/sh
 		ln -svf /proc/self/mounts $LFS/etc/mtab
 		
-		mknod -m 600 $LFS/dev/console c 5 1 || true
-		mknod -m 666 $LFS/dev/null c 1 3 || true
-		
-		#mkdir -p $LFS/lib
-		#ln -s lib $LFS/lib64
-		#ln -svf $TOOLS/lib/ld-linux-x86-64.so.2 $LFS/lib
+		#mknod -m 600 $LFS/dev/console c 5 1 || true
+		#mknod -m 666 $LFS/dev/null c 1 3 || true
 
-		cat core/aaa_filesystem/passwd > $LFS/etc/passwd
-		cat core/aaa_filesystem/group > $LFS/etc/group
+		cat ports/core/aaa_filesystem/passwd > $LFS/etc/passwd
+		cat ports/core/aaa_filesystem/group > $LFS/etc/group
 
 		# pkgutils
 		mkdir -p $LFS/var/lib/pkg
 		touch $LFS/var/lib/pkg/db
 		
 		# package and source
-		mkdir -p $LFS/tmp/src
-		mkdir -p $LFS/tmp/pkg
+		mkdir -p $LFS/$pkgmkpkg
+		mkdir -p $LFS/$pkgmksrc
 		mkdir -p $packagedir
 	fi
 	
 	# core ports
 	rm -rf $LFS/usr/ports/core
 	mkdir -p $LFS/usr/ports/core
-	cp -r core/* $LFS/usr/ports/core
+	cp -r ports/core/* $LFS/usr/ports/core
 	
-	# xpkg
-	#echo 'repodir /usr/ports/core' > $LFS/etc/xpkg.conf
-	#cp core/xpkg/xpkg $TOOLS/bin
-	#chmod +x $TOOLS/bin/xpkg
 	cp files/pkgin $TOOLS/bin/pkgin
 	chmod +x $TOOLS/bin/pkgin
 	
 	# pkgmk
 	mkdir -p $LFS/var/lib/pkgmk
-	cp core/pkgutils/extension $LFS/var/lib/pkgmk
-	cp core/pkgutils/pkgadd.conf $LFS/etc
-	echo '
-export CFLAGS="-O2 -march=x86-64 -pipe"
-export CXXFLAGS="${CFLAGS}"
+	cp ports/core/pkgutils/extension $LFS/var/lib/pkgmk
+	echo "
+export CFLAGS=\"-O2 -march=x86-64 -pipe\"
+export CXXFLAGS=\"${CFLAGS}\"
 
 export JOBS=$(nproc)
-export MAKEFLAGS="-j $JOBS"
+export MAKEFLAGS=\"-j \$JOBS\"
 
-PKGMK_SOURCE_DIR="/tmp/src"
-PKGMK_PACKAGE_DIR="/tmp/pkg"
-PKGMK_WORK_DIR="/tmp/pkgmk-$name"
+PKGMK_SOURCE_DIR=\"/$pkgmksrc\"
+PKGMK_PACKAGE_DIR=\"/$pkgmkpkg\"
+PKGMK_WORK_DIR=\"/tmp/pkgmk-$name\"
 
-. /var/lib/pkgmk/extension' > $LFS/tmp/pkgmk.conf
+. /var/lib/pkgmk/extension" > $LFS/tmp/pkgmk.conf
 	
-	if [ "$1" = rebuild ]; then
-		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin
-		#_xpkg_opt="upgrade -fr"
-		pkgmkopt="-f"
-		pkgaddopt="-u"
-	else
-		LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin:$TOOLS/bin
-		#_xpkg_opt="add"
+	LFSPATH=/bin:/usr/bin:/sbin:/usr/sbin	
+	if [ "$1" != rebuild ]; then
+		LFSPATH=$LFSPATH:$TOOLS/bin
 	fi
 	
 	mountfs
@@ -162,10 +146,10 @@ PKGMK_WORK_DIR="/tmp/pkgmk-$name"
 			pkginfo -i -r $LFS | awk '{print $1}' | grep -qx $i && continue
 			unset _force
 			case $i in
-				aaa_filesystem|gcc|bash|dash|perl|coreutils|pkgutils|xpkg) _force=-f;;
+				aaa_filesystem|gcc|bash|dash|perl|coreutils|pkgutils) _force=-f;;
 			esac
-			chroot $LFS env -i PATH=$LFSPATH pkgin $pkgmkopt -d $i -is -if -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
-			pkgadd -r $LFS $_force $pkgaddopt $(ls -1 $packagedir/$i#* | tail -n1) || exit 1
+			chroot $LFS env -i PATH=$LFSPATH pkgin -d $i -is -if -im -cf /tmp/pkgmk.conf || { umountfs; exit 1; }
+			pkgadd -r $LFS $_force $(ls -1 $packagedir/$i#* | tail -n1) || { umountfs; exit 1; }
 			case $i in
 				glibc) cat << EOF > $LFS/tmp/glibc-postinstall
 #!/bin/sh
@@ -190,7 +174,7 @@ EOF
 				;;
 			esac
 		else
-			chroot $LFS env -i PATH=$LFSPATH prt-get update -fr $i || { umountfs; exit 1; }
+			chroot $LFS env -i PATH=$LFSPATH prt-get update -fr -if $i || { umountfs; exit 1; }
 		fi
 	done
 	umountfs
@@ -211,9 +195,9 @@ mountfs() {
 	if [ -h $LFS/dev/shm ]; then
 	  mkdir -p $LFS/$(readlink $LFS/dev/shm)
 	fi
-	mkdir -p $LFS/tmp/src $LFS/tmp/pkg
-	mount --bind $sourcedir $LFS/tmp/src
-	mount --bind $packagedir $LFS/tmp/pkg
+	mkdir -p $LFS/$pkgmksrc $LFS/$pkgmkpkg
+	mount --bind $sourcedir $LFS/$pkgmksrc
+	mount --bind $packagedir $LFS/$pkgmkpkg
 }
 
 umountfs() {
@@ -222,8 +206,8 @@ umountfs() {
 	unmount $LFS/run
 	unmount $LFS/proc
 	unmount $LFS/sys
-	unmount $LFS/tmp/pkg
-	unmount $LFS/tmp/src
+	unmount $LFS/$pkgmkpkg
+	unmount $LFS/$pkgmksrc
 }
 
 unmount() {
@@ -236,6 +220,7 @@ unmount() {
 export LFS=/tmp/lfs-rootfs
 export TOOLS=/tmp/lfs-tools
 export LC_ALL=C
+export PATH=$TOOLS/bin:$PATH
 
 toolchainpkg="binutils-pass1 gmp mpfr mpc gcc-pass1 linux-headers glibc gcc-pass2 binutils-pass2 libxcrypt gcc-pass3 m4
 	ncurses bash bison bzip2 coreutils diffutils file findutils gawk gettext grep gzip make patch perl python
@@ -246,10 +231,12 @@ basepkg="aaa_filesystem linux-headers man-pages glibc tzdata zlib bzip2 xz file 
 	libtool gdbm gperf expat inetutils perl perl-xml-parser intltool autoconf automake openssl kmod gettext elfutils
 	libffi sqlite python coreutils check diffutils gawk findutils groff less gzip zstd iptables libtirpc iproute2 kbd
 	libpipeline make patch man-db tar texinfo vim procps-ng util-linux e2fsprogs sysklogd eudev which
-	libarchive ca-certificates curl pkgutils prt-get"
+	libarchive ca-certificates curl pkgutils prt-get httpup linux-pam ports prt-utils runit runit-rc signify"
 
 sourcedir="$PWD/sources"
 packagedir="$PWD/packages"
+pkgmkpkg="var/cache/pkg/packages"
+pkgmksrc="var/cache/pkg/sources"
 
 if [ ! "$1" ]; then	
 	cat << EOF

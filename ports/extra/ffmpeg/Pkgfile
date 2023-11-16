@@ -1,4 +1,4 @@
-# Depends on: nasm libaom libtheora opus libass fdk-aac lame libvpx x264 x265
+# Depends on: nasm libaom libtheora opus libass fdk-aac lame libvpx x264 x265 libxv
 
 name=ffmpeg
 version=6.0

@@ -193,7 +193,6 @@ build() {
 				mv $PKG $PKG-old
 				mv $PKG-32 $PKG
 			fi
-			
 			if [ "$(command -v post_build)" ]; then
 				post_build
 			fi
