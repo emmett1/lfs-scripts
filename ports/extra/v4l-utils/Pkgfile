@@ -1,0 +1,6 @@
+# Depends on: 
+
+name=v4l-utils
+version=1.24.1
+release=1
+source=(https://www.linuxtv.org/downloads/${name}/${name}-${version}.tar.bz2)

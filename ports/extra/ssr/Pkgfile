@@ -1,0 +1,8 @@
+# Depends on: 
+
+name=ssr
+version=0.4.4
+release=1
+source=(https://github.com/MaartenBaert/${name}/archive/${version}/${name}-${version}.tar.gz
+	https://patch-diff.githubusercontent.com/raw/MaartenBaert/ssr/pull/934.patch)
+build_opt="-DWITH_JACK=FALSE -DWITH_QT5=ON"
