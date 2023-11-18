@@ -1,0 +1,6 @@
+# Depends on: exo hicolor-icon-theme libgudev libnotify pcre2
+
+name=thunar
+version=4.18.8
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

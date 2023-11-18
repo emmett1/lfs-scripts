@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zMFZnKgwJO3Um+Y0RTzC4ucoCSabai81QbsfMN7HZaaUKpQOVK8+WoYeQ6+EM+6gMYz8Ebr/qrD72e1hjzK+5Aw=
-SHA256 (Pkgfile) = 62a698a876bfd669126de4c6d0afa40e27d81b66e8218a5a646a308801a4868d
-SHA256 (.footprint) = a45fca58dcbbf4a3eb4401ec4bcb729d8ac8951cc933e1b25aa10c1377458958
-SHA256 (NetworkManager-1.42.8.tar.xz) = 0337e7583d2ec5ade2ba2e8c625d2f09eeccda1d22836ee29aa72925d399c353
-SHA256 (networkmanager.run) = 014c07f090a339bb9216951feb4bd52c0a91c61edb87c9467e23c1f807626370

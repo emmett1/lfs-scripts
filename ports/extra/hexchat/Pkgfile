@@ -1,3 +1,5 @@
+# Depends on: libnotify dbus-glib libcanberra gtk2
+
 name=hexchat
 version=2.16.1
 release=1

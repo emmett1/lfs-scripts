@@ -1,0 +1,6 @@
+# Depends on: qt5 lxqt-build-tools openbox
+
+name=obconf-qt
+version=0.16.3
+release=1
+source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)

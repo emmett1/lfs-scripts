@@ -27,7 +27,7 @@ ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key
 
 # Uncomment the following option if you have not installed PulseAudio and
 # want to use alsa instead
-ac_add_options --enable-audio-backends=alsa
+ac_add_options --enable-audio-backends=alsa,pulseaudio
 
 # Comment out following options if you have not installed
 # recommended dependencies:

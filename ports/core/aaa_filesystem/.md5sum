@@ -1,0 +1,12 @@
+ed5adc803a280f50d8d04089723894bb  Pkgfile
+c9aa956753dd0a546e13c967275d24fb  fstab
+8dae1a1bd7394619836eed4edb32706a  group
+b8419160170a41ae01abab13a3b887df  hostname
+73b50995f63c6d88f5137db0759d6e92  hosts
+8a8fb1798e7264cbeff332551188efe6  issue
+5cbb5efc6adba814bafb91e534b09836  locale.conf
+6336f6a759a3cff8a5f02daabf3c9be3  locale.sh
+bd566ecc2f902cf225453ae103f36bd7  os-release
+aa116741c76ab220567c0771d2c7d718  passwd
+3e47d3ddb26a72616c5889a4f266cadf  resolv.conf
+dbc052b74f12041e24e64ddfc32ff604  shells

@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zBgoU77iACgHCfpWFatnqjbFpWkqMY45b+JnwDwRbgCJUUtOhvbTvYnjlgRb13aazP3aRIYjVrVZ74zwY2YC0QI=
-SHA256 (Pkgfile) = deb69e60aba61e0d803afe4b0d0f2bfe9e18f26866180eddd11d0b7ff0265438
-SHA256 (.footprint) = 4b6ed45e648412c75a129eafd09546c50576f7c56ed35cfac9b37a54b80f942f
-SHA256 (docbook-xsl-nons-1.79.2.tar.bz2) = ee8b9eca0b7a8f89075832a2da7534bce8c5478fc8fc2676f512d5d87d832102
-SHA256 (non-recursive-string-subst.patch) = 193ec26dcb37bdf12037ed4ea98d68bd550500c8e96b719685d76d7096c3f9b3

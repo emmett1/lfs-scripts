@@ -1,11 +1,12 @@
 name=ports
 version=1.6
-release=1
+release=2
 source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz
 	repokey.pub
 	core.httpup
 	extra.httpup
-	multilib.httpup)
+	multilib.httpup
+	contrib.httpup)
 
 post_build() {
 	# pubkey
@@ -17,4 +18,9 @@ post_build() {
 	install -m 0644 $SRC/core.httpup $PKG/etc/ports/
 	install -m 0644 $SRC/extra.httpup $PKG/etc/ports/
 	install -m 0644 $SRC/multilib.httpup $PKG/etc/ports/
+	install -m 0644 $SRC/contrib.httpup $PKG/etc/ports/
+
+	# disable multilib & contrib by default
+	mv $PKG/etc/ports/multilib.httpup{,.inactive}
+	mv $PKG/etc/ports/contrib.httpup{,.inactive}
 }

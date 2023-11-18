@@ -1,7 +1,0 @@
-untrusted comment: verify with /etc/ports/core.pub
-RWQj+xHX75A5zJs/6Ans7F10uuLmikTd/NyoHRL/VuthsU5tpqSkBvtIPNq8QBKKKyhTDwqJuyyQG7+yH54SubuxmjDGzegJ3A8=
-SHA256 (Pkgfile) = d9ffaf1454d7f8d0c94e301a47055f9050470742cc552673efe62d333cc006df
-SHA256 (.footprint) = 26802764ae3ae1e1a73ea56c859b3415e250a72ea444af410381df8c8f5d3ac8
-SHA256 (prt-get-5.19.6.tar.xz) = 6ea89df308e19a6239f260c91036805cd2063d0cd24a7427235849634dd49f0d
-SHA256 (prt-get.conf) = 94b98c37b53bba41fcd2f63347d969ca61d20aae23f5e5b6fdb9fa2c2298497b
-SHA256 (prt-get.aliases) = ea39e46daeadf42a309a9a22b537956973051a903df6cffc2d1328bcaa3882e4

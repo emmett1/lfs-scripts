@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zNMrVzEhbsh4VWbrAzUBn8iutFdK/ht7L13TG8BPb59efL/UBatEq2L4/YTV4F4DZ8gniZRovMtUXh+lwYbuMwk=
-SHA256 (Pkgfile) = 7f78ae973d43ff6f4a25ca0145f3f134e151ecf2e162beabfd37ffa5d63d459b
-SHA256 (.footprint) = afe710aea572720d25e51a42eb74648a734eba5d94856ed54e14b9412cba8154
-SHA256 (dbus-1.14.10.tar.xz) = ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f
-SHA256 (dbus.run) = 8e55b551d6bda217be65fdf1451f7dbc24c431c520f0012a72e91e070ab16c38

@@ -1,0 +1,27 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/muParser.h
+-rw-r--r--	root/root	usr/include/muParserBase.h
+-rw-r--r--	root/root	usr/include/muParserBytecode.h
+-rw-r--r--	root/root	usr/include/muParserCallback.h
+-rw-r--r--	root/root	usr/include/muParserDLL.h
+-rw-r--r--	root/root	usr/include/muParserDef.h
+-rw-r--r--	root/root	usr/include/muParserError.h
+-rw-r--r--	root/root	usr/include/muParserFixes.h
+-rw-r--r--	root/root	usr/include/muParserInt.h
+-rw-r--r--	root/root	usr/include/muParserTemplateMagic.h
+-rw-r--r--	root/root	usr/include/muParserTest.h
+-rw-r--r--	root/root	usr/include/muParserToken.h
+-rw-r--r--	root/root	usr/include/muParserTokenReader.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/muparser/
+-rw-r--r--	root/root	usr/lib/cmake/muparser/muparser-targets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/muparser/muparser-targets.cmake
+-rw-r--r--	root/root	usr/lib/cmake/muparser/muparserConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/muparser/muparserConfigVersion.cmake
+lrwxrwxrwx	root/root	usr/lib/libmuparser.so -> libmuparser.so.2
+lrwxrwxrwx	root/root	usr/lib/libmuparser.so.2 -> libmuparser.so.2.3.4
+-rwxr-xr-x	root/root	usr/lib/libmuparser.so.2.3.4
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/muparser.pc

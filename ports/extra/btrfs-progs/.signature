@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zGOUs8WEBcNus0BVSaJUEeKIRM4WR58ADa/B1EpwobiTkLPLNwMVE8I/dBqPgh2zyAXPxZXXnIg50IIDvB8q9Aw=
-SHA256 (Pkgfile) = 2b81d8a32ed3918f64be1ed5bf179cebe7cadd6e827ff525b61e4ed1b80f249f
-SHA256 (.footprint) = 027be22af360d4f31b7332e0bda77387e0856a180996ee34ad45f518799627f4
-SHA256 (btrfs-progs-v6.3.3.tar.xz) = 4be30015760270d081642cc0023a8bfee7cb657a2aa055644e6a56d68695b96e

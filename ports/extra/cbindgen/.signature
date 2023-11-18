@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zAPKCOsC7L/0vzwmEJC/WhLjn/5TWoxcbrYFBJ2k4eWchZhPVZ85JSiW8OQaCBdRBc7ttXDkwQaXfZXgzryE6wk=
-SHA256 (Pkgfile) = 3e8f5e933fbc4f7fa9fe8c1b88085b032ad919ebb32ba248fbb8036b7ff56222
-SHA256 (.footprint) = fd60992957bd0010460d49684c69464200651af797acdb98547f4847fc9f3f3c
-SHA256 (cbindgen-0.26.0.tar.gz) = b45e1a64875b615702a86ac3084ef69ae32926241cd2b687a30c12474be15105

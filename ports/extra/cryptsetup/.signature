@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zBMdP4copJ0HY+x7yZVWb7H+gLct9p5zsgZonTUuCyU54VDUwhCY/WxudBpaNUxYVj0rI4VE5ca7LR2tX2VKWA0=
-SHA256 (Pkgfile) = 5b8f5bd0aef60720900f4eb58c6294b892564fa235603bb715a9458ea091adb2
-SHA256 (.footprint) = e686d832b92e97a8102fbd29866c63a2bd4cdcc341c56762701dc6a770ed5f62
-SHA256 (cryptsetup-2.6.1.tar.xz) = 410ded65a1072ab9c8e41added37b9729c087fef4d2db02bb4ef529ad6da4693

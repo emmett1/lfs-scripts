@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zMZL34IzHoY+d/TfQ/UV8tD4IfNFa3TMIyPSgSoExuIpeuFTx4Pj1yQwtx3nrStdJdbbm4hY7dXTSk4jv34QYQA=
-SHA256 (Pkgfile) = 954ef82498a92d3f243e04eb067ba9e96331f767b7a50cca3f09a3efb5c7d556
-SHA256 (.footprint) = 69053ce881b2128310c8111ea3feb5f0a2445d662af68bf7f0fa848e3d148cf9
-SHA256 (consolekit2-1.2.6.tar.gz) = d41224129c5a689469ebd8fe87e34c4a76afdb7b2f6201eb246320262ea5a942
-SHA256 (pam-foreground-compat.ck) = 8e197a732d676e12e8fa918c0587522d432b7756987273de2e940a625a38ee8a

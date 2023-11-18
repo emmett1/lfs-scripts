@@ -3,4 +3,4 @@
 name=gnutls
 version=3.8.1
 release=1
-source=(https://www.gnupg.org/ftp/gcrypt/$name/v3.8/$name-$version.tar.xz)
+source=(https://www.gnupg.org/ftp/gcrypt/$name/v${version%.*}/$name-$version.tar.xz)

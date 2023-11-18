@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zKPqHDRy2gl3NpUKlOa1PJIGxUKala/J4m1j6WMpEGLADevFGQiXkec0R5AF1bz+1ZbUAU7rnLNT+8thiDqOwgA=
-SHA256 (Pkgfile) = b4328fc208ef027aac52fb27409454cbd8b8e1668b19a34922714aecbb3e48c1
-SHA256 (.footprint) = 5c8e9b2802f1eb622c8f53ab3119ddb9ae1e591ad4020a26d8d8d833ced41082
-SHA256 (libassuan-2.5.6.tar.bz2) = e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426

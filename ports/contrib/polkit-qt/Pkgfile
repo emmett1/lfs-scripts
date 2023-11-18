@@ -1,0 +1,6 @@
+# Depends on: qt5 polkit
+
+name=polkit-qt
+version=0.114.0
+release=1
+source=(https://download.kde.org/stable/$name-1/$name-1-$version.tar.xz)

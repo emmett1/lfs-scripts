@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zJ3BbF8qc0mJL33mw3LGvQms1fWynuXSnGqjTjBzW8qKhFYQjwfLWHX/Q6yOzw5JEHYZL1pH3OfQEG7Co4IyxgY=
-SHA256 (Pkgfile) = a744cfcd15fe00bd755ff05452475acc7164411ac6d907588824ce855b637e97
-SHA256 (.footprint) = d326e490f3eab092f67f6d8c3b426bc23f303cbf84abe04a6ab74d6db5212b4d
-SHA256 (nss-3.92.tar.gz) = 3db192d6e882039af02ae7eaf3217ed114bb7ad83414c646772ab8021e24a254
-SHA256 (nss-3.92-standalone-1.patch) = 87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84

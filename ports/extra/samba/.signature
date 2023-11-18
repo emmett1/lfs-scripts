@@ -1,7 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zAtgUyFr2G//ojXkIL8reHh7FLvxFgVhKPwY5ilLDoy1FuSXrUIN+18SvfkL8jzRsNlI6XtF+uaK//NnSzkrigs=
-SHA256 (Pkgfile) = 3a93f8ff5a2d7effed7030069bf44a1af1df8b0244c60fe5f4e565213d2c34f9
-SHA256 (.footprint) = c0b1094da74925d306cc88e7fc130fe77dd75683558755341162a3120e877a69
-SHA256 (samba-4.19.1.tar.gz) = ce3b7f0d18bf91aa5fd646e8bb385a3b35375b703c6e5123b02b85a1abc81879
-SHA256 (smbd.run) = 51d11d2a26e8f6d1d13a6f862267c4cd1abb87f8133a88711b551d16b8436df7
-SHA256 (nmbd.run) = f1ffcbd111cefe8965ef27d4287074ce41e8cdeb8e355fee0b4d45df469cce4f

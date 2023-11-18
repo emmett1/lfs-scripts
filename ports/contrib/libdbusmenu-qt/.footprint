@@ -1,0 +1,19 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/dbusmenu-qt5/
+-rw-r--r--	root/root	usr/include/dbusmenu-qt5/dbusmenu_export.h
+-rw-r--r--	root/root	usr/include/dbusmenu-qt5/dbusmenu_version.h
+-rw-r--r--	root/root	usr/include/dbusmenu-qt5/dbusmenuexporter.h
+-rw-r--r--	root/root	usr/include/dbusmenu-qt5/dbusmenuimporter.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/dbusmenu-qt5/
+-rw-r--r--	root/root	usr/lib/cmake/dbusmenu-qt5/dbusmenu-qt5-config-version.cmake
+-rw-r--r--	root/root	usr/lib/cmake/dbusmenu-qt5/dbusmenu-qt5-config.cmake
+-rw-r--r--	root/root	usr/lib/cmake/dbusmenu-qt5/dbusmenu-qt5-targets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/dbusmenu-qt5/dbusmenu-qt5-targets.cmake
+lrwxrwxrwx	root/root	usr/lib/libdbusmenu-qt5.so -> libdbusmenu-qt5.so.2
+lrwxrwxrwx	root/root	usr/lib/libdbusmenu-qt5.so.2 -> libdbusmenu-qt5.so.2.6.0
+-rwxr-xr-x	root/root	usr/lib/libdbusmenu-qt5.so.2.6.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/dbusmenu-qt5.pc

@@ -1,0 +1,194 @@
+Submitted By:            Douglas R. Reno <renodr at linuxfromscratch dot org>
+Date:                    2023-04-10
+Initial Package Version: 1.4.1
+Origin:                  Debian (https://sources.debian.org/patches/pm-utils/1.4.1-19/)
+Upstream Status:         Defunct
+Description:             Fixes several bugs and quirks inside of pm-utils. In
+                         particular, it does the following:
+                         - Checks hibernate_mode in the uswsusp module (so that
+                           the proper operation is performed)
+                         - Fixes incorrect argument ordering in the XFS Buffer
+                           module
+                         - Fixes a typo in, and turns off, the ALPM module.
+                           This fixes data corruption problems on SSDs by not
+                           touching SATA Link Power Management.
+                         - Bypasses a problem where failing to enable the
+                           Suspend LED will cause Suspend to fail, since some
+                           older ThinkPads (and newer laptops) do not have a
+                           suspend LED.
+                         - Fixes an incorrect path in the intel-audio-powersave
+                           module, which results in malformed audio when coming
+                           out of Suspend.
+                         - Waits for the bluetooth USB module to be unused
+                           prior to performing any operations
+                         - Fixes the wireless adapter hook to work with newer
+                           drivers.
+                         - Adds support for the kernel's suspend mechanism.
+                           The kernel has supported that since 3.6.
+                         The names of the patches from Debian are:
+                         - 05-uswsusp-hibernate.mode.patch
+                         - 01_xfs_buffer_arguments.patch
+                         - 03-fix-alpm-typo.patch
+                         - 04-ignore-led-failure.patch
+                         - 12-fix-intel-audio-powersave-hook.patch
+                         - 13-49bluetooth-sync.patch
+                         - 14-disable-sata-alpm.patch
+                         - 17-fix-wireless-hook.patch
+                         - 28-suspend-hybrid.patch
+
+diff -Naur pm-utils-1.4.1.orig/pm/module.d/uswsusp pm-utils-1.4.1/pm/module.d/uswsusp
+--- pm-utils-1.4.1.orig/pm/module.d/uswsusp	2010-07-04 09:42:51.000000000 -0500
++++ pm-utils-1.4.1/pm/module.d/uswsusp	2023-04-10 10:57:52.719618092 -0500
+@@ -87,7 +87,11 @@
+ 	HIBERNATE_MODULE="uswsusp"
+ 	do_hibernate()
+ 	{
+-		s2disk
++		if [ -n "$HIBERNATE_MODE" ]; then
++         s2disk -P "shutdown method=$HIBERNATE_MODE"
++      else
++         s2disk
++      fi
+ 	}
+ fi
+ 
+diff -Naur pm-utils-1.4.1.orig/pm/pm-functions.in pm-utils-1.4.1/pm/pm-functions.in
+--- pm-utils-1.4.1.orig/pm/pm-functions.in	2010-07-04 09:50:13.000000000 -0500
++++ pm-utils-1.4.1/pm/pm-functions.in	2023-04-10 11:17:39.945509643 -0500
+@@ -312,8 +312,28 @@
+ 	{
+ 		[ -n "${HIBERNATE_MODE}" ] && \
+ 		grep -qw "${HIBERNATE_MODE}" /sys/power/disk && \
++		HIBERNATE_MODE_SAVE=$(cat /sys/power/disk) && \
++		HIBERNATE_MODE_SAVE="${HIBERNATE_MODE_SAVE##*[}" && \
++		HIBERNATE_MODE_SAVE="${HIBERNATE_MODE_SAVE%%]*}" && \
+ 		echo -n "${HIBERNATE_MODE}" > /sys/power/disk
+ 		echo -n "disk" > /sys/power/state
++		RET=$?
++		echo -n "$HIBERNATE_MODE_SAVE" > /sys/power/disk
++		return "$RET"
++	}
++fi
++
++# For kernels that support suspend to both (hybrid suspend).
++# The kernel supports this since version 3.6.
++if [ -z "$SUSPEND_HYBRID_MODULE" ] && \
++	[ -f /sys/power/disk ] && \
++	grep -r disk /sys/power/state && \
++	grep -q suspend /sys/power/disk; then
++	SUSPEND_HYBRID_MODULE="kernel"
++	do_suspend_hybrid()
++	{
++		HIBERNATE_MODE="suspend"
++		do_hibernate
+ 	}
+ fi
+ 
+diff -Naur pm-utils-1.4.1.orig/pm/power.d/intel-audio-powersave pm-utils-1.4.1/pm/power.d/intel-audio-powersave
+--- pm-utils-1.4.1.orig/pm/power.d/intel-audio-powersave	2010-07-04 09:50:13.000000000 -0500
++++ pm-utils-1.4.1/pm/power.d/intel-audio-powersave	2023-04-10 11:01:36.180650779 -0500
+@@ -20,9 +20,9 @@
+ 
+ audio_powersave() {
+     [ "$INTEL_AUDIO_POWERSAVE" = "true" ] || exit $NA
+-    for dev in /sys/module/snd_*/parameters/power_save; do
++    for dev in /sys/module/snd_*; do
+ 	[ -w "$dev/parameters/power_save" ] || continue
+-	printf "Setting power savings for $s to %d..." "$dev##*/" "$1"
++	printf "Setting power savings for $s to %d..." "${dev##*/}" "$1"
+ 	echo $1 > "$dev/parameters/power_save" && echo Done. || echo Failed.
+     done
+ }
+diff -Naur pm-utils-1.4.1.orig/pm/power.d/sata_alpm pm-utils-1.4.1/pm/power.d/sata_alpm
+--- pm-utils-1.4.1.orig/pm/power.d/sata_alpm	2010-07-04 09:50:13.000000000 -0500
++++ pm-utils-1.4.1/pm/power.d/sata_alpm	2023-04-10 11:04:34.514823624 -0500
+@@ -2,7 +2,8 @@
+ 
+ . "${PM_FUNCTIONS}"
+ 
+-SATA_ALPM_ENABLE=${SATA_ALPM_ENABLE:-true}
++SATA_ALPM_ENABLE=${SATA_ALPM_ENABLE:-false}
++# Disable due to causing disk errors and corruptions, especially on SSDs.
+ 
+ help() {
+ cat <<EOF
+@@ -28,7 +29,7 @@
+     [ "${kv%-*}" \< "2.6.33" ] && exit $NA  # avoid fs corruption
+     for f in /sys/class/scsi_host/host*; do
+ 	[ -w "$f/link_power_management_policy" ] || continue
+-	printf "Setting SATA APLM on %s to %s..." "${f##*/}" "$1"
++	printf "Setting SATA ALPM on %s to %s..." "${f##*/}" "$1"
+ 	echo "$1" > "$f/link_power_management_policy" && echo Done. || \
+ 	    echo Failed.
+     done
+@@ -41,4 +42,4 @@
+     *) exit $NA;;
+ esac
+ 
+-exit 0
+\ No newline at end of file
++exit 0
+diff -Naur pm-utils-1.4.1.orig/pm/power.d/wireless pm-utils-1.4.1/pm/power.d/wireless
+--- pm-utils-1.4.1.orig/pm/power.d/wireless	2010-07-04 09:50:13.000000000 -0500
++++ pm-utils-1.4.1/pm/power.d/wireless	2023-04-10 11:05:47.029574861 -0500
+@@ -20,7 +20,7 @@
+     # Skip if not a wireless card.
+     [ -d "/sys/class/net/$1/wireless" ] || return 1
+     # Also don't do anything if the device is disabled
+-    [ "$(cat /sys/class/net/$1/device/enable)" = "1" ] || return 1
++    [ "$(cat /sys/class/net/$1/device/enable* 2> /dev/null)" != "0" ] || return 1
+     driver="$(readlink "/sys/class/net/$1/device/driver")"
+     driver=${driver##*/}
+     case $driver in
+@@ -76,4 +76,4 @@
+     *) exit $NA ;;
+ esac
+ 
+-exit 0
+\ No newline at end of file
++exit 0
+diff -Naur pm-utils-1.4.1.orig/pm/power.d/xfs_buffer pm-utils-1.4.1/pm/power.d/xfs_buffer
+--- pm-utils-1.4.1.orig/pm/power.d/xfs_buffer	2010-07-04 09:50:13.000000000 -0500
++++ pm-utils-1.4.1/pm/power.d/xfs_buffer	2023-04-10 10:59:02.677001751 -0500
+@@ -59,7 +59,7 @@
+ xfs_battery() {
+     state_exists xfs_buffer_default || \
+ 	read_values |savestate xfs_buffer_default
+-    write_values "$XFS_AGE_BUFFER" "$XFS_BUFD" "$XFS_SYNCD"
++    write_values "$XFS_AGE_BUFFER" "$XFS_SYNCD" "$XFS_BUFD"
+ }
+ 
+ case $1 in
+@@ -69,4 +69,4 @@
+     *) exit $NA ;;
+ esac
+ 
+-exit 0
+\ No newline at end of file
++exit 0
+diff -Naur pm-utils-1.4.1.orig/pm/sleep.d/49bluetooth pm-utils-1.4.1/pm/sleep.d/49bluetooth
+--- pm-utils-1.4.1.orig/pm/sleep.d/49bluetooth	2010-07-04 09:42:51.000000000 -0500
++++ pm-utils-1.4.1/pm/sleep.d/49bluetooth	2023-04-10 11:03:29.040005143 -0500
+@@ -12,6 +12,14 @@
+ 	if grep -q enabled /proc/acpi/ibm/bluetooth; then
+ 		savestate ibm_bluetooth enable
+ 		echo disable > /proc/acpi/ibm/bluetooth
++
++      # Wait for up to 2 seconds for the module to actually get unused
++      TIMEOUT=20
++      while [ $TIMEOUT -ge 0 ]; do
++         [ `cat /sys/module/btusb/refcnt` = 0 ] && break
++         TIMEOUT=$((TIMEOUT-1))
++         sleep 0.1
++      done
+ 	else
+ 		savestate ibm_bluetooth disable
+ 	fi
+diff -Naur pm-utils-1.4.1.orig/pm/sleep.d/95led pm-utils-1.4.1/pm/sleep.d/95led
+--- pm-utils-1.4.1.orig/pm/sleep.d/95led	2010-07-04 09:42:51.000000000 -0500
++++ pm-utils-1.4.1/pm/sleep.d/95led	2023-04-10 11:00:12.602386132 -0500
+@@ -14,3 +14,4 @@
+ 	*) exit $NA
+ 		;;
+ esac
++exit 0 # To allow ThinkPads to work

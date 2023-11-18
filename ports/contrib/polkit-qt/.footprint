@@ -1,0 +1,53 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/polkit-qt5-1/
+drwxr-xr-x	root/root	usr/include/polkit-qt5-1/PolkitQt1/
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/ActionDescription
+drwxr-xr-x	root/root	usr/include/polkit-qt5-1/PolkitQt1/Agent/
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Agent/Listener
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Agent/Session
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Authority
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Details
+drwxr-xr-x	root/root	usr/include/polkit-qt5-1/PolkitQt1/Gui/
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Gui/Action
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Gui/ActionButton
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Gui/ActionButtons
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Identity
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/Subject
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/PolkitQt1/TemporaryAuthorization
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-actiondescription.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-agent-export.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-agent-listener.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-agent-session.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-authority.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-core-export.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-details.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-gui-action.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-gui-actionbutton.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-gui-actionbuttons.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-gui-export.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-identity.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-subject.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-temporaryauthorization.h
+-rw-r--r--	root/root	usr/include/polkit-qt5-1/polkitqt1-version.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/PolkitQt5-1/
+-rw-r--r--	root/root	usr/lib/cmake/PolkitQt5-1/PolkitQt5-1Config.cmake
+-rw-r--r--	root/root	usr/lib/cmake/PolkitQt5-1/PolkitQt5-1ConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib/cmake/PolkitQt5-1/PolkitQt5-1Targets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/PolkitQt5-1/PolkitQt5-1Targets.cmake
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-agent-1.so -> libpolkit-qt5-agent-1.so.1
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-agent-1.so.1 -> libpolkit-qt5-agent-1.so.1.114.0
+-rwxr-xr-x	root/root	usr/lib/libpolkit-qt5-agent-1.so.1.114.0
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-core-1.so -> libpolkit-qt5-core-1.so.1
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-core-1.so.1 -> libpolkit-qt5-core-1.so.1.114.0
+-rwxr-xr-x	root/root	usr/lib/libpolkit-qt5-core-1.so.1.114.0
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-gui-1.so -> libpolkit-qt5-gui-1.so.1
+lrwxrwxrwx	root/root	usr/lib/libpolkit-qt5-gui-1.so.1 -> libpolkit-qt5-gui-1.so.1.114.0
+-rwxr-xr-x	root/root	usr/lib/libpolkit-qt5-gui-1.so.1.114.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/polkit-qt5-1.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/polkit-qt5-agent-1.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/polkit-qt5-core-1.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/polkit-qt5-gui-1.pc

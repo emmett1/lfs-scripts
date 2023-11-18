@@ -1,0 +1,28 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/soundstretch
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/SoundTouchDLL.h
+drwxr-xr-x	root/root	usr/include/soundtouch/
+-rw-r--r--	root/root	usr/include/soundtouch/BPMDetect.h
+-rw-r--r--	root/root	usr/include/soundtouch/FIFOSampleBuffer.h
+-rw-r--r--	root/root	usr/include/soundtouch/FIFOSamplePipe.h
+-rw-r--r--	root/root	usr/include/soundtouch/STTypes.h
+-rw-r--r--	root/root	usr/include/soundtouch/SoundTouch.h
+-rw-r--r--	root/root	usr/include/soundtouch/soundtouch_config.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libSoundTouch.so -> libSoundTouch.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libSoundTouch.so.1 -> libSoundTouch.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib/libSoundTouch.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libSoundTouchDll.so -> libSoundTouchDll.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libSoundTouchDll.so.1 -> libSoundTouchDll.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib/libSoundTouchDll.so.1.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/soundtouch.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/aclocal/
+-rw-r--r--	root/root	usr/share/aclocal/soundtouch.m4
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/soundtouch/
+-rw-r--r--	root/root	usr/share/doc/soundtouch/COPYING.TXT
+-rw-r--r--	root/root	usr/share/doc/soundtouch/README.html

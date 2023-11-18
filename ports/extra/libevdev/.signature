@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zN76wnZZqRzjMHgTjFeJ2DUXBcfd10mqhG4b95dbUPZ5xTi32Vl0g1N018MQv1qREsPk5E0zVdASM1UWForRKgc=
-SHA256 (Pkgfile) = 1d0d1a904ed45c9bd08f32a41146f3444b725213f31d59559ca39a284f1a1764
-SHA256 (.footprint) = 44f039c7d6ba00601b7aa1c2b4626811b3e417ba8b05be573b370c2f855fe13b
-SHA256 (libevdev-1.13.1.tar.xz) = 06a77bf2ac5c993305882bc1641017f5bec1592d6d1b64787bad492ab34f2f36

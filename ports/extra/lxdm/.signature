@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zLuxzfkJKo+pWvRxUp1s6ZCzooGSrbIfM3cSy2igCKBZUm4YnBO+TD5EJVIsBg9uFpjAceR7H8om8ZnN/uxucgc=
-SHA256 (Pkgfile) = 95093ff073a5f6aa4cc9dff7887441179cc76bf87a9626fb9cb73885900b0f85
-SHA256 (.footprint) = 5320a6297e32153e47302055776d4e870a19f3ef60eec383bac84bf84c0d5249
-SHA256 (lxdm-0.5.3.tar.xz) = 4891efee81c72a400cc6703e40aa76f3f3853833d048b72ec805da0f93567f2f
-SHA256 (lxdm.run) = 7297c0b94ae5c320e3c84522ce3211112d79fb1660383384f357e2f5dfa3a876

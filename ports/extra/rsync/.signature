@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zMicahOEusT5K7wqL7WPurU0B1LCqcuQSYUDFoQJc+Shlfzi+LmC+0iGlef48Jq4uqMQLkDTPLCrvXz4PqZp6wk=
-SHA256 (Pkgfile) = e24964a0f325e949d03d6d72f2cf16951db785b60a151e7fc5d0b22d1c800644
-SHA256 (.footprint) = b6fc5c80515daa4d1c7a95fff8f772491c569c9750db832ff9f026cb94636a1d
-SHA256 (rsync-3.2.7.tar.gz) = 4e7d9d3f6ed10878c58c5fb724a67dacf4b6aac7340b13e488fb2dc41346f2bb

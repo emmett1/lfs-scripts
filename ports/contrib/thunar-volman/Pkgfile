@@ -1,0 +1,6 @@
+# Depends on: exo libgudev libnotify
+
+name=thunar-volman
+version=4.18.0
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

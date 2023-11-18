@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zDolW/ZSX7yRz5LS8T++LIss06KWerYQ0Bb+DfBgeMLFemqbNumvNH5w5PUwTFsihVIR18uQLK6o7YDuANO3+Qc=
-SHA256 (Pkgfile) = b659cc88514d4552a8304f4080d6c57c71aac1c1e4ecfa09d5c30bcdca9c4cd5
-SHA256 (.footprint) = 56c68ed55d62adb15b59563f919fd1c20175f1cbfe50c3f93a46e0c476a195f8
-SHA256 (qemu-8.1.1.tar.xz) = 37ce2ef5e500fb752f681117c68b45118303ea49a7e26bd54080ced54fab7def

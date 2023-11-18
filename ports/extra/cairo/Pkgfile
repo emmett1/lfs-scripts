@@ -3,6 +3,4 @@
 name=cairo
 version=1.18.0
 release=1
-source=(https://www.cairographics.org/releases/cairo-1.18.0.tar.xz)
-#build_type=configure_build
-
+source=(https://www.cairographics.org/releases/cairo-$version.tar.xz)

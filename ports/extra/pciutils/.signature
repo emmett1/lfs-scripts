@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zL/rSrYgb9QKtRo30hSNxwzEe15ocPtxpMTvB//oeMaSG12r87UeTVmYsjdS96eG466AL6S4bcfekpxE8zBOKQ0=
-SHA256 (Pkgfile) = ede2275564a8b706a29db912e476c172179e5afe30923214257086b7968e6032
-SHA256 (.footprint) = 2d398de13832042f550c5acc06768e6d2a04c79a94aec23aee99821a84a1056a
-SHA256 (pciutils-3.10.0.tar.gz) = 7deabe38ae5fa88a96a8c4947975cf31c591506db546e9665a10dddbf350ead0

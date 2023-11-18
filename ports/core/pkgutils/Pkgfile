@@ -1,6 +1,6 @@
 name=pkgutils
 version=5.40.10
-release=1
+release=2
 source=(https://crux.nu/files/$name-$version.tar.xz
 	pkgadd.conf
 	pkgmk.conf
@@ -14,13 +14,23 @@ bootstrap_build() {
 
 post_build() {
 	# change some defaults
-	sed -i 's,PKGMK_SOURCE_DIR=.*,PKGMK_SOURCE_DIR="/var/cache/pkg/sources",' $PKG/usr/bin/pkgmk
-	sed -i 's,PKGMK_PACKAGE_DIR=.*,PKGMK_PACKAGE_DIR="/var/cache/pkg/packages",' $PKG/usr/bin/pkgmk
-	sed -i 's,PKGMK_WORK_DIR=.*,PKGMK_WORK_DIR="/var/cache/pkg/work",' $PKG/usr/bin/pkgmk
-	sed -i 's,PKGMK_COMPRESSION_MODE=.*,PKGMK_COMPRESSION_MODE="xz",' $PKG/usr/bin/pkgmk
+	# store sources and packages in /var/cache/pkg
+	sed -i 's,^PKGMK_SOURCE_DIR=.*,PKGMK_SOURCE_DIR="/var/cache/pkg/sources",' $PKG/usr/bin/pkgmk
+	sed -i 's,^PKGMK_PACKAGE_DIR=.*,PKGMK_PACKAGE_DIR="/var/cache/pkg/packages",' $PKG/usr/bin/pkgmk
+	sed -i 's,^PKGMK_WORK_DIR=.*,PKGMK_WORK_DIR="/var/cache/pkg/work",' $PKG/usr/bin/pkgmk
 	install -dm777 $PKG/var/cache/pkg/{sources,packages,work}
 	chmod 777 $PKG/var/cache/pkg
+
+	# make xz as default compression mode
+	sed -i 's,^PKGMK_COMPRESSION_MODE=.*,PKGMK_COMPRESSION_MODE="xz",' $PKG/usr/bin/pkgmk
+
+	# ignore signature by default
+	sed -i 's,^PKGMK_IGNORE_SIGNATURE=.*,PKGMK_IGNORE_SIGNATURE="yes",' $PKG/usr/bin/pkgmk
+
+	# my custom extension script
 	install -Dm644 $SRC/extension $PKG/var/lib/pkgmk/extension
+
+	# configs
 	install -m644 $SRC/pkgadd.conf $PKG/etc/pkgadd.conf
 	install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
 }

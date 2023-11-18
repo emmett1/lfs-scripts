@@ -1,7 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zMCkkosZ0kc1XIVZ208v9UlKNBpSIfveV3HJg6vDhp0D5ey9evWJVQjSHFoOMJY4vtnO5SJW1APocesuK9CXUQI=
-SHA256 (Pkgfile) = 72a14cbdba9d6ce52d7319f6f446b6658a86a6a06b222220954ebf1311b31c7b
-SHA256 (.footprint) = 9fcb5e60793ce66fdafb9518028a602c73ae60cbed5953c9d909fc4230875f8f
-SHA256 (alsa-utils-1.2.10.tar.bz2) = 104b62ec7f02a7ce16ca779f4815616df1cc21933503783a9107b5944f83063a
-SHA256 (alsa.run) = fe31a2f1aa61814552e9e1f42d4ea4d9331405cd9a6365315545d55a9c6b93df
-SHA256 (alsa.finish) = d00e9ef211c9f11b3ef836c5ee7c6b763cacb426fbd3d9697f03048e55c0c21c

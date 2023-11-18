@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zLbtIku9BlBIp1opzyyfGb+hR34nFqaoV1pHePVPXzIsSVxpg0AvojiRdpcti4YTjR6gZwy8BSSvjyR0uZ1kIAY=
-SHA256 (Pkgfile) = a724744014c8f64453b7f428db530f3091a8c10188be7fb6b1d50d152cb07fb0
-SHA256 (.footprint) = 6dac97e7588da7064e9d2df471af1e2329c5b947903e136c4fa736ee23e7d805
-SHA256 (viewnior-1.8.tar.gz) = b9319171ebca23929e6ea8039c194b1595d92e764db5e3890836fb5c36e233b0
-SHA256 (exiv2-0.28.patch) = 307550f68decc1d2bd67bb0c5ec52205c654446fcd06c6ea14973406790535c3

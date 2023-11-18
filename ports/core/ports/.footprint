@@ -1,11 +1,12 @@
 drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/ports/
+-rw-r--r--	root/root	etc/ports/contrib.httpup.inactive
 -rw-r--r--	root/root	etc/ports/core.httpup
 -rw-r--r--	root/root	etc/ports/core.pub
 drwxr-xr-x	root/root	etc/ports/drivers/
 -rw-r--r--	root/root	etc/ports/extra.httpup
 -rw-r--r--	root/root	etc/ports/extra.pub
--rw-r--r--	root/root	etc/ports/multilib.httpup
+-rw-r--r--	root/root	etc/ports/multilib.httpup.inactive
 -rw-r--r--	root/root	etc/ports/multilib.pub
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/

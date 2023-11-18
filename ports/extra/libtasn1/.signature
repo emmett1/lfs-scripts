@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zNpcvl/M0gUX5HykiDYe/EwHbPX5PcuGoiUIMFlX0A69ToCGr0PlJcp5OqIJs2SumzGPy3EYmHFbu+UZ2XKUsg4=
-SHA256 (Pkgfile) = 0d6718c24fec94b7f19f98e875d08138c4582b2a624d24f4967179bc084d8f99
-SHA256 (.footprint) = eea6ee34ff5378aae63fe3cf27869552ad60bedeeb0bde49151acc900d1ef686
-SHA256 (libtasn1-4.19.0.tar.gz) = 1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a

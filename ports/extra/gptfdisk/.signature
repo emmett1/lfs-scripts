@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zGDfDznafP9zo8hccA0VfyaP1cl2LcoLliL7RDjEhBa6TDOOfSwhFpblXFBKE2Gp/fRG7gF8FMYFpxWIY76vFw4=
-SHA256 (Pkgfile) = 34c0e127ba1687b48a73483e4d002f84afe1e7abe50507f4b737071be4fc936b
-SHA256 (.footprint) = 8f8e37ff8f2fe46ceaf806db6d940f2f14b90c0d98ead6b83ff60c930bd94919
-SHA256 (gptfdisk-1.0.9.tar.gz) = dafead2693faeb8e8b97832b23407f6ed5b3219bc1784f482dd855774e2d50c2
-SHA256 (gptfdisk-1.0.9-convenience-1.patch) = 1827d4597bec8822ac1d9018d6e4d9720b5dc733adccf1724cf22cad107b4c65

@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zMRtbQdRnh7WRBmQ0RbyIi4Tjpf4I4KJZuSjRE7KZz49BopQTZZw0yp997Uem7D6ZzTgzLEEirOMgGcpIWI27gc=
-SHA256 (Pkgfile) = f566ae139364858e71757bac139c6a249c8953685f34587ebcc2ea6d44864ef0
-SHA256 (.footprint) = 00d640e732eaf0a9a9b2b5eeab80340dda7c9b66f23c35bcfcd39fc2ae938e4d
-SHA256 (libpng-1.6.40.tar.xz) = 535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
-SHA256 (libpng-apng.patch) = 2234b5138069824e30e84357a36bd725c2cb3fd589d5c2135ecbe60b0b4800d8

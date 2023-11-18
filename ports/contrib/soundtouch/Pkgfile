@@ -1,0 +1,8 @@
+name=soundtouch
+version=2.3.2
+release=1
+source=(https://www.surina.net/$name/$name-$version.tar.gz)
+
+pre_build() {
+	./bootstrap
+}

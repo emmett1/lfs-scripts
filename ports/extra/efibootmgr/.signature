@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zNZsX+cEoxzTKugjaWCeu8HihOc7O2PhJrsCiGCoFaoRlDCF1N/v1K8QMcctVNLI7dhep/Qj73I0QP7pgEVcWAM=
-SHA256 (Pkgfile) = 1f1acd5f0a8579ca65c56933128693264df623df700cad3a8b10afabf7cdeb1a
-SHA256 (.footprint) = e34f18fd1083f800387ab49d04767d3d41735415249dcd80b13acf5c78108282
-SHA256 (efibootmgr-18.tar.gz) = 442867d12f8525034a404fc8af3036dba8e1fc970998af2486c3b940dfad0874

@@ -25,13 +25,22 @@ fi
 	echo "port for $name exist"
 	exit 1
 }
-url=$(echo $1 | sed "s,$name,\$name,g;s,$version,\$version,g" )
+url=$(echo $1 | sed "s,$name,\${name},g;s,$version,\${version},g" )
 
-echo "name: $name"
-echo "version: $version"
+case $version in
+	*.*.*) v=${version%.*}
+		url=$(echo $url | sed "s,$v,\${version%\.\*},g" )
+esac
+
+#echo "name: $name"
+#echo "version: $version"
 mkdir -p $name
 
-echo "name=$name
+echo "# Depends on: 
+
+name=$name
 version=$version
 release=1
 source=($url)" > $name/Pkgfile
+
+cat $name/Pkgfile

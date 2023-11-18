@@ -9,12 +9,12 @@ g() {
 	}
 }
 
-if [ ! -f $1/.footprint ]; then
+port=$1
+
+if [ ! -f $port/.footprint ]; then
 	echo "$1: footprint not found"
 	exit 1
 fi
-
-port=$1
 
 g usr/share/mime/$ "update-mime-database /usr/share/mime"
 g usr/share/applications/$ "update-desktop-database --quiet"
@@ -38,4 +38,3 @@ if [ -f $port/trigger ]; then
 	rm $port/trigger
 	mv $port/tmppostinstall $port/post-install
 fi
-		

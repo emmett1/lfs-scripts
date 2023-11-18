@@ -1,0 +1,5 @@
+# Depends on: xfce4-appfinder xfce4-notifyd xfce4-power-manager xfce4-session xfce4-settings thunar xfwm4
+
+name=xfce4
+version=4.18
+release=1

@@ -1,7 +1,7 @@
 name=lsof
 version=4.95.0
 release=1
-source=(https://github.com/$name-org/$name/releases/download/4.95.0/${name}_4.95.0.linux.tar.bz2)
+source=(https://github.com/$name-org/$name/releases/download/${version}/${name}_${version}.linux.tar.bz2)
 
 pkg_build() {
 	./Configure -n linux

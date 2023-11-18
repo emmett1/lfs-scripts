@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zJFZDa2BonTJRcA+jsbE+Vv/1bV+pbVDgBVHEabkF5PxC0eNbVR8PFOXrIFkOO0tySviczroZba57f9cvXObPgo=
-SHA256 (Pkgfile) = ab803b8f6d0dffaf1799a0ad2eb1cf63e4ae757b256dafdb19be2425da5ed78c
-SHA256 (.footprint) = 2f2595d48b1d9747afa0d6b676a290528c98d1151c567954c594803a07fa9255
-SHA256 (nasm-2.16.01.tar.xz) = c77745f4802375efeee2ec5c0ad6b7f037ea9c87c92b149a9637ff099f162558

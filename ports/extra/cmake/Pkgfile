@@ -3,7 +3,7 @@
 name=cmake
 version=3.27.7
 release=1
-source=(https://$name.org/files/v3.27/$name-$version.tar.gz)
+source=(https://$name.org/files/v${version%.*}/$name-$version.tar.gz)
 
 pkg_build() {
 	sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake

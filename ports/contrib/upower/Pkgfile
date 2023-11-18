@@ -1,0 +1,7 @@
+# Depends on: glib libgudev
+
+name=upower
+version=1.90.2
+release=1
+source=(https://gitlab.freedesktop.org/$name/$name/-/archive/v$version/$name-v$version.tar.bz2)
+build_opt="-Dsystemdsystemunitdir=no -Dgtk-doc=false -Dman=false"

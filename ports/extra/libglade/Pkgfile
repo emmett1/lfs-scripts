@@ -3,4 +3,4 @@
 name=libglade
 version=2.6.4
 release=1
-source=(https://download.gnome.org/sources/$name/2.6/$name-$version.tar.bz2)
+source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.bz2)

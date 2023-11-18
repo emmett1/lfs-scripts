@@ -3,7 +3,7 @@
 name=steam
 version=1.0.0.78
 release=1
-source=(http://repo.steampowered.com/steam/pool/steam/s/steam/steam_1.0.0.78.tar.gz)
+source=(http://repo.steampowered.com/steam/pool/steam/s/steam/steam_${version}.tar.gz)
 
 post_build() {
 	# blank steamdeps because apt-get

@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zFfK/gzWLPL3naeCuNvjMrJW5DzNrOhw3F2HqmVzYUMK4/1iY3+zQNjtSLo4F/Mo7QLN6gxPx1ifSNBC05CwqQQ=
-SHA256 (Pkgfile) = 49f9a5f0eeec5bc2f785b89e12febe0b4b173eb91092ab4a545f8044045f9360
-SHA256 (.footprint) = 228c54e0541b53cf13cef34cd134222abe36783c0b5984bf98ce325982631054
-SHA256 (gpm-1.20.7.tar.bz2) = f011b7dc7afb824e0a017b89b7300514e772853ece7fc4ee640310889411a48d
-SHA256 (gpm-1.20.7-consolidated-1.patch) = 3659543dc3c9074f768f80c32a9e9aa1773f147068c49cf7f560ff73a0674524

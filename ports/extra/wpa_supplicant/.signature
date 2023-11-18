@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zCBNItOHFFc7/YoekeQaRMklJFmJtB7RBDK+CH87/QpTrQ+/WXmYnBgNy3xfMigaxDcIAkHMvau+D/Z8lvi4uQE=
-SHA256 (Pkgfile) = f059e8b63b282bf0c7a2adc12dd42fdf19b19c9a4beed410e491975da40b8809
-SHA256 (.footprint) = f68631d93f21e0cc380fcba0dc737a3dcd4fd73d9dbb2a52e75db94a28b3cdc1
-SHA256 (wpa_supplicant-2.10.tar.gz) = 20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f

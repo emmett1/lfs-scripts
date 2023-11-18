@@ -1,0 +1,5 @@
+# Depends on: lxqt-about lxqt-admin lxqt-archiver lxqt-config lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session lxqt-sudo lxqt-themes qps lximage-qt obconf-qt pcmanfm-qt
+
+name=lxqt
+version=1.4
+release=1

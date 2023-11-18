@@ -1,7 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zKcq0S8eRsi+g5t9tZ0tYHt+18USJMRUxI16VgYxGde6kOPgd36/6bPt4FrjidAkreC2avORDv9XSTb8J8b0sgg=
-SHA256 (Pkgfile) = d3b2dfc012189fbd175792bb37bbb75ee96faa29103eb06a870c03f4c1c31ac2
-SHA256 (.footprint) = 79491872e3f3d7fcf8b9bb31cccdf16a41987da60df1d6d451d9b62f0335d7d5
-SHA256 (outils-0.12.tar.gz) = 63b6ebddfb2e6213be1d5b20475321ba6f3221d6f86abe1dc615329c955c24db
-SHA256 (ntpleaps.patch) = 057258ba8907bf4cda09d30d84a4500b4faa213f959d0cd98a87321637c86d25
-SHA256 (rdate) = b050a5e063a5b0b8ce6dde657729335ce7dc3eb02e002fb35f37aa0ef71d3aa1

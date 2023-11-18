@@ -1,0 +1,7 @@
+f38e69ec8b8498b1d6dab50f1111cf52  add-CRUX-detection.patch
+e8a5174de93fd4f311fb77376005625e  os-prober-1.79-btrfs-subvolume-detection.patch
+870e86fbdf2b08530cb95b431c27dea2  os-prober-1.79-efi-chroot-blkid-fallback.patch
+f8c7e2449b2016c1c88fadebf103e553  os-prober-1.79-fix-busy-umount-message.patch
+cad2f71105426129229ca6662b5bdcf1  os-prober-1.79-mounted-boot-partition-fix.patch
+447a5f191f4cd79f2ff419560740219c  os-prober-1.79-use-fstab-name.patch
+fbd9a262e596bf5cc45a062f18515d50  os-prober_1.81.tar.xz

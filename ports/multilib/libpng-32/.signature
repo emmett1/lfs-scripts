@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/multilib.pub
-RWQj+xHX75A5zD0cK1IRqfDinfBjcGg2cN7lqTe2YdsZkpCLULML1LC0VRlfbvkK1+fkQJNQSt7MfeKWTsZzUh3SJ1WmwJ27eQA=
-SHA256 (Pkgfile) = aef88636f1b3184fc6e4bff038b5885815e487af4ae0e97c97c0f5a5e12b3645
-SHA256 (.footprint) = bbdbdb9a3b1727b38e4bb2d736132826e84860941a4e3b60bbdc915c794135c1
-SHA256 (libpng-1.6.40.tar.xz) = 535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
-SHA256 (libpng-apng.patch) = 2234b5138069824e30e84357a36bd725c2cb3fd589d5c2135ecbe60b0b4800d8

@@ -1,7 +1,7 @@
 name=boost
 version=1.83.0
 release=1
-source=(https://${name}org.jfrog.io/artifactory/main/release/$version/source/${name}_1_83_0.tar.bz2)
+source=(https://${name}org.jfrog.io/artifactory/main/release/$version/source/${name}_${version//./_}.tar.bz2)
 
 pkg_build() {
 	sed -i '/#include.*phoenix.*tuple.hpp.*/d' \

@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zAmB2fQqXK+cqp5unDyi8gBDqp5nXsu7ri5IT2FOhZb+GX+2f2bn7nSisZ9qh3QjcVMzPikmeVp5btEOXglK/Qk=
-SHA256 (Pkgfile) = aa02d6effca98125ddab2223ddd73a35e0e41bca2f81fa9ef9472304f3ee91f0
-SHA256 (.footprint) = 4e988dd62c69e22e91fb02e3c54a844eb1e472b444cb1aa90119c0ecfbe87474
-SHA256 (tango-icon-theme-0.8.90.tar.gz) = 6e98d8032d57d818acc907ec47e6a718851ff251ae7c29aafb868743eb65c88e
-SHA256 (rsvg.patch) = 56d90a8e11bfe4ae55200e8109e5147c3804f8c48003e0ea980d448b8d5b9ec3

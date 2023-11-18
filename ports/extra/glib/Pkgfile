@@ -1,4 +1,4 @@
-# Depends on: pcre2 libxslt 
+# Depends on: pcre2 libxslt
 
 name=glib
 version=2.78.0

@@ -1,0 +1,6 @@
+# Depends on: qt5
+
+name=lxqt-build-tools
+version=0.13.0
+release=1
+source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)

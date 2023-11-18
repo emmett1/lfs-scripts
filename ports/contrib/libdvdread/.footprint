@@ -1,0 +1,28 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/dvdread/
+-rw-r--r--	root/root	usr/include/dvdread/bitreader.h
+-rw-r--r--	root/root	usr/include/dvdread/dvd_reader.h
+-rw-r--r--	root/root	usr/include/dvdread/dvd_udf.h
+-rw-r--r--	root/root	usr/include/dvdread/ifo_print.h
+-rw-r--r--	root/root	usr/include/dvdread/ifo_read.h
+-rw-r--r--	root/root	usr/include/dvdread/ifo_types.h
+-rw-r--r--	root/root	usr/include/dvdread/nav_print.h
+-rw-r--r--	root/root	usr/include/dvdread/nav_read.h
+-rw-r--r--	root/root	usr/include/dvdread/nav_types.h
+-rw-r--r--	root/root	usr/include/dvdread/version.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libdvdread.so -> libdvdread.so.8.0.0
+lrwxrwxrwx	root/root	usr/lib/libdvdread.so.8 -> libdvdread.so.8.0.0
+-rwxr-xr-x	root/root	usr/lib/libdvdread.so.8.0.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/dvdread.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/libdvdread/
+-rw-r--r--	root/root	usr/share/doc/libdvdread/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/libdvdread/COPYING
+-rw-r--r--	root/root	usr/share/doc/libdvdread/ChangeLog
+-rw-r--r--	root/root	usr/share/doc/libdvdread/NEWS
+-rw-r--r--	root/root	usr/share/doc/libdvdread/README.md
+-rw-r--r--	root/root	usr/share/doc/libdvdread/TODO

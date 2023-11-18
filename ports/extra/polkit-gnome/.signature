@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zEF6idthLgZRm0GpXYlL/SfbCf/A5KPAAxbmwily/Y/pXX0ckv+u0f9yZ025njL16JdgbckpGhtPNuPdcuLt1go=
-SHA256 (Pkgfile) = 4fbd40d43c746f802f44ddf7358e34c701a5e5f8e71954b083f07b66827d8013
-SHA256 (.footprint) = 2e85a7ab3336a0ffb4d6802cf04c3b99f6be5cea94c07ce157c431acbfa542ff
-SHA256 (polkit-gnome-0.105.tar.xz) = 1784494963b8bf9a00eedc6cd3a2868fb123b8a5e516e66c5eda48df17ab9369
-SHA256 (polkit-gnome-0.105-consolidated_fixes-1.patch) = 7c6693fbc3040c658bf2965c5fecdc49078e5add8766e9abf1f4253e272c49e7

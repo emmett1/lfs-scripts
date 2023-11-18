@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zDc5YMi2y4MxHVcwr3ZSTVJ1csR80DWFAvLBizS6BCi6qsOlmsOY4nbsLdi7LHiGVvomniamgbK5LsZzZGv+nAY=
-SHA256 (Pkgfile) = 77902ad6a22e15d971fdc0e0a22be994039e1e631992b026014066c6f65c8e43
-SHA256 (.footprint) = 51347155435c74cc1ee32c28facabd4db382cefd63f2935907b40749a3c2a359
-SHA256 (xf86-input-synaptics-1.9.2.tar.xz) = b8fa4aab913fc63754bbd6439e020658c412743a055201ddf212760593962c38
-SHA256 (50-synaptics.conf) = 8d9ae8f5466e8273d2b13f8266d82cf5b2cb8204aa03e05e209940e747772c23

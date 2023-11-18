@@ -1,0 +1,21 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/dvdnav/
+-rw-r--r--	root/root	usr/include/dvdnav/dvd_types.h
+-rw-r--r--	root/root	usr/include/dvdnav/dvdnav.h
+-rw-r--r--	root/root	usr/include/dvdnav/dvdnav_events.h
+-rw-r--r--	root/root	usr/include/dvdnav/version.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libdvdnav.so -> libdvdnav.so.4.3.0
+lrwxrwxrwx	root/root	usr/lib/libdvdnav.so.4 -> libdvdnav.so.4.3.0
+-rwxr-xr-x	root/root	usr/lib/libdvdnav.so.4.3.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/dvdnav.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/libdvdnav/
+-rw-r--r--	root/root	usr/share/doc/libdvdnav/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/libdvdnav/COPYING
+-rw-r--r--	root/root	usr/share/doc/libdvdnav/ChangeLog
+-rw-r--r--	root/root	usr/share/doc/libdvdnav/README
+-rw-r--r--	root/root	usr/share/doc/libdvdnav/TODO

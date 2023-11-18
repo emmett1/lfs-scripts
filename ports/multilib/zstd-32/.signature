@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/multilib.pub
-RWQj+xHX75A5zNe/cInZEOk2HCpymawlg8rFpo05R3HFPRjH8pfHiGNLDg6K7Lg5MO5wKRIl7beCVmuSwpVK64nH1ooajuAafAc=
-SHA256 (Pkgfile) = 303823505f6539e218d16e3fbfee900588aff78d7f3df51dfaea296c955d7213
-SHA256 (.footprint) = bd157da66937964600b2aadb72075df184ffdfb5146e7966992d695b3913ad3d
-SHA256 (zstd-1.5.5.tar.gz) = 9c4396cc829cfae319a6e2615202e82aad41372073482fce286fac78646d3ee4

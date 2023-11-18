@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/extra.pub
-RWQj+xHX75A5zIvUbE9DC5hmsZeTZl9I34DmZ+JMAk6lQpscCtM1rZaQr5hStvZJRXf6B/AJz59znAJYehrw6JFNN3ywKVVhOAM=
-SHA256 (Pkgfile) = 36e66e14dd77a9a969beeefcdeda837208fe54af5835fb51e9392a04c5802635
-SHA256 (.footprint) = 79f3a6099009b0612adf308d54c76f572004fe1ac5901f2bd66e2a329df895ab
-SHA256 (p11-kit-0.25.0.tar.xz) = d55583bcdde83d86579cabe3a8f7f2638675fef01d23cace733ff748fc354706

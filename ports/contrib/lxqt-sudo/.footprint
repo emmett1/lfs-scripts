@@ -1,0 +1,54 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/lxdoas -> lxqt-sudo
+-rwxr-xr-x	root/root	usr/bin/lxqt-sudo
+lrwxrwxrwx	root/root	usr/bin/lxsu -> lxqt-sudo
+lrwxrwxrwx	root/root	usr/bin/lxsudo -> lxqt-sudo
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/lxqt/
+drwxr-xr-x	root/root	usr/share/lxqt/translations/
+drwxr-xr-x	root/root	usr/share/lxqt/translations/lxqt-sudo/
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ar.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_arn.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ast.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_bg.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ca.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_cs.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_cy.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_da.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_de.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_el.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_es.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_et.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_fi.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_fr.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_gl.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_he.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_hr.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_hu.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_id.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_it.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ja.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ko.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_lt.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_nb_NO.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_nl.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_oc.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_pl.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_pt.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_pt_BR.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_ru.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_si.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_sk.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_sl.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_tr.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_uk.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_vi.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_zh_CN.qm
+-rw-r--r--	root/root	usr/share/lxqt/translations/lxqt-sudo/lxqt-sudo_zh_TW.qm
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+lrwxrwxrwx	root/root	usr/share/man/man1/lxdoas.1.gz -> lxqt-sudo.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/lxqt-sudo.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lxsu.1.gz -> lxqt-sudo.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lxsudo.1.gz -> lxqt-sudo.1.gz

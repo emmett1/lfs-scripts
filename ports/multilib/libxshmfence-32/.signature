@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/multilib.pub
-RWQj+xHX75A5zOfn84ShySLYbr6qBhBXmupLhrvQfAGszKwX26BJ6lJfW8IblpbmeuioGG5dw8fBeijNC5FmtLaA3Ckx32pgRQI=
-SHA256 (Pkgfile) = 20db13b4b148396bd72817100968f1ba5d678d10103fa8cf30c8c96757660440
-SHA256 (.footprint) = cde5110eb53d47862736544f96f6e8700f8c5b1863ac55e309f5330853e1bd6e
-SHA256 (libxshmfence-1.3.2.tar.xz) = 870df257bc40b126d91b5a8f1da6ca8a524555268c50b59c0acd1a27f361606f

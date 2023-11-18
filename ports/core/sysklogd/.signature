@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/core.pub
-RWQj+xHX75A5zIVrltTDc9viugXBxeF+EG4y352JApZJe4Kw4bRFyDj0BKWWxGV2nakdjCDH6HbgY1ejJ1aR045EtmZE19isyQY=
-SHA256 (Pkgfile) = b446d52f5806c022a65d738528269575d02bceb4a88479c02e6f13daac64df3d
-SHA256 (.footprint) = 3197149d22820aa6c22fcf691d61895815795df941b77051cacbda7fc5ed562f
-SHA256 (sysklogd-2.5.2.tar.gz) = 9da4444285772ce2bfc9c687be8f978b7a9fe7d3937347cd4938eda0c4545e05
-SHA256 (sysklogd.run) = dd56fa9e62aaa6b628414776d140c626dca5a5f11844fd6f1f680e42b578b4ce

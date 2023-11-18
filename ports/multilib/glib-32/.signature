@@ -1,6 +1,0 @@
-untrusted comment: verify with /etc/ports/multilib.pub
-RWQj+xHX75A5zFEIVUUpY4CT7TNqFzVo4IYX5F4rsqVL8Uj0eiUAPr78KkGhOXJ+csE8KGz6nI3onU2WAZBw6BJhr1g2KNo4qQ4=
-SHA256 (Pkgfile) = c017d5bb7fbaa2883d2a8432b471abaecb4bc5c36591ca54c75c63439347bce3
-SHA256 (.footprint) = 4f4c4fd1a3ba9585ff7ab53d845752ee4ce0d5fd2a4b5457aab6061417ddbc57
-SHA256 (glib-2.78.0.tar.xz) = 44eaab8b720877ce303c5540b657b126f12dc94972d9880b52959f43fb537b30
-SHA256 (0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch) = 7f8ee5db60987f0d0feba84643e1cf988c98a294a681fb8d4fce1a5b2c25d1d3

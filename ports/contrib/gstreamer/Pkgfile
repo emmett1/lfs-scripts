@@ -1,0 +1,6 @@
+# Depends on: glib
+
+name=gstreamer
+version=1.22.7
+release=1
+source=(https://$name.freedesktop.org/src/$name/$name-$version.tar.xz)
