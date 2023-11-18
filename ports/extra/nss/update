@@ -1,0 +1,10 @@
+url=$(dirname $(dirname $url))/
+
+port_getver() {
+	fetch \
+	| grep releases \
+	| cut -d / -f6 \
+	| grep ^N \
+	| sed 's/NSS_//;s/_RTM//;s/_/\./g' \
+	| sort -V
+}

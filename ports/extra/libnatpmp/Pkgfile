@@ -1,0 +1,10 @@
+name=libnatpmp
+version=20230423
+release=1
+source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)
+
+pkg_build() {
+	make
+	make INSTALLPREFIX=$PKG/usr INSTALLDIRINC=$PKG/usr/include install
+	install -Dm644 natpmp_declspec.h -t $PKG/usr/include
+}

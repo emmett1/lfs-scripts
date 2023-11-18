@@ -1,0 +1,11 @@
+# Depends on: glib duktape gobject-introspection libxslt linux-pam 
+
+name=polkit
+version=122
+release=1
+source=(https://gitlab.freedesktop.org/$name/$name/-/archive/$version/$name-$version.tar.gz)
+build_opt="
+	-Dman=true
+	-Dtests=false
+	-Dos_type=lfs
+"

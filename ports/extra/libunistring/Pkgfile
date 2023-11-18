@@ -1,0 +1,4 @@
+name=libunistring
+version=1.1
+release=1
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)

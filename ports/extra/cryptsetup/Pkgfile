@@ -1,0 +1,7 @@
+# Depends on: json-c lvm2 popt 
+
+name=cryptsetup
+version=2.6.1
+release=1
+source=(https://www.kernel.org/pub/linux/utils/$name/v${version%.*}/$name-$version.tar.xz)
+build_opt="--disable-ssh-token --disable-asciidoc"

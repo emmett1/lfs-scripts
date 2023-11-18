@@ -1,0 +1,249 @@
+# extra function for pkgmk
+
+if [ "$PKGMK_ARCH" = 32 ]; then
+	export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig:/usr/share/pkgconfig"	
+	export CC="${CC:-gcc} -m32"
+	export CXX="${CXX:-g++} -m32"
+else
+	unset PKGMK_ARCH
+fi
+
+# override stupid function in pkgmk
+build_needed() {
+	if [ -f "$TARGET" ]; then
+		echo no
+	else
+		echo yes
+	fi
+}
+
+detect_buildtype() {
+	if [ -f meson.build ]; then
+		build_type=meson_build
+	elif [ -f configure ]; then
+		build_type=configure_build
+	elif [ -f CMakeLists.txt ]; then
+		build_type=cmake_build
+	elif [ -f setup.py ]; then
+		build_type=python3_build
+	elif [ -f Makefile.PL ]; then
+		build_type=perlmodule_build
+	elif [ -f Makefile ]; then
+		build_type=makefile_build
+	else
+		echo "failed to detect build_type"
+		exit 1
+	fi
+}
+
+_makefile_build() {
+	make || return $?
+	make \
+		PREFIX=/usr \
+		prefix=/usr \
+		SYSCONFDIR=/etc \
+		sysconfdir=/etc \
+		MANDIR=/usr/share/man \
+		mandir=/usr/share/man \
+		LIBDIR=/usr/lib$(echo $PKGMK_ARCH) \
+		PKGCONFIGDIR=/usr/lib$(echo $PKGMK_ARCH)/pkgconfig \
+		DESTDIR=$PKG install || return $?
+}
+
+_perlmodule_build() {
+	perl Makefile.PL || return $?
+	make || return $?
+	make DESTDIR=$PKG install || return $?
+}
+
+_cmake_build() {
+	mkdir -p cmakebuild
+	cd cmakebuild
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_INSTALL_LIBDIR=lib$(echo $PKGMK_ARCH) \
+		-DCMAKE_INSTALL_LIBEXECDIR=lib$(echo $PKGMK_ARCH) \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+		-DCMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+		-DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+		$build_opt  $@ \
+		-G Ninja .. || return $?
+	if [ -f build.ninja ]; then
+		ninja || return $?
+		DESTDIR=$PKG ninja install || return $?
+	else
+		cmake --build build || return $?
+		DESTDIR=$PKG cmake --install build || return $?
+	fi
+}
+
+_python3_build() {
+	python3 setup.py build || return $?
+	python3 setup.py install --prefix=/usr --root=$PKG --optimize=1 --skip-build || return $?
+}
+
+_configure_build() {
+	if [ "$BOOTSTRAP" ]; then
+		./configure --prefix=$TOOLS $bootstrap_build_opt $@ || return $?
+		make || return $?
+		make install || return $?
+	else
+		./configure \
+			--prefix=/usr \
+			--sysconfdir=/etc \
+			--libexecdir=/usr/lib$(echo $PKGMK_ARCH) \
+			--localstatedir=/var \
+			--mandir=/usr/share/man \
+			--libdir=/usr/lib$(echo $PKGMK_ARCH) \
+			$build_opt $@ || return $?
+		make || return $?
+		make DESTDIR=$PKG install || return $?
+	fi
+}
+
+_meson_build() {
+	meson setup _meson_build \
+		--prefix=/usr \
+		--libdir=/usr/lib$(echo $PKGMK_ARCH) \
+		--libexecdir=/usr/lib$(echo $PKGMK_ARCH) \
+		--includedir=/usr/include \
+		--datadir=/usr/share \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--localedir=/usr/share/locale \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--sharedstatedir=/var/lib \
+		--buildtype=plain \
+		--auto-features=auto \
+		--wrap-mode=nodownload \
+		-Db_lto=true \
+		-Db_pie=true \
+		-Db_thinlto_cache=true \
+		$build_opt || return $?
+	meson compile -C _meson_build || return $?
+	DESTDIR=$PKG meson install --no-rebuild -C _meson_build || return $?
+}
+
+_patch() {
+	[ "$skip_patch" = yes ] && return 0
+	n=0
+	for i in ${source[@]}; do
+		if [ "$renames" ]; then
+			case ${renames[$n]} in
+				SKIP) ;;
+				*) i=${renames[$n]};;
+			esac
+		fi
+		case $i in
+			*.patch|*.diff)
+				patch -t ${patch_opt:--p1} -i $SRC/${i##*/};;
+		esac
+		n=$(( $n + 1 ))
+	done
+}
+
+build() {
+	export DESTDIR=$PKG
+	export DEST_DIR=$PKG     # p7zip
+	export INSTALLROOT=$PKG  # syslinux
+	export install_root=$PKG # glibc
+	export INSTALL_ROOT=$PKG # qt5
+	export CARGO_HOME=/tmp
+
+	if [ "$source" ]; then
+		s=${source[0]}
+		if [ "$renames" ]; then
+			case ${renames[0]} in
+				SKIP) ;;
+				*) s=${renames[0]};;
+			esac
+		fi
+		# detect extracted source directory name
+		case $s in
+			*.tar|*.tar.gz|*.tar.Z|*.tgz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzma|*.tar.lz|*.zip|*.rpm|*.7z)
+				srcdir=$(bsdtar -tf $PKGMK_SOURCE_DIR/${s##*/} | cut -d / -f1 | head -n1);;
+		esac
+		# cd into extracted source directory
+		if [ "$srcdir" ] && [ -d "$srcdir" ]; then
+			cd $srcdir
+		fi
+		_patch
+		if [ "$(command -v pkg_build)" ]; then
+			# run pkg_build inside Pkgfile if function exist, then ignore pre_build and post_build
+			pkg_build
+		else
+			if [ "$(command -v pre_build)" ]; then
+				pre_build
+			fi
+			if [ ! "$build_type" ]; then
+				detect_buildtype
+			fi
+			if [ "$PKGMK_ARCH" = 32 ]; then
+				mv $PKG $PKG-32
+				mkdir -p $PKG
+			fi
+			# run build
+			_$build_type $@ #|| return $?
+			# if 32bit pkg, keep only /usr/lib32 before post_build
+			if [ "$PKGMK_ARCH" = 32 ]; then
+				mkdir -p $PKG-32/usr/lib32
+				mv $PKG/usr/lib32/* $PKG-32/usr/lib32
+				mv $PKG $PKG-old
+				mv $PKG-32 $PKG
+			fi
+			if [ "$(command -v post_build)" ]; then
+				post_build
+			fi
+		fi
+	else
+		# dummy pkg
+		mkdir -p $PKG/usr
+	fi
+	
+	# info dir
+	if [ -d $PKG/usr/share/info ]; then
+		rm -f $PKG/usr/share/info/dir
+		find $PKG/usr/share/info -type f | while read -r file; do
+			case $file in
+				*/dir) continue;;
+			esac
+			if [ "$file" = "${file%%.gz}" ]; then
+				gzip -9 -f "$file"
+			fi
+		done
+	fi
+	
+	# possible conflicts
+	find $PKG -name "fonts.dir" -exec rm {} \;
+	find $PKG -name "fonts.scale" -exec rm {} \;
+	find $PKG -name "perllocal.pod" -exec rm {} \;
+	
+	if [ ! "$keep_static" ]; then
+		find $PKG -name "*.a" -exec rm {} \;
+	fi
+	
+	if [ ! "$keep_libtool" ]; then
+		find $PKG -name "*.la" -exec rm {} \;
+	fi
+	
+	if [ ! "$keep_locale" ]; then
+		rm -rf $PKG/usr/share/locale		
+	fi
+
+	# runit service
+	for s in ${sv[@]}; do
+		[ -f $SRC/$s ] || exit 1
+		case $s in
+			     run) install -Dm755 $SRC/$s $PKG/etc/sv/$name/run
+			          ln -s /run/runit/supervise.$name $PKG/etc/sv/$name/supervise;;
+			  finish) install -Dm755 $SRC/$s $PKG/etc/sv/$name/finish;;
+			   *.run) install -Dm755 $SRC/$s $PKG/etc/sv/${s%.*}/run
+			          ln -s /run/runit/supervise.${s%.*} $PKG/etc/sv/${s%.*}/supervise;;
+			*.finish) install -Dm755 $SRC/$s $PKG/etc/sv/${s%.*}/finish;;
+			     *.*) install -Dm644 $SRC/$s $PKG/etc/sv/${s%%.*}/${s#*.};;
+			       *) install -Dm644 $SRC/$s $PKG/etc/sv/$name/$s;;
+		esac
+	done
+}

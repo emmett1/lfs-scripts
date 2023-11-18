@@ -1,0 +1,4 @@
+name=libatasmart
+version=0.19
+release=1
+source=(https://0pointer.de/public/$name-$version.tar.xz)

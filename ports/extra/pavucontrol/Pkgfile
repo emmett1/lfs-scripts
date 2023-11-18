@@ -1,0 +1,6 @@
+# Depends on: pulseaudio gtkmm json-glib libcanberra
+
+name=pavucontrol
+version=5.0
+release=1
+source=(https://freedesktop.org/software/pulseaudio/${name}/${name}-${version}.tar.xz)

@@ -1,0 +1,6 @@
+# Depends on: libevdev mtdev xorg-server xorgproto 
+
+name=xf86-input-evdev
+version=2.10.6
+release=1
+source=(http://xorg.freedesktop.org/archive/individual/driver/$name-$version.tar.bz2)

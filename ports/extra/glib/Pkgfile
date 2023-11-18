@@ -1,0 +1,13 @@
+# Depends on: pcre2 libxslt
+
+name=glib
+version=2.78.0
+release=1
+source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz
+	0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch)
+build_opt="
+	-Dman=true
+	-Dgtk_doc=false
+	-Dselinux=disabled
+	-Dtests=false
+"

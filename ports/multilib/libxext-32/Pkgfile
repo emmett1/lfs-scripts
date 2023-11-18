@@ -1,0 +1,6 @@
+# Depends on: libxext libx11-32
+
+name=libxext-32
+version=1.3.5
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXext-$version.tar.xz)

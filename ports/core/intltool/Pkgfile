@@ -1,19 +1,4 @@
-# Description: An internationalization tool used for extracting translatable strings from source files
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=intltool
 version=0.51.0
 release=1
-source=(http://launchpad.net/intltool/trunk/$version/+download/$name-$version.tar.gz)
-
-build() {
-        cd $name-$version
-
-        sed -i 's:\\\${:\\\$\\{:' intltool-update.in
-
-        ./configure --prefix=/usr
-        make
-        make DESTDIR=$PKG install
-}
+source=(https://launchpad.net/$name/trunk/$version/+download/$name-$version.tar.gz)

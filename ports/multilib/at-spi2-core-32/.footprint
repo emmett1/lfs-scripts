@@ -1,0 +1,23 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+-rwxr-xr-x	root/root	usr/lib32/at-spi-bus-launcher
+-rwxr-xr-x	root/root	usr/lib32/at-spi2-registryd
+drwxr-xr-x	root/root	usr/lib32/gnome-settings-daemon-3.0/
+drwxr-xr-x	root/root	usr/lib32/gnome-settings-daemon-3.0/gtk-modules/
+-rw-r--r--	root/root	usr/lib32/gnome-settings-daemon-3.0/gtk-modules/at-spi2-atk.desktop
+drwxr-xr-x	root/root	usr/lib32/gtk-2.0/
+drwxr-xr-x	root/root	usr/lib32/gtk-2.0/modules/
+-rwxr-xr-x	root/root	usr/lib32/gtk-2.0/modules/libatk-bridge.so
+lrwxrwxrwx	root/root	usr/lib32/libatk-1.0.so -> libatk-1.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libatk-1.0.so.0 -> libatk-1.0.so.0.24609.1
+-rwxr-xr-x	root/root	usr/lib32/libatk-1.0.so.0.24609.1
+lrwxrwxrwx	root/root	usr/lib32/libatk-bridge-2.0.so -> libatk-bridge-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libatk-bridge-2.0.so.0 -> libatk-bridge-2.0.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libatk-bridge-2.0.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libatspi.so -> libatspi.so.0
+lrwxrwxrwx	root/root	usr/lib32/libatspi.so.0 -> libatspi.so.0.0.1
+-rwxr-xr-x	root/root	usr/lib32/libatspi.so.0.0.1
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/atk-bridge-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/atk.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/atspi-2.pc

@@ -1,0 +1,8 @@
+# Depends on: boost double-conversion gc gsl gtkmm libsoup2 libxslt poppler-glib popt lcms2 potrace 
+
+name=inkscape
+version=1.3
+release=1
+source=(https://$name.org/gallery/item/42328/$name-$version.tar.xz)
+#build_opt="-DWITH_DBUS=ON"
+build_opt="-DWITH_INTERNAL_2GEOM=ON"

@@ -1,0 +1,15 @@
+# Depends on: cmake
+
+name=ccache
+version=4.8.3
+release=1
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.xz)
+build_opt="-DREDIS_STORAGE_BACKEND=OFF"
+
+post_build() {
+	install -d $PKG/usr/lib/ccache
+	for c in gcc g++ cc c++; do
+		ln -s /usr/bin/ccache $PKG/usr/lib/ccache/$c
+	done
+	#install -dm777 $PKG/var/cache/ccache
+}

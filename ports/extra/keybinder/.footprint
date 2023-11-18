@@ -1,0 +1,34 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/keybinder.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/girepository-1.0/
+-rw-r--r--	root/root	usr/lib/girepository-1.0/Keybinder-0.0.typelib
+lrwxrwxrwx	root/root	usr/lib/libkeybinder.so -> libkeybinder.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib/libkeybinder.so.0 -> libkeybinder.so.0.1.0
+-rwxr-xr-x	root/root	usr/lib/libkeybinder.so.0.1.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/keybinder.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/gir-1.0/
+-rw-r--r--	root/root	usr/share/gir-1.0/Keybinder-0.0.gir
+drwxr-xr-x	root/root	usr/share/gtk-doc/
+drwxr-xr-x	root/root	usr/share/gtk-doc/html/
+drwxr-xr-x	root/root	usr/share/gtk-doc/html/keybinder/
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/annotation-glossary.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/api-index-full.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/ch01.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/deprecated-api-index.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/home.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/index.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/index.sgml
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/keybinder-keybinder.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/keybinder.devhelp2
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/left-insensitive.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/left.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/object-tree.html
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/right-insensitive.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/right.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/style.css
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/up-insensitive.png
+-rw-r--r--	root/root	usr/share/gtk-doc/html/keybinder/up.png

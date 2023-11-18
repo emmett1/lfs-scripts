@@ -1,0 +1,4 @@
+name=ncdu
+version=1.15.1
+release=1
+source=(http://dev.yorhel.nl/download/$name-$version.tar.gz)

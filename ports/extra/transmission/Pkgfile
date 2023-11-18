@@ -1,0 +1,7 @@
+# Depends on: libevent dht libnatpmp libdeflate miniupnpc libpsl
+
+name=transmission
+version=4.0.4
+release=1
+source=(https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz)
+build_opt="-DENABLE_QT=OFF -DENABLE_WEB=OFF -DENABLE_TESTS=OFF"

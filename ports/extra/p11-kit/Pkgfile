@@ -1,0 +1,4 @@
+name=p11-kit
+version=0.25.0
+release=1
+source=(https://github.com/p11-glue/$name/releases/download/$version/$name-$version.tar.xz)

@@ -1,23 +1,23 @@
-# Description: The Bourne-Again SHell
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=bash
-version=5.1.16
+version=5.2.15
 release=1
-source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+	bashrc
+	profile)
+build_opt="--without-bash-malloc --with-installed-readline"
 
-build() {
-        cd $name-$version
+bootstrap_build() {
+	./configure --prefix=$TOOLS --without-bash-malloc
+	make -j1
+	make install
+	ln -sv bash $TOOLS/bin/sh
+}
 
-        ./configure --prefix=/usr                    \
-	            --without-bash-malloc            \
-	            --with-installed-readline
-        make
-        make DESTDIR=$PKG install
-
-        mkdir -p $PKG/bin
-        mv $PKG/usr/bin/bash $PKG/bin
-        ln -s bash $PKG/bin/sh
+post_build() {
+	mkdir -p $PKG/bin
+	mv $PKG/usr/bin/bash $PKG/bin
+	
+	install -d $PKG/etc
+	install -m644 $SRC/bashrc $PKG/etc
+	install -m644 $SRC/profile $PKG/etc
 }

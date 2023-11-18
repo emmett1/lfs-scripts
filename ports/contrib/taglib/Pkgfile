@@ -1,0 +1,7 @@
+# Depends on: 
+
+name=taglib
+version=1.13.1
+release=1
+source=(https://${name}.org/releases/${name}-${version}.tar.gz)
+build_opt="-DBUILD_SHARED_LIBS=ON"

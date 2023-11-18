@@ -1,0 +1,12 @@
+# Depends on: libconfig uthash libev libx11 xcb-util-renderutil xcb-util-image libxext pixman pcre libglvnd dbus 
+
+name=picom
+version=10.2
+release=1
+source=(https://github.com/yshui/$name/archive/v$version/$name-$version.tar.gz)
+
+post_build() {
+	sed 's/vsync = true/vsync = false/' -i picom.sample.conf
+	install -Dm644 picom.sample.conf $PKG/etc/xdg/picom.conf
+	install -Dm644 picom.sample.conf $PKG/etc/xdg/picom.conf.example
+}

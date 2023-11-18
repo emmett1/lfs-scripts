@@ -1,18 +1,26 @@
-# Description: CRUX ports system tools
-# URL:         http://crux.nu
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  curl
-
 name=ports
 version=1.6
-release=1
-source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz
-	core.httpup)
+release=2
+source=(https://crux.nu/files/tools/ports/$name-$version.tar.gz
+	repokey.pub
+	core.httpup
+	extra.httpup
+	multilib.httpup
+	contrib.httpup)
 
-build() {
-	cd $name-$version
-	make
-	make DESTDIR=$PKG MANDIR=/usr/share/man install
+post_build() {
+	# pubkey
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/core.pub
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/extra.pub
+	install -m 0644 $SRC/repokey.pub $PKG/etc/ports/multilib.pub
 
-	install -m 0644 $SRC/core.httpup $PKG/etc/ports
+	# httpup sync file
+	install -m 0644 $SRC/core.httpup $PKG/etc/ports/
+	install -m 0644 $SRC/extra.httpup $PKG/etc/ports/
+	install -m 0644 $SRC/multilib.httpup $PKG/etc/ports/
+	install -m 0644 $SRC/contrib.httpup $PKG/etc/ports/
+
+	# disable multilib & contrib by default
+	mv $PKG/etc/ports/multilib.httpup{,.inactive}
+	mv $PKG/etc/ports/contrib.httpup{,.inactive}
 }

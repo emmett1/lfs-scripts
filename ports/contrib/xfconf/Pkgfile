@@ -1,0 +1,6 @@
+# Depends on: libxfce4util
+
+name=xfconf
+version=4.18.3
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

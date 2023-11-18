@@ -1,29 +1,16 @@
-# Description: Programs for handling passwords in a secure way
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=shadow
-version=4.11.1
+version=4.14.2
 release=1
-source=(https://github.com/shadow-maint/shadow/releases/download/v$version/shadow-$version.tar.xz)
+source=(https://github.com/$name-maint/$name/releases/download/$version/$name-$version.tar.xz)
+build_opt="--without-libpam
+	--with-group-name-max-length=32
+	--without-libbsd"
 
-build() {
-        cd $name-$version
-
-        sed -i 's/groups$(EXEEXT) //' src/Makefile.in
-        find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
-        find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
-        find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
-
-        sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
-               -e 's@/var/spool/mail@/var/mail@' etc/login.defs
-        ./configure \
-                --sysconfdir=/etc \
-                --with-group-name-max-length=32
-        make
-        make DESTDIR=$PKG install
-
-        mkdir -p $PKG/bin
-        mv -v $PKG/usr/bin/passwd $PKG/bin
+pre_build() {
+	sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+	find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
+	find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
+	find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+	
+	sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' etc/login.defs
 }

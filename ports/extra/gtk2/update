@@ -1,0 +1,9 @@
+port_getver() {
+	fetch \
+	| tr ' ' '\n' \
+	| grep -Eo gtk.-[0-9.]+.tar.[bgx]z2? \
+	| sed 's/gtk+-//;s/.tar.*//' \
+	| grep -Ew "^[0-9]+\.[0-9]*[02468]\.*" \
+	| grep -Ev ".[89][0-9].*" \
+	| grep ^2
+}

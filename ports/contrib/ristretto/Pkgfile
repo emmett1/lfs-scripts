@@ -1,0 +1,6 @@
+# Depends on: libexif libxfce4ui
+
+name=ristretto
+version=0.13.1
+release=1
+source=(https://archive.xfce.org/src/apps/${name}/${version%.*}/${name}-${version}.tar.bz2)

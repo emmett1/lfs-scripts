@@ -1,0 +1,6 @@
+# Depends on: libx11 libxcb-32
+
+name=libx11-32
+version=1.8.7
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libX11-$version.tar.xz)

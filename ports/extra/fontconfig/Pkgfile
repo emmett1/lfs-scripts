@@ -1,0 +1,6 @@
+# Depends on: freetype 
+
+name=fontconfig
+version=2.14.2
+release=1
+source=(https://www.freedesktop.org/software/$name/release/$name-$version.tar.xz)

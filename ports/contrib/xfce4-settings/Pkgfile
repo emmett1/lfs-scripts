@@ -1,0 +1,6 @@
+# Depends on: exo garcon gnome-icon-theme
+
+name=xfce4-settings
+version=4.18.3
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

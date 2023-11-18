@@ -1,0 +1,6 @@
+# Depends on: cairo libsigc++ 
+
+name=cairomm
+version=1.14.0
+release=1
+source=(https://www.cairographics.org/releases/$name-$version.tar.xz)

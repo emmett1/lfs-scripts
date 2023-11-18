@@ -1,0 +1,64 @@
+--- Makefile.orig	2014-12-05 09:11:40.322312104 +0000
++++ Makefile	2014-12-05 11:47:22.202207109 +0000
+@@ -15,7 +15,7 @@
+ # Main Makefile for SYSLINUX
+ #
+ 
+-all_firmware := bios efi32 efi64
++all_firmware := bios efi64
+ 
+ #
+ # topdir is only set when we are doing a recursive make. Do a bunch of
+@@ -163,8 +163,6 @@ BOBJECTS = $(BTARGET) \
+ 	core/pxelinux.0 core/lpxelinux.0 \
+ 	core/isolinux.bin core/isolinux-debug.bin \
+ 	gpxe/gpxelinux.0 dos/syslinux.com \
+-	win32/syslinux.exe win64/syslinux64.exe \
+-	dosutil/*.com dosutil/*.sys \
+ 	$(MODULES)
+ 
+ # BSUBDIRs build the on-target binary components.
+@@ -186,7 +184,7 @@ NETINSTALLABLE = efi/syslinux.efi $(INST
+ else
+ 
+ BSUBDIRS = codepage com32 lzo core memdisk mbr gpxe sample \
+-	   diag libinstaller dos win32 win64 dosutil txt
++	   libinstaller txt
+ 
+ ITARGET  =
+ IOBJECTS = $(ITARGET) \
+@@ -195,20 +193,20 @@ IOBJECTS = $(ITARGET) \
+ ISUBDIRS = libinstaller mtools linux extlinux utils
+ 
+ # Things to install in /usr/bin
+-INSTALL_BIN   =	mtools/syslinux
++INSTALL_BIN   =	mtools/syslinux extlinux/extlinux
+ # Things to install in /sbin
+-INSTALL_SBIN  = extlinux/extlinux
++INSTALL_SBIN  = 
+ # Things to install in /usr/lib/syslinux
+ INSTALL_AUX   =	core/pxelinux.0 gpxe/gpxelinux.0 gpxe/gpxelinuxk.0 \
+ 		core/isolinux.bin core/isolinux-debug.bin \
+-		dos/syslinux.com core/lpxelinux.0 \
++		core/lpxelinux.0 \
+ 		mbr/*.bin $(INSTALLABLE_MODULES)
+-INSTALL_AUX_OPT = win32/syslinux.exe win64/syslinux64.exe
++INSTALL_AUX_OPT = 
+ INSTALL_DIAG  =	diag/mbr/handoff.bin \
+ 		diag/geodsp/geodsp1s.img.xz diag/geodsp/geodspms.img.xz
+ 
+ # These directories manage their own installables
+-INSTALLSUBDIRS = com32 utils dosutil
++INSTALLSUBDIRS = com32 utils
+ 
+ # Things to install in /boot/extlinux
+ EXTBOOTINSTALL = $(INSTALLABLE_MODULES)
+@@ -329,8 +327,6 @@ version.h: $(topdir)/version $(topdir)/v
+ local-install: installer
+ 	mkdir -m 755 -p $(INSTALLROOT)$(BINDIR)
+ 	install -m 755 -c $(INSTALL_BIN) $(INSTALLROOT)$(BINDIR)
+-	mkdir -m 755 -p $(INSTALLROOT)$(SBINDIR)
+-	install -m 755 -c $(INSTALL_SBIN) $(INSTALLROOT)$(SBINDIR)
+ 	mkdir -m 755 -p $(INSTALLROOT)$(AUXDIR)
+ 	install -m 644 -c $(INSTALL_AUX) $(INSTALLROOT)$(AUXDIR)
+ 	-install -m 644 -c $(INSTALL_AUX_OPT) $(INSTALLROOT)$(AUXDIR)

@@ -1,23 +1,4 @@
-# Description: Programs to find files
-# URL:         https://www.gnu.org/software/findutils
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  bash
-
 name=findutils
 version=4.9.0
 release=1
 source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
-
-build() {
-        cd $name-$version
-
-        ./configure \
-                --prefix=/usr \
-                --localstatedir=/var/lib/locate
-        make
-        make DESTDIR=$PKG install
-
-        mkdir -pv $PKG/bin
-        mv -v $PKG/usr/bin/find $PKG/bin
-        sed -i 's|find:=${BINDIR}|find:=/bin|' $PKG/usr/bin/updatedb
-}

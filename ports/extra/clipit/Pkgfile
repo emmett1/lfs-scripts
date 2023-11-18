@@ -1,0 +1,11 @@
+# Depends on: gtk3 
+
+name=clipit
+version=1.4.5
+release=1
+source=(https://github.com/CristianHenzel/ClipIt/archive/v$version/$name-$version.tar.gz)
+build_opt="--with-gtk3"
+
+pre_build() {
+	./autogen.sh
+}

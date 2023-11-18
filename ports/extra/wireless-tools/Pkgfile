@@ -1,0 +1,17 @@
+name=wireless-tools
+version=30.pre9
+release=1
+source=(https://hewlettpackard.github.io/$name/${name/-/_}.$version.tar.gz)
+
+pkg_build() {
+	# fix compiler flags, build shared library, don't run ldconfig
+	sed -i Makefile \
+		-e "s|CFLAGS=|CFLAGS=$CFLAGS |" \
+		-e "/^BUILD_STATIC/d" \
+		-e "/ldconfig/d"
+
+	make
+	make install \
+		PREFIX=$PKG/usr \
+		INSTALL_MAN=$PKG/usr/share/man
+}

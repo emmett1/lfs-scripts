@@ -1,0 +1,6 @@
+# Depends on: libxi libx11-32 libxext-32 libxfixes-32
+
+name=libxi-32
+version=1.8.1
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXi-$version.tar.xz)

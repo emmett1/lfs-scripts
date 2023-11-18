@@ -1,0 +1,83 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/debuginfod/
+drwxr-xr-x	root/root	etc/profile.d/
+-rw-r--r--	root/root	etc/profile.d/debuginfod.csh
+-rw-r--r--	root/root	etc/profile.d/debuginfod.sh
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/debuginfod-find
+-rwxr-xr-x	root/root	usr/bin/eu-addr2line
+-rwxr-xr-x	root/root	usr/bin/eu-ar
+-rwxr-xr-x	root/root	usr/bin/eu-elfclassify
+-rwxr-xr-x	root/root	usr/bin/eu-elfcmp
+-rwxr-xr-x	root/root	usr/bin/eu-elfcompress
+-rwxr-xr-x	root/root	usr/bin/eu-elflint
+-rwxr-xr-x	root/root	usr/bin/eu-findtextrel
+-rwxr-xr-x	root/root	usr/bin/eu-make-debug-archive
+-rwxr-xr-x	root/root	usr/bin/eu-nm
+-rwxr-xr-x	root/root	usr/bin/eu-objdump
+-rwxr-xr-x	root/root	usr/bin/eu-ranlib
+-rwxr-xr-x	root/root	usr/bin/eu-readelf
+-rwxr-xr-x	root/root	usr/bin/eu-size
+-rwxr-xr-x	root/root	usr/bin/eu-stack
+-rwxr-xr-x	root/root	usr/bin/eu-strings
+-rwxr-xr-x	root/root	usr/bin/eu-strip
+-rwxr-xr-x	root/root	usr/bin/eu-unstrip
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/dwarf.h
+drwxr-xr-x	root/root	usr/include/elfutils/
+-rw-r--r--	root/root	usr/include/elfutils/debuginfod.h
+-rw-r--r--	root/root	usr/include/elfutils/elf-knowledge.h
+-rw-r--r--	root/root	usr/include/elfutils/known-dwarf.h
+-rw-r--r--	root/root	usr/include/elfutils/libasm.h
+-rw-r--r--	root/root	usr/include/elfutils/libdw.h
+-rw-r--r--	root/root	usr/include/elfutils/libdwelf.h
+-rw-r--r--	root/root	usr/include/elfutils/libdwfl.h
+-rw-r--r--	root/root	usr/include/elfutils/version.h
+-rw-r--r--	root/root	usr/include/gelf.h
+-rw-r--r--	root/root	usr/include/libelf.h
+-rw-r--r--	root/root	usr/include/nlist.h
+drwxr-xr-x	root/root	usr/lib/
+-rwxr-xr-x	root/root	usr/lib/libasm-0.189.so
+-rw-r--r--	root/root	usr/lib/libasm.a
+lrwxrwxrwx	root/root	usr/lib/libasm.so -> libasm.so.1
+lrwxrwxrwx	root/root	usr/lib/libasm.so.1 -> libasm-0.189.so
+-rwxr-xr-x	root/root	usr/lib/libdebuginfod-0.189.so
+lrwxrwxrwx	root/root	usr/lib/libdebuginfod.so -> libdebuginfod-0.189.so
+lrwxrwxrwx	root/root	usr/lib/libdebuginfod.so.1 -> libdebuginfod-0.189.so
+-rwxr-xr-x	root/root	usr/lib/libdw-0.189.so
+-rw-r--r--	root/root	usr/lib/libdw.a
+lrwxrwxrwx	root/root	usr/lib/libdw.so -> libdw.so.1
+lrwxrwxrwx	root/root	usr/lib/libdw.so.1 -> libdw-0.189.so
+-rwxr-xr-x	root/root	usr/lib/libelf-0.189.so
+-rw-r--r--	root/root	usr/lib/libelf.a
+lrwxrwxrwx	root/root	usr/lib/libelf.so -> libelf.so.1
+lrwxrwxrwx	root/root	usr/lib/libelf.so.1 -> libelf-0.189.so
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libdebuginfod.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libdw.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libelf.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/debuginfod-find.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/eu-elfclassify.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/eu-readelf.1.gz
+drwxr-xr-x	root/root	usr/share/man/man3/
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_add_http_header.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_begin.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_end.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_find_debuginfo.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_find_executable.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_find_section.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_find_source.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_get_url.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_get_user_data.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_set_progressfn.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/debuginfod_set_user_data.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/elf_begin.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/elf_clone.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/elf_getdata.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/elf_update.3.gz
+drwxr-xr-x	root/root	usr/share/man/man7/
+-rw-r--r--	root/root	usr/share/man/man7/debuginfod-client-config.7.gz

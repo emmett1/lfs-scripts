@@ -1,0 +1,11 @@
+# Depends on: gtk2
+
+name=gpicview
+version=0.2.5
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz
+	$name.appdata.xml)
+
+post_build() {
+	install -Dm644 $SRC/$name.appdata.xml $PKG/usr/share/metainfo/$name.appdata.xml
+}

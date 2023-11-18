@@ -1,0 +1,11 @@
+name=crypto++
+version=880
+release=1
+source=(https://www.cryptopp.com/cryptopp${version}.zip)
+
+pkg_build() {
+	export CXXFLAGS="$CXXFLAGS -DNDEBUG -fPIC"
+	make PREFIX=/usr dynamic cryptest.exe libcryptopp.pc
+	make PREFIX=/usr install
+	rm -rf $PKG/usr/bin $PKG/usr/share/cryptopp
+}

@@ -1,0 +1,7 @@
+# Depends on: libvorbis gtk3
+
+name=libcanberra
+version=0.30
+release=1
+source=(https://0pointer.de/lennart/projects/$name/$name-$version.tar.xz
+	libcanberra-0.30-wayland-1.patch)

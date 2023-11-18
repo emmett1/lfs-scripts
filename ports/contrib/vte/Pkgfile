@@ -1,0 +1,7 @@
+# Depends on: gtk3 gtk4 gnutls vala
+
+name=vte
+version=0.74.1
+release=1
+source=(https://gitlab.gnome.org/GNOME/$name/-/archive/$version/$name-$version.tar.gz)
+build_opt="-Db_lto=false -D_systemd=false"

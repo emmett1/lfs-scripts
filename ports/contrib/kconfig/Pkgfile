@@ -1,0 +1,6 @@
+# Depends on: extra-cmake-modules qt5
+
+name=kconfig
+version=5.109.0
+release=1
+source=(https://download.kde.org/stable/frameworks/${version%.*}/$name-$version.tar.xz)

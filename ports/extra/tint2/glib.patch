@@ -1,0 +1,44 @@
+diff --git a/src/main.c b/src/main.c
+index a0b90ae..d9c6742 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -534,11 +534,14 @@ void handle_x_event(XEvent *e)
+         }
+         if (e->xany.window == g_tooltip.window || !systray_enabled)
+             break;
+-        for (GSList *it = systray.list_icons; it; it = it->next)
++        /* we might remove elements in the callback so a copy is needed */
++        GSList *list = g_list_copy(systray.list_icons);
++        for (GSList *it = list; it; it = it->next)
+         {
+-            if (((TrayWindow *)it->data)->win == e->xany.window)
++            if (it->data != NULL && ((TrayWindow *)it->data)->win == e->xany.window)
+                 systray_destroy_event(it->data);
+         }
++        g_list_free(list);
+         break;
+ 
+     case ClientMessage: {
+diff --git a/src/util/uevent.c b/src/util/uevent.c
+index b0acefa..5c48b52 100644
+--- a/src/util/uevent.c
++++ b/src/util/uevent.c
+@@ -146,7 +146,9 @@ void uevent_handler( fd_set *fds, int *fdn)
+     struct uevent ev;
+ 
+     if (uevent_new(&ev, buf, len)) {
+-        for (GSList *l = notifiers; l; l = l->next)
++        /* we might remove elements in the callback so a copy is needed */
++        GSList *list = g_list_copy(notifiers);
++        for (GSList *l = list; l; l = l->next)
+         {
+             struct uevent_notify *nb = l->data;
+ 
+@@ -157,6 +159,7 @@ void uevent_handler( fd_set *fds, int *fdn)
+ 
+             nb->cb(&ev, nb->userdata);
+         }
++        g_list_free(list);
+         uevent_destroy (&ev);
+     }
+ }

@@ -1,0 +1,4 @@
+port_getver() {
+	getver_default
+}
+

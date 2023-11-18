@@ -1,0 +1,46 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/daxctl.conf.d/
+-rw-r--r--	root/root	etc/daxctl.conf.d/daxctl.example.conf
+drwxr-xr-x	root/root	etc/modprobe.d/
+-rw-r--r--	root/root	etc/modprobe.d/nvdimm-security.conf
+drwxr-xr-x	root/root	etc/ndctl.conf.d/
+-rw-r--r--	root/root	etc/ndctl.conf.d/monitor.conf
+-rw-r--r--	root/root	etc/ndctl.conf.d/ndctl.conf
+drwxr-xr-x	root/root	etc/ndctl/
+drwxr-xr-x	root/root	etc/ndctl/keys/
+-rw-r--r--	root/root	etc/ndctl/keys/keys.readme
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/cxl
+-rwxr-xr-x	root/root	usr/bin/daxctl
+-rwxr-xr-x	root/root	usr/bin/ndctl
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/cxl/
+-rw-r--r--	root/root	usr/include/cxl/libcxl.h
+drwxr-xr-x	root/root	usr/include/daxctl/
+-rw-r--r--	root/root	usr/include/daxctl/libdaxctl.h
+drwxr-xr-x	root/root	usr/include/ndctl/
+-rw-r--r--	root/root	usr/include/ndctl/libndctl.h
+-rw-r--r--	root/root	usr/include/ndctl/ndctl.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libcxl.so -> libcxl.so.1
+lrwxrwxrwx	root/root	usr/lib/libcxl.so.1 -> libcxl.so.1.0.5
+-rwxr-xr-x	root/root	usr/lib/libcxl.so.1.0.5
+lrwxrwxrwx	root/root	usr/lib/libdaxctl.so -> libdaxctl.so.1
+lrwxrwxrwx	root/root	usr/lib/libdaxctl.so.1 -> libdaxctl.so.1.2.5
+-rwxr-xr-x	root/root	usr/lib/libdaxctl.so.1.2.5
+lrwxrwxrwx	root/root	usr/lib/libndctl.so -> libndctl.so.6
+lrwxrwxrwx	root/root	usr/lib/libndctl.so.6 -> libndctl.so.6.2.21
+-rwxr-xr-x	root/root	usr/lib/libndctl.so.6.2.21
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libcxl.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libdaxctl.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libndctl.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/bash-completion/
+drwxr-xr-x	root/root	usr/share/bash-completion/completions/
+-rw-r--r--	root/root	usr/share/bash-completion/completions/cxl
+-rw-r--r--	root/root	usr/share/bash-completion/completions/daxctl
+-rw-r--r--	root/root	usr/share/bash-completion/completions/ndctl
+drwxr-xr-x	root/root	usr/share/daxctl/
+-rw-r--r--	root/root	usr/share/daxctl/daxctl.conf

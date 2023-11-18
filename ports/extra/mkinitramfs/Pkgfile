@@ -1,0 +1,14 @@
+# Depends on: cpio 
+
+name=mkinitramfs
+version=63c0bb3acaf3c9e0146007e08c13be448e1814c9
+release=1
+source=(https://github.com/venomlinux/$name/archive/$version.tar.gz
+	base.hook
+	mkinitramfs.conf)
+
+pkg_build() {
+	DESTDIR=$PKG ./INSTALL.sh
+	install -m644 $SRC/mkinitramfs.conf $PKG/etc/
+	install -m644 $SRC/base.hook $PKG/usr/share/mkinitramfs/hooks/base.hook
+}

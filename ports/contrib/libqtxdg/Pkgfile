@@ -1,0 +1,6 @@
+# Depends on: lxqt-build-tools
+
+name=libqtxdg
+version=3.12.0
+release=1
+source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)

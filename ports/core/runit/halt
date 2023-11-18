@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ $(id -u) != 0 ]; then
+	echo $(basename $0): must be superuser.
+	exit 1
+fi
+
+prg=$(basename $0)
+
+runit=/sbin/runit-init
+
+case $prg in
+	poweroff|halt) action=0 ;;
+	       reboot) action=6 ;;
+	            *) exit 1   ;;
+esac
+
+if [ $action = 6 ]; then
+	touch /run/runit.reboot
+fi
+
+$runit $action

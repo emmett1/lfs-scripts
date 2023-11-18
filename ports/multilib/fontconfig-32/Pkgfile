@@ -1,0 +1,6 @@
+# Depends on: fontconfig freetype-32 expat-32
+
+name=fontconfig-32
+version=2.14.2
+release=1
+source=(https://www.freedesktop.org/software/fontconfig/release/fontconfig-$version.tar.xz)

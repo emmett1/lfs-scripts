@@ -1,21 +1,12 @@
-# Description: Package compiler and linker metadata toolkit
-
 name=pkgconf
-version=1.8.0
+version=2.0.3
 release=1
-source=(http://distfiles.dereferenced.org/$name/$name-$version.tar.xz)
+source=(http://distfiles.dereferenced.org/$name/$name-$version.tar.gz)
+build_type=configure_build
+build_opt="--with-pkg-config-dir=/usr/lib/pkgconfig:/usr/share/pkgconfig
+	--with-system-libdir=/lib:/usr/lib
+	--with-system-includedir=/usr/include"
 
-build() {
-	cd $name-$version
-
-	./configure \
-                --prefix=/usr \
-                --sysconfdir=/etc \
-                --with-pkg-config-dir="/usr/lib/pkgconfig:/usr/share/pkgconfig" \
-                --with-system-libdir="/lib:/usr/lib" \
-                --with-system-includedir="/usr/include"
-        make
-        make DESTDIR=$PKG install
-
-        ln -sf pkgconf "$PKG"/usr/bin/pkg-config
+post_build() {
+	ln -sf pkgconf $PKG/usr/bin/pkg-config
 }

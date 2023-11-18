@@ -1,0 +1,11 @@
+# Depends on: xorg-server libevdev libxi
+
+name=xf86-input-synaptics
+version=1.9.2
+release=1
+source=(https://www.x.org/pub/individual/driver/$name-$version.tar.xz
+	50-synaptics.conf)
+
+post_build() {
+	install -m644 $SRC/50-synaptics.conf $PKG/usr/share/X11/xorg.conf.d/
+}

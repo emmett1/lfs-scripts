@@ -1,0 +1,7 @@
+# Depends on: links 
+
+name=xmlto
+version=0.0.28
+release=1
+source=(https://releases.pagure.org/$name/$name-$version.tar.bz2)
+export LINKS="/usr/bin/links"

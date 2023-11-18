@@ -1,0 +1,4 @@
+name=tiff
+version=4.6.0
+release=1
+source=(http://download.osgeo.org/lib$name/$name-$version.tar.gz)

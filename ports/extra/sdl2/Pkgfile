@@ -1,0 +1,4 @@
+name=sdl2
+version=2.28.4
+release=1
+source=(https://www.libsdl.org/release/SDL2-$version.tar.gz)

@@ -1,0 +1,6 @@
+# Depends on: python3-setuptools python3-markupsafe
+
+name=python3-mako
+version=1.2.4
+release=1
+source=(https://files.pythonhosted.org/packages/source/M/Mako/Mako-$version.tar.gz)

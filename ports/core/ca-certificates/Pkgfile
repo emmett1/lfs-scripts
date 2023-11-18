@@ -1,14 +1,15 @@
-# Description: Certificate Authority certificates
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  p11-kit openssl
-
 name=ca-certificates
-version=20201208
-_version=${version:0:4}-${version:4:2}-${version:6:2}
+version=20230822
 release=1
-source=(https://curl.se/ca/cacert-$_version.pem)
+source=(https://curl.se/ca/cacert-2023-05-30.pem)
 
-build() {	
-	install -Dm644 $SRC/cacert-$_version.pem $PKG/etc/ssl/cert.pem
+bootstrap_build() {
+	install -Dm644 $SRC/cacert-2023-05-30.pem $TOOLS/etc/ssl/cert.pem
+}
+
+pkg_build() {
+	install -Dm644 $SRC/cacert-2023-05-30.pem $PKG/etc/ssl/cert.pem
+	install -d $PKG/etc/ssl/certs
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/certs/ca-certificates.crt
+	ln -s /etc/ssl/cert.pem $PKG/etc/ssl/ca-bundle.crt
 }

@@ -1,0 +1,32 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+-rwxr-xr-x	root/root	usr/lib32/gio-launch-desktop
+drwxr-xr-x	root/root	usr/lib32/gio/
+drwxr-xr-x	root/root	usr/lib32/gio/modules/
+drwxr-xr-x	root/root	usr/lib32/glib-2.0/
+drwxr-xr-x	root/root	usr/lib32/glib-2.0/include/
+-rw-r--r--	root/root	usr/lib32/glib-2.0/include/glibconfig.h
+lrwxrwxrwx	root/root	usr/lib32/libgio-2.0.so -> libgio-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libgio-2.0.so.0 -> libgio-2.0.so.0.7800.0
+-rwxr-xr-x	root/root	usr/lib32/libgio-2.0.so.0.7800.0
+lrwxrwxrwx	root/root	usr/lib32/libglib-2.0.so -> libglib-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libglib-2.0.so.0 -> libglib-2.0.so.0.7800.0
+-rwxr-xr-x	root/root	usr/lib32/libglib-2.0.so.0.7800.0
+lrwxrwxrwx	root/root	usr/lib32/libgmodule-2.0.so -> libgmodule-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libgmodule-2.0.so.0 -> libgmodule-2.0.so.0.7800.0
+-rwxr-xr-x	root/root	usr/lib32/libgmodule-2.0.so.0.7800.0
+lrwxrwxrwx	root/root	usr/lib32/libgobject-2.0.so -> libgobject-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libgobject-2.0.so.0 -> libgobject-2.0.so.0.7800.0
+-rwxr-xr-x	root/root	usr/lib32/libgobject-2.0.so.0.7800.0
+lrwxrwxrwx	root/root	usr/lib32/libgthread-2.0.so -> libgthread-2.0.so.0
+lrwxrwxrwx	root/root	usr/lib32/libgthread-2.0.so.0 -> libgthread-2.0.so.0.7800.0
+-rwxr-xr-x	root/root	usr/lib32/libgthread-2.0.so.0.7800.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gio-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gio-unix-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/glib-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gmodule-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gmodule-export-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gmodule-no-export-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gobject-2.0.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gthread-2.0.pc

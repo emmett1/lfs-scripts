@@ -1,0 +1,6 @@
+# Depends on: cairo gdk-pixbuf glib librsvg 
+
+name=imlib2
+version=1.12.1
+release=1
+source=(https://downloads.sourceforge.net/enlightenment/$name-$version.tar.xz)

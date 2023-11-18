@@ -5,8 +5,7 @@
 awk=awk
 curl=curl
 url_pn='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml'
-url_snpn="https://www.iana.org/assignments/service-names-port-numbers/\
-service-names-port-numbers.xml"
+url_snpn="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml"
 
 download() {
 	datetime=`date +'%FT%T%z'`

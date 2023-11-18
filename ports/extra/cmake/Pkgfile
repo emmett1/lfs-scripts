@@ -1,0 +1,21 @@
+# Depends on: libuv ninja 
+
+name=cmake
+version=3.27.7
+release=1
+source=(https://$name.org/files/v${version%.*}/$name-$version.tar.gz)
+
+pkg_build() {
+	sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake
+	./bootstrap \
+		--prefix=/usr \
+		--system-libs \
+		--mandir=/share/man \
+		--no-system-jsoncpp \
+		--no-system-cppdap \
+		--no-system-librhash
+	make
+	make install
+	mkdir -p $PKG/usr/share
+	mv $PKG/usr/doc $PKG/usr/share
+}

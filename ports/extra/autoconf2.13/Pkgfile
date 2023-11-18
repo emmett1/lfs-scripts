@@ -1,0 +1,11 @@
+name=autoconf2.13
+version=2.13
+release=1
+source=(https://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.gz
+	autoconf-2.13-consolidated_fixes-1.patch)
+build_opt="--program-suffix=2.13"
+
+pre_build() {
+	mv autoconf.texi autoconf213.texi
+	rm autoconf.info
+}

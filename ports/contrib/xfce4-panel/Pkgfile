@@ -1,0 +1,6 @@
+# Depends on: cairo exo garcon libwnck
+
+name=xfce4-panel
+version=4.18.5
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

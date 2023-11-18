@@ -1,0 +1,34 @@
+# Depends on: grub
+
+name=os-prober
+version=1.81
+release=1
+source=(http://ftp.de.debian.org/debian/pool/main/o/$name/${name}_$version.tar.xz
+  # grabbed from gentoo
+  os-prober-1.79-btrfs-subvolume-detection.patch
+  os-prober-1.79-use-fstab-name.patch
+  os-prober-1.79-mounted-boot-partition-fix.patch
+  os-prober-1.79-fix-busy-umount-message.patch
+  os-prober-1.79-efi-chroot-blkid-fallback.patch
+  add-CRUX-detection.patch)
+
+pkg_build() {
+  # Adjust lib dir to allow detection of 64-bit distros
+  sed -i -e "s:/lib/ld\*\.so\*:/lib*/ld*.so*:g" os-probes/mounted/common/90linux-distro
+  rm -f Makefile
+  make newns
+
+  find . -iname "*.orig" -delete
+
+  install -Dm755 linux-boot-prober $PKG/usr/bin/linux-boot-prober
+  install -Dm755 $name $PKG/usr/bin/$name
+  install -Dm755 newns $PKG/usr/lib/$name/newns
+  install -Dm755 common.sh $PKG/usr/share/$name/common.sh
+  for i in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do
+    install -dm755 $PKG/usr/lib/$i
+    install -m755 -t $PKG/usr/lib/$i $i/common/*
+    [[ -d $i/x86 ]] && cp -r $i/x86/* $PKG/usr/lib/$i
+  done
+  install -Dm755 os-probes/mounted/powerpc/20macosx $PKG/usr/lib/os-probes/mounted/20macosx
+  install -dm755 $PKG/var/lib/$name
+}

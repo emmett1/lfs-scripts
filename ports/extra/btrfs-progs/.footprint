@@ -1,0 +1,39 @@
+drwxr-xr-x	root/root	lib/
+drwxr-xr-x	root/root	lib/udev/
+drwxr-xr-x	root/root	lib/udev/rules.d/
+-rw-r--r--	root/root	lib/udev/rules.d/64-btrfs-dm.rules
+-rw-r--r--	root/root	lib/udev/rules.d/64-btrfs-zoned.rules
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/btrfs
+-rwxr-xr-x	root/root	usr/bin/btrfs-convert
+-rwxr-xr-x	root/root	usr/bin/btrfs-find-root
+-rwxr-xr-x	root/root	usr/bin/btrfs-image
+-rwxr-xr-x	root/root	usr/bin/btrfs-map-logical
+-rwxr-xr-x	root/root	usr/bin/btrfs-select-super
+lrwxrwxrwx	root/root	usr/bin/btrfsck -> btrfs
+-rwxr-xr-x	root/root	usr/bin/btrfstune
+-rwxr-xr-x	root/root	usr/bin/fsck.btrfs
+-rwxr-xr-x	root/root	usr/bin/mkfs.btrfs
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/btrfs/
+-rw-r--r--	root/root	usr/include/btrfs/ctree.h
+-rw-r--r--	root/root	usr/include/btrfs/ioctl.h
+-rw-r--r--	root/root	usr/include/btrfs/kerncompat.h
+-rw-r--r--	root/root	usr/include/btrfs/list.h
+-rw-r--r--	root/root	usr/include/btrfs/rbtree.h
+-rw-r--r--	root/root	usr/include/btrfs/rbtree_types.h
+-rw-r--r--	root/root	usr/include/btrfs/send-stream.h
+-rw-r--r--	root/root	usr/include/btrfs/send-utils.h
+-rw-r--r--	root/root	usr/include/btrfs/send.h
+-rw-r--r--	root/root	usr/include/btrfs/version.h
+-rw-r--r--	root/root	usr/include/btrfsutil.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libbtrfs.so -> libbtrfs.so.0.1
+lrwxrwxrwx	root/root	usr/lib/libbtrfs.so.0 -> libbtrfs.so.0.1
+-rwxr-xr-x	root/root	usr/lib/libbtrfs.so.0.1
+lrwxrwxrwx	root/root	usr/lib/libbtrfsutil.so -> libbtrfsutil.so.1.2.0
+lrwxrwxrwx	root/root	usr/lib/libbtrfsutil.so.1 -> libbtrfsutil.so.1.2.0
+-rwxr-xr-x	root/root	usr/lib/libbtrfsutil.so.1.2.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libbtrfsutil.pc

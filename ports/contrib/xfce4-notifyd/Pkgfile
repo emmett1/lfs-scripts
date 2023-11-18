@@ -1,0 +1,6 @@
+# Depends on: libnotify libxfce4ui libcanberra xfce4-dev-tools xfce4-panel
+
+name=xfce4-notifyd
+version=0.9.3
+release=1
+source=(https://archive.xfce.org/src/apps/${name}/${version%.*}/${name}-${version}.tar.bz2)

@@ -1,0 +1,6 @@
+# Depends on: imlib2 libx11 libxfixes 
+
+name=scrot
+version=0.10.0
+release=1
+source=(https://github.com/dreamer/$name/archive/v$version/$name-$version.tar.gz)

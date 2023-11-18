@@ -1,5 +1,5 @@
 url=https://www.perl.org/get.html
 
-getver_perl() {	
-	getver
+port_getver() {	
+	getver_default
 }

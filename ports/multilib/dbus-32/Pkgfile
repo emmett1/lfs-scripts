@@ -1,0 +1,15 @@
+# Depends on: dbus expat-32
+
+name=dbus-32
+version=1.14.10
+release=1
+source=(https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz)
+build_opt="
+        --disable-doxygen-docs
+        --disable-xml-docs
+        --disable-static
+        --with-systemduserunitdir=no
+        --with-systemdsystemunitdir=no
+        --with-system-socket=/run/dbus/system_bus_socket
+        --with-console-auth-dir=/run/console
+"

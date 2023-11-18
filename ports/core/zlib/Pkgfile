@@ -1,21 +1,11 @@
-# Description: Compression and decompression routines used by some programs
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=zlib
-version=1.2.12
+version=1.3
 release=1
-source=(https://zlib.net/$name-$version.tar.xz)
+source=(https://$name.net/$name-$version.tar.xz)
+keep_static=1
 
-build() {
-        cd $name-$version
-
-        ./configure --prefix=/usr
-        make
-        make DESTDIR=$PKG install
-
-        mkdir -p $PKG/lib
-        mv -v $PKG/usr/lib/libz.so.* $PKG/lib
-        ln -sfv ../../lib/$(readlink $PKG/usr/lib/libz.so) $PKG/usr/lib/libz.so
+pkg_build() {
+	./configure --prefix=/usr --localstatedir=/var
+	make
+	make DESTDIR=$PKG install
 }

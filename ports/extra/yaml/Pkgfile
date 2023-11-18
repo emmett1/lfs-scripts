@@ -1,0 +1,4 @@
+name=yaml
+version=0.2.5
+release=1
+source=(http://py$name.org/download/lib$name/$name-$version.tar.gz)

@@ -1,0 +1,4 @@
+name=libnl
+version=3.8.0
+release=1
+source=(https://github.com/thom311/$name/releases/download/$name${version//\./_}/$name-$version.tar.gz)

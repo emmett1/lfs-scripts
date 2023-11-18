@@ -1,0 +1,45 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/steam -> /usr/lib/steam/bin_steam.sh
+lrwxrwxrwx	root/root	usr/bin/steamdeps -> /bin/true
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/steam/
+-rwxr-xr-x	root/root	usr/lib/steam/bin_steam.sh
+-rwxr-xr-x	root/root	usr/lib/steam/bin_steamdeps.py
+-rw-r--r--	root/root	usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
+lrwxrwxrwx	root/root	usr/lib/steam/steam.desktop -> /usr/share/applications/steam.desktop
+drwxr-xr-x	root/root	usr/lib/steam/steam_launcher/
+-rw-r--r--	root/root	usr/lib/steam/steam_launcher/__init__.py (EMPTY)
+-rw-r--r--	root/root	usr/lib/steam/steam_launcher/launcherutils.py
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/applications/
+-rw-r--r--	root/root	usr/share/applications/steam.desktop
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/steam/
+-rw-r--r--	root/root	usr/share/doc/steam/README
+-rw-r--r--	root/root	usr/share/doc/steam/steam_subscriber_agreement.txt
+drwxr-xr-x	root/root	usr/share/icons/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/16x16/apps/steam.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/24x24/apps/steam.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/256x256/apps/steam.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/32x32/apps/steam.png
+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/
+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/apps/
+-rw-r--r--	root/root	usr/share/icons/hicolor/48x48/apps/steam.png
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man6/
+-rw-r--r--	root/root	usr/share/man/man6/steam.6.gz
+drwxr-xr-x	root/root	usr/share/metainfo/
+-rw-r--r--	root/root	usr/share/metainfo/com.valvesoftware.Steam.metainfo.xml
+drwxr-xr-x	root/root	usr/share/pixmaps/
+-rw-r--r--	root/root	usr/share/pixmaps/steam.png
+-rw-r--r--	root/root	usr/share/pixmaps/steam_tray_mono.png

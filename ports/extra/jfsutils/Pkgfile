@@ -1,0 +1,10 @@
+name=jfsutils
+version=1.1.15
+release=1
+source=(https://jfs.sourceforge.net/project/pub/$name-$version.tar.gz
+	jfsutils-1.1.15-gcc10_fix-1.patch)
+
+pre_build() {
+	sed -i "/unistd.h/a#include <sys/types.h>"    fscklog/extract.c
+	sed -i "/ioctl.h/a#include <sys/sysmacros.h>" libfs/devices.c
+}

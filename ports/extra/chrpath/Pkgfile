@@ -1,0 +1,4 @@
+name=chrpath
+version=0.16
+release=1
+source=(http://http.debian.net/debian/pool/main/c/$name/chrpath_$version.orig.tar.gz)

@@ -1,0 +1,119 @@
+# Depends on: alsa-lib dbus double-conversion glib harfbuzz icu libjpeg-turbo libpng tiff libwebp libxkbcommon mesa mtdev pcre2 wayland xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm libxkbcommon 
+
+name=qt5
+version=5.15.11
+release=1
+source=(https://download.qt.io/archive/qt/${version%.*}/$version/single/qt-everywhere-opensource-src-$version.tar.xz
+	qt-everywhere-opensource-src-5.15.11-kf5-1.patch
+	qt-5.15.11-xkbcommon160.patch)
+keep_static=1
+
+pkg_build() {
+	mkdir -pv qtbase/.git
+	
+	# fix for building with GCC-13
+	sed -e "/pragma once/a#include <cstdint>"                                      \
+	    -i qtlocation/src/3rdparty/mapbox-gl-native/include/mbgl/util/geometry.hpp \
+	       qtlocation/src/3rdparty/mapbox-gl-native/include/mbgl/util/string.hpp   \
+	       qtlocation/src/3rdparty/mapbox-gl-native/src/mbgl/gl/stencil_mode.hpp
+	
+	./configure \
+		-prefix /usr \
+		-sysconfdir /etc/xdg \
+		-confirm-license \
+		-opensource \
+		-dbus-linked \
+		-openssl-linked \
+		-system-harfbuzz \
+		-system-sqlite \
+		-nomake examples \
+		-no-rpath \
+		-syslog \
+		-skip qtwebengine \
+		-archdatadir /usr/lib/qt5 \
+		-bindir /usr/bin \
+		-plugindir /usr/lib/qt5/plugins \
+		-importdir /usr/lib/qt5/imports \
+		-headerdir /usr/include/qt5 \
+		-datadir /usr/share/qt5 \
+		-docdir /usr/share/doc/qt5 \
+		-translationdir /usr/share/qt5/translations \
+		-examplesdir /usr/share/doc/qt5/examples
+	make
+	make install
+	
+	find $PKG -name \*.prl \
+	   -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+	
+	install -v -dm755 $PKG/usr/share/pixmaps/
+	
+	install -Dm644 qttools/src/assistant/assistant/images/assistant-128.png \
+		$PKG/usr/share/pixmaps/assistant-qt5.png
+	
+	install -Dm644 qttools/src/designer/src/designer/images/designer.png \
+		$PKG/usr/share/pixmaps/designer-qt5.png
+	
+	install -Dm644 qttools/src/linguist/linguist/images/icons/linguist-128-32.png \
+		$PKG/usr/share/pixmaps/linguist-qt5.png
+	
+	install -Dm644 qttools/src/qdbus/qdbusviewer/images/qdbusviewer-128.png \
+		$PKG/usr/share/pixmaps/qdbusviewer-qt5.png
+	
+	install -dm755 $PKG/usr/share/applications
+	
+cat > $PKG/usr/share/applications/assistant-qt5.desktop << EOF
+[Desktop Entry]
+Name=Qt5 Assistant
+Comment=Shows Qt5 documentation and examples
+Exec=/usr/assistant
+Icon=assistant-qt5.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Documentation;
+EOF
+
+cat > $PKG/usr/share/applications/designer-qt5.desktop << EOF
+[Desktop Entry]
+Name=Qt5 Designer
+GenericName=Interface Designer
+Comment=Design GUIs for Qt5 applications
+Exec=/usr/designer
+Icon=designer-qt5.png
+MimeType=application/x-designer;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat > $PKG/usr/share/applications/linguist-qt5.desktop << EOF
+[Desktop Entry]
+Name=Qt5 Linguist
+Comment=Add translations to Qt5 applications
+Exec=/usr/linguist
+Icon=linguist-qt5.png
+MimeType=text/vnd.trolltech.linguist;application/x-linguist;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat > $PKG/usr/share/applications/qdbusviewer-qt5.desktop << EOF
+[Desktop Entry]
+Name=Qt5 QDbusViewer
+GenericName=D-Bus Debugger
+Comment=Debug D-Bus applications
+Exec=/usr/qdbusviewer
+Icon=qdbusviewer-qt5.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Debugger;
+EOF
+	
+	for file in moc uic rcc qmake lconvert lrelease lupdate; do
+	  ln -sfrvn /usr/$file $PKG/usr/bin/$file-qt5
+	done
+}

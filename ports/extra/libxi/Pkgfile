@@ -1,0 +1,6 @@
+# Depends on: libx11 libxext libxfixes 
+
+name=libxi
+version=1.8.1
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXi-$version.tar.xz)

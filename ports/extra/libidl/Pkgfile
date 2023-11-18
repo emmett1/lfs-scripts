@@ -1,0 +1,6 @@
+# Depends on: glib
+
+name=libidl
+version=0.8.14
+release=1
+source=(http://ftp.gnome.org/pub/gnome/sources/libIDL/${version%.*}/libIDL-$version.tar.bz2)

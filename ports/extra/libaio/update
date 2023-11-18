@@ -1,0 +1,6 @@
+filename=libaio
+
+port_getver() {
+	getver_default | sed 's/\.orig//'
+}
+

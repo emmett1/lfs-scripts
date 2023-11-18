@@ -1,0 +1,3 @@
+#!/bin/sh
+tty=${PWD##*-}
+exec setsid agetty $tty 38400 linux

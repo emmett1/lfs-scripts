@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/obconf
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/applications/
+-rw-r--r--	root/root	usr/share/applications/obconf.desktop
+drwxr-xr-x	root/root	usr/share/mime/
+drwxr-xr-x	root/root	usr/share/mime/packages/
+-rw-r--r--	root/root	usr/share/mime/packages/obconf.xml
+drwxr-xr-x	root/root	usr/share/mimelnk/
+drwxr-xr-x	root/root	usr/share/mimelnk/application/
+-rw-r--r--	root/root	usr/share/mimelnk/application/x-openbox-theme.desktop
+drwxr-xr-x	root/root	usr/share/obconf/
+-rw-r--r--	root/root	usr/share/obconf/obconf.glade
+-rw-r--r--	root/root	usr/share/obconf/video-display.png
+drwxr-xr-x	root/root	usr/share/pixmaps/
+-rw-r--r--	root/root	usr/share/pixmaps/obconf.png

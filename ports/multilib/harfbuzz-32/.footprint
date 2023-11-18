@@ -1,0 +1,22 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/cmake/
+drwxr-xr-x	root/root	usr/lib32/cmake/harfbuzz/
+-rw-r--r--	root/root	usr/lib32/cmake/harfbuzz/harfbuzz-config.cmake
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-gobject.so -> libharfbuzz-gobject.so.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-gobject.so.0 -> libharfbuzz-gobject.so.0.60821.0
+-rwxr-xr-x	root/root	usr/lib32/libharfbuzz-gobject.so.0.60821.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-icu.so -> libharfbuzz-icu.so.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-icu.so.0 -> libharfbuzz-icu.so.0.60821.0
+-rwxr-xr-x	root/root	usr/lib32/libharfbuzz-icu.so.0.60821.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-subset.so -> libharfbuzz-subset.so.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz-subset.so.0 -> libharfbuzz-subset.so.0.60821.0
+-rwxr-xr-x	root/root	usr/lib32/libharfbuzz-subset.so.0.60821.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz.so -> libharfbuzz.so.0
+lrwxrwxrwx	root/root	usr/lib32/libharfbuzz.so.0 -> libharfbuzz.so.0.60821.0
+-rwxr-xr-x	root/root	usr/lib32/libharfbuzz.so.0.60821.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/harfbuzz-gobject.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/harfbuzz-icu.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/harfbuzz-subset.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/harfbuzz.pc

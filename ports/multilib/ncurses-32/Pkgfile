@@ -1,0 +1,11 @@
+name=ncurses-32
+version=6.4
+release=1
+source=(https://invisible-mirror.net/archives/ncurses/ncurses-$version.tar.gz)
+build_opt="--without-debug
+	--with-shared
+	--without-normal
+	--with-cxx-shared
+	--enable-pc-files
+	--enable-widec
+	--with-pkg-config-libdir=/usr/lib32/pkgconfig"

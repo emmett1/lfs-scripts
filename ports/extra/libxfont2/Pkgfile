@@ -1,0 +1,7 @@
+# Depends on: libfontenc freetype xtrans 
+
+name=libxfont2
+version=2.0.6
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXfont2-$version.tar.xz)
+build_opt="--disable-devel-docs"

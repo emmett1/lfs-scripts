@@ -1,0 +1,6 @@
+# Depends on: nettle libunistring libtasn1 p11-kit 
+
+name=gnutls
+version=3.8.1
+release=1
+source=(https://www.gnupg.org/ftp/gcrypt/$name/v${version%.*}/$name-$version.tar.xz)

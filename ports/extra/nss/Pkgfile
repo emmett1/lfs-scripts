@@ -1,0 +1,35 @@
+# Depends on: nspr 
+
+name=nss
+version=3.92
+release=1
+source=(https://archive.mozilla.org/pub/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz
+	nss-3.92-standalone-1.patch)
+
+pkg_build() {
+	cd nss
+	make BUILD_OPT=1                  \
+	  NSPR_INCLUDE_DIR=/usr/include/nspr  \
+	  USE_SYSTEM_ZLIB=1                   \
+	  ZLIB_LIBS=-lz                       \
+	  NSS_ENABLE_WERROR=0                 \
+	  USE_64=1 \
+	  NSS_USE_SYSTEM_SQLITE=1
+	
+	cd ../dist
+	
+	mkdir -p $PKG/usr/lib $PKG/usr/bin $PKG/usr/lib/pkgconfig
+	install -v -m755 Linux*/lib/*.so $PKG/usr/lib
+	install -v -m644 Linux*/lib/*.chk $PKG/usr/lib
+	install -v -m644 Linux*/lib/libcrmf.a $PKG/usr/lib
+	
+	install -v -m755 -d $PKG/usr/include/nss
+	cp -v -RL public/nss/* $PKG/usr/include/nss
+	cp -v -RL private/nss/* $PKG/usr/include/nss
+	
+	install -v -m755 Linux*/bin/certutil $PKG/usr/bin
+	install -v -m755 Linux*/bin/nss-config $PKG/usr/bin
+	install -v -m755 Linux*/bin/pk12util $PKG/usr/bin
+	
+	install -v -m644 Linux*/lib/pkgconfig/nss.pc $PKG/usr/lib/pkgconfig
+}

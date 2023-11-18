@@ -1,0 +1,6 @@
+# Depends on: glib gobject-introspection vala
+
+name=libxfce4util
+version=4.18.1
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

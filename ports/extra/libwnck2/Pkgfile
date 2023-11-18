@@ -1,0 +1,11 @@
+# Depends on: libxres libxt gtk2 glib
+
+name=libwnck2
+version=2.30.7
+release=1
+source=(https://download.gnome.org/sources/libwnck/${version%.*}/libwnck-$version.tar.xz)
+build_opt="--program-suffix=-1"
+
+pre_build() {
+	export GETTEXT_PACKAGE=libwnck-1
+}

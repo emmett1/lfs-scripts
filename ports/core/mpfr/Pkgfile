@@ -1,19 +1,5 @@
-# Description: Functions for multiple precision math
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=mpfr
-version=4.1.0
+version=4.2.1
 release=1
-source=(https://www.mpfr.org/$name-$version/$name-$version.tar.xz)
-
-build() {
-        cd $name-$version
-
-        ./configure --prefix=/usr        \
-                    --disable-static     \
-                    --enable-thread-safe
-        make
-        make DESTDIR=$PKG install
-}
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+build_opt="--enable-thread-safe"

@@ -1,0 +1,9 @@
+name=cpio
+version=2.14
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+
+post_build() {
+	rm $PKG/usr/lib/rmt
+	rm $PKG/usr/share/man/man8/rmt.8
+}

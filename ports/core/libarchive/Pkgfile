@@ -1,19 +1,7 @@
-# Description: Reading/writing various compression formats
-# URL:         https://libarchive.org/
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=libarchive
-version=3.6.0
+version=3.7.2
 release=1
-source=(https://libarchive.org/downloads/libarchive-$version.tar.xz)
-
-build() {
-        cd $name-$version
-
-        ./configure \
-                --prefix=/usr \
-                --disable-static
-        make
-        make DESTDIR=$PKG install
-}
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.xz)
+keep_static=1
+build_opt="--without-xml2"
+bootstrap_opt=$build_opt

@@ -1,0 +1,4 @@
+name=libpciaccess
+version=0.17
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/$name-$version.tar.xz)

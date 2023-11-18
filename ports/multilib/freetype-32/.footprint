@@ -1,0 +1,7 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libfreetype.so -> libfreetype.so.6
+lrwxrwxrwx	root/root	usr/lib32/libfreetype.so.6 -> libfreetype.so.6.20.1
+-rwxr-xr-x	root/root	usr/lib32/libfreetype.so.6.20.1
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/freetype2.pc

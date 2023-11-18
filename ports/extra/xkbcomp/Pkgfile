@@ -1,0 +1,6 @@
+# Depends on: libx11 libxkbfile 
+
+name=xkbcomp
+version=1.4.6
+release=1
+source=(https://www.x.org/pub/individual/app/$name-$version.tar.xz)

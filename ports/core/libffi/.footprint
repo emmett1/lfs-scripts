@@ -1,0 +1,19 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/ffi.h
+-rw-r--r--	root/root	usr/include/ffitarget.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libffi.so -> libffi.so.8.1.2
+lrwxrwxrwx	root/root	usr/lib/libffi.so.8 -> libffi.so.8.1.2
+-rwxr-xr-x	root/root	usr/lib/libffi.so.8.1.2
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libffi.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/libffi.info.gz
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man3/
+-rw-r--r--	root/root	usr/share/man/man3/ffi.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ffi_call.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ffi_prep_cif.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/ffi_prep_cif_var.3.gz

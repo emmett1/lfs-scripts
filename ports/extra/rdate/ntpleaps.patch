@@ -1,0 +1,11 @@
+--- ntpleaps.c.orig	2020-03-12 15:12:33.299103455 +0100
++++ ntpleaps.c	2020-03-12 15:13:28.044382840 +0100
+@@ -124,7 +124,7 @@
+ 	u_int64_t s;
+ 	u_int64_t *l;
+ 
+-	fd = open("/usr/share/zoneinfo/right/UTC", O_RDONLY | O_NDELAY);
++	fd = open("/usr/share/zoneinfo-leaps/UTC", O_RDONLY | O_NDELAY);
+ 	if (fd == -1)
+ 		return (-1);
+ 

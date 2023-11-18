@@ -1,0 +1,7 @@
+# Depends on: harfbuzz freetype-32
+
+name=harfbuzz-32
+version=8.2.1
+release=1
+source=(https://github.com/harfbuzz/harfbuzz/releases/download/$version/harfbuzz-$version.tar.xz)
+build_opt="-Dgraphite2=disabled -Dintrospection=disabled"

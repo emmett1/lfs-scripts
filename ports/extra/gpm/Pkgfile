@@ -1,0 +1,13 @@
+name=gpm
+version=1.20.7
+release=1
+source=(https://anduin.linuxfromscratch.org/BLFS/$name/$name-$version.tar.bz2
+	gpm-1.20.7-consolidated-1.patch)
+
+pre_build() {
+	./autogen.sh
+}
+
+post_build() {
+	install -v -m644 conf/gpm-root.conf $PKG/etc
+}

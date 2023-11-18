@@ -1,0 +1,2 @@
+#!/bin/sh
+gio-querymodules /usr/lib/gio/modules

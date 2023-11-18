@@ -1,25 +1,11 @@
-# Description: Programs for finding and viewing man pages
-# URL:         https://www.nongnu.org/man-db/
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  bash gdbm groff less libpipeline zlib
-
 name=man-db
-version=2.10.2
+version=2.12.0
 release=1
-source=(https://savannah.nongnu.org/download/man-db/$name-$version.tar.xz)
-
-build() {
-        cd $name-$version
-
-        ./configure --prefix=/usr \
-                    --sysconfdir=/etc \
-                    --disable-setuid \
-                    --enable-cache-owner=bin \
-                    --with-browser=/usr/bin/lynx \
-                    --with-vgrind=/usr/bin/vgrind \
-                    --with-grap=/usr/bin/grap \
-                    --with-systemdtmpfilesdir= \
-                    --with-systemdsystemunitdir=
-        make
-        make DESTDIR=$PKG install
-}
+source=(https://download.savannah.gnu.org/releases/$name/$name-$version.tar.xz)
+build_opt="--disable-setuid
+	--enable-cache-owner=bin
+	--with-browser=/usr/bin/lynx
+	--with-vgrind=/usr/bin/vgrind
+	--with-grap=/usr/bin/grap
+	--with-systemdtmpfilesdir=
+	--with-systemdsystemunitdir="

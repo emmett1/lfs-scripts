@@ -1,0 +1,6 @@
+be0cb1f8f06b2461c67857f7d6225253  0001-bootstrap-Change-libexec-dir.patch
+e77b6f8ce0901880f9910d5b93659f8d  0003-compiler-Change-LLVM-targets.patch
+3d321f146da94007b5242cea2cafbcd1  cargo-1.72.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+9a62df1ee02db96ba5b2b886b69273dd  rust-std-1.72.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+99f825ba02c82a8b0513ce0e873bbb9b  rustc-1.72.0-x86_64-unknown-linux-gnu.tar.xz.noextract
+2b5fd1623a6591c3e31eaec674ccc81c  rustc-1.73.0-src.tar.xz

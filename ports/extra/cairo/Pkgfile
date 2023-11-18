@@ -1,0 +1,6 @@
+# Depends on: libpng glib libx11 libxcb libxext libxrender pixman fontconfig 
+
+name=cairo
+version=1.18.0
+release=1
+source=(https://www.cairographics.org/releases/cairo-$version.tar.xz)

@@ -1,0 +1,32 @@
+# Depends on: nasm libaom libtheora opus libass fdk-aac lame libvpx x264 x265 libxv
+
+name=ffmpeg
+version=6.0
+release=1
+source=(https://$name.org/releases/$name-$version.tar.xz
+	ffmpeg-6.0-binutils_2.41-1.patch
+	ffmpeg-6.0-chromium_method-1.patch)
+
+pkg_build() {
+	./configure \
+		--prefix=/usr \
+		--enable-gpl \
+		--enable-version3 \
+		--enable-nonfree \
+		--enable-shared \
+		--disable-debug \
+		--enable-libaom \
+		--enable-libass \
+		--enable-libfdk-aac \
+		--enable-libfreetype \
+		--enable-libmp3lame \
+		--enable-libopus \
+		--enable-libtheora \
+		--enable-libvorbis \
+		--enable-libvpx \
+		--enable-libx264 \
+		--enable-libx265 \
+		--enable-openssl
+	make
+	make install
+}

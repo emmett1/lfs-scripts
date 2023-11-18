@@ -1,0 +1,7 @@
+# Depends on: 
+
+name=pm-utils
+version=1.4.1
+release=1
+source=(https://${name}.freedesktop.org/releases/${name}-${version}.tar.gz
+	pm-utils-1.4.1-bugfixes-1.patch)

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+if [ $(id -u) != 0 ]; then
+	echo "ERROR: $(basename $0) need run as root!"
+	exit 1
+fi
+
+LOCALES=/etc/locales
+
+rm -f /usr/lib/locale/locale-archive
+mkdir -p /usr/lib/locale
+
+while read locale charset; do
+	case $locale in
+		""|\#*) continue ;;
+	esac
+	if [ -n $locale -a -n $charset ]; then
+		if [ -f /usr/share/i18n/locales/$locale ]; then
+			input=$locale
+		else
+			input=$(echo $locale | sed 's/\([^.]*\)[^@]*\(.*\)/\1\2/')
+		fi
+		echo "Generate locale $locale.$charset..."
+		localedef -i $input -f $charset $locale
+	fi
+done < $LOCALES
+
+exit 0

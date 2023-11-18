@@ -1,0 +1,29 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/sysstat-qt5/
+drwxr-xr-x	root/root	usr/include/sysstat-qt5/SysStat/
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/BaseStat
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/CpuStat
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/Global
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/MemStat
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/NetStat
+-rw-r--r--	root/root	usr/include/sysstat-qt5/SysStat/Version
+-rw-r--r--	root/root	usr/include/sysstat-qt5/basestat.h
+-rw-r--r--	root/root	usr/include/sysstat-qt5/cpustat.h
+-rw-r--r--	root/root	usr/include/sysstat-qt5/memstat.h
+-rw-r--r--	root/root	usr/include/sysstat-qt5/netstat.h
+-rw-r--r--	root/root	usr/include/sysstat-qt5/sysstat_global.h
+-rw-r--r--	root/root	usr/include/sysstat-qt5/version.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libsysstat-qt5.so -> libsysstat-qt5.so.0
+lrwxrwxrwx	root/root	usr/lib/libsysstat-qt5.so.0 -> libsysstat-qt5.so.0.4.6
+-rwxr-xr-x	root/root	usr/lib/libsysstat-qt5.so.0.4.6
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/sysstat-qt5.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/cmake/
+drwxr-xr-x	root/root	usr/share/cmake/sysstat-qt5/
+-rw-r--r--	root/root	usr/share/cmake/sysstat-qt5/sysstat-qt5-config-version.cmake
+-rw-r--r--	root/root	usr/share/cmake/sysstat-qt5/sysstat-qt5-config.cmake
+-rw-r--r--	root/root	usr/share/cmake/sysstat-qt5/sysstat-qt5-targets-release.cmake
+-rw-r--r--	root/root	usr/share/cmake/sysstat-qt5/sysstat-qt5-targets.cmake

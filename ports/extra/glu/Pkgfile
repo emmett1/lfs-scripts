@@ -1,0 +1,6 @@
+# Depends on: mesa
+
+name=glu
+version=9.0.3
+release=1
+source=(https://mesa.freedesktop.org/archive/$name/$name-$version.tar.xz)

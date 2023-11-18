@@ -1,0 +1,44 @@
+# Depends on: llvm zstd-32 zlib-32 icu-32 libffi-32 libxml2-32
+
+name=llvm-32
+version=17.0.4
+release=1
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-$version.src.tar.xz
+	https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/cmake-$version.src.tar.xz
+	https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/third-party-$version.src.tar.xz)
+build_opt="
+	-DLLVM_LIBDIR_SUFFIX=32
+	-DCMAKE_C_FLAGS:STRING=-m32
+	-DCMAKE_CXX_FLAGS:STRING=-m32
+	-DLLVM_TARGET_ARCH:STRING=i686
+	-DLLVM_DEFAULT_TARGET_TRIPLE='i686-pc-linux-gnu'
+	-DLLVM_ENABLE_FFI=ON
+	-DLLVM_BUILD_LLVM_DYLIB=ON
+	-DLLVM_LINK_LLVM_DYLIB=ON
+	-DLLVM_ENABLE_RTTI=ON
+	-DLLVM_BINUTILS_INCDIR=/usr/include
+	-DLLVM_INCLUDE_BENCHMARKS=OFF
+	-DLLVM_INCLUDE_EXAMPLES=OFF
+	-DLLVM_ENABLE_OCAMLDOC=OFF
+	-DLLVM_INCLUDE_TESTS=OFF
+	-DLLVM_ENABLE_OCAMLDOC=OFF
+	-DLLVM_ENABLE_LIBCXX=OFF"
+build_type=cmake_build
+
+pre_build() {
+	mv ../cmake-${version}.src .
+	mv ../third-party-${version}.src .
+
+	sed "/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-${version}.src@" -i CMakeLists.txt                 
+	sed "/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-${version}.src@" \
+		-i cmake/modules/HandleLLVMOptions.cmake
+}
+
+post_build() {
+	mkdir -p \
+		$PKG/usr/bin \
+		$PKG/usr/include/llvm/Config
+	
+	cp $PKG-old/usr/bin/llvm-config $PKG/usr/bin/llvm-config-32
+	cp $PKG-old/usr/include/llvm/Config/llvm-config.h $PKG/usr/include/llvm/Config/llvm-config-32.h
+}

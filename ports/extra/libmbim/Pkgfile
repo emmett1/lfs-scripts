@@ -1,0 +1,6 @@
+# Depends on: gobject-introspection 
+
+name=libmbim
+version=1.26.4
+release=1
+source=(https://www.freedesktop.org/software/$name/$name-$version.tar.xz)

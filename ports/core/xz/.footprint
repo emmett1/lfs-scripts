@@ -1,0 +1,305 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/lzcat -> xz
+lrwxrwxrwx	root/root	usr/bin/lzcmp -> xzdiff
+lrwxrwxrwx	root/root	usr/bin/lzdiff -> xzdiff
+lrwxrwxrwx	root/root	usr/bin/lzegrep -> xzgrep
+lrwxrwxrwx	root/root	usr/bin/lzfgrep -> xzgrep
+lrwxrwxrwx	root/root	usr/bin/lzgrep -> xzgrep
+lrwxrwxrwx	root/root	usr/bin/lzless -> xzless
+lrwxrwxrwx	root/root	usr/bin/lzma -> xz
+-rwxr-xr-x	root/root	usr/bin/lzmadec
+-rwxr-xr-x	root/root	usr/bin/lzmainfo
+lrwxrwxrwx	root/root	usr/bin/lzmore -> xzmore
+lrwxrwxrwx	root/root	usr/bin/unlzma -> xz
+lrwxrwxrwx	root/root	usr/bin/unxz -> xz
+-rwxr-xr-x	root/root	usr/bin/xz
+lrwxrwxrwx	root/root	usr/bin/xzcat -> xz
+lrwxrwxrwx	root/root	usr/bin/xzcmp -> xzdiff
+-rwxr-xr-x	root/root	usr/bin/xzdec
+-rwxr-xr-x	root/root	usr/bin/xzdiff
+lrwxrwxrwx	root/root	usr/bin/xzegrep -> xzgrep
+lrwxrwxrwx	root/root	usr/bin/xzfgrep -> xzgrep
+-rwxr-xr-x	root/root	usr/bin/xzgrep
+-rwxr-xr-x	root/root	usr/bin/xzless
+-rwxr-xr-x	root/root	usr/bin/xzmore
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/lzma.h
+drwxr-xr-x	root/root	usr/include/lzma/
+-rw-r--r--	root/root	usr/include/lzma/base.h
+-rw-r--r--	root/root	usr/include/lzma/bcj.h
+-rw-r--r--	root/root	usr/include/lzma/block.h
+-rw-r--r--	root/root	usr/include/lzma/check.h
+-rw-r--r--	root/root	usr/include/lzma/container.h
+-rw-r--r--	root/root	usr/include/lzma/delta.h
+-rw-r--r--	root/root	usr/include/lzma/filter.h
+-rw-r--r--	root/root	usr/include/lzma/hardware.h
+-rw-r--r--	root/root	usr/include/lzma/index.h
+-rw-r--r--	root/root	usr/include/lzma/index_hash.h
+-rw-r--r--	root/root	usr/include/lzma/lzma12.h
+-rw-r--r--	root/root	usr/include/lzma/stream_flags.h
+-rw-r--r--	root/root	usr/include/lzma/version.h
+-rw-r--r--	root/root	usr/include/lzma/vli.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/liblzma.a
+lrwxrwxrwx	root/root	usr/lib/liblzma.so -> liblzma.so.5.4.4
+lrwxrwxrwx	root/root	usr/lib/liblzma.so.5 -> liblzma.so.5.4.4
+-rwxr-xr-x	root/root	usr/lib/liblzma.so.5.4.4
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/liblzma.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/xz/
+-rw-r--r--	root/root	usr/share/doc/xz/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/xz/COPYING
+-rw-r--r--	root/root	usr/share/doc/xz/COPYING.GPLv2
+-rw-r--r--	root/root	usr/share/doc/xz/NEWS
+-rw-r--r--	root/root	usr/share/doc/xz/README
+-rw-r--r--	root/root	usr/share/doc/xz/THANKS
+-rw-r--r--	root/root	usr/share/doc/xz/TODO
+drwxr-xr-x	root/root	usr/share/doc/xz/api/
+-rw-r--r--	root/root	usr/share/doc/xz/api/annotated.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/base_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/bc_s.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/bc_sd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/bcj_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/block_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/check_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/classes.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/closed.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/container_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/delta_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/dir_b17a1d403082bd69a703ed987cf158fb.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/doc.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/docd.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/doxygen.css
+-rw-r--r--	root/root	usr/share/doc/xz/api/doxygen.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/files.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/filter_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/folderclosed.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/folderclosedd.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/folderopen.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/folderopend.svg
+-rw-r--r--	root/root	usr/share/doc/xz/api/functions.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/functions_vars.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals_defs.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals_enum.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals_eval.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals_func.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/globals_type.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/hardware_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/index.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/index_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/index__hash_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/lzma12_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/lzma_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/nav_f.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/nav_fd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/nav_g.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/nav_h.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/nav_hd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/open.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/splitbar.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/splitbard.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/stream__flags_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__allocator.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__block.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__filter.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__index__iter.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__mt.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__options__bcj.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__options__delta.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__options__lzma.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__stream.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/structlzma__stream__flags.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/sync_off.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/sync_on.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_a.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_ad.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_b.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_bd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_h.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_hd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_s.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tab_sd.png
+-rw-r--r--	root/root	usr/share/doc/xz/api/tabs.css
+-rw-r--r--	root/root	usr/share/doc/xz/api/version_8h.html
+-rw-r--r--	root/root	usr/share/doc/xz/api/vli_8h.html
+drwxr-xr-x	root/root	usr/share/doc/xz/examples/
+-rw-r--r--	root/root	usr/share/doc/xz/examples/00_README.txt
+-rw-r--r--	root/root	usr/share/doc/xz/examples/01_compress_easy.c
+-rw-r--r--	root/root	usr/share/doc/xz/examples/02_decompress.c
+-rw-r--r--	root/root	usr/share/doc/xz/examples/03_compress_custom.c
+-rw-r--r--	root/root	usr/share/doc/xz/examples/04_compress_easy_mt.c
+-rw-r--r--	root/root	usr/share/doc/xz/examples/Makefile
+drwxr-xr-x	root/root	usr/share/doc/xz/examples_old/
+-rw-r--r--	root/root	usr/share/doc/xz/examples_old/xz_pipe_comp.c
+-rw-r--r--	root/root	usr/share/doc/xz/examples_old/xz_pipe_decomp.c
+-rw-r--r--	root/root	usr/share/doc/xz/faq.txt
+-rw-r--r--	root/root	usr/share/doc/xz/history.txt
+-rw-r--r--	root/root	usr/share/doc/xz/lzma-file-format.txt
+-rw-r--r--	root/root	usr/share/doc/xz/xz-file-format.txt
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/de/
+drwxr-xr-x	root/root	usr/share/man/de/man1/
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzfgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/xzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/de/man1/xzfgrep.1 -> xzgrep.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xzgrep.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/de/man1/xzmore.1
+drwxr-xr-x	root/root	usr/share/man/fr/
+drwxr-xr-x	root/root	usr/share/man/fr/man1/
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/fr/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/fr/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/fr/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/fr/man1/xzdiff.1
+-rw-r--r--	root/root	usr/share/man/fr/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/fr/man1/xzmore.1
+drwxr-xr-x	root/root	usr/share/man/ko/
+drwxr-xr-x	root/root	usr/share/man/ko/man1/
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzfgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/xzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ko/man1/xzfgrep.1 -> xzgrep.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xzgrep.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/ko/man1/xzmore.1
+drwxr-xr-x	root/root	usr/share/man/man1/
+lrwxrwxrwx	root/root	usr/share/man/man1/lzcat.1.gz -> xz.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzcmp.1.gz -> xzdiff.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzdiff.1.gz -> xzdiff.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzegrep.1.gz -> xzgrep.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzfgrep.1.gz -> xzgrep.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzgrep.1.gz -> xzgrep.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzless.1.gz -> xzless.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzma.1.gz -> xz.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzmadec.1.gz -> xzdec.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/lzmainfo.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/lzmore.1.gz -> xzmore.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/unlzma.1.gz -> xz.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/unxz.1.gz -> xz.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xz.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/xzcat.1.gz -> xz.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/xzcmp.1.gz -> xzdiff.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xzdec.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xzdiff.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/xzegrep.1.gz -> xzgrep.1.gz
+lrwxrwxrwx	root/root	usr/share/man/man1/xzfgrep.1.gz -> xzgrep.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xzgrep.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xzless.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/xzmore.1.gz
+drwxr-xr-x	root/root	usr/share/man/pt_BR/
+drwxr-xr-x	root/root	usr/share/man/pt_BR/man1/
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzfgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/xzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/pt_BR/man1/xzfgrep.1 -> xzgrep.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xzgrep.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/pt_BR/man1/xzmore.1
+drwxr-xr-x	root/root	usr/share/man/ro/
+drwxr-xr-x	root/root	usr/share/man/ro/man1/
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzfgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/xzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/ro/man1/xzfgrep.1 -> xzgrep.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xzgrep.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/ro/man1/xzmore.1
+drwxr-xr-x	root/root	usr/share/man/uk/
+drwxr-xr-x	root/root	usr/share/man/uk/man1/
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzcmp.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzdiff.1 -> xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzfgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzgrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzless.1 -> xzless.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzmadec.1 -> xzdec.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/lzmore.1 -> xzmore.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/unlzma.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/unxz.1 -> xz.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xz.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/xzcat.1 -> xz.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/xzcmp.1 -> xzdiff.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xzdec.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xzdiff.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/xzegrep.1 -> xzgrep.1
+lrwxrwxrwx	root/root	usr/share/man/uk/man1/xzfgrep.1 -> xzgrep.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xzgrep.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xzless.1
+-rw-r--r--	root/root	usr/share/man/uk/man1/xzmore.1

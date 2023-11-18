@@ -1,0 +1,33 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/dri/
+-rwxr-xr-x	root/root	usr/lib32/dri/crocus_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/i915_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/iris_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/kms_swrast_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/nouveau_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/r300_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/r600_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/radeonsi_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/swrast_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/virtio_gpu_dri.so
+-rwxr-xr-x	root/root	usr/lib32/dri/vmwgfx_dri.so
+lrwxrwxrwx	root/root	usr/lib32/libEGL_mesa.so -> libEGL_mesa.so.0
+lrwxrwxrwx	root/root	usr/lib32/libEGL_mesa.so.0 -> libEGL_mesa.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libEGL_mesa.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libGLX_mesa.so -> libGLX_mesa.so.0
+lrwxrwxrwx	root/root	usr/lib32/libGLX_mesa.so.0 -> libGLX_mesa.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libGLX_mesa.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libgbm.so -> libgbm.so.1
+lrwxrwxrwx	root/root	usr/lib32/libgbm.so.1 -> libgbm.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib32/libgbm.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libglapi.so -> libglapi.so.0
+lrwxrwxrwx	root/root	usr/lib32/libglapi.so.0 -> libglapi.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libglapi.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxatracker.so -> libxatracker.so.2
+lrwxrwxrwx	root/root	usr/lib32/libxatracker.so.2 -> libxatracker.so.2.5.0
+-rwxr-xr-x	root/root	usr/lib32/libxatracker.so.2.5.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/dri.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/gbm.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xatracker.pc

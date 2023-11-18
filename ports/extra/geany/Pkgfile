@@ -1,0 +1,6 @@
+# Depends on: glib gtk3 
+
+name=geany
+version=2.0
+release=1
+source=(http://download.$name.org/$name-$version.tar.bz2)

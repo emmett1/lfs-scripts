@@ -1,0 +1,4 @@
+name=perl-json
+version=4.10
+release=1
+source=(https://www.cpan.org/authors/id/I/IS/ISHIGAKI/JSON-$version.tar.gz)

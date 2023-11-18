@@ -1,0 +1,106 @@
+#!/bin/sh
+#
+# System Initialization Script
+#
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+echo "Mounting virtual file systems..."
+mountpoint -q /proc    || mount -t proc proc /proc -o nosuid,noexec,nodev
+mountpoint -q /sys     || mount -t sysfs sys /sys -o nosuid,noexec,nodev
+mountpoint -q /run     || mount -t tmpfs run /run -o mode=0755,nosuid,nodev
+mountpoint -q /dev     || mount -t devtmpfs dev /dev -o mode=0755,nosuid
+mkdir -p -m0755 /run/lock /dev/pts /dev/shm
+mountpoint -q /dev/pts || mount /dev/pts >/dev/null 2>&1 || mount -t devpts devpts /dev/pts -o mode=0620,gid=5,nosuid,noexec
+mountpoint -q /dev/shm || mount /dev/shm >/dev/null 2>&1 || mount -t tmpfs shm /dev/shm -o mode=1777,nosuid,nodev
+
+echo "Loading kernel modules..."
+modules-load
+
+echo "Populating /dev with device nodes..."
+udevd --daemon
+udevadm trigger --action=add    --type=subsystems
+udevadm trigger --action=add    --type=devices
+udevadm trigger --action=change --type=devices
+udevadm settle
+
+echo "Activating all swap files/partitions..."
+swapon -a
+
+echo "Bringing up the loopback interface..."
+ip addr add 127.0.0.1/8 label lo dev lo
+ip link set lo up
+
+echo "Mounting root file system in read-only mode..."
+mount -n -o remount,ro /
+
+[ -f /fastboot ] && FASTBOOT=1
+[ -f /forcefsck ] && FORCEFSCK="-f"
+for arg in $(cat /proc/cmdline); do
+    case $arg in
+         fastboot) FASTBOOT=1;;
+        forcefsck) FORCEFSCK="-f";;
+    esac
+done
+
+if [ -z "$FASTBOOT" ]; then
+	echo "Checking root filesystem..."
+	fsck $FORCEFSCK -a -A -C -T
+	if [ "$?" -gt 1 ]; then
+		echo "*******************************************"
+		echo "**        Filesystem check failed        **"
+		echo "** You been dropped to maintenance shell **"
+		echo "*******************************************"
+		sulogin -p
+	fi
+fi
+
+echo "Mounting root file system in read-write mode..."
+mount --options remount,rw /
+
+echo "Mounting remaining file systems..."
+mount --all --test-opts no_netdev
+
+echo "Setting up hostname..."
+if [ ! -f /etc/hostname ]; then
+	echo linux > /etc/hostname
+fi
+hostname -F /etc/hostname
+
+echo "Cleanup system..."
+> /var/run/utmp
+if grep -q '^utmp:' /etc/group ; then
+	chmod 664 /var/run/utmp
+	chgrp utmp /var/run/utmp
+fi
+rm -f /fastboot /forcefsck
+find /var/run -name "*.pid" -delete
+find /tmp -xdev -mindepth 1 ! -name lost+found -delete
+mkdir -m 1777 /tmp/.ICE-unix
+mkdir -m 1777 /tmp/.X11-unix
+
+if [ -f "/etc/sysctl.conf" ]; then
+	echo "Setting kernel runtime parameters..."
+	sysctl -q -p
+fi
+
+echo "Setting up system time..."
+hwclock --hctosys
+
+echo "Updating shared library links..."
+ldconfig
+
+if [ -f "/var/lib/random-seed" ]; then
+	echo "Initializing random number generator..."
+	cat /var/lib/random-seed >/dev/urandom
+	rm -f /var/lib/random-seed
+fi
+
+if [ -d /sys/firmware/efi/efivars ]; then
+	echo "Mounting efivarfs..."
+	mount -t efivarfs none /sys/firmware/efi/efivars
+fi
+
+dmesg >/var/log/dmesg.log
+
+echo "Initialization complete..."

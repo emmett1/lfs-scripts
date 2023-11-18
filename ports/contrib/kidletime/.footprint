@@ -1,0 +1,34 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/KF5/
+drwxr-xr-x	root/root	usr/include/KF5/KIdleTime/
+-rw-r--r--	root/root	usr/include/KF5/KIdleTime/KIdleTime
+-rw-r--r--	root/root	usr/include/KF5/KIdleTime/kidletime.h
+-rw-r--r--	root/root	usr/include/KF5/KIdleTime/kidletime_export.h
+-rw-r--r--	root/root	usr/include/KF5/KIdleTime/kidletime_version.h
+drwxr-xr-x	root/root	usr/include/KF5/KIdleTime/private/
+-rw-r--r--	root/root	usr/include/KF5/KIdleTime/private/abstractsystempoller.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/KF5IdleTime/
+-rw-r--r--	root/root	usr/lib/cmake/KF5IdleTime/KF5IdleTimeConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF5IdleTime/KF5IdleTimeConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF5IdleTime/KF5IdleTimeTargets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF5IdleTime/KF5IdleTimeTargets.cmake
+lrwxrwxrwx	root/root	usr/lib/libKF5IdleTime.so -> libKF5IdleTime.so.5
+lrwxrwxrwx	root/root	usr/lib/libKF5IdleTime.so.5 -> libKF5IdleTime.so.5.109.0
+-rwxr-xr-x	root/root	usr/lib/libKF5IdleTime.so.5.109.0
+drwxr-xr-x	root/root	usr/lib/qt5/
+drwxr-xr-x	root/root	usr/lib/qt5/mkspecs/
+drwxr-xr-x	root/root	usr/lib/qt5/mkspecs/modules/
+-rw-r--r--	root/root	usr/lib/qt5/mkspecs/modules/qt_KIdleTime.pri
+drwxr-xr-x	root/root	usr/lib/qt5/plugins/
+drwxr-xr-x	root/root	usr/lib/qt5/plugins/kf5/
+drwxr-xr-x	root/root	usr/lib/qt5/plugins/kf5/org.kde.kidletime.platforms/
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/kf5/org.kde.kidletime.platforms/KF5IdleTimeWaylandPlugin.so
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin0.so
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin1.so
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/qlogging-categories5/
+-rw-r--r--	root/root	usr/share/qlogging-categories5/kidletime.categories
+-rw-r--r--	root/root	usr/share/qlogging-categories5/kidletime.renamecategories

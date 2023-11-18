@@ -1,30 +1,9 @@
-# Description: Programs for dynamic creation of device nodes
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=eudev
-version=3.2.10
+version=3.2.14
 release=1
-source=(https://dev.gentoo.org/~blueness/$name/$name-$version.tar.gz)
-
-build() {
-        cd $name-$version
-
-        ./configure --prefix=/usr           \
-                    --bindir=/sbin          \
-                    --sbindir=/sbin         \
-                    --libdir=/usr/lib       \
-                    --sysconfdir=/etc       \
-                    --libexecdir=/lib       \
-                    --with-rootprefix=      \
-                    --with-rootlibdir=/lib  \
-                    --enable-manpages       \
-                    --disable-static
-        make
-
-        mkdir -pv $PKG/lib/udev/rules.d
-        mkdir -pv $PKG/etc/udev/rules.d
-
-        make DESTDIR=$PKG install
-}
+source=(https://github.com/$name-project/$name/releases/download/v$version/$name-$version.tar.gz)
+build_opt="--sbindir=/sbin
+	--bindir=/sbin
+	--with-rootprefix=
+	--with-rootlibdir=/lib
+	--libexecdir=/lib"

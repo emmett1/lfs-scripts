@@ -1,0 +1,7 @@
+# Depends on: libsndfile dbus glib libice libsm libxtst
+
+name=pulseaudio
+version=16.1
+release=1
+source=(https://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+build_opt="-Ddatabase=gdbm -Ddoxygen=false -Dbluez5=disabled"

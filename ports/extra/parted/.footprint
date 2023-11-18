@@ -1,0 +1,34 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/parted/
+-rw-r--r--	root/root	usr/include/parted/constraint.h
+-rw-r--r--	root/root	usr/include/parted/debug.h
+-rw-r--r--	root/root	usr/include/parted/device.h
+-rw-r--r--	root/root	usr/include/parted/disk.h
+-rw-r--r--	root/root	usr/include/parted/exception.h
+-rw-r--r--	root/root	usr/include/parted/filesys.h
+-rw-r--r--	root/root	usr/include/parted/geom.h
+-rw-r--r--	root/root	usr/include/parted/natmath.h
+-rw-r--r--	root/root	usr/include/parted/parted.h
+-rw-r--r--	root/root	usr/include/parted/timer.h
+-rw-r--r--	root/root	usr/include/parted/unit.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libparted-fs-resize.so -> libparted-fs-resize.so.0.0.5
+lrwxrwxrwx	root/root	usr/lib/libparted-fs-resize.so.0 -> libparted-fs-resize.so.0.0.5
+-rwxr-xr-x	root/root	usr/lib/libparted-fs-resize.so.0.0.5
+lrwxrwxrwx	root/root	usr/lib/libparted.so -> libparted.so.2.0.5
+lrwxrwxrwx	root/root	usr/lib/libparted.so.2 -> libparted.so.2.0.5
+-rwxr-xr-x	root/root	usr/lib/libparted.so.2.0.5
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libparted-fs-resize.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libparted.pc
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/parted
+-rwxr-xr-x	root/root	usr/sbin/partprobe
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/parted.info.gz
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/parted.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/partprobe.8.gz

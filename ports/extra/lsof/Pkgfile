@@ -1,0 +1,11 @@
+name=lsof
+version=4.95.0
+release=1
+source=(https://github.com/$name-org/$name/releases/download/${version}/${name}_${version}.linux.tar.bz2)
+
+pkg_build() {
+	./Configure -n linux
+	make
+	mkdir -p $PKG/usr/bin
+	install -v -m4755 -o root -g root lsof $PKG/usr/bin
+}

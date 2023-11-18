@@ -1,0 +1,22 @@
+name=linux-headers
+version=6.3.3
+release=1
+source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$version.tar.xz)
+
+bootstrap_build() {
+	make mrproper
+	make headers
+	find usr/include -name '.*' -delete
+	rm usr/include/Makefile
+	mkdir -p $TOOLS/include
+	cp -rv usr/include/* $TOOLS/include
+}
+	
+pkg_build() {
+	make mrproper
+	make headers
+	find usr/include -name '.*' -delete
+	rm usr/include/Makefile
+	mkdir -p $PKG/usr/include
+	cp -rv usr/include/* $PKG/usr/include
+}

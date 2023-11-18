@@ -1,0 +1,11 @@
+diff -urN syslinux-6.03.orig/extlinux/main.c syslinux-6.03/extlinux/main.c
+--- syslinux-6.03.orig/extlinux/main.c	2014-10-06 11:27:44.000000000 -0500
++++ syslinux-6.03/extlinux/main.c	2019-01-17 09:59:11.331282998 -0600
+@@ -38,6 +38,7 @@
+ #include <sysexits.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/mount.h>
+ #include <sys/vfs.h>

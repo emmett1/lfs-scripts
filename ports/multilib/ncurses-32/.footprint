@@ -1,0 +1,23 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libformw.so -> libformw.so.6
+lrwxrwxrwx	root/root	usr/lib32/libformw.so.6 -> libformw.so.6.4
+-rwxr-xr-x	root/root	usr/lib32/libformw.so.6.4
+lrwxrwxrwx	root/root	usr/lib32/libmenuw.so -> libmenuw.so.6
+lrwxrwxrwx	root/root	usr/lib32/libmenuw.so.6 -> libmenuw.so.6.4
+-rwxr-xr-x	root/root	usr/lib32/libmenuw.so.6.4
+lrwxrwxrwx	root/root	usr/lib32/libncurses++w.so -> libncurses++w.so.6
+lrwxrwxrwx	root/root	usr/lib32/libncurses++w.so.6 -> libncurses++w.so.6.4
+-rwxr-xr-x	root/root	usr/lib32/libncurses++w.so.6.4
+lrwxrwxrwx	root/root	usr/lib32/libncursesw.so -> libncursesw.so.6
+lrwxrwxrwx	root/root	usr/lib32/libncursesw.so.6 -> libncursesw.so.6.4
+-rwxr-xr-x	root/root	usr/lib32/libncursesw.so.6.4
+lrwxrwxrwx	root/root	usr/lib32/libpanelw.so -> libpanelw.so.6
+lrwxrwxrwx	root/root	usr/lib32/libpanelw.so.6 -> libpanelw.so.6.4
+-rwxr-xr-x	root/root	usr/lib32/libpanelw.so.6.4
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/formw.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/menuw.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/ncurses++w.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/ncursesw.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/panelw.pc

@@ -1,0 +1,4 @@
+name=miniupnpc
+version=2.2.5
+release=1
+source=(http://miniupnp.free.fr/files/$name-$version.tar.gz)

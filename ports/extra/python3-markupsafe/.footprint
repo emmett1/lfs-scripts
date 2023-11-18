@@ -1,0 +1,21 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/python3.11/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/MarkupSafe-2.1.3-py3.11.egg-info/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/MarkupSafe-2.1.3-py3.11.egg-info/PKG-INFO
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/MarkupSafe-2.1.3-py3.11.egg-info/SOURCES.txt
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/MarkupSafe-2.1.3-py3.11.egg-info/dependency_links.txt
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/MarkupSafe-2.1.3-py3.11.egg-info/top_level.txt
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/markupsafe/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/__init__.py
+drwxr-xr-x	root/root	usr/lib/python3.11/site-packages/markupsafe/__pycache__/
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/__pycache__/__init__.cpython-311.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/__pycache__/__init__.cpython-311.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/__pycache__/_native.cpython-311.opt-1.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/__pycache__/_native.cpython-311.pyc
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/_native.py
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/_speedups.c
+-rwxr-xr-x	root/root	usr/lib/python3.11/site-packages/markupsafe/_speedups.cpython-311-x86_64-linux-gnu.so
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/_speedups.pyi
+-rw-r--r--	root/root	usr/lib/python3.11/site-packages/markupsafe/py.typed (EMPTY)

@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/dump.exfat
+-rwxr-xr-x	root/root	usr/sbin/exfat2img
+-rwxr-xr-x	root/root	usr/sbin/exfatlabel
+-rwxr-xr-x	root/root	usr/sbin/fsck.exfat
+-rwxr-xr-x	root/root	usr/sbin/mkfs.exfat
+-rwxr-xr-x	root/root	usr/sbin/tune.exfat
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/dump.exfat.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/exfat2img.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/exfatlabel.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/fsck.exfat.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/mkfs.exfat.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/tune.exfat.8.gz

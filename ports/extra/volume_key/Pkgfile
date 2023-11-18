@@ -1,0 +1,13 @@
+# Depends on: cryptsetup glib gnupg gpgme nss swig 
+
+name=volume_key
+version=0.3.12
+release=1
+source=(https://github.com/felixonmars/$name/archive/$name-$version.tar.gz)
+build_opt="--with-python3 --with-python=no"
+
+pre_build() {
+	sed -e '/AM_PATH_GPGME/iAM_PATH_GPG_ERROR' \
+	    -e 's/gpg2/gpg/' -i configure.ac
+	autoreconf -fiv
+}

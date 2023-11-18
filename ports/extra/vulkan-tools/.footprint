@@ -1,0 +1,6 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/vkcube
+-rwxr-xr-x	root/root	usr/bin/vkcube-wayland
+-rwxr-xr-x	root/root	usr/bin/vkcubepp
+-rwxr-xr-x	root/root	usr/bin/vulkaninfo

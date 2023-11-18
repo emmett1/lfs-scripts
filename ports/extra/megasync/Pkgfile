@@ -1,0 +1,47 @@
+# Depends on: libmediainfo libsodium freeimage crypto++ qt5 c-ares
+
+name=megasync
+version=4.9.0.0
+_sdk_ver=4.16.0
+release=1
+source=(https://github.com/meganz/MEGAsync/archive/v${version}_Linux/$name-$version.tar.gz
+	https://github.com/meganz/sdk/archive/v$_sdk_ver/megasdk-$_sdk_ver.tar.gz
+	pdfium.patch ffmpeg.patch)
+patch_opt="-Np1 -d ../sdk-$_sdk_ver"
+
+pkg_build() {
+	mv ../sdk-$_sdk_ver/* src/MEGASync/mega
+	cd src/MEGASync/mega
+
+	./autogen.sh
+	./configure \
+	--prefix=/usr \
+	--datarootdir=/usr \
+	--libdir=/usr/lib \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--with-cares \
+	--with-cryptopp \
+	--with-curl \
+	--with-sodium \
+	--with-sqlite \
+	--with-zlib \
+	--with-termcap \
+	--with-freeimage \
+	--disable-examples \
+	--enable-chat \
+	--enable-gcc-hardening \
+	--enable-drive-notifications \
+	--with-libmediainfo
+	cd ../../
+	qmake CONFIG+="release" QMAKE_CXXFLAGS="$CFLAGS" MEGA.pro
+	lrelease MEGASync/MEGASync.pro
+	make
+	install -m 755 -p -D MEGASync/megasync $PKG/usr/bin/megasync
+	install -m 644 -p -D MEGASync/platform/linux/data/megasync.desktop $PKG/usr/share/applications/megasync.desktop
+	install -m 644 -p -D MEGASync/platform/linux/data/icons/hicolor/16x16/apps/mega.png $PKG/usr/share/icons/hicolor/16x16/apps/mega.png
+	install -m 644 -p -D MEGASync/platform/linux/data/icons/hicolor/32x32/apps/mega.png $PKG/usr/share/icons/hicolor/32x32/apps/mega.png
+	install -m 644 -p -D MEGASync/platform/linux/data/icons/hicolor/48x48/apps/mega.png $PKG/usr/share/icons/hicolor/48x48/apps/mega.png
+	install -m 644 -p -D MEGASync/platform/linux/data/icons/hicolor/128x128/apps/mega.png $PKG/usr/share/icons/hicolor/128x128/apps/mega.png
+	install -m 644 -p -D MEGASync/platform/linux/data/icons/hicolor/256x256/apps/mega.png $PKG/usr/share/icons/hicolor/256x256/apps/mega.png
+}

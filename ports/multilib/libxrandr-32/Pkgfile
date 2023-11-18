@@ -1,0 +1,6 @@
+# Depends on: libxrandr libx11-32 libxext-32 libxrender-32
+
+name=libxrandr-32
+version=1.5.4
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libXrandr-$version.tar.xz)

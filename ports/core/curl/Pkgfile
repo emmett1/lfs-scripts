@@ -1,21 +1,19 @@
-# Description: Utility and a library used for transferring files
-# URL:         https://curl.haxx.se/
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  ca-certificates openssl
-
 name=curl
-version=7.82.0
+version=8.4.0
 release=1
-source=(https://curl.haxx.se/download/$name-$version.tar.xz)
+source=(https://$name.se/download/$name-$version.tar.xz)
+build_opt="
+	--with-openssl
+	--enable-threaded-resolver
+	--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+	--without-brotli
+	--without-libidn2
+	--without-libpsl
+	--without-librtmp
+	--without-nghttp2"
 
-build() {
-	cd $name-$version
-
-	./configure --prefix=/usr \
-                    --disable-static \
-                    --enable-threaded-resolver \
-		    --with-openssl \
-                    --with-ca-bundle=/etc/ssl/cert.pem
-	make
-	make DESTDIR=$PKG install
-}
+bootstrap_opt="
+	--disable-static \
+	--enable-threaded-resolver \
+	--with-openssl \
+	--with-ca-bundle=$TOOLS/etc/ssl/cert.pem"

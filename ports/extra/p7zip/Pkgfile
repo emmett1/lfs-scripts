@@ -1,0 +1,13 @@
+name=p7zip
+version=17.04
+release=1
+source=(https://github.com/$name-project/$name/archive/v$version/$name-$version.tar.gz)
+
+pkg_build() {
+	sed '/^gzip/d' -i install.sh
+	sed -i '160a if(_buffer == nullptr || _size == _pos) return E_FAIL;' CPP/7zip/Common/StreamObjects.cpp
+	make all3
+	make DEST_HOME=/usr \
+	DEST_MAN=/usr/share/man \
+	DEST_DIR=$PKG install
+}

@@ -1,0 +1,6 @@
+# Depends on: libxshmfence
+
+name=libxshmfence-32
+version=1.3.2
+release=1
+source=(ftp://ftp.x.org/pub/individual/lib/libxshmfence-$version.tar.xz)

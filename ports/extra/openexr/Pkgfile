@@ -1,0 +1,7 @@
+# Depends on: imath libdeflate
+
+name=openexr
+version=3.2.1
+release=1
+source=(https://github.com/$name/$name/archive/v$version/$name-$version.tar.gz)
+build_opt="-DBUILD_TESTING=OFF"

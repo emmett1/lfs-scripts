@@ -1,0 +1,6 @@
+# Depends on: libdrm mesa libx11 libxcb libxext libxfixes libglvnd 
+
+name=libva
+version=2.20.0
+release=1
+source=(https://github.com/intel/$name/releases/download/$version/$name-$version.tar.bz2)

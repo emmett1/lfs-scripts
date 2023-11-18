@@ -1,20 +1,10 @@
-# Description: One way sync over http
-# URL:         https://github.com/winkj/httpup
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  curl
-
 name=httpup
-version=0.5.0
+version=0.5.1
 release=1
-source=(https://crux.nu/files/$name-$version.tar.xz
-	httpup)
+source=(https://crux.nu/files/$name-$version.tar.xz httpup)
 
-build() {
-	cd $name-$version
-
+pkg_build() {
 	make
-	make DESTDIR=$PKG prefix=/usr mandir=/usr/share/man install
-
-	# driver
-	install -Dm755 $SRC/httpup $PKG/etc/ports/drivers/httpup
+	make prefix=/usr mandir=/usr/share/man install
+	install -D -m 755 $SRC/httpup $PKG/etc/ports/drivers/httpup
 }

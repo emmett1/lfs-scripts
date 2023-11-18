@@ -1,0 +1,29 @@
+# Depends on: alsa-lib gtk3 libxtst nss cups
+
+name=google-chrome
+version=116.0.5845.96
+release=1
+_channel=stable
+source=(https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${version}-1_amd64.deb
+	$name-$_channel.sh)
+
+pkg_build() {
+	bsdtar -xf $name-${_channel}_${version}-1_amd64.deb
+	bsdtar -xf data.tar.xz -C $PKG/
+
+	# Launcher
+	install -m755 $name-$_channel.sh $PKG/usr/bin/$name-$_channel
+
+	# Icons
+	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+	  install -Dm644 $PKG/opt/google/chrome/product_logo_${i/x*}.png \
+	                $PKG/usr/share/icons/hicolor/$i/apps/$name.png
+	done
+
+	# Fixing Chrome icon resolution
+	sed -i "/Exec=/i\StartupWMClass=Google-chrome" $PKG/usr/share/applications/$name.desktop
+
+	# Removing Debian Cron job and duplicate product logos
+	rm -r $PKG/etc/cron.daily/ $PKG/opt/google/chrome/cron/
+	rm $PKG/opt/google/chrome/product_logo_*.png
+}

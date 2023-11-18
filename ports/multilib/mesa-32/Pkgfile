@@ -1,0 +1,17 @@
+# Depends on: mesa elfutils-32 python3-mako libdrm-32 llvm-32 libglvnd-32 libxfixes-32 libxshmfence-32 libxxf86vm-32 libxrandr-32
+
+name=mesa-32
+version=23.2.1
+release=1
+source=(https://archive.mesa3d.org/mesa-$version.tar.xz crossfile)
+build_opt="
+	--native-file ../crossfile
+	-Db_lto=false
+	-Dplatforms=x11
+	-Dgallium-drivers=auto
+	-Dvulkan-drivers=""
+	-Dvalgrind=disabled
+	-Dlibunwind=disabled
+	-Dglvnd=true
+"
+export LLVM_CONFIG="/usr/bin/llvm-config-32"

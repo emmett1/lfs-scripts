@@ -1,0 +1,6 @@
+# Depends on: gtk3 libxfce4ui libxfce4util
+
+name=exo
+version=4.18.0
+release=1
+source=(https://archive.xfce.org/src/xfce/$name/${version%.*}/$name-$version.tar.bz2)

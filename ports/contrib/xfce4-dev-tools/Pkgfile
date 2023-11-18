@@ -1,0 +1,6 @@
+# Depends on: glib
+
+name=xfce4-dev-tools
+version=4.18.1
+release=1
+source=(http://archive.xfce.org/src/xfce/${name}/${version%.*}/${name}-${version}.tar.bz2)

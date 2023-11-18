@@ -1,0 +1,29 @@
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/chpst
+-rwxr-xr-x	root/root	sbin/halt
+lrwxrwxrwx	root/root	sbin/init -> /sbin/runit-init
+lrwxrwxrwx	root/root	sbin/poweroff -> halt
+lrwxrwxrwx	root/root	sbin/reboot -> halt
+-rwxr-xr-x	root/root	sbin/runit
+-rwxr-xr-x	root/root	sbin/runit-init
+-rwxr-xr-x	root/root	sbin/runsv
+-rwxr-xr-x	root/root	sbin/runsvchdir
+-rwxr-xr-x	root/root	sbin/runsvdir
+-rwxr-xr-x	root/root	sbin/shutdown
+-rwxr-xr-x	root/root	sbin/sv
+-rwxr-xr-x	root/root	sbin/svlogd
+-rwxr-xr-x	root/root	sbin/utmpset
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/chpst.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/runit-init.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/runit.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/runsv.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/runsvchdir.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/runsvdir.8.gz
+-rwxr-xr-x	root/root	usr/share/man/man8/shutdown.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/sv.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/svlogd.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/utmpset.8.gz

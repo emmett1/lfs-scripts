@@ -1,0 +1,7 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/xdg/
+drwxr-xr-x	root/root	etc/xdg/obmenu-generator/
+-rw-r--r--	root/root	etc/xdg/obmenu-generator/schema.pl
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/obmenu-generator

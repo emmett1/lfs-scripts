@@ -1,0 +1,6 @@
+# Depends on: libx11 libxcb xcb-util 
+
+name=startup-notification
+version=0.12
+release=1
+source=(https://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)

@@ -1,0 +1,6 @@
+# Depends on: kconfig kwayland
+
+name=libkscreen
+version=5.27.7
+release=1
+source=(http://download.kde.org/stable/plasma/$version/$name-$version.tar.xz)

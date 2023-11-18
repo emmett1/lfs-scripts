@@ -1,0 +1,10 @@
+# Depends on: icu
+
+name=icu-32
+version=73.1
+release=1
+source=(https://github.com/unicode-org/icu/releases/download/release-${version//./-}/icu4c-${version//./_}-src.tgz)
+
+pre_build() {
+	cd source
+}

@@ -1,0 +1,6 @@
+# Depends on: libxau libxdmcp xcb-proto 
+
+name=libxcb
+version=1.16
+release=1
+source=(https://xorg.freedesktop.org/archive/individual/lib/$name-$version.tar.xz)

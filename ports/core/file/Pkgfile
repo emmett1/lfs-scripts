@@ -1,17 +1,4 @@
-# Description: Utility for determining the type of a given file or files
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=file
-version=5.41
+version=5.45
 release=1
-source=(ftp://ftp.astron.com/pub/$name/$name-$version.tar.gz)
-
-build() {
-        cd $name-$version
-
-        ./configure --prefix=/usr
-        make
-        make DESTDIR=$PKG install
-}
+source=(https://astron.com/pub/$name/$name-$version.tar.gz)

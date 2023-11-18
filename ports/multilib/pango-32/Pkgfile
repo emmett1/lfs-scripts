@@ -1,0 +1,11 @@
+# Depends on: pango glib-32 fribidi-32 harfbuzz-32 fontconfig-32 cairo-32
+
+name=pango-32
+version=1.50.14
+release=1
+source=(https://download.gnome.org/sources/pango/${version%.*}/pango-$version.tar.xz)
+build_opt="--wrap-mode=nofallback -Dintrospection=disabled"
+
+pre_build() {
+	sed -i '/array-bounds/d' meson.build
+}

@@ -1,17 +1,11 @@
-# Description: An arbitrary precision numeric processing language
-# URL:         
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  
-
 name=bc
-version=5.2.3
+version=6.7.0
 release=1
-source=(https://github.com/gavinhoward/bc/archive/$version/bc-$version.tar.gz)
+source=(https://github.com/gavinhoward/$name/releases/download/$version/$name-$version.tar.xz)
 
-build() {
-        cd $name-$version
-
-        PREFIX=/usr CC=gcc CFLAGS="-std=c99" ./configure.sh -G -O3
-        make
-        make DESTDIR=$PKG install
+pkg_build() {
+	PREFIX=/usr CC=gcc CFLAGS="-std=c99" ./configure.sh -G -O3
+	#./configure --prefix=/usr -r
+	make
+	make install
 }

@@ -1,0 +1,6 @@
+# Depends on: libpng 
+
+name=freetype
+version=2.13.2
+release=1
+source=(https://downloads.sourceforge.net/$name/$name-$version.tar.xz)

@@ -1,0 +1,17 @@
+# Depends on: libglvnd libx11-32 libxext-32
+
+name=libglvnd-32
+version=1.7.0
+release=1
+source=(https://github.com/NVIDIA/libglvnd/archive/v$version/libglvnd-$version.tar.gz)
+
+pkg_build() {
+	./autogen.sh
+	./configure --prefix=/usr \
+		--disable-headers \
+		--build=i686-unknown-linux-gnu \
+		--libdir=/usr/lib32
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/include
+}

@@ -1,0 +1,15 @@
+a9004bacb7382bb7207837098c5cec13  1
+7d2cfe3b5be179423f3446d74ae939f9  2
+2eb8df2719cb191ac0b9ec1d03339604  3
+ad794e0f1564c1c7fae17f6a8da8dfce  Makefile
+994b467e344bba5d99eaf955e899e955  agetty-tty1.finish
+aa60fa9bc1e2e6b4d2400198c06cef52  agetty-tty1.run
+251e5d3b3926f285dce4cde6b2fe0c39  ctrlaltdel
+d7cc7900926028defde4a7b97e96f8dd  modules-load
+838b2ee21b7102f3c8ff3fb4a7f47090  pause.1
+f2af41d7f566b1b5354b35a85e0175d3  pause.c
+b31be95344e02dfada7291f5ef015f1d  rc.shutdown
+69c983a4b701bf81d506409230b7a367  rc.shutdown.local
+f2ed771e08d00355849f2326501061a3  rc.startup
+494e7cb74b0650209009f3c3e6fb5ef4  rc.startup.local
+dbba2d720b95325cc24c9e4d1697b521  sulogin.run

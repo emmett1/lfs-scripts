@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libX11-xcb.so -> libX11-xcb.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libX11-xcb.so.1 -> libX11-xcb.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib32/libX11-xcb.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libX11.so -> libX11.so.6.4.0
+lrwxrwxrwx	root/root	usr/lib32/libX11.so.6 -> libX11.so.6.4.0
+-rwxr-xr-x	root/root	usr/lib32/libX11.so.6.4.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/x11-xcb.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/x11.pc

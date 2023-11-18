@@ -1,0 +1,4 @@
+name=libraw
+version=0.21.1
+release=1
+source=(https://www.$name.org/data/LibRaw-$version.tar.gz)

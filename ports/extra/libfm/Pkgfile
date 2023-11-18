@@ -1,0 +1,14 @@
+# Depends on: gtk2 menu-cache libexif vala lxmenu-data 
+
+name=libfm
+version=1.3.2
+release=1
+source=(https://downloads.sourceforge.net/pcmanfm/$name-$version.tar.xz)
+
+post_build() {
+	rm $PKG/usr/include/libfm
+	mv $PKG/usr/include/libfm-1.0 $PKG/usr/include/libfm
+	rm $PKG/usr/lib/libfm-extra.{so*,a,la}
+	rm $PKG/usr/lib/pkgconfig/libfm-extra.pc
+	rm $PKG/usr/include/libfm/fm-{extra,version,xml-file}.h
+}

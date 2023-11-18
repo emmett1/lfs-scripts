@@ -1,0 +1,6 @@
+# Depends on: extra-cmake-modules
+
+name=plasma-wayland-protocols
+version=1.11.1
+release=1
+source=(https://download.kde.org/stable/$name/$name-$version.tar.xz)

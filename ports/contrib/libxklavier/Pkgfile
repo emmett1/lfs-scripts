@@ -1,0 +1,6 @@
+# Depends on: libx11 libxml2 glib iso-codes
+
+name=libxklavier
+version=5.4
+release=1
+source=(https://people.freedesktop.org/~svu/$name-$version.tar.bz2)

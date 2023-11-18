@@ -1,0 +1,15 @@
+name=fuse2
+version=2.9.9
+release=1
+source=(https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.gz
+	fuse2-0007-util-ulockmgr_server.c-conditionally-define-closefro.patch)
+build_opt="--enable-lib --enable-util --disable-example"
+export UDEV_RULES_PATH=/lib/udev/rules.d
+
+pre_build() {
+	autoreconf -fiv
+}
+
+post_build() {
+	rm -rf $PKG/dev $PKG/etc/init.d
+}

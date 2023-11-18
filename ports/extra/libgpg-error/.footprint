@@ -1,0 +1,32 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/gpg-error
+-rwxr-xr-x	root/root	usr/bin/gpgrt-config
+-rwxr-xr-x	root/root	usr/bin/yat2m
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/gpg-error.h
+-rw-r--r--	root/root	usr/include/gpgrt.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libgpg-error.so -> libgpg-error.so.0.34.0
+lrwxrwxrwx	root/root	usr/lib/libgpg-error.so.0 -> libgpg-error.so.0.34.0
+-rwxr-xr-x	root/root	usr/lib/libgpg-error.so.0.34.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/gpg-error.pc
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/aclocal/
+-rw-r--r--	root/root	usr/share/aclocal/gpg-error.m4
+-rw-r--r--	root/root	usr/share/aclocal/gpgrt.m4
+drwxr-xr-x	root/root	usr/share/common-lisp/
+drwxr-xr-x	root/root	usr/share/common-lisp/source/
+drwxr-xr-x	root/root	usr/share/common-lisp/source/gpg-error/
+-rw-r--r--	root/root	usr/share/common-lisp/source/gpg-error/gpg-error-codes.lisp
+-rw-r--r--	root/root	usr/share/common-lisp/source/gpg-error/gpg-error-package.lisp
+-rw-r--r--	root/root	usr/share/common-lisp/source/gpg-error/gpg-error.asd
+-rw-r--r--	root/root	usr/share/common-lisp/source/gpg-error/gpg-error.lisp
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/gpgrt.info.gz
+drwxr-xr-x	root/root	usr/share/libgpg-error/
+-rw-r--r--	root/root	usr/share/libgpg-error/errorref.txt
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/gpgrt-config.1.gz

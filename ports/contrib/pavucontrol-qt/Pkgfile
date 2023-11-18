@@ -1,0 +1,6 @@
+# Depends on: qt5 pulseaudio lxqt-build-tools
+
+name=pavucontrol-qt
+version=1.4.0
+release=1
+source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)

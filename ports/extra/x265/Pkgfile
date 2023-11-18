@@ -1,0 +1,9 @@
+name=x265
+version=20230215
+release=1
+source=(https://anduin.linuxfromscratch.org/BLFS/$name/$name-$version.tar.xz)
+build_opt="-DGIT_ARCHETYPE=1 "
+
+pre_build() {
+ cd source
+}

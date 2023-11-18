@@ -1,0 +1,7 @@
+# Depends on: exiv2 gtk2 intltool meson perl
+
+name=viewnior
+version=1.8
+release=1
+source=(https://github.com/hellosiyan/Viewnior/archive/$name-$version.tar.gz
+	exiv2-0.28.patch)

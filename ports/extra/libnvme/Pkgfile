@@ -1,0 +1,6 @@
+# Depends on: json-c keyutils swig dbus 
+
+name=libnvme
+version=1.6
+release=1
+source=(https://github.com/linux-nvme/$name/archive/refs/tags/v$version/$name-$version.tar.gz)

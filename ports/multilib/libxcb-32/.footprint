@@ -1,0 +1,103 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libxcb-composite.so -> libxcb-composite.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-composite.so.0 -> libxcb-composite.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-composite.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-damage.so -> libxcb-damage.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-damage.so.0 -> libxcb-damage.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-damage.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dbe.so -> libxcb-dbe.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dbe.so.0 -> libxcb-dbe.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-dbe.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dpms.so -> libxcb-dpms.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dpms.so.0 -> libxcb-dpms.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-dpms.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dri2.so -> libxcb-dri2.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dri2.so.0 -> libxcb-dri2.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-dri2.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dri3.so -> libxcb-dri3.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-dri3.so.0 -> libxcb-dri3.so.0.1.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-dri3.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-glx.so -> libxcb-glx.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-glx.so.0 -> libxcb-glx.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-glx.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-present.so -> libxcb-present.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-present.so.0 -> libxcb-present.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-present.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-randr.so -> libxcb-randr.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-randr.so.0 -> libxcb-randr.so.0.1.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-randr.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-record.so -> libxcb-record.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-record.so.0 -> libxcb-record.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-record.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-render.so -> libxcb-render.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-render.so.0 -> libxcb-render.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-render.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-res.so -> libxcb-res.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-res.so.0 -> libxcb-res.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-res.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-screensaver.so -> libxcb-screensaver.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-screensaver.so.0 -> libxcb-screensaver.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-screensaver.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-shape.so -> libxcb-shape.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-shape.so.0 -> libxcb-shape.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-shape.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-shm.so -> libxcb-shm.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-shm.so.0 -> libxcb-shm.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-shm.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-sync.so -> libxcb-sync.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-sync.so.1 -> libxcb-sync.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-sync.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xf86dri.so -> libxcb-xf86dri.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xf86dri.so.0 -> libxcb-xf86dri.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xf86dri.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xfixes.so -> libxcb-xfixes.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xfixes.so.0 -> libxcb-xfixes.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xfixes.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xinerama.so -> libxcb-xinerama.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xinerama.so.0 -> libxcb-xinerama.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xinerama.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xinput.so -> libxcb-xinput.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xinput.so.0 -> libxcb-xinput.so.0.1.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xinput.so.0.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xkb.so -> libxcb-xkb.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xkb.so.1 -> libxcb-xkb.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xkb.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xtest.so -> libxcb-xtest.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xtest.so.0 -> libxcb-xtest.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xtest.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xv.so -> libxcb-xv.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xv.so.0 -> libxcb-xv.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xv.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xvmc.so -> libxcb-xvmc.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb-xvmc.so.0 -> libxcb-xvmc.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb-xvmc.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb.so -> libxcb.so.1.1.0
+lrwxrwxrwx	root/root	usr/lib32/libxcb.so.1 -> libxcb.so.1.1.0
+-rwxr-xr-x	root/root	usr/lib32/libxcb.so.1.1.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-composite.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-damage.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-dbe.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-dpms.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-dri2.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-dri3.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-glx.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-present.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-randr.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-record.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-render.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-res.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-screensaver.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-shape.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-shm.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-sync.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xf86dri.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xfixes.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xinerama.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xinput.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xkb.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xtest.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xv.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb-xvmc.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/xcb.pc

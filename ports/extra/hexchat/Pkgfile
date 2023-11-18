@@ -1,0 +1,7 @@
+# Depends on: libnotify dbus-glib libcanberra gtk2
+
+name=hexchat
+version=2.16.1
+release=1
+source=(https://dl.$name.net/$name/$name-$version.tar.xz)
+build_opt="-Dwith-lua=false -Dwith-python=false"

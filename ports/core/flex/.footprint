@@ -1,0 +1,26 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/flex
+lrwxrwxrwx	root/root	usr/bin/flex++ -> flex
+lrwxrwxrwx	root/root	usr/bin/lex -> flex
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/FlexLexer.h
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libfl.so -> libfl.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libfl.so.2 -> libfl.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib/libfl.so.2.0.0
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/flex/
+-rw-r--r--	root/root	usr/share/doc/flex/AUTHORS
+-rw-r--r--	root/root	usr/share/doc/flex/COPYING
+-rw-r--r--	root/root	usr/share/doc/flex/NEWS
+-rw-r--r--	root/root	usr/share/doc/flex/ONEWS
+-rw-r--r--	root/root	usr/share/doc/flex/README.md
+drwxr-xr-x	root/root	usr/share/info/
+-rw-r--r--	root/root	usr/share/info/flex.info-1.gz
+-rw-r--r--	root/root	usr/share/info/flex.info-2.gz
+-rw-r--r--	root/root	usr/share/info/flex.info.gz
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/flex.1.gz

@@ -1,0 +1,10 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+drwxr-xr-x	root/root	usr/lib32/cmake/
+drwxr-xr-x	root/root	usr/lib32/cmake/libxml2/
+-rw-r--r--	root/root	usr/lib32/cmake/libxml2/libxml2-config.cmake
+lrwxrwxrwx	root/root	usr/lib32/libxml2.so -> libxml2.so.2.10.4
+lrwxrwxrwx	root/root	usr/lib32/libxml2.so.2 -> libxml2.so.2.10.4
+-rwxr-xr-x	root/root	usr/lib32/libxml2.so.2.10.4
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libxml-2.0.pc

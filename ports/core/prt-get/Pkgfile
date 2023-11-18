@@ -1,0 +1,11 @@
+name=prt-get
+version=5.19.6
+release=1
+source=(http://crux.nu/files/prt-get-$version.tar.xz
+	prt-get.conf prt-get.aliases)
+
+post_build() {
+	install -m 644 $SRC/prt-get.{conf,aliases} $PKG/etc/
+	install -d $PKG/var/lib/pkg
+	touch $PKG/var/lib/pkg/prt-get.locker
+}

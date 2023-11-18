@@ -1,0 +1,11 @@
+# Depends on: liba52 libmad dav1d qt5 ffmpeg
+
+name=vlc
+version=3.0.19
+release=1
+source=(https://download.videolan.org/$name/$version/$name-$version.tar.xz)
+build_opt="--disable-lua"
+
+pre_build() {
+	export BUILDCC=gcc
+}

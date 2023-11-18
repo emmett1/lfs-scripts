@@ -1,0 +1,57 @@
+# Depends on: runit 
+
+name=runit-rc
+version=1
+release=1
+source=(1
+	2
+	3
+	modules-load
+	Makefile
+	agetty-tty1.finish
+	agetty-tty1.run
+	ctrlaltdel
+	pause.1
+	pause.c
+	rc.shutdown
+	rc.shutdown.local
+	rc.startup
+	rc.startup.local
+	sulogin.run)
+sv=(sulogin.run)
+
+pkg_build() {
+	install -d $PKG/etc/runit/runsvdir/default
+	install -d $PKG/etc/runit/runsvdir/single
+	install -d $PKG/etc/sv
+	install -d $PKG/sbin
+	#install -d $PKG/usr/share/man/man1
+	#install -d $PKG/usr/share/man/man8
+	install -d $PKG/var
+	
+	ln -s default $PKG/etc/runit/runsvdir/current
+	ln -s /etc/runit/runsvdir/current $PKG/var/service
+	
+	${CC:-gcc} ${CFLAGS} pause.c -o $PKG/sbin/pause
+	
+	install -m755 1 2 3 ctrlaltdel rc.startup.local \
+		rc.shutdown.local rc.startup rc.shutdown \
+		$PKG/etc/runit
+	#install -m644 pause.1 $PKG/usr/share/man/man1
+	#install -m644 shutdown.8 $PKG/usr/share/man/man8
+	
+	touch $PKG/etc/runit/reboot
+	touch $PKG/etc/runit/stopit
+	chmod 0 $PKG/etc/runit/reboot
+	chmod 0 $PKG/etc/runit/stopit
+	
+	for i in $(seq 6); do
+		install -Dm755 agetty-tty1.run $PKG/etc/sv/agetty-tty$i/run
+		install -Dm755 agetty-tty1.finish $PKG/etc/sv/agetty-tty$i/finish
+		ln -s /etc/sv/agetty-tty$i $PKG/etc/runit/runsvdir/default
+	        ln -s /run/runit/supervise.agetty-tty$i $PKG/etc/sv/agetty-tty$i/supervise
+	done
+	ln -s /etc/sv/sulogin $PKG/etc/runit/runsvdir/single
+
+	install -Dm755 $SRC/modules-load $PKG/usr/sbin/modules-load
+}

@@ -1,0 +1,5 @@
+# Depends on: xf86-input-libinput xf86-video-vesa xinit xauth xkeyboard-config xkbcomp xterm twm xclock font-adobe-utopia-type1 font-alias font-bh-ttf font-bh-type1 font-ibm-type1 font-misc-ethiopic font-xfree86-type1
+
+name=xorg
+version=7.7
+release=1

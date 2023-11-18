@@ -1,70 +1,36 @@
-# Description: A set of utilities to manage software packages 
-# URL:         http://crux.nu/gitweb/?p=tools/pkgutils.git
-# Maintainer:  Emmett1, emmett1 dot 2miligrams at gmail dot com
-# Depends on:  libarchive
-
 name=pkgutils
-version=5.40.7
-release=1
-source=(http://crux.nu/files/$name-$version.tar.xz
+version=5.40.10
+release=2
+source=(https://crux.nu/files/$name-$version.tar.xz
+	pkgadd.conf
 	pkgmk.conf
-	pkgutils_ignore-conflict.patch
-	pkgutils_remove-libtool.patch
-	pkgutils_add-compress-infopages.patch
-	pkgutils_fix-build-needed-trigger.patch)
+	extension)
 
-build () {
-	cd $name-$version
-
-	for p in $SRC/*.patch; do
-		patch -Np1 -i $p
-	done
-
+bootstrap_build() {
 	sed -i -e 's/ --static//' \
 	       -e 's/ -static//' Makefile
-	make DESTDIR=$PKG install
-	#install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
+	make BINDIR=$TOOLS/bin MANDIR=$TOOLS/man ETCDIR=$TOOLS/etc install
+}
 
-	cat > $PKG/etc/pkgmk.conf << EOF
-#
-# /etc/pkgmk.conf: pkgmk(8) configuration
-#
+post_build() {
+	# change some defaults
+	# store sources and packages in /var/cache/pkg
+	sed -i 's,^PKGMK_SOURCE_DIR=.*,PKGMK_SOURCE_DIR="/var/cache/pkg/sources",' $PKG/usr/bin/pkgmk
+	sed -i 's,^PKGMK_PACKAGE_DIR=.*,PKGMK_PACKAGE_DIR="/var/cache/pkg/packages",' $PKG/usr/bin/pkgmk
+	sed -i 's,^PKGMK_WORK_DIR=.*,PKGMK_WORK_DIR="/var/cache/pkg/work",' $PKG/usr/bin/pkgmk
+	install -dm777 $PKG/var/cache/pkg/{sources,packages,work}
+	chmod 777 $PKG/var/cache/pkg
 
-export CFLAGS="$CFLAGS"
-export CXXFLAGS="\${CFLAGS}"
+	# make xz as default compression mode
+	sed -i 's,^PKGMK_COMPRESSION_MODE=.*,PKGMK_COMPRESSION_MODE="xz",' $PKG/usr/bin/pkgmk
 
-export MAKEFLAGS="$MAKEFLAGS"
+	# ignore signature by default
+	sed -i 's,^PKGMK_IGNORE_SIGNATURE=.*,PKGMK_IGNORE_SIGNATURE="yes",' $PKG/usr/bin/pkgmk
 
-case ${PKGMK_ARCH} in
-	"64"|"")
-		;;
-	"32")
-		export CFLAGS="\${CFLAGS} -m32"
-		export CXXFLAGS="\${CXXFLAGS} -m32"
-		export LDFLAGS="\${LDFLAGS} -m32"
-		export PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig"
-		;;
-	*)
-		echo "Unknown architecture selected! Exiting."
-		exit 1
-		;;
-esac
+	# my custom extension script
+	install -Dm644 $SRC/extension $PKG/var/lib/pkgmk/extension
 
-# PKGMK_SOURCE_MIRRORS=()
-PKGMK_SOURCE_DIR="/var/lib/pkg/src"
-PKGMK_PACKAGE_DIR="/var/lib/pkg/pkg"
-PKGMK_WORK_DIR="/var/lib/pkg/work/\$name"
-PKGMK_DOWNLOAD="yes"
-# PKGMK_IGNORE_SIGNATURE="no"
-# PKGMK_IGNORE_MD5SUM="no"
-# PKGMK_IGNORE_FOOTPRINT="no"
-# PKGMK_IGNORE_NEW="no"
-# PKGMK_NO_STRIP="no"
-PKGMK_DOWNLOAD_PROG="curl"
-# PKGMK_WGET_OPTS=""
-# PKGMK_CURL_OPTS=""
-PKGMK_COMPRESSION_MODE="xz"
-
-# End of file
-EOF
+	# configs
+	install -m644 $SRC/pkgadd.conf $PKG/etc/pkgadd.conf
+	install -m644 $SRC/pkgmk.conf $PKG/etc/pkgmk.conf
 }

@@ -1,0 +1,8 @@
+name=linux-firmware
+version=20230919
+release=1
+source=(https://git.kernel.org/pub/scm/linux/kernel/git/firmware/$name.git/snapshot/$name-$version.tar.gz)
+
+pkg_build() {
+	make FIRMWAREDIR=/lib/firmware install
+}

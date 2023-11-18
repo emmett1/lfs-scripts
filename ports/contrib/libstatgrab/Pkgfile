@@ -1,0 +1,6 @@
+# Depends on: lxqt-build-tools
+
+name=libstatgrab
+version=0.92.1
+release=1
+source=(https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/$name/$name-$version.tar.gz)

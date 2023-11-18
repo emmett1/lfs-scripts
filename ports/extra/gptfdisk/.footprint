@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/cgdisk
+-rwxr-xr-x	root/root	usr/sbin/fixparts
+-rwxr-xr-x	root/root	usr/sbin/gdisk
+-rwxr-xr-x	root/root	usr/sbin/sgdisk
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/cgdisk.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/fixparts.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/gdisk.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/sgdisk.8.gz

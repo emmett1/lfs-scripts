@@ -1,0 +1,23 @@
+#!/bin/sh
+
+build_hook() {
+	for dir in bin dev lib/firmware run sys proc usr \
+		etc/modprobe.d etc/udev/rules.d; do
+		add_dir /$dir
+	done
+	
+	add_symlink /lib64 lib
+	add_symlink /usr/bin ../bin
+	add_symlink /sbin bin
+	add_symlink /usr/sbin ../bin
+	
+	for bin in bash sh cat mv cp killall ls mkdir mount find xargs grep fgrep \
+		umount sed sleep ln rm uname chroot chmod \
+		readlink basename modprobe blkid switch_root \
+		kmod lsmod insmod setsid awk; do
+		add_binary $bin
+	done
+
+	add_file /usr/share/terminfo/l/linux
+	add_file /lib/ld-linux-x86-64.so.2
+}

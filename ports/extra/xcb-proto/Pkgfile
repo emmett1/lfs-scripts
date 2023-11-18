@@ -1,0 +1,4 @@
+name=xcb-proto
+version=1.16.0
+release=1
+source=(https://xorg.freedesktop.org/archive/individual/proto/$name-$version.tar.xz)

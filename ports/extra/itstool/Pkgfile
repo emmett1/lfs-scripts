@@ -1,0 +1,4 @@
+name=itstool
+version=2.0.7
+release=1
+source=(https://files.$name.org/$name/$name-$version.tar.bz2)

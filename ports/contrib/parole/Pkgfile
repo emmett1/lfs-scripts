@@ -1,0 +1,6 @@
+# Depends on: dbus-glib gst-plugins-base gst-plugins-good libxfce4ui taglib libnotify
+
+name=parole
+version=4.18.0
+release=1
+source=(https://archive.xfce.org/src/apps/${name}/${version%.*}/${name}-${version}.tar.bz2)

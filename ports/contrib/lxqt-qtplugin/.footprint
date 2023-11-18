@@ -1,0 +1,6 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/qt5/
+drwxr-xr-x	root/root	usr/lib/qt5/plugins/
+drwxr-xr-x	root/root	usr/lib/qt5/plugins/platformthemes/
+-rwxr-xr-x	root/root	usr/lib/qt5/plugins/platformthemes/libqtlxqt.so

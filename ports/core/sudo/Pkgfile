@@ -1,0 +1,18 @@
+name=sudo
+version=1.9.14p3
+release=1
+source=(https://www.$name.ws/dist/$name-$version.tar.gz
+	sudo)
+build_opt="--with-secure-path
+    --with-all-insults
+    --with-env-editor"
+
+post_build() {
+	ln -sfv libsudo_util.so.0.0.0 $PKG/usr/lib/sudo/libsudo_util.so.0
+	
+	mkdir -m 755 $PKG/etc/pam.d
+	install -Dm 644 $SRC/sudo $PKG/etc/pam.d/sudo
+	
+	rm -fr $PKG/var/run
+	rm -fr $PKG/run/sudo
+}
