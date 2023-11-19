@@ -3,6 +3,6 @@
 #
 
 ROOT_DIR=/usr/ports/multilib
-URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/beta2/ports/multilib
+URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/master/ports/multilib
 
 # End of file

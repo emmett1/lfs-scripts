@@ -1,6 +1,6 @@
-6ecc48dd8bfa47d600a52df7deda3fb3  contrib.httpup
-3271bf6f73d7f04285c919e8675b1e7f  core.httpup
-d66834182e762d8a7018c55c77d17efd  extra.httpup
-fc19cf88cbccd876c099c5acf8b2531d  multilib.httpup
+60922bc85967ae2bf78e40611f4c3bfb  contrib.httpup
+f3c1409cf033df15711ff46d088adcf0  core.httpup
+b453a0690df9b03d5d66265511d45ef9  extra.httpup
+c3bc3be8bb06199452eb416416f660d5  multilib.httpup
 902e3ddb9b4930975c7edb5c3c749c8c  ports-1.6.tar.gz
 0de7bd216b8233739cb7b96163837c03  repokey.pub

@@ -3,6 +3,6 @@
 #
 
 ROOT_DIR=/usr/ports/extra
-URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/beta2/ports/extra
+URL=https://raw.githubusercontent.com/emmett1/lfs-scripts/master/ports/extra
 
 # End of file
